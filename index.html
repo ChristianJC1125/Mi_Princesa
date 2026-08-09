@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>💕 Snoopy & Amor 💕</title>
+    <title>🐶 Te Quiero Mi Ojitos 💕</title>
     <style>
         * {
             margin: 0;
@@ -26,28 +26,47 @@
             overflow-x: hidden;
             position: relative;
             -webkit-font-smoothing: antialiased;
-            /* Fondo con Snoopy */
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"><circle cx="100" cy="100" r="80" fill="%23f5f5f5" stroke="%23d0d0d0" stroke-width="2"/><ellipse cx="100" cy="85" rx="45" ry="40" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="80" cy="80" rx="10" ry="12" fill="%23000000"/><ellipse cx="120" cy="80" rx="10" ry="12" fill="%23000000"/><circle cx="80" cy="80" r="4" fill="%23ffffff"/><circle cx="120" cy="80" r="4" fill="%23ffffff"/><ellipse cx="100" cy="100" rx="15" ry="10" fill="%23000000"/><path d="M85 115 Q100 130 115 115" stroke="%23000000" stroke-width="2" fill="none"/><circle cx="100" cy="150" r="25" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="88" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="112" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="100" cy="170" rx="18" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"><circle cx="100" cy="100" r="80" fill="%23f5f5f5" stroke="%23d0d0d0" stroke-width="2"/><ellipse cx="100" cy="85" rx="45" ry="40" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="80" cy="80" rx="10" ry="12" fill="%23000000"/><ellipse cx="120" cy="80" rx="10" ry="12" fill="%23000000"/><circle cx="80" cy="80" r="4" fill="%23ffffff"/><circle cx="120" cy="80" r="4" fill="%23ffffff"/><ellipse cx="100" cy="100" rx="15" ry="10" fill="%23000000"/><path d="M85 115 Q100 130 115 115" stroke="%23000000" stroke-width="2" fill="none"/><circle cx="100" cy="150" r="25" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="88" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="112" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="100" cy="170" rx="18" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/></svg>');
-            background-size: 120px 120px, 160px 160px;
-            background-position: 10% 10%, 80% 90%;
-            background-repeat: repeat, repeat;
-            background-color: #fce4ec;
+            background: linear-gradient(145deg, #fce4ec, #f8bbd0);
         }
 
-        /* Capa de Snoopy adicional con corazones */
+        /* === FONDO CON SNOOPY === */
         body::before {
-            content: "🐶 💕 🐶 💕 🐶 💕 🐶 💕 🐶 💕 🐶 💕 🐶 💕 🐶 💕";
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            font-size: 3.2rem;
-            letter-spacing: 35px;
+            background-image: 
+                /* Snoopy grande izquierda */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300"><circle cx="150" cy="150" r="120" fill="%23f5f5f5" stroke="%23d0d0d0" stroke-width="2"/><ellipse cx="150" cy="130" rx="70" ry="60" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="120" cy="120" rx="15" ry="18" fill="%23000000"/><ellipse cx="180" cy="120" rx="15" ry="18" fill="%23000000"/><circle cx="120" cy="120" r="6" fill="%23ffffff"/><circle cx="180" cy="120" r="6" fill="%23ffffff"/><ellipse cx="150" cy="150" rx="22" ry="15" fill="%23000000"/><path d="M125 170 Q150 190 175 170" stroke="%23000000" stroke-width="3" fill="none"/><circle cx="150" cy="220" r="38" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="132" cy="218" rx="12" ry="9" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="168" cy="218" rx="12" ry="9" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="150" cy="250" rx="28" ry="9" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/></svg>'),
+                /* Snoopy pequeño derecha */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"><circle cx="100" cy="100" r="80" fill="%23f5f5f5" stroke="%23d0d0d0" stroke-width="2"/><ellipse cx="100" cy="85" rx="45" ry="40" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="80" cy="80" rx="10" ry="12" fill="%23000000"/><ellipse cx="120" cy="80" rx="10" ry="12" fill="%23000000"/><circle cx="80" cy="80" r="4" fill="%23ffffff"/><circle cx="120" cy="80" r="4" fill="%23ffffff"/><ellipse cx="100" cy="100" rx="15" ry="10" fill="%23000000"/><path d="M85 115 Q100 130 115 115" stroke="%23000000" stroke-width="2" fill="none"/><circle cx="100" cy="150" r="25" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="88" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="112" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="100" cy="170" rx="18" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/></svg>'),
+                /* Snoopy mediano abajo */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250" width="250" height="250"><circle cx="125" cy="125" r="100" fill="%23f5f5f5" stroke="%23d0d0d0" stroke-width="2"/><ellipse cx="125" cy="105" rx="55" ry="50" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="100" cy="100" rx="12" ry="15" fill="%23000000"/><ellipse cx="150" cy="100" rx="12" ry="15" fill="%23000000"/><circle cx="100" cy="100" r="5" fill="%23ffffff"/><circle cx="150" cy="100" r="5" fill="%23ffffff"/><ellipse cx="125" cy="125" rx="18" ry="12" fill="%23000000"/><path d="M105 145 Q125 160 145 145" stroke="%23000000" stroke-width="2.5" fill="none"/><circle cx="125" cy="185" r="30" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="110" cy="183" rx="10" ry="7" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="140" cy="183" rx="10" ry="7" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="125" cy="210" rx="22" ry="7" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/></svg>');
+            background-size: 280px 280px, 160px 160px, 220px 220px;
+            background-position: 
+                -2% 2%,     /* Snoopy grande izquierda arriba */
+                102% 10%,   /* Snoopy pequeño derecha */
+                50% 98%;    /* Snoopy mediano abajo centro */
+            background-repeat: no-repeat, no-repeat, no-repeat;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Texto decorativo con Snoopy y corazones */
+        body::after {
+            content: "🐶 ❤️ 🐶 ❤️ 🐶 ❤️ 🐶 ❤️ 🐶 ❤️ 🐶";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 3.8rem;
+            letter-spacing: 45px;
             word-break: break-all;
-            opacity: 0.06;
+            opacity: 0.05;
             pointer-events: none;
             z-index: 0;
             display: flex;
@@ -59,118 +78,197 @@
         }
 
         /* Contenedor principal - estilo carta */
-        .love-letter {
+        .love-container {
             background: rgba(255, 240, 245, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-radius: 40px 40px 30px 30px;
-            padding: 30px 24px 40px;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 50px 50px 40px 40px;
+            padding: 35px 28px 40px;
             max-width: 500px;
             width: 100%;
             box-shadow: 
-                0 20px 60px rgba(136, 14, 79, 0.25),
-                0 0 0 2px rgba(255, 255, 255, 0.6),
-                inset 0 2px 10px rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(255, 200, 220, 0.7);
+                0 25px 70px rgba(136, 14, 79, 0.3),
+                0 0 0 3px rgba(255, 255, 255, 0.5),
+                inset 0 2px 15px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 200, 220, 0.6);
             text-align: center;
             position: relative;
             z-index: 10;
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
         }
 
-        /* Decoración esquinas con Snoopy y corazón */
-        .love-letter::before {
+        /* Decoración esquinas */
+        .love-container::before {
             content: "🐶";
             position: absolute;
-            top: 10px;
+            top: 8px;
             left: 15px;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             opacity: 0.2;
-            transform: rotate(-10deg);
+            transform: rotate(-12deg);
+            animation: floatDecor 3s infinite alternate ease-in-out;
         }
-        .love-letter::after {
+        .love-container::after {
             content: "💕";
             position: absolute;
-            bottom: 10px;
+            bottom: 8px;
             right: 15px;
-            font-size: 2.5rem;
-            opacity: 0.2;
-            transform: rotate(15deg);
+            font-size: 2.8rem;
+            opacity: 0.25;
+            transform: rotate(12deg);
+            animation: floatDecor 3.5s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes floatDecor {
+            0% { transform: rotate(-12deg) scale(1); }
+            100% { transform: rotate(12deg) scale(1.1); }
+        }
+
+        /* Snoopy grande dentro de la carta */
+        .snoopy-main {
+            font-size: 4.5rem;
+            margin: 0 0 10px 0;
+            opacity: 0.5;
+            animation: snoopyDance 3s infinite alternate ease-in-out;
+            letter-spacing: 8px;
+        }
+
+        @keyframes snoopyDance {
+            0% { transform: rotate(-4deg) scale(1) translateY(0); }
+            100% { transform: rotate(4deg) scale(1.05) translateY(-8px); }
         }
 
         /* Título */
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 700;
             color: #6a1b4d;
-            text-shadow: 0 2px 12px rgba(255, 182, 193, 0.6);
-            margin-bottom: 6px;
-            letter-spacing: 3px;
+            text-shadow: 0 2px 15px rgba(255, 182, 193, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
             font-family: -apple-system, 'Georgia', serif;
-            animation: gentlePulse 3s infinite ease-in-out;
         }
 
-        @keyframes gentlePulse {
-            0% { transform: scale(1); text-shadow: 0 2px 12px rgba(255, 182, 193, 0.4); }
-            50% { transform: scale(1.03); text-shadow: 0 4px 25px rgba(233, 30, 99, 0.5); }
-            100% { transform: scale(1); text-shadow: 0 2px 12px rgba(255, 182, 193, 0.4); }
-        }
-
-        .subtitle {
-            font-size: 1.4rem;
+        /* Subtítulo */
+        .sub-message {
+            font-size: 1.3rem;
             color: #8e24aa;
             background: rgba(255, 255, 255, 0.5);
             display: inline-block;
-            padding: 6px 24px;
+            padding: 8px 28px;
             border-radius: 60px;
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             font-style: italic;
             border: 1px solid rgba(233, 30, 99, 0.2);
-            box-shadow: 0 2px 10px rgba(233, 30, 99, 0.1);
+            box-shadow: 0 2px 12px rgba(233, 30, 99, 0.08);
             letter-spacing: 1px;
         }
 
-        /* Snoopy decorativo dentro de la carta */
-        .snoopy-deco {
-            font-size: 3.5rem;
-            margin: 4px 0 12px;
-            opacity: 0.5;
+        /* Corazones decorativos */
+        .deco-hearts {
+            font-size: 2.2rem;
             letter-spacing: 10px;
-            animation: snoopyDance 4s infinite alternate ease-in-out;
+            opacity: 0.3;
+            margin: 8px 0;
         }
 
-        @keyframes snoopyDance {
-            0% { transform: rotate(-3deg) scale(1); }
-            100% { transform: rotate(3deg) scale(1.05); }
+        /* === BOTÓN ABRIR === */
+        .open-btn {
+            margin: 16px auto 10px;
+            background: linear-gradient(135deg, #f06292, #ec407a);
+            border: none;
+            border-radius: 80px;
+            padding: 20px 40px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(136, 14, 79, 0.5);
+            box-shadow: 0 10px 0 #880e4f, 0 15px 40px rgba(233, 30, 99, 0.35);
+            transition: all 0.08s ease;
+            width: 100%;
+            max-width: 320px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            font-family: -apple-system, 'Georgia', serif;
+            touch-action: manipulation;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Mensaje principal */
-        .message-box {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            border-radius: 30px;
-            padding: 20px 18px;
-            margin: 14px 0;
-            border-left: 4px solid #ec407a;
-            border-right: 4px solid #ec407a;
-            box-shadow: inset 0 0 30px rgba(233, 30, 99, 0.05);
-            transition: all 0.3s ease;
+        .open-btn:active {
+            transform: translateY(8px);
+            box-shadow: 0 2px 0 #6a1b4d, 0 10px 30px rgba(233, 30, 99, 0.4);
+            background: linear-gradient(135deg, #ec407a, #d81b60);
         }
 
-        .message-box p {
-            font-size: 1.6rem;
-            line-height: 1.5;
+        /* Efecto brillo en botón */
+        .open-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shineBtn 3s infinite;
+        }
+
+        @keyframes shineBtn {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        /* === MENSAJE OCULTO QUE APARECE AL ABRIR === */
+        .hidden-message {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin: 0 auto;
+            width: 100%;
+            transform: scale(0.9);
+        }
+
+        .hidden-message.show {
+            max-height: 800px;
+            opacity: 1;
+            transform: scale(1);
+            margin: 20px auto 10px;
+        }
+
+        /* Contenido del mensaje */
+        .message-content {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 25px 22px 30px;
+            border: 2px solid rgba(233, 30, 99, 0.15);
+            box-shadow: inset 0 0 40px rgba(233, 30, 99, 0.05), 0 8px 30px rgba(136, 14, 79, 0.1);
+        }
+
+        .message-content .snoopy-msg {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            animation: snoopyDance 2.5s infinite alternate ease-in-out;
+        }
+
+        .message-content .msg-text {
+            font-size: 1.7rem;
+            line-height: 1.7;
             color: #4a1a3a;
-            font-weight: 500;
             font-family: -apple-system, 'Georgia', serif;
             font-style: italic;
+            font-weight: 500;
             text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
         }
 
-        .message-box .highlight {
+        .message-content .msg-text .highlight {
             color: #c2185b;
             font-weight: 700;
             font-style: normal;
@@ -180,137 +278,34 @@
             display: inline-block;
         }
 
-        /* Lista de frases */
-        .phrase-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 16px 0;
-        }
-
-        .phrase-item {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            padding: 12px 16px;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            color: #4a1a3a;
-            border: 1px solid rgba(233, 30, 99, 0.15);
-            box-shadow: 0 2px 8px rgba(233, 30, 99, 0.06);
-            transition: all 0.2s;
-            font-family: -apple-system, 'Georgia', serif;
-            letter-spacing: 0.5px;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-
-        .phrase-item .emoji-big {
-            font-size: 1.8rem;
-            margin-right: 10px;
-            display: inline-block;
-        }
-
-        .phrase-item span {
-            display: inline-block;
-        }
-
-        /* Botón principal */
-        .surprise-btn {
-            margin-top: 22px;
-            background: linear-gradient(135deg, #f06292, #ec407a);
-            border: none;
-            border-radius: 80px;
-            padding: 16px 28px;
-            font-size: 1.6rem;
+        .message-content .final-message {
+            font-size: 2rem;
             font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 2px 8px rgba(136, 14, 79, 0.4);
-            box-shadow: 0 8px 0 #880e4f, 0 12px 30px rgba(233, 30, 99, 0.3);
-            transition: all 0.08s ease;
-            width: 100%;
-            max-width: 300px;
-            letter-spacing: 1px;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            font-family: -apple-system, 'Georgia', serif;
-            touch-action: manipulation;
-        }
-
-        .surprise-btn:active {
-            transform: translateY(6px);
-            box-shadow: 0 2px 0 #6a1b4d, 0 8px 25px rgba(233, 30, 99, 0.4);
-            background: linear-gradient(135deg, #ec407a, #d81b60);
-        }
-
-        /* Popup de mensaje sorpresa */
-        .popup-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.6);
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 30px 28px;
-            border-radius: 60px;
-            box-shadow: 0 30px 80px rgba(136, 14, 79, 0.4), 0 0 0 3px rgba(255, 182, 193, 0.6);
-            z-index: 999;
-            text-align: center;
-            max-width: 380px;
-            width: 90%;
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            pointer-events: none;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .popup-message.show {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            pointer-events: auto;
-        }
-
-        .popup-message h2 {
-            font-size: 2.8rem;
             color: #6a1b4d;
-            font-family: -apple-system, 'Georgia', serif;
-            margin-bottom: 10px;
-        }
-
-        .popup-message .snoopy-popup {
-            font-size: 4rem;
-            margin: 6px 0;
-        }
-
-        .popup-message p {
-            font-size: 1.5rem;
-            color: #4a1a3a;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        .popup-message .close-btn {
             margin-top: 18px;
-            background: #f48fb1;
-            border: none;
-            border-radius: 40px;
-            padding: 12px 30px;
-            font-size: 1.3rem;
-            color: #fff;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 4px 0 #880e4f;
-            transition: all 0.08s ease;
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-            font-family: -apple-system, 'Georgia', serif;
+            padding: 15px 10px;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            border-radius: 60px;
+            border: 2px solid rgba(233, 30, 99, 0.2);
+            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.1);
+            letter-spacing: 1px;
+            line-height: 1.5;
         }
 
-        .popup-message .close-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 0px 0 #6a1b4d;
+        .message-content .final-message .heart-big {
+            display: inline-block;
+            animation: heartbeat 1.2s infinite ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            75% { transform: scale(0.9); }
+        }
+
+        .message-content .final-message .name {
+            color: #c2185b;
+            font-weight: 800;
         }
 
         /* Corazones flotantes generados por JS */
@@ -333,28 +328,45 @@
 
         .floating-heart.fly {
             opacity: 0;
-            transform: scale(2) rotate(60deg) translateY(-100px);
+            transform: scale(2) rotate(60deg) translateY(-120px);
+        }
+
+        /* Sello de Snoopy */
+        .snoopy-seal {
+            font-size: 2.2rem;
+            margin-top: 15px;
+            opacity: 0.4;
+            letter-spacing: 6px;
         }
 
         /* Ajustes para iPhone */
         @media (max-width: 450px) {
             h1 { font-size: 2.2rem; }
-            .message-box p { font-size: 1.3rem; }
-            .phrase-item { font-size: 1.1rem; padding: 10px 14px; }
-            .surprise-btn { font-size: 1.3rem; padding: 14px 20px; }
-            .popup-message h2 { font-size: 2.2rem; }
-            .popup-message p { font-size: 1.2rem; }
-            .popup-message { padding: 24px 20px; }
-            body { background-size: 80px 80px, 100px 100px; }
-            body::before { font-size: 2.2rem; letter-spacing: 20px; }
-            .snoopy-deco { font-size: 2.8rem; }
+            .sub-message { font-size: 1.1rem; padding: 6px 20px; }
+            .open-btn { font-size: 1.6rem; padding: 16px 30px; max-width: 280px; }
+            .message-content .msg-text { font-size: 1.4rem; }
+            .message-content .final-message { font-size: 1.6rem; padding: 12px 10px; }
+            
+            body::before {
+                background-size: 200px 200px, 120px 120px, 160px 160px;
+                background-position: 
+                    -5% 2%,
+                    105% 8%,
+                    50% 98%;
+                opacity: 0.35;
+            }
+            body::after { font-size: 2.8rem; letter-spacing: 30px; }
+            .snoopy-main { font-size: 3.5rem; }
+            .love-container { padding: 25px 18px 30px; }
         }
 
         @media (max-width: 380px) {
             h1 { font-size: 1.8rem; }
-            .subtitle { font-size: 1.1rem; padding: 4px 16px; }
-            .message-box p { font-size: 1.1rem; }
-            .phrase-item { font-size: 1rem; }
+            .open-btn { font-size: 1.3rem; padding: 14px 25px; }
+            .message-content .msg-text { font-size: 1.2rem; }
+            .message-content .final-message { font-size: 1.3rem; }
+            body::before { background-size: 150px 150px, 90px 90px, 120px 120px; opacity: 0.3; }
+            .snoopy-main { font-size: 2.8rem; }
         }
 
         /* Prevenir scroll horizontal */
@@ -364,7 +376,7 @@
 
         /* Safe area para iPhone con notch */
         @supports (padding: max(0px)) {
-            .love-letter {
+            .love-container {
                 padding-left: max(24px, env(safe-area-inset-left));
                 padding-right: max(24px, env(safe-area-inset-right));
             }
@@ -373,180 +385,173 @@
 </head>
 <body>
     <!-- Contenedor principal -->
-    <div class="love-letter">
+    <div class="love-container">
         <!-- Snoopy decorativo -->
-        <div class="snoopy-deco">🐶 ❤️ 🐶</div>
+        <div class="snoopy-main">🐶 ❤️ 🐶</div>
 
-        <h1>✨ Para ti ✨</h1>
-        <div class="subtitle">🌸 con todo mi corazón 🌸</div>
+        <h1>💕 Para Mi Amor 💕</h1>
+        <div class="sub-message">🐶 Snoopy y yo te amamos 🐶</div>
 
-        <!-- Mensaje principal -->
-        <div class="message-box">
-            <p>
-                "Eres <span class="highlight">la persona más bonita</span> que conozco, 
-                no solo por fuera, sino por dentro. Tu luz ilumina mis días."
-            </p>
+        <div class="deco-hearts">💗 💖 💕 💗 💖</div>
+
+        <!-- BOTÓN ABRIR -->
+        <button class="open-btn" id="openBtn">✨ ABRIR ✨</button>
+
+        <!-- MENSAJE OCULTO -->
+        <div class="hidden-message" id="hiddenMessage">
+            <div class="message-content">
+                <div class="snoopy-msg">🐶 💕</div>
+                
+                <p class="msg-text">
+                    "Cada día a tu lado es un regalo del cielo. 
+                    <br><span class="highlight">Eres mi persona favorita</span> en todo el mundo."
+                </p>
+
+                <p class="msg-text" style="margin-top: 14px;">
+                    "Tu sonrisa ilumina mi vida como el sol ilumina el día. 
+                    <br>Contigo todo es mejor."
+                </p>
+
+                <p class="msg-text" style="margin-top: 14px;">
+                    "Snoopy y yo sabemos que <span class="highlight">eres especial</span>. 
+                    <br>Eres la persona más bonita y maravillosa."
+                </p>
+
+                <!-- MENSAJE FINAL -->
+                <div class="final-message">
+                    <span class="heart-big">❤️</span>
+                    <br>
+                    TE QUIERO POR SIEMPRE
+                    <br>
+                    <span class="name">MI OJITOS</span>
+                    <br>
+                    <span class="name">MI NIÑA ANTARA</span>
+                    <br>
+                    <span class="heart-big">💕</span>
+                </div>
+
+                <div style="font-size: 2.8rem; margin-top: 12px; opacity: 0.3; letter-spacing: 8px;">
+                    🐶 ❤️ 🐶
+                </div>
+            </div>
         </div>
 
-        <!-- Lista de mensajes bonitos -->
-        <div class="phrase-grid">
-            <div class="phrase-item">
-                <span class="emoji-big">💖</span> 
-                <span>Eres mi razón para sonreír cada mañana.</span>
-            </div>
-            <div class="phrase-item">
-                <span class="emoji-big">🌹</span> 
-                <span>Tu corazón es tan hermoso como tu sonrisa.</span>
-            </div>
-            <div class="phrase-item">
-                <span class="emoji-big">🌟</span> 
-                <span>Eres la estrella más brillante de mi cielo.</span>
-            </div>
-            <div class="phrase-item">
-                <span class="emoji-big">💐</span> 
-                <span>Cada día a tu lado es un regalo maravilloso.</span>
-            </div>
-            <div class="phrase-item">
-                <span class="emoji-big">🕊️</span> 
-                <span>Tu amor me da paz y felicidad infinita.</span>
-            </div>
-        </div>
-
-        <!-- Mensaje extra con Snoopy -->
-        <div class="message-box" style="margin-top: 10px; border-left-color: #ab47bc; border-right-color: #ab47bc;">
-            <p style="font-size: 1.5rem;">
-                “<span style="color: #6a1b4d; font-weight: 700;">Eres más hermosa que todas las flores del mundo</span>” 
-                <span style="display: block; font-size: 1rem; margin-top: 6px; color: #7b1fa2;">— Para ti, con amor</span>
-            </p>
-            <div style="font-size: 2.5rem; margin-top: 6px; opacity: 0.5;">🐶 💕</div>
-        </div>
-
-        <!-- Botón -->
-        <button class="surprise-btn" id="surpriseButton">💗 Toca para sentir 💗</button>
-
-        <!-- Pie -->
-        <div style="margin-top: 20px; font-size: 1rem; color: #8e24aa; opacity: 0.7; letter-spacing: 2px; font-style: italic;">
-            <span>🐶</span> siempre en mi corazón <span>💕</span>
-        </div>
-    </div>
-
-    <!-- Popup -->
-    <div class="popup-message" id="popupMessage">
-        <div class="snoopy-popup">🐶 💖</div>
-        <h2>💖 ¡Para ti! 💖</h2>
-        <p>
-            "Eres la persona más especial que he conocido. 
-            <br><span style="font-weight: 700; color: #c2185b;">Te quiero con todo mi corazón.</span>"
-        </p>
-        <p style="margin-top: 10px; font-size: 1.3rem; color: #6a1b4d;">
-            🌷 <span style="font-style: normal;">Siempre serás mi niña bonita</span> 🌷
-        </p>
-        <div style="font-size: 2rem; margin: 6px 0; opacity: 0.5;">🐶 ❤️ 🐶</div>
-        <button class="close-btn" id="closePopup">💕 Cerrar con amor 💕</button>
+        <!-- Sello -->
+        <div class="snoopy-seal">🐶 con amor 🐶</div>
     </div>
 
     <script>
         (function() {
             "use strict";
 
-            const surpriseBtn = document.getElementById('surpriseButton');
-            const popup = document.getElementById('popupMessage');
-            const closePopupBtn = document.getElementById('closePopup');
+            const openBtn = document.getElementById('openBtn');
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            let isOpen = false;
 
-            // Mostrar popup
-            function showPopup() {
-                popup.classList.add('show');
-                if (navigator.vibrate) {
-                    navigator.vibrate(15);
-                }
-                createHearts(8);
-            }
-
-            // Ocultar popup
-            function hidePopup() {
-                popup.classList.remove('show');
-            }
-
-            // Crear corazones flotantes
+            // Función para crear corazones flotantes
             function createHearts(count) {
-                const symbols = ['❤️', '💖', '💕', '💗', '♥️', '💘', '💝', '💖', '🐶'];
+                const symbols = ['❤️', '💖', '💕', '💗', '♥️', '💘', '💝', '🐶', '❤️‍🔥'];
                 for (let i = 0; i < count; i++) {
                     const heart = document.createElement('div');
                     heart.className = 'floating-heart';
                     heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                    heart.style.left = (10 + Math.random() * 80) + '%';
-                    heart.style.top = (10 + Math.random() * 60) + '%';
-                    heart.style.fontSize = (2 + Math.random() * 2.5) + 'rem';
+                    heart.style.left = (5 + Math.random() * 90) + '%';
+                    heart.style.top = (5 + Math.random() * 80) + '%';
+                    heart.style.fontSize = (2 + Math.random() * 3) + 'rem';
                     document.body.appendChild(heart);
 
-                    // Animación
+                    // Animación de entrada
                     requestAnimationFrame(() => {
                         heart.classList.add('animate');
                     });
 
+                    // Animación de salida
                     setTimeout(() => {
                         heart.classList.remove('animate');
                         heart.classList.add('fly');
-                    }, 800);
+                    }, 900);
 
+                    // Eliminar del DOM
                     setTimeout(() => {
                         if (heart.parentNode) heart.parentNode.removeChild(heart);
-                    }, 2000);
+                    }, 2200);
                 }
             }
 
-            // Eventos
-            surpriseBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                showPopup();
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
+            // Función para abrir el mensaje
+            function openMessage() {
+                if (!isOpen) {
+                    isOpen = true;
+                    hiddenMessage.classList.add('show');
+                    openBtn.textContent = '💕 ¡ABIERTO! 💕';
+                    openBtn.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        openBtn.style.transform = '';
+                    }, 200);
 
-            closePopupBtn.addEventListener('click', function(e) {
-                hidePopup();
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 100);
-            });
+                    // Generar explosión de corazones
+                    createHearts(15);
 
-            // Cerrar popup al tocar fuera
-            popup.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    hidePopup();
+                    // Vibración
+                    if (navigator.vibrate) {
+                        navigator.vibrate([15, 50, 15, 50, 15]);
+                    }
+
+                    // Después de un momento, cambiar el texto del botón
+                    setTimeout(() => {
+                        openBtn.textContent = '💗 TOCA OTRA VEZ 💗';
+                        openBtn.style.background = 'linear-gradient(135deg, #ce93d8, #ab47bc)';
+                    }, 2500);
+
+                    // Generar corazones adicionales
+                    setTimeout(() => {
+                        createHearts(8);
+                    }, 1000);
+
+                    setTimeout(() => {
+                        createHearts(6);
+                    }, 2500);
+
+                    // Hacer scroll suave hacia el mensaje
+                    setTimeout(() => {
+                        hiddenMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 400);
+
+                } else {
+                    // Si ya está abierto, cerrar y abrir de nuevo (efecto reset)
+                    hiddenMessage.classList.remove('show');
+                    setTimeout(() => {
+                        hiddenMessage.classList.add('show');
+                        createHearts(10);
+                        if (navigator.vibrate) {
+                            navigator.vibrate(15);
+                        }
+                    }, 300);
                 }
+            }
+
+            // Evento del botón
+            openBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openMessage();
             });
 
-            // Generar corazones al iniciar
-            setTimeout(() => {
-                createHearts(5);
-            }, 500);
-
-            // Cada cierto tiempo
-            setInterval(() => {
-                createHearts(3);
-            }, 7000);
-
-            // Toque en pantalla → corazón o Snoopy
+            // También al tocar la pantalla (excepto botón y mensaje) se genera un corazón
             document.addEventListener('touchstart', function(e) {
-                if (e.target.closest('#surpriseButton') || 
-                    e.target.closest('#closePopup') || 
-                    e.target.closest('.popup-message')) {
+                if (e.target.closest('#openBtn') || 
+                    e.target.closest('.hidden-message') || 
+                    e.target.closest('.message-content')) {
                     return;
                 }
                 if (e.touches && e.touches.length > 0) {
                     const touch = e.touches[0];
                     const heart = document.createElement('div');
                     heart.className = 'floating-heart';
-                    // A veces aparece Snoopy
-                    const emojis = ['💗', '❤️', '💕', '🐶', '💖'];
+                    const emojis = ['💗', '❤️', '💕', '🐶', '💖', '💝', '♥️'];
                     heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                     heart.style.left = (touch.clientX - 30) + 'px';
                     heart.style.top = (touch.clientY - 30) + 'px';
-                    heart.style.fontSize = (2.5 + Math.random() * 1.5) + 'rem';
+                    heart.style.fontSize = (2.5 + Math.random() * 2) + 'rem';
                     document.body.appendChild(heart);
 
                     requestAnimationFrame(() => {
@@ -556,7 +561,7 @@
                     setTimeout(() => {
                         heart.classList.remove('animate');
                         heart.classList.add('fly');
-                        heart.style.top = (touch.clientY - 150) + 'px';
+                        heart.style.top = (touch.clientY - 160) + 'px';
                     }, 800);
 
                     setTimeout(() => {
@@ -565,6 +570,22 @@
                 }
             }, { passive: true });
 
+            // Generar corazones al cargar la página
+            setTimeout(() => {
+                createHearts(6);
+            }, 400);
+
+            // Corazones cada cierto tiempo
+            setInterval(() => {
+                if (isOpen) {
+                    createHearts(4);
+                } else {
+                    createHearts(2);
+                }
+            }, 5000);
+
+            console.log('🐶💕 Página de amor con Snoopy y botón ABRIR cargada 💕🐶');
+            console.log('💖 TE QUIERO POR SIEMPRE MI OJITOS MI NIÑA ANTARA 💖');
         })();
     </script>
 </body>
