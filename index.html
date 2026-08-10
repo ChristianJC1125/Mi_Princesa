@@ -1632,38 +1632,37 @@ const musicButton =
 let playing = false;
 
 
-function toggleMusic(){
+function toggleMusic() {
 
-    if(!music.src){
+    if (music.paused) {
 
-        alert(
-            "Para activar música, agrega tu archivo MP3 dentro del código."
-        );
+        music.play()
+            .then(() => {
 
-        return;
+                musicButton.textContent = "♫";
+                playing = true;
 
-    }
+            })
+            .catch((error) => {
 
-    if(playing){
+                console.log("No se pudo reproducir la música:", error);
+
+                alert(
+                    "No se pudo reproducir la canción. " +
+                    "Revisa que el archivo MP3 esté en la misma carpeta que index.html."
+                );
+
+            });
+
+    } else {
 
         music.pause();
 
         musicButton.textContent = "♪";
 
         playing = false;
-
-    }else{
-
-        music.play();
-
-        musicButton.textContent = "♫";
-
-        playing = true;
-
     }
-
 }
-
 
 /* =====================================================
    EFECTO AL HACER CLICK EN CUALQUIER PARTE
