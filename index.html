@@ -1,385 +1,851 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Mi OJitos❤️</title>
-  <style>
-    /* RESET & BASE */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Ojitos ❤️</title>
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
-      /* Fondo: imagen de Snoopy (caricatura) */
-      background-image: url('https://i.pinimg.com/736x/1b/12/2f/1b122f0f1ce6d5bbcc86e70352d69362.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      /* Superposición roja translúcida para dar calidez y legibilidad */
-      position: relative;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Capa roja con blend para que se vea la imagen y el rojo */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-color: rgba(200, 40, 40, 0.35); /* rojo intenso con opacidad */
-      backdrop-filter: brightness(1.1) saturate(1.2);
-      z-index: 0;
-      pointer-events: none;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* Contenedor principal */
-    .container {
-      position: relative;
-      z-index: 10;
-      max-width: 780px;
-      width: 90%;
-      margin: 2rem auto;
-      padding: 2.5rem 2rem;
-      background: rgba(255, 240, 240, 0.2);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-radius: 60px 20px 60px 20px;
-      box-shadow: 0 20px 40px rgba(180, 20, 20, 0.5), 0 0 0 2px rgba(255, 80, 80, 0.3);
-      border: 1px solid rgba(255, 200, 200, 0.6);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
+        body {
+            font-family: "Georgia", serif;
+            background: #08000d;
+            color: white;
+            overflow-x: hidden;
+        }
 
-    /* Título con corazón */
-    .title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #fff0e6;
-      text-shadow: 0 4px 12px #a00, 0 0 20px #f44, 2px 2px 0 #5a0000;
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .title span {
-      background: rgba(200, 30, 30, 0.5);
-      backdrop-filter: blur(4px);
-      padding: 0.2rem 1rem;
-      border-radius: 60px;
-      border: 1px solid #ff8888;
-    }
+        .background {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 70, 140, .18), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(160, 50, 255, .15), transparent 30%),
+                linear-gradient(135deg, #08000d, #170014, #09000f);
+            z-index: -3;
+        }
 
-    /* Caja del mensaje */
-    .message-box {
-      background: rgba(190, 30, 30, 0.25);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 1.8rem 1.2rem;
-      margin: 1.8rem 0;
-      border-radius: 80px 20px 80px 20px;
-      border: 2px solid #ffa0a0;
-      box-shadow: inset 0 0 30px rgba(255, 80, 80, 0.3), 0 12px 20px rgba(100, 0, 0, 0.4);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      min-height: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
 
-    #mensaje {
-      font-size: 1.9rem;
-      font-weight: 600;
-      color: #fff5f0;
-      text-shadow: 0 0 15px #ff5555, 0 2px 4px #4a0000;
-      line-height: 1.4;
-      word-break: break-word;
-      letter-spacing: 0.5px;
-      font-family: 'Segoe UI', 'Quicksand', cursive;
-      transition: transform 0.3s ease;
-    }
-    /* pequeño detalle de snoopy (emoji) */
-    #mensaje::before {
-      content: "🐾 ";
-      font-size: 2rem;
-      filter: drop-shadow(0 0 6px #f88);
-    }
-    #mensaje::after {
-      content: " 🐾";
-      font-size: 2rem;
-      filter: drop-shadow(0 0 6px #f88);
-    }
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: .7;
+            animation: twinkle 3s infinite ease-in-out;
+        }
 
-    /* Grupo de botones bonitos con movimiento */
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.2rem 1.5rem;
-      margin-top: 2.2rem;
-      margin-bottom: 0.8rem;
-    }
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: .2;
+                transform: scale(.7);
+            }
 
-    .btn {
-      background: #cc2222;
-      border: none;
-      border-radius: 80px 20px 80px 20px;
-      padding: 0.9rem 2rem;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: white;
-      text-shadow: 0 2px 6px #3f0000;
-      box-shadow: 0 8px 0 #7a1515, 0 10px 25px rgba(150, 0, 0, 0.6);
-      cursor: pointer;
-      transition: all 0.15s ease-in-out;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: 1px solid #ff7a7a;
-      letter-spacing: 1px;
-      transform: translateY(0);
-      backdrop-filter: blur(4px);
-      background: linear-gradient(145deg, #e63c3c, #b31b1b);
-      flex: 0 1 auto;
-      min-width: 140px;
-    }
+            50% {
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
 
-    /* Botón con movimiento (hover y active) */
-    .btn:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 12px 0 #6b0f0f, 0 20px 35px rgba(200, 0, 0, 0.7);
-      background: linear-gradient(145deg, #ff4f4f, #cc2222);
-      border-color: #ffb0b0;
-    }
+        /* =========================
+           CORAZONES
+        ========================= */
 
-    .btn:active {
-      transform: translateY(4px) scale(0.98);
-      box-shadow: 0 4px 0 #6b0f0f, 0 8px 20px rgba(150, 0, 0, 0.6);
-      transition-duration: 0.05s;
-    }
+        .hearts {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 10;
+        }
 
-    /* Botón especial "Nuevo mensaje" con destello */
-    .btn-primary {
-      background: linear-gradient(145deg, #ff3a3a, #b01010);
-      box-shadow: 0 8px 0 #6f0e0e, 0 0 20px #ff3333;
-      border: 1px solid #ff8888;
-      font-size: 1.4rem;
-      padding: 0.9rem 2.4rem;
-    }
-    .btn-primary:hover {
-      box-shadow: 0 12px 0 #5f0a0a, 0 0 35px #ff5555, 0 0 60px #ff2222;
-    }
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            color: #ff5c9d;
+            font-size: 20px;
+            animation: floatUp linear forwards;
+            filter: drop-shadow(0 0 8px rgba(255, 80, 150, .8));
+        }
 
-    /* Botón de "Snoopy dice" con icono */
-    .btn-snoopy {
-      background: linear-gradient(145deg, #d43b3b, #9e1a1a);
-      box-shadow: 0 8px 0 #631212, 0 8px 20px #a00;
-    }
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
 
-    /* Footer con corazón */
-    .footer-note {
-      margin-top: 2rem;
-      color: #ffdddd;
-      font-size: 1.1rem;
-      font-weight: 500;
-      text-shadow: 0 2px 10px #a00, 0 0 20px #f55;
-      background: rgba(100, 10, 10, 0.3);
-      backdrop-filter: blur(4px);
-      padding: 0.6rem 1.2rem;
-      border-radius: 60px;
-      display: inline-block;
-      border: 1px solid #ff9a9a;
-      letter-spacing: 1px;
-    }
+            15% {
+                opacity: 1;
+            }
 
-    /* Responsive */
-    @media (max-width: 550px) {
-      .container {
-        padding: 1.8rem 1rem;
-        border-radius: 40px 10px 40px 10px;
-      }
-      .title {
-        font-size: 1.6rem;
-      }
-      #mensaje {
-        font-size: 1.4rem;
-      }
-      .btn {
-        font-size: 1.1rem;
-        padding: 0.7rem 1.2rem;
-        min-width: 120px;
-      }
-      .btn-group {
-        gap: 0.8rem;
-      }
-    }
-  </style>
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           PORTADA
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            animation: fadeIn 2s ease;
+        }
+
+        .small-text {
+            font-size: 1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #ff9fc4;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 9vw, 7rem);
+            line-height: 1;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, #fff, #ff8fba, #fff);
+            background-size: 200%;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 200%;
+            }
+
+            100% {
+                background-position: -200%;
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #f4dce8;
+            line-height: 1.8;
+        }
+
+        .heart-main {
+            font-size: 90px;
+            margin: 25px;
+            display: inline-block;
+            animation: heartbeat 1.4s infinite;
+            filter: drop-shadow(0 0 25px #ff4f91);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.2);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.15);
+            }
+        }
+
+        .scroll {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d8b9c9;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translate(-50%, 0);
+            }
+
+            50% {
+                transform: translate(-50%, 10px);
+            }
+        }
+
+        /* =========================
+           SECCIONES
+        ========================= */
+
+        section {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 30px;
+            color: #ffabc8;
+        }
+
+        .section-subtitle {
+            color: #dcbccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* =========================
+           CARTA
+        ========================= */
+
+        .letter {
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,150,190,.25);
+            border-radius: 25px;
+            padding: clamp(25px, 6vw, 60px);
+            box-shadow:
+                0 20px 80px rgba(0,0,0,.5),
+                0 0 40px rgba(255,60,130,.08);
+            backdrop-filter: blur(15px);
+            text-align: left;
+        }
+
+        .letter p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: #f8eaf0;
+            margin-bottom: 22px;
+        }
+
+        .highlight {
+            color: #ff9fc2;
+            font-weight: bold;
+        }
+
+        /* =========================
+           FRASES
+        ========================= */
+
+        .quote {
+            padding: 70px 25px;
+            position: relative;
+        }
+
+        .quote::before {
+            content: "“";
+            position: absolute;
+            font-size: 180px;
+            color: rgba(255,100,160,.08);
+            top: -20px;
+            left: 10%;
+        }
+
+        .quote-text {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1.35;
+            color: white;
+        }
+
+        .quote-author {
+            margin-top: 30px;
+            color: #ff9fc2;
+            font-size: 1.1rem;
+        }
+
+        /* =========================
+           BOTÓN
+        ========================= */
+
+        .button {
+            border: none;
+            padding: 17px 35px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #ff3f85, #ff75aa);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(255,70,140,.4);
+            transition: .3s;
+            font-family: inherit;
+        }
+
+        .button:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 0 40px rgba(255,70,140,.7);
+        }
+
+        /* =========================
+           MENSAJE OCULTO
+        ========================= */
+
+        #secret {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: 1.5s ease;
+        }
+
+        #secret.show {
+            max-height: 1000px;
+            opacity: 1;
+            margin-top: 40px;
+        }
+
+        .secret-box {
+            background: rgba(255,100,160,.08);
+            border: 1px solid rgba(255,130,180,.25);
+            padding: 40px;
+            border-radius: 25px;
+        }
+
+        .secret-box p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #ffeaf3;
+        }
+
+        /* =========================
+           FINAL
+        ========================= */
+
+        .final {
+            min-height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .final-heart {
+            font-size: clamp(100px, 20vw, 220px);
+            animation: heartbeat 1.5s infinite;
+            filter: drop-shadow(0 0 50px #ff3f85);
+        }
+
+        .final h2 {
+            font-size: clamp(3rem, 9vw, 7rem);
+            margin-top: 20px;
+            color: #ffb2ce;
+            text-shadow: 0 0 30px rgba(255,70,140,.5);
+        }
+
+        .final p {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: #efd4e0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #9d7d8c;
+            font-size: .9rem;
+        }
+
+        /* =========================
+           ANIMACIONES
+        ========================= */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .letter p {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            section {
+                padding: 80px 15px;
+            }
+
+            .heart-main {
+                font-size: 70px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <!-- Título con Snoopy y corazón -->
-    <div class="title">
-      <span>❤️Mi Ojitos❤️</span>
-    </div>
 
-    <!-- Caja de mensaje -->
-    <div class="message-box">
-      <div id="mensaje">Eres mi gran felicidad</div>
-    </div>
+    <div class="background"></div>
 
-    <!-- Botones con movimiento y estilo rojo -->
-    <div class="btn-group">
-      <button class="btn btn-primary" id="btnNuevo">✨ Nuevo mensaje</button>
-      <button class="btn btn-snoopy" id="btnSnoopy">Mi Amor Por Ti</button>
-    </div>
-    <div class="btn-group" style="margin-top: 0.5rem;">
-      <button class="btn" id="btnAmor">❤️‍🔥 Te quiero</button>
-      <button class="btn" id="btnAbrazo">🤗 Abrazo gigante</button>
-    </div>
+    <div class="stars" id="stars"></div>
 
-    <!-- pie de página bonito -->
-    <div class="footer-note">
-      🐾 siempre contigo Yack & Lola🐾
-    </div>
-  </div>
+    <div class="hearts" id="hearts"></div>
 
-  <script>
-    (function() {
-   
-      const mensajesAmor = [
-        "Eres mi persona favorita en el mundo",
-        "Contigo todo es mejor, hasta los lunes",
-        "Tu sonrisa ilumina mi corazón",
-        "Snoopy y yo sabemos que eres especial",
-        "Eres el Charlie Brown de mi vida 💛",
-        "Cada día a tu lado es un regalo",
-        "Te quiero más que Snoopy a su comida",
-        "Eres mi hogar, mi paz, mi todo",
-        "Snoopy aprueba este amor ❤️",
-        "Eres el sol de mis mañanas",
-        "Tu amor me hace bailar de felicidad",
-        "Eres mi mejor historia de amor",
-        "Siempre serás mi persona favorita",
-        "Te amo con todo mi corazón de algodón",
-        "Eres mi sueño hecho realidad",
-        "Gracias por existir, te quiero",
-        "Eres la razón de mi sonrisa",
-        "Tu amor es mi lugar seguro",
-        "Eres mi todo, siempre 💕"
-      ];
 
-      // Elementos
-      const mensajeEl = document.getElementById('mensaje');
-      const btnNuevo = document.getElementById('btnNuevo');
-      const btnSnoopy = document.getElementById('btnSnoopy');
-      const btnAmor = document.getElementById('btnAmor');
-      const btnAbrazo = document.getElementById('btnAbrazo');
+    <!-- =========================
+         PORTADA
+    ========================= -->
 
-      // Función para cambiar mensaje con animación sutil
-      function cambiarMensaje(texto) {
-        if (!texto) return;
-        // efecto rápido de escala
-        mensajeEl.style.transform = 'scale(0.92)';
-        setTimeout(() => {
-          mensajeEl.textContent = texto;
-          mensajeEl.style.transform = 'scale(1)';
-        }, 120);
-      }
+    <section class="hero">
 
-      // Mensaje aleatorio de la lista
-      function mensajeAleatorio() {
-        const randomIndex = Math.floor(Math.random() * mensajesAmor.length);
-        return mensajesAmor[randomIndex];
-      }
+        <div class="hero-content">
 
-      // Asignar eventos a los botones
-      btnNuevo.addEventListener('click', function() {
-        const nuevo = mensajeAleatorio();
-        cambiarMensaje(nuevo);
-        // feedback táctil (opcional)
-        this.blur();
-      });
+            <div class="small-text">
+                Para alguien muy especial
+            </div>
 
-      btnSnoopy.addEventListener('click', function() {
-        const snoopyMsg = [
-          "🐶 ¡Yack & Lala! woof woof ❤️",
-          "Eres mi sol ☀️",
-          "🐾 Yack & Lala Aprueban este amor",
-          "Te mando besos",
-          "Me enamoras día con día",
-          "Eres Mi NIÑA",
-          "Eres la persona favorita de Snoopy y La mía",
-        ];
-        const randomSnoopy = snoopyMsg[Math.floor(Math.random() * snoopyMsg.length)];
-        cambiarMensaje(randomSnoopy);
-        this.blur();
-      });
+            <div class="heart-main">
+                ❤️
+            </div>
 
-      btnAmor.addEventListener('click', function() {
-        const loveMsg = [
-          "❤️ Te quiero con toda mi alma",
-          "Eres el amor de mi vida ❤️‍🔥",
-          "Cada latido es para ti 💓",
-          "Mi corazón es tuyo, siempre",
-          "Eres mi media naranja 🍊❤️",
-          "Te amo más que ayer, menos que mañana",
-          "Eres mi sueño, mi realidad, mi amor"
-        ];
-        const randomLove = loveMsg[Math.floor(Math.random() * loveMsg.length)];
-        cambiarMensaje(randomLove);
-        this.blur();
-      });
+            <h1>Mi Ojitos</h1>
 
-      btnAbrazo.addEventListener('click', function() {
-        const abrazos = [
-          "🤗 Un abrazo gigante para ti",
-          "Abrazo de oso 🐻",
-          "🤗 Abrazo que cura el alma",
-          "Te mando un abrazo enorme y cálido",
-          "Abrazo de 10 segundos 🤗",
-          "El mejor abrazo del mundo para ti"
-        ];
-        const randomAbrazo = abrazos[Math.floor(Math.random() * abrazos.length)];
-        cambiarMensaje(randomAbrazo);
-        this.blur();
-      });
+            <p>
+                Hay cosas que son difíciles de decir en persona...
+                así que decidí escribirlas para ti.
+            </p>
 
-      // Al cargar, mostrar un mensaje aleatorio
-      window.addEventListener('load', function() {
-        const inicial = mensajeAleatorio();
-        mensajeEl.textContent = inicial;
-      });
+        </div>
 
-      // Efecto extra: cada 15 segundos cambia automáticamente (como un detalle)
-      let intervalId = setInterval(() => {
-        const nuevo = mensajeAleatorio();
-        cambiarMensaje(nuevo);
-      }, 17000);
+        <div class="scroll">
+            ↓ Desliza lentamente ↓
+        </div>
 
-      // Si el usuario hace clic en cualquier botón, reiniciamos el intervalo para que no se solape
-      const todosLosBotones = [btnNuevo, btnSnoopy, btnAmor, btnAbrazo];
-      todosLosBotones.forEach(btn => {
-        btn.addEventListener('click', function() {
-          // Reiniciar el intervalo para evitar cambios inmediatos
-          clearInterval(intervalId);
-          intervalId = setInterval(() => {
-            const nuevo = mensajeAleatorio();
-            cambiarMensaje(nuevo);
-          }, 17000);
+    </section>
+
+
+    <!-- =========================
+         INTRODUCCIÓN
+    ========================= -->
+
+    <section>
+
+        <div class="container reveal">
+
+            <h2 class="section-title">
+                Quiero decirte algo...
+            </h2>
+
+            <p class="section-subtitle">
+                No sé exactamente en qué momento comenzaste a convertirte
+                en alguien tan especial para mí, pero sé que cada momento
+                contigo hace que quiera seguir conociéndote.
+            </p>
+
+            <div class="heart-main">
+                💗
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CARTA
+    ========================= -->
+
+    <section>
+
+        <div class="container reveal">
+
+            <h2 class="section-title">
+                Lo que siento por ti
+            </h2>
+
+            <div class="letter">
+
+                <p>
+                    No quiero que seas mía.
+                    <span class="highlight">
+                        Quiero que seas tuya.
+                    </span>
+                </p>
+
+                <p>
+                    Quiero que seas libre, que puedas ser tú misma,
+                    perseguir tus sueños, hacer lo que te haga feliz
+                    y nunca sentir que tienes que cambiar algo de ti
+                    para estar conmigo.
+                </p>
+
+                <p>
+                    Y aun teniendo toda esa libertad, quiero que algún día,
+                    entre todas las personas y todos los caminos que podrías
+                    elegir, decidas que quieres estar conmigo.
+                </p>
+
+                <p>
+                    No porque tengas que hacerlo,
+                    sino porque tu corazón realmente quiera hacerlo.
+                </p>
+
+                <p>
+                    Quiero que podamos elegirnos todos los días,
+                    no por costumbre, miedo o necesidad,
+                    sino porque estar juntos nos haga sentir
+                    que estamos exactamente donde queremos estar.
+                </p>
+
+                <p>
+                    Me gusta demasiado estar contigo.
+                    Me gusta hablar contigo, reírnos, molestarnos,
+                    conocernos poco a poco y disfrutar esos momentos
+                    que quizá parecen pequeños, pero que para mí
+                    terminan significando muchísimo.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FRASE
+    ========================= -->
+
+    <section>
+
+        <div class="container reveal quote">
+
+            <div class="quote-text">
+                Si pudiera elegir un lugar seguro
+                en todo el mundo...
+                <br><br>
+                siempre elegiría estar a tu lado. ❤️
+            </div>
+
+            <div class="quote-author">
+                — Para Mi Ojitos
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FUTURO
+    ========================= -->
+
+    <section>
+
+        <div class="container reveal">
+
+            <h2 class="section-title">
+                Quiero seguir contigo
+            </h2>
+
+            <p class="section-subtitle">
+
+                Quiero seguir conociéndote,
+                seguir compartiendo momentos,
+                reír contigo, apoyarte en tus sueños
+                y también dejar que tú seas parte de los míos.
+
+                <br><br>
+
+                No quiero apresurar el tiempo.
+                Quiero disfrutar cada etapa,
+                cada conversación y cada momento
+                que podamos compartir.
+
+            </p>
+
+            <button class="button" onclick="showSecret()">
+                Tengo algo más que decirte ❤️
+            </button>
+
+
+            <div id="secret">
+
+                <div class="secret-box">
+
+                    <p>
+                        Si algún día dudas de lo especial que eres,
+                        recuerda que existe alguien que disfruta
+                        simplemente tenerte cerca.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Alguien que quiere verte crecer,
+                        cumplir tus sueños y ser feliz.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Y que, si la vida nos permite seguir caminando
+                        juntos, quiere disfrutar cada paso contigo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL
+    ========================= -->
+
+    <section class="final">
+
+        <div class="container reveal">
+
+            <div class="final-heart">
+                ❤️
+            </div>
+
+            <h2>
+                Te quiero,<br>
+                Mi Ojitos
+            </h2>
+
+            <p>
+                Muchísimo más de lo que estas palabras pueden explicar.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        Hecho con mucho cariño ❤️
+    </footer>
+
+
+    <script>
+
+        /* =========================
+           ESTRELLAS
+        ========================= */
+
+        const stars = document.getElementById("stars");
+
+        for (let i = 0; i < 120; i++) {
+
+            const star = document.createElement("div");
+
+            star.classList.add("star");
+
+            star.style.left = Math.random() * 100 + "%";
+            star.style.top = Math.random() * 100 + "%";
+
+            star.style.animationDelay =
+                Math.random() * 4 + "s";
+
+            star.style.animationDuration =
+                2 + Math.random() * 4 + "s";
+
+            stars.appendChild(star);
+        }
+
+
+        /* =========================
+           CORAZONES FLOTANDO
+        ========================= */
+
+        const hearts = document.getElementById("hearts");
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.classList.add("heart");
+
+            const symbols = [
+                "❤️",
+                "💕",
+                "💗",
+                "💖",
+                "💘",
+                "✨"
+            ];
+
+            heart.innerHTML =
+                symbols[Math.floor(Math.random() * symbols.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+            heart.style.fontSize =
+                12 + Math.random() * 25 + "px";
+
+            heart.style.animationDuration =
+                5 + Math.random() * 7 + "s";
+
+            hearts.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 12000);
+        }
+
+        setInterval(createHeart, 700);
+
+
+        /* =========================
+           REVEAL AL HACER SCROLL
+        ========================= */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+
+            revealElements.forEach(element => {
+
+                const windowHeight =
+                    window.innerHeight;
+
+                const elementTop =
+                    element.getBoundingClientRect().top;
+
+                if (elementTop <
+                    windowHeight - 100) {
+
+                    element.classList.add("active");
+
+                }
+
+            });
+
+        }
+
+        window.addEventListener(
+            "scroll",
+            revealOnScroll
+        );
+
+        revealOnScroll();
+
+
+        /* =========================
+           MENSAJE SECRETO
+        ========================= */
+
+        function showSecret() {
+
+            const secret =
+                document.getElementById("secret");
+
+            secret.classList.toggle("show");
+
+            if (secret.classList.contains("show")) {
+
+                createHeart();
+                createHeart();
+                createHeart();
+
+            }
+
+        }
+
+
+        /* =========================
+           CLICK PARA CREAR CORAZONES
+        ========================= */
+
+        document.addEventListener("click", function(e) {
+
+            if (
+                e.target.tagName === "BUTTON" ||
+                e.target.closest("button")
+            ) {
+                return;
+            }
+
+            for (let i = 0; i < 4; i++) {
+
+                const heart =
+                    document.createElement("div");
+
+                heart.classList.add("heart");
+
+                heart.innerHTML = "❤️";
+
+                heart.style.left =
+                    e.clientX + "px";
+
+                heart.style.bottom =
+                    (window.innerHeight - e.clientY) + "px";
+
+                heart.style.animationDuration =
+                    3 + Math.random() * 3 + "s";
+
+                hearts.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }
+
         });
-      });
 
-    })();
-  </script>
+    </script>
+
 </body>
 </html>
