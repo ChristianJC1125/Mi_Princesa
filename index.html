@@ -1,149 +1,154 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>Para Mi Ojitos 🌌❤️</title>
+<title>Para la niña de mis ojos ❤️</title>
 
 <style>
 
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    background:#02030b;
-    color:white;
-    font-family:Georgia, "Times New Roman", serif;
-    overflow-x:hidden;
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #fff5f8;
+    color: #4b2938;
+    overflow-x: hidden;
 }
 
-section{
-    min-height:100vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:80px 20px;
+button {
+    font-family: inherit;
 }
 
-.hidden{
-    opacity:0;
-    transform:translateY(50px);
-    transition:1.5s ease;
-}
 
-.hidden.show{
-    opacity:1;
-    transform:translateY(0);
-}
+/* =====================================================
+   FONDO
+===================================================== */
 
-.space{
-    position:fixed;
-    inset:0;
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+
     background:
         radial-gradient(
-            circle at 20% 30%,
-            rgba(111,65,255,.18),
+            circle at 10% 20%,
+            rgba(255, 180, 205, .45),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(255, 220, 170, .4),
             transparent 30%
         ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(255,45,145,.14),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(38,70,180,.12),
-            transparent 45%
-        ),
-        #02030b;
 
-    z-index:-10;
+        linear-gradient(
+            135deg,
+            #fff7fa,
+            #fff0f5,
+            #fff9f2
+        );
 }
 
 
 /* =====================================================
-   ESTRELLAS
+   LUCES FLOTANTES
 ===================================================== */
 
-.stars{
-    position:fixed;
-    inset:0;
-    z-index:-8;
-    pointer-events:none;
+.lights {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -5;
 }
 
-.star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    border-radius:50%;
-    background:white;
-    box-shadow:0 0 8px white;
-    animation:twinkle infinite alternate;
+.light {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+
+    background: white;
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 10px #ff9fbd,
+        0 0 20px #ffd0df;
+
+    animation: floatLight 6s infinite ease-in-out;
 }
 
-@keyframes twinkle{
+@keyframes floatLight {
 
-    from{
-        opacity:.2;
-        transform:scale(.5);
+    0% {
+        transform: translateY(20px);
+        opacity: .2;
     }
 
-    to{
-        opacity:1;
-        transform:scale(1.5);
+    50% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(20px);
+        opacity: .2;
     }
 }
 
 
 /* =====================================================
-   NEBULOSA
+   PÉTALOS
 ===================================================== */
 
-.nebula{
-    position:fixed;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    filter:blur(100px);
-    opacity:.15;
-    z-index:-9;
-    animation:nebulaMove 15s infinite alternate ease-in-out;
+.petal {
+    position: fixed;
+
+    top: -30px;
+
+    font-size: 18px;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    animation: falling linear forwards;
 }
 
-.nebula.one{
-    background:#703cff;
-    left:-200px;
-    top:10%;
-}
+@keyframes falling {
 
-.nebula.two{
-    background:#ff2d91;
-    right:-200px;
-    bottom:5%;
-    animation-delay:4s;
-}
+    0% {
+        transform:
+            translateY(-20px)
+            rotate(0deg);
 
-@keyframes nebulaMove{
-
-    from{
-        transform:translate(0,0) scale(1);
+        opacity: 0;
     }
 
-    to{
-        transform:translate(100px,-80px) scale(1.2);
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(100px)
+            rotate(360deg);
+
+        opacity: 0;
     }
 }
 
@@ -152,523 +157,195 @@ section{
    BOTÓN MÚSICA
 ===================================================== */
 
-.music{
-    position:fixed;
-    right:20px;
-    top:20px;
-    z-index:1000;
+.music-button {
 
-    width:50px;
-    height:50px;
+    position: fixed;
 
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,.3);
+    top: 20px;
+    right: 20px;
 
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(10px);
+    width: 55px;
+    height: 55px;
 
-    color:white;
-    font-size:20px;
+    border-radius: 50%;
 
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.music:hover{
-    transform:scale(1.1);
-    background:rgba(255,100,180,.2);
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-    text-align:center;
-}
-
-.hero-content{
-    max-width:900px;
-    animation:appear 2s ease;
-}
-
-@keyframes appear{
-
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.tiny{
-    text-transform:uppercase;
-    letter-spacing:7px;
-    color:#b9a7ff;
-    font-size:.8rem;
-    margin-bottom:30px;
-}
-
-.hero h1{
-
-    font-size:
-        clamp(3.5rem,12vw,9rem);
-
-    line-height:.9;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #d4c4ff,
-            #ff9cc8,
-            #ffffff
-        );
-
-    background-size:300%;
-
-    -webkit-text-fill-color:transparent;
-
-    animation:gradient 7s linear infinite;
-}
-
-@keyframes gradient{
-
-    from{
-        background-position:300%;
-    }
-
-    to{
-        background-position:-300%;
-    }
-}
-
-.hero p{
-    margin-top:35px;
-    color:#d7d1e8;
-    font-size:1.2rem;
-    line-height:1.8;
-}
-
-.scroll{
-    margin-top:70px;
-    color:#77748c;
-    font-size:.9rem;
-    animation:float 2s infinite;
-}
-
-@keyframes float{
-
-    50%{
-        transform:translateY(10px);
-    }
-}
-
-
-/* =====================================================
-   ESTRELLA CENTRAL
-===================================================== */
-
-.big-star{
-    font-size:100px;
-    margin:30px;
-
-    filter:
-        drop-shadow(0 0 20px #fff)
-        drop-shadow(0 0 60px #9d70ff);
-
-    animation:pulseStar 2s infinite;
-}
-
-@keyframes pulseStar{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.15);
-    }
-}
-
-
-/* =====================================================
-   CONTENEDOR
-===================================================== */
-
-.container{
-    width:100%;
-    max-width:950px;
-    text-align:center;
-}
-
-.title{
-
-    font-size:
-        clamp(2.3rem,7vw,5rem);
-
-    color:#e7dcff;
-    margin-bottom:35px;
-
-    text-shadow:
-        0 0 25px rgba(150,100,255,.35);
-}
-
-.subtitle{
-
-    max-width:750px;
-    margin:auto;
-
-    font-size:1.15rem;
-    line-height:2;
-
-    color:#c9c4d8;
-}
-
-
-/* =====================================================
-   ESTRELLAS INTERACTIVAS
-===================================================== */
-
-.star-field{
-
-    width:100%;
-    max-width:800px;
-    height:450px;
-
-    margin:40px auto;
-
-    position:relative;
-
-    border-radius:30px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(90,50,180,.12),
-            transparent 65%
-        );
-
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.click-star{
-
-    position:absolute;
-
-    width:14px;
-    height:14px;
-
-    border-radius:50%;
-
-    background:white;
-
-    box-shadow:
-        0 0 10px white,
-        0 0 25px #a879ff;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.click-star:hover{
-
-    transform:scale(2);
-
-    box-shadow:
-        0 0 20px white,
-        0 0 50px #ff78b8;
-}
-
-.message{
-
-    position:fixed;
-
-    left:50%;
-    top:50%;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.7);
-
-    width:min(90%,500px);
-
-    padding:40px;
-
-    border-radius:25px;
-
-    background:
-        rgba(10,8,25,.94);
-
-    border:
-        1px solid
-        rgba(255,160,210,.35);
-
-    box-shadow:
-        0 0 80px
-        rgba(180,70,180,.35);
-
-    backdrop-filter:blur(20px);
-
-    text-align:center;
-
-    opacity:0;
-    pointer-events:none;
-
-    transition:.5s;
-
-    z-index:2000;
-}
-
-.message.show{
-
-    opacity:1;
-
-    pointer-events:auto;
-
-    transform:
-        translate(-50%,-50%)
-        scale(1);
-}
-
-.message p{
-
-    color:#f8eefa;
-
-    font-size:1.25rem;
-
-    line-height:1.8;
-}
-
-.close{
-
-    margin-top:25px;
-
-    border:none;
-
-    background:none;
-
-    color:#ff9fc8;
-
-    cursor:pointer;
-
-    font-size:1rem;
-}
-
-
-/* =====================================================
-   CONSTELACIÓN
-===================================================== */
-
-.constellation{
-
-    width:320px;
-    height:320px;
-
-    margin:60px auto;
-
-    position:relative;
-}
-
-.constellation span{
-
-    position:absolute;
-
-    width:8px;
-    height:8px;
-
-    background:white;
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 10px white,
-        0 0 25px #a67cff;
-
-    animation:constStar 2s infinite alternate;
-}
-
-.constellation span:nth-child(1){
-    top:10%;
-    left:45%;
-}
-
-.constellation span:nth-child(2){
-    top:30%;
-    left:20%;
-}
-
-.constellation span:nth-child(3){
-    top:50%;
-    left:55%;
-}
-
-.constellation span:nth-child(4){
-    top:70%;
-    left:30%;
-}
-
-.constellation span:nth-child(5){
-    top:85%;
-    left:70%;
-}
-
-@keyframes constStar{
-
-    from{
-        opacity:.4;
-    }
-
-    to{
-        opacity:1;
-    }
-}
-
-.line{
-
-    position:absolute;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(190,150,255,.6),
-            transparent
-        );
-
-    transform-origin:left center;
-}
-
-
-/* =====================================================
-   CARTA
-===================================================== */
-
-.letter{
-
-    margin-top:50px;
-
-    padding:
-        clamp(30px,7vw,70px);
-
-    text-align:left;
+    border: 2px solid white;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.06),
-            rgba(255,100,180,.04)
+            #ff6f9f,
+            #ff9dbc
         );
 
-    border:
-        1px solid
-        rgba(255,255,255,.12);
+    color: white;
 
-    border-radius:30px;
+    font-size: 22px;
+
+    cursor: pointer;
+
+    z-index: 1000;
 
     box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.4);
+        0 5px 25px rgba(255, 80, 130, .35);
 
-    backdrop-filter:blur(15px);
+    transition: .3s;
 }
 
-.letter p{
+.music-button:hover {
 
-    font-size:1.15rem;
+    transform: scale(1.1);
 
-    line-height:2;
-
-    color:#eee8f4;
-
-    margin-bottom:25px;
-}
-
-.pink{
-    color:#ff9fc8;
+    box-shadow:
+        0 8px 35px rgba(255, 80, 130, .5);
 }
 
 
 /* =====================================================
-   LUNA
+   SECCIONES
 ===================================================== */
 
-.moon-area{
+section {
 
-    position:relative;
+    min-height: 100vh;
 
-    width:320px;
-    height:320px;
+    display: flex;
 
-    margin:50px auto;
+    align-items: center;
+    justify-content: center;
+
+    padding: 80px 20px;
+
+    position: relative;
 }
 
-.moon{
+.container {
 
-    position:absolute;
+    width: 100%;
+    max-width: 950px;
 
-    width:250px;
-    height:250px;
+    text-align: center;
+}
 
-    border-radius:50%;
 
-    left:50%;
-    top:50%;
+/* =====================================================
+   PORTADA
+===================================================== */
 
-    transform:translate(-50%,-50%);
+.hero {
 
-    background:
-        radial-gradient(
-            circle at 35% 35%,
-            #fff,
-            #d9d7e4 45%,
-            #9995ad 100%
+    min-height: 100vh;
+
+    text-align: center;
+}
+
+.hero-content {
+
+    max-width: 850px;
+
+    animation:
+        entrance 1.8s ease;
+}
+
+@keyframes entrance {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(50px)
+            scale(.95);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.small-title {
+
+    font-size: .9rem;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #d66a91;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+
+    font-size:
+        clamp(3.5rem, 10vw, 8rem);
+
+    line-height: .9;
+
+    color: #d94d7d;
+
+    text-shadow:
+        3px 5px 0 white,
+        0 10px 30px rgba(210, 60, 120, .2);
+}
+
+.hero h1 span {
+
+    color: #f39ab5;
+}
+
+.hero-description {
+
+    margin: 35px auto;
+
+    max-width: 650px;
+
+    font-size: 1.2rem;
+
+    line-height: 1.9;
+
+    color: #6d4b59;
+}
+
+.big-heart {
+
+    font-size: 100px;
+
+    display: inline-block;
+
+    animation:
+        heartbeat 1.5s infinite;
+
+    filter:
+        drop-shadow(
+            0 10px 20px
+            rgba(255, 70, 130, .25)
         );
-
-    box-shadow:
-        0 0 30px #fff,
-        0 0 100px rgba(180,170,255,.5);
 }
 
-.moon::after{
+@keyframes heartbeat {
 
-    content:"";
+    0%, 100% {
+        transform: scale(1);
+    }
 
-    position:absolute;
+    15% {
+        transform: scale(1.2);
+    }
 
-    width:250px;
-    height:250px;
+    30% {
+        transform: scale(1);
+    }
 
-    border-radius:50%;
-
-    background:#02030b;
-
-    left:70px;
-    top:-15px;
-}
-
-.moon-text{
-
-    position:absolute;
-
-    width:100%;
-
-    top:110%;
-
-    color:#bdb5d0;
-
-    font-size:1.1rem;
-
-    line-height:1.8;
+    45% {
+        transform: scale(1.12);
+    }
 }
 
 
@@ -676,200 +353,557 @@ section{
    BOTONES
 ===================================================== */
 
-.btn{
+.main-button {
 
-    margin-top:40px;
+    border: none;
 
-    padding:16px 30px;
+    padding: 17px 35px;
 
-    border-radius:50px;
-
-    border:
-        1px solid
-        rgba(255,150,200,.4);
+    border-radius: 50px;
 
     background:
         linear-gradient(
-            90deg,
-            rgba(255,70,140,.7),
-            rgba(130,70,255,.7)
+            135deg,
+            #e95787,
+            #f48eab
         );
 
-    color:white;
+    color: white;
 
-    font-family:inherit;
+    font-size: 1rem;
 
-    font-size:1rem;
-
-    cursor:pointer;
+    cursor: pointer;
 
     box-shadow:
-        0 0 30px
-        rgba(255,70,160,.2);
+        0 10px 30px
+        rgba(215, 70, 120, .25);
 
-    transition:.3s;
+    transition: .3s;
 }
 
-.btn:hover{
+.main-button:hover {
 
     transform:
-        translateY(-4px)
-        scale(1.04);
+        translateY(-5px)
+        scale(1.03);
 
     box-shadow:
-        0 0 50px
-        rgba(255,70,160,.5);
+        0 15px 40px
+        rgba(215, 70, 120, .35);
 }
 
 
 /* =====================================================
-   MENSAJE FINAL
+   TÍTULOS
 ===================================================== */
 
-.final{
-
-    overflow:hidden;
-
-    text-align:center;
-}
-
-.final-star{
-
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:white;
-
-    margin:auto;
-
-    box-shadow:
-        0 0 20px white,
-        0 0 60px #ff83bb,
-        0 0 120px #8d6aff;
-
-    animation:
-        finalStar 5s
-        forwards;
-}
-
-@keyframes finalStar{
-
-    0%{
-        transform:scale(1);
-    }
-
-    70%{
-        transform:scale(30);
-    }
-
-    100%{
-        transform:scale(100);
-        opacity:.15;
-    }
-}
-
-.final-content{
-
-    position:relative;
-    z-index:2;
-}
-
-.final h2{
+.section-title {
 
     font-size:
-        clamp(3rem,10vw,8rem);
+        clamp(2.4rem, 7vw, 5rem);
 
-    color:#ffb4d2;
+    color: #c94f78;
 
-    text-shadow:
-        0 0 30px #ff4e96,
-        0 0 80px rgba(255,60,150,.4);
-
-    animation:finalText 3s ease;
+    margin-bottom: 25px;
 }
 
-@keyframes finalText{
+.section-subtitle {
 
-    from{
-        opacity:0;
-        transform:scale(.7);
-    }
+    max-width: 750px;
 
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
+    margin: auto;
 
-.final p{
+    font-size: 1.15rem;
 
-    margin-top:30px;
+    line-height: 2;
 
-    font-size:1.2rem;
-
-    line-height:2;
-
-    color:#ddd5e5;
+    color: #6b4a57;
 }
 
 
 /* =====================================================
-   CORAZONES
+   TARJETAS
 ===================================================== */
 
-.hearts{
+.cards {
 
-    position:fixed;
+    display: grid;
 
-    inset:0;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    pointer-events:none;
+    gap: 20px;
 
-    z-index:100;
+    margin-top: 50px;
 }
 
-.heart{
+.card {
 
-    position:absolute;
+    min-height: 190px;
 
-    bottom:-30px;
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(220,100,140,.15);
+
+    box-shadow:
+        0 15px 45px
+        rgba(180,70,110,.08);
+
+    cursor: pointer;
+
+    transition:
+        .4s;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.card:hover {
+
+    transform:
+        translateY(-10px)
+        rotate(-1deg);
+
+    box-shadow:
+        0 20px 50px
+        rgba(180,70,110,.15);
+}
+
+.card-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.card h3 {
+
+    color: #bd4c73;
+
+    font-size: 1.2rem;
+
+    margin-bottom: 10px;
+}
+
+.card p {
+
+    color: #765965;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   MENSAJE OCULTO
+===================================================== */
+
+.hidden-message {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        max-height 1s ease,
+        opacity .8s ease;
+
+    margin-top: 0;
+}
+
+.hidden-message.open {
+
+    max-height: 500px;
+
+    opacity: 1;
+
+    margin-top: 35px;
+}
+
+.message-box {
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #fff2f6
+        );
+
+    border:
+        1px solid
+        rgba(220,80,130,.2);
+
+    box-shadow:
+        0 15px 50px
+        rgba(180,60,100,.1);
+}
+
+.message-box p {
+
+    font-size: 1.15rem;
+
+    line-height: 2;
+
+    color: #674551;
+}
+
+
+/* =====================================================
+   ÉXITOS
+===================================================== */
+
+.success-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,235,242,.7),
+            rgba(255,250,235,.7)
+        );
+}
+
+.trophy {
+
+    font-size: 90px;
+
+    margin-bottom: 25px;
 
     animation:
-        heartFloat
-        linear forwards;
+        trophyFloat 2.5s infinite ease-in-out;
+}
+
+@keyframes trophyFloat {
+
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform:
+            translateY(-15px)
+            rotate(3deg);
+    }
+}
+
+.success-text {
+
+    max-width: 760px;
+
+    margin: auto;
+
+    font-size: 1.2rem;
+
+    line-height: 2.1;
+
+    color: #654450;
+}
+
+.success-highlight {
+
+    color: #d44f7c;
+
+    font-weight: bold;
+
+    font-size: 1.35rem;
+}
+
+
+/* =====================================================
+   POLAROID
+===================================================== */
+
+.polaroids {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+    margin-top: 50px;
+}
+
+.polaroid {
+
+    background: white;
+
+    padding: 12px 12px 30px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(100,50,70,.12);
+
+    transform:
+        rotate(-3deg);
+
+    transition: .4s;
+}
+
+.polaroid:nth-child(2) {
+
+    transform:
+        rotate(3deg);
+}
+
+.polaroid:nth-child(3) {
+
+    transform:
+        rotate(-2deg);
+}
+
+.polaroid:hover {
+
+    transform:
+        rotate(0deg)
+        translateY(-10px)
+        scale(1.03);
+}
+
+.polaroid-image {
+
+    height: 190px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe0eb,
+            #fff1d8
+        );
+
+    font-size: 70px;
+}
+
+.polaroid p {
+
+    margin-top: 15px;
+
+    color: #785462;
+
+    font-size: .95rem;
+}
+
+
+/* =====================================================
+   CARTA
+===================================================== */
+
+.letter {
+
+    margin-top: 50px;
+
+    padding:
+        clamp(30px, 7vw, 70px);
+
+    background:
+        rgba(255,255,255,.85);
+
+    border-radius: 30px;
+
+    text-align: left;
+
+    box-shadow:
+        0 25px 80px
+        rgba(160,60,100,.1);
+
+    border:
+        1px solid
+        rgba(220,100,140,.15);
+}
+
+.letter p {
+
+    font-size: 1.15rem;
+
+    line-height: 2;
+
+    color: #654450;
+
+    margin-bottom: 25px;
+}
+
+.highlight {
+
+    color: #d64e7b;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   NIÑA DE MIS OJOS
+===================================================== */
+
+.eyes-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f5,
+            #fff8ed
+        );
+}
+
+.eyes {
+
+    font-size: 90px;
+
+    margin-bottom: 25px;
+
+    animation:
+        eyesFloat 3s infinite ease-in-out;
+}
+
+@keyframes eyesFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.eyes-title {
+
+    font-size:
+        clamp(2.5rem, 8vw, 6rem);
+
+    color: #cf5079;
+
+    margin-bottom: 30px;
+}
+
+.eyes-text {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    font-size: 1.25rem;
+
+    line-height: 2;
+
+    color: #674551;
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.final {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #ffe2ed,
+            #fff5f8 55%,
+            #fff
+        );
+
+    text-align: center;
+}
+
+.final-heart {
+
+    font-size:
+        clamp(100px, 20vw, 180px);
+
+    animation:
+        heartbeat 1.5s infinite;
 
     filter:
         drop-shadow(
-            0 0 8px
-            rgba(255,80,160,.7)
+            0 15px 35px
+            rgba(220,60,110,.25)
         );
 }
 
-@keyframes heartFloat{
+.final h2 {
 
-    from{
+    font-size:
+        clamp(3rem, 9vw, 7rem);
 
-        transform:
-            translateY(0)
-            rotate(0deg);
+    color: #c94472;
 
-        opacity:0;
-    }
+    line-height: 1;
 
-    15%{
-        opacity:1;
-    }
+    margin-top: 25px;
+}
 
-    to{
+.final p {
 
-        transform:
-            translateY(-110vh)
-            rotate(360deg);
+    max-width: 700px;
 
-        opacity:0;
-    }
+    margin: 35px auto;
+
+    font-size: 1.2rem;
+
+    line-height: 2;
+
+    color: #6d4a57;
+}
+
+.signature {
+
+    margin-top: 40px;
+
+    color: #d15a82;
+
+    font-style: italic;
+
+    font-size: 1.2rem;
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(60px);
+
+    transition:
+        1.2s ease;
+}
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
 }
 
 
@@ -877,31 +911,44 @@ section{
    RESPONSIVE
 ===================================================== */
 
-@media(max-width:600px){
+@media(max-width:700px) {
 
-    .hero p{
-        font-size:1rem;
+    .cards {
+
+        grid-template-columns:
+            1fr;
     }
 
-    .star-field{
-        height:400px;
+    .polaroids {
+
+        grid-template-columns:
+            1fr;
     }
 
-    .letter p{
-        font-size:1rem;
-        line-height:1.8;
+    .hero h1 {
+
+        font-size: 4rem;
     }
 
-    .moon{
-        width:200px;
-        height:200px;
+    .hero-description {
+
+        font-size: 1rem;
     }
 
-    .moon::after{
-        width:200px;
-        height:200px;
+    .letter p {
+
+        font-size: 1rem;
     }
 
+    .section-subtitle {
+
+        font-size: 1rem;
+    }
+
+    .card {
+
+        min-height: 170px;
+    }
 }
 
 </style>
@@ -912,61 +959,206 @@ section{
 
 
 <!-- =====================================================
-     UNIVERSO
+     FONDO
 ===================================================== -->
 
-<div class="space"></div>
+<div class="background"></div>
 
-<div class="nebula one"></div>
-<div class="nebula two"></div>
-
-<div class="stars" id="stars"></div>
-
-<div class="hearts" id="hearts"></div>
+<div class="lights" id="lights"></div>
 
 
-<!-- BOTÓN DE MÚSICA -->
+<!-- =====================================================
+     MÚSICA
+===================================================== -->
 
-<button class="music"
-        id="musicButton"
-        onclick="toggleMusic()">
+<button
+    class="music-button"
+    id="musicButton"
+    onclick="toggleMusic()">
+
     ♪
+
 </button>
 
+
 <audio id="music" loop>
-    <source src="CUCO - Lo Que Siento.mp3" type="audio/mpeg">
+
+    <source
+        src="Cuco - Melting.mp3"
+        type="audio/mpeg">
+
 </audio>
 
 
 <!-- =====================================================
-     INICIO
+     PORTADA
 ===================================================== -->
 
 <section class="hero">
 
     <div class="hero-content">
 
-        <div class="tiny">
-            Para la persona que hizo diferente mi universo
+        <div class="small-title">
+            Hice esto pensando en ti
         </div>
 
-        <div class="big-star">
-            ✦
+        <div class="big-heart">
+            ❤️
         </div>
 
         <h1>
-            Mi Ojitos
+
+            Para la
+            <span>niña</span>
+            de mis ojos
+
         </h1>
 
-        <p>
-            Entre millones de personas,
-            miles de caminos y un universo
-            prácticamente infinito...
-            qué bonito fue coincidir contigo.
+        <p class="hero-description">
+
+            Hay personas que llegan a nuestra vida
+            y simplemente se convierten en alguien especial.
+
+            <br><br>
+
+            Tú eres una de esas personas para mí.
+
         </p>
 
-        <div class="scroll">
-            ↓ Sigue viajando ↓
+        <button
+            class="main-button"
+            onclick="goTo('reasons')">
+
+            Tengo algo que decirte 💌
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RAZONES
+===================================================== -->
+
+<section id="reasons">
+
+    <div class="container reveal">
+
+        <h2 class="section-title">
+
+            Algunas cosas que me encantan de ti
+
+        </h2>
+
+        <p class="section-subtitle">
+
+            No quiero quedarme solamente con decirte
+            que eres bonita.
+
+            Hay muchas cosas de ti que hacen que
+            me gustes cada día un poquito más.
+
+        </p>
+
+
+        <div class="cards">
+
+
+            <div
+                class="card"
+                onclick="openCard('heart')">
+
+                <div class="card-icon">
+                    💗
+                </div>
+
+                <h3>
+                    Tu forma de ser
+                </h3>
+
+                <p>
+                    Hay algo en tu manera de ser
+                    que simplemente me encanta.
+                </p>
+
+            </div>
+
+
+            <div
+                class="card"
+                onclick="openCard('smile')">
+
+                <div class="card-icon">
+                    😊
+                </div>
+
+                <h3>
+                    Tu sonrisa
+                </h3>
+
+                <p>
+                    Me encanta saber que puedo
+                    compartir momentos que te hagan sonreír.
+                </p>
+
+            </div>
+
+
+            <div
+                class="card"
+                onclick="openCard('talk')">
+
+                <div class="card-icon">
+                    💬
+                </div>
+
+                <h3>
+                    Hablar contigo
+                </h3>
+
+                <p>
+                    Hasta una conversación sencilla
+                    contigo termina siendo especial.
+                </p>
+
+            </div>
+
+
+            <div
+                class="card"
+                onclick="openCard('you')">
+
+                <div class="card-icon">
+                    🌷
+                </div>
+
+                <h3>
+                    Simplemente tú
+                </h3>
+
+                <p>
+                    No tienes que hacer nada extraordinario
+                    para que me encantes.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            class="hidden-message"
+            id="cardMessage">
+
+            <div class="message-box">
+
+                <p id="cardMessageText"></p>
+
+            </div>
+
         </div>
 
     </div>
@@ -975,37 +1167,70 @@ section{
 
 
 <!-- =====================================================
-     EL UNIVERSO
+     ÉXITOS
 ===================================================== -->
 
-<section>
+<section class="success-section">
 
-    <div class="container hidden">
+    <div class="container reveal">
 
-        <h2 class="title">
-            ¿Sabes qué es lo más bonito?
+        <div class="trophy">
+            🏆
+        </div>
+
+        <h2 class="section-title">
+
+            Quiero verte cumplir tus sueños
+
         </h2>
 
-        <p class="subtitle">
+        <p class="success-text">
 
-            Que el universo es enorme.
-
-            Hay millones de estrellas,
-            millones de historias y
-            millones de personas.
+            Hay algo que quiero que nunca olvides:
 
             <br><br>
 
-            Y entre todas esas posibilidades,
-            la vida hizo que nuestros caminos
-            se cruzaran.
+            <span class="success-highlight">
+                Me alegra muchísimo verte crecer.
+            </span>
 
             <br><br>
 
-            Y sinceramente...
+            Quiero estar ahí para celebrar contigo
+            cada pequeño y gran logro.
 
-            <span class="pink">
-                esa es una de mis casualidades favoritas.
+            Cuando consigas algo por lo que hayas
+            trabajado muchísimo, quiero ser de las
+            personas que te diga:
+
+            <br><br>
+
+            <span class="success-highlight">
+                “Estoy orgulloso de ti.”
+            </span>
+
+            <br><br>
+
+            No porque necesites que alguien te diga
+            que puedes hacerlo.
+
+            Sino porque me hace feliz verte avanzar.
+
+            <br><br>
+
+            Quiero verte cumplir tus metas,
+            aprender cosas nuevas,
+            superar tus miedos y convertirte
+            en todo eso que sueñas ser.
+
+            <br><br>
+
+            Y cuando lo hagas...
+
+            <br>
+
+            <span class="success-highlight">
+                quiero estar ahí aplaudiéndote.
             </span>
 
         </p>
@@ -1016,137 +1241,73 @@ section{
 
 
 <!-- =====================================================
-     ESTRELLAS INTERACTIVAS
+     PEQUEÑOS RECUERDOS
 ===================================================== -->
 
 <section>
 
-    <div class="container hidden">
+    <div class="container reveal">
 
-        <h2 class="title">
-            Hay algunas cosas que quiero que sepas
+        <h2 class="section-title">
+
+            Cosas que quiero seguir viviendo contigo
+
         </h2>
 
-        <p class="subtitle">
+        <p class="section-subtitle">
 
-            Toca alguna de las estrellas.
-            Cada una guarda un pequeño mensaje para ti.
+            No tienen que ser momentos enormes.
+
+            A veces los recuerdos más bonitos
+            nacen de las cosas más pequeñas.
 
         </p>
 
-        <div class="star-field"
-             id="starField">
 
-            <div class="click-star"
-                 style="left:15%;top:20%"
-                 data-message="Me encanta escucharte, incluso cuando hablamos de las cosas más simples. ❤️">
+        <div class="polaroids">
+
+
+            <div class="polaroid">
+
+                <div class="polaroid-image">
+                    ☕
+                </div>
+
+                <p>
+                    Seguir teniendo conversaciones
+                    que se nos hagan eternas.
+                </p>
+
             </div>
 
-            <div class="click-star"
-                 style="left:70%;top:15%"
-                 data-message="Tu sonrisa tiene una manera muy bonita de cambiar completamente mi día. ✨">
+
+            <div class="polaroid">
+
+                <div class="polaroid-image">
+                    😂
+                </div>
+
+                <p>
+                    Reírnos de cualquier tontería
+                    hasta que nos duela la panza.
+                </p>
+
             </div>
 
-            <div class="click-star"
-                 style="left:45%;top:40%"
-                 data-message="Me gusta conocerte poco a poco y descubrir cada pequeño detalle que te hace ser tú. 🥹">
+
+            <div class="polaroid">
+
+                <div class="polaroid-image">
+                    🌅
+                </div>
+
+                <p>
+                    Crear recuerdos que algún día
+                    podamos mirar con una sonrisa.
+                </p>
+
             </div>
 
-            <div class="click-star"
-                 style="left:80%;top:65%"
-                 data-message="Contigo he aprendido que algunos de los momentos más bonitos son los que simplemente suceden. 💗">
-            </div>
-
-            <div class="click-star"
-                 style="left:25%;top:75%"
-                 data-message="Ojalá pudiera guardar algunos momentos contigo para volver a ellos cada vez que te extrañe. 🌙">
-            </div>
-
-            <div class="click-star"
-                 style="left:55%;top:85%"
-                 data-message="No necesito que seas perfecta. Me gusta la persona que eres, tal como eres. ❤️">
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- MENSAJE EMERGENTE -->
-
-<div class="message"
-     id="message">
-
-    <p id="messageText"></p>
-
-    <button class="close"
-            onclick="closeMessage()">
-        Cerrar ✦
-    </button>
-
-</div>
-
-
-<!-- =====================================================
-     CONSTELACIÓN
-===================================================== -->
-
-<section>
-
-    <div class="container hidden">
-
-        <h2 class="title">
-            Nuestra pequeña constelación
-        </h2>
-
-        <p class="subtitle">
-
-            Quizá somos solamente dos personas
-            en un universo gigantesco...
-
-            <br><br>
-
-            pero me gusta pensar que algunas personas
-            están destinadas a encontrarse.
-
-        </p>
-
-        <div class="constellation">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <div class="line"
-                 style="
-                 width:110px;
-                 top:65px;
-                 left:75px;
-                 transform:rotate(25deg);
-                 ">
-            </div>
-
-            <div class="line"
-                 style="
-                 width:100px;
-                 top:150px;
-                 left:110px;
-                 transform:rotate(55deg);
-                 ">
-            </div>
-
-            <div class="line"
-                 style="
-                 width:100px;
-                 top:205px;
-                 left:90px;
-                 transform:rotate(-35deg);
-                 ">
-            </div>
 
         </div>
 
@@ -1161,85 +1322,118 @@ section{
 
 <section>
 
-    <div class="container hidden">
+    <div class="container reveal">
 
-        <h2 class="title">
-            Una carta para ti
+        <h2 class="section-title">
+
+            Si pudiera decirte todo...
+
         </h2>
+
 
         <div class="letter">
 
             <p>
-                Quiero que sepas algo que quizá no siempre
-                sé cómo decirte.
+
+                Probablemente empezaría diciéndote
+                que me gustas muchísimo.
+
             </p>
 
+
             <p>
-                Te Quiero 
-                <span class="pink">
-                    Yo solo quiero ser quien tome tu mano
-                    mientras juntos tocamos el cielo.
+
+                Pero después te diría que no es solamente
+                porque seas bonita.
+
+                Me gusta la persona que eres.
+
+                Me gusta conocerte.
+
+                Me gusta escucharte.
+
+                Me gusta compartir momentos contigo.
+
+            </p>
+
+
+            <p>
+
+                Y sobre todo...
+
+                <span class="highlight">
+                    me gusta verte feliz.
                 </span>
+
             </p>
 
+
             <p>
-                Quiero que nunca dejes de perseguir tus sueños, mi niña, que sigas descubriendo el mundo y 
-                creciendo hasta convertirte en esa mujer que siempre has soñado ser.✨
 
-               Porque si algún día me preguntas qué quiero para ti, mi respuesta siempre será la misma: 
-               quiero que seas feliz, pero también quiero tener la dicha de ser parte de esa felicidad y
-               seguir encontrándome en tus ojitos cada vez que me mires.
+                Me encanta cuando consigues algo que querías
+                y puedo ver esa felicidad en ti.
 
-                Y sobre todo, quiero que nunca sientas que tienes que dejar de ser tú 
-                para que yo te quiera. Porque yo quiero verte brillar, verte cumplir
-                tus sueños y ser feliz, 
-                incluso en aquellos caminos que quiero recorrer a tu lado.
+                Porque aunque tus sueños son tuyos,
+                quiero ser alguien que siempre se alegre
+                sinceramente por cada uno de ellos.
+
             </p>
 
+
             <p>
-                No quiero un amor perfecto contigo; quiero uno real. Uno donde podamos reír hasta que
-                nos duela el estómago, abrazarnos cuando el mundo
-                pese demasiado y seguir eligiéndonos incluso en los días difíciles..
+
+                Quiero que crezcas.
+
+                Quiero que cumplas tus metas.
+
+                Quiero que descubras cosas nuevas.
+
+                Quiero que nunca dejes de sorprenderte
+                de todo lo que eres capaz de conseguir.
+
             </p>
 
+
             <p>
-                Porque entre millones de personas, mi corazón tuvo la suerte de encontrarte a ti
-                Y si pudiera pedirle un deseo a la vida, sería sencillo: que me permita seguir viendo esos 
-                ojitos que amo,mientras construimos juntos muchos recuerdos
+
+                Y si algún día la vida se pone difícil,
+                quiero recordarte que no tienes que
+                poder con todo tú sola.
+
             </p>
 
+
             <p>
-                Y si algún día me preguntan qué es la felicidad para mí, probablemente solo sonría
-                y piense en ti… en tus ojitos,en tu sonrisa y en la suerte tan 
-                bonita que tengo de poder amarte.
+
+                Puedes llorar.
+
+                Puedes cansarte.
+
+                Puedes equivocarte.
+
+                Puedes empezar de nuevo.
+
             </p>
 
+
             <p>
-                Quiero que tengamos días increíbles,
-                pero también quiero estar cuando las cosas
-                no salgan bien.
+
+                Y aun así seguirás siendo esa persona
+                maravillosa que me encanta conocer.
+
             </p>
 
-            <p>
-                Quiero ser esa persona con la que puedas hablar
-                cuando tengas miedo, reír cuando estés feliz
-                y guardar silencio cuando simplemente necesites
-                compañía.
-            </p>
 
             <p>
-                Porque al final no busco una historia perfecta.
-                Busco una historia real.
-            </p>
 
-            <p>
-                Una donde podamos decir:
+                No quiero una versión perfecta de ti.
 
-                <br><br>
+                <br>
 
-                <span class="pink">
-                    “Te sigo eligiendo.”
+                <span class="highlight">
+                    Quiero simplemente a ti.
                 </span>
+
             </p>
 
         </div>
@@ -1250,38 +1444,62 @@ section{
 
 
 <!-- =====================================================
-     LUNA
+     NIÑA DE MIS OJOS
 ===================================================== -->
 
-<section>
+<section class="eyes-section">
 
-    <div class="container hidden">
+    <div class="container reveal">
 
-        <h2 class="title">
-            Si algún día te sientes perdida...
+        <div class="eyes">
+            👀❤️
+        </div>
+
+        <h2 class="eyes-title">
+
+            La niña de mis ojos
+
         </h2>
 
-        <p class="subtitle">
+        <p class="eyes-text">
 
-            Quiero que recuerdes que incluso en las noches
-            más oscuras, siempre existe alguna pequeña luz.
+            ¿Sabes por qué te digo así?
+
+            <br><br>
+
+            Porque hay personas que simplemente
+            llaman tu atención...
+
+            <br><br>
+
+            y luego existen esas personas
+            que terminan ocupando un lugar
+            especial en tus pensamientos.
+
+            <br><br>
+
+            Tú eres esa persona para mí.
+
+            <br><br>
+
+            La que me hace sonreír cuando veo
+            un mensaje suyo.
+
+            La que me gusta escuchar.
+
+            La que quiero seguir conociendo.
+
+            <br><br>
+
+            Y sí...
+
+            <br>
+
+            <strong>
+                eres mi niña de mis ojos. ❤️
+            </strong>
 
         </p>
-
-        <div class="moon-area">
-
-            <div class="moon"></div>
-
-            <div class="moon-text">
-
-                Y si alguna vez necesitas una,
-                espero poder ser aunque sea
-                una pequeña luz para recordarte
-                lo mucho que vales.
-
-            </div>
-
-        </div>
 
     </div>
 
@@ -1289,97 +1507,40 @@ section{
 
 
 <!-- =====================================================
-     MOMENTO EMOCIONAL
+     ÚLTIMO MENSAJE
 ===================================================== -->
 
 <section>
 
-    <div class="container hidden">
+    <div class="container reveal">
 
-        <h2 class="title">
-            Y si algún día dudas...
+        <h2 class="section-title">
+
+            Antes de que te vayas...
+
         </h2>
 
-        <p class="subtitle">
+        <p class="section-subtitle">
 
-            Duda de muchas cosas si quieres.
-
-            <br><br>
-
-            Pero nunca dudes de que mereces ser querida,
-            respetada, escuchada y valorada.
+            Quiero que hagas una pequeña cosa.
 
             <br><br>
 
-            Nunca pienses que tienes que convertirte
-            en alguien diferente para que alguien se quede.
-
-            <br><br>
-
-Porque me enamoré de esa persona que eres, de tu forma de ser, de tu manera de querer,
-de tu sonrisa y hasta de esas pequeñas cosas que 
-quizá tú no notas, pero que para mí hacen que seas única.
-
-Nunca quisiera cambiarte; al contrario, quiero que sigas brillando siendo tú, 
-porque esa es la niña que quiero, la que admiro y la que ocupa un lugar 
-tan bonito dentro de mi corazón.
+            Cierra los ojos por unos segundos,
+            sonríe y recuerda que existe alguien
+            que realmente quiere verte feliz.
 
         </p>
 
-        <button class="btn"
-                onclick="specialMoment()">
+        <br>
 
-            Hay algo más...
+        <button
+            class="main-button"
+            onclick="finalMessage()">
+
+            Abrir mi último mensaje ❤️
 
         </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     MENSAJE ESPECIAL
-===================================================== -->
-
-<section id="special"
-         style="display:none;">
-
-    <div class="container">
-
-        <div class="big-star">
-            ✨
-        </div>
-
-        <h2 class="title">
-            Gracias por existir.
-        </h2>
-
-        <p class="subtitle">
-
-            Quizá no te lo diga todos los días,
-            pero me encanta que estés en mi vida.
-
-            <br><br>
-
-            Me encanta hablar contigo.
-
-            Me encanta verte sonreír.
-
-            Me encanta descubrir nuevas cosas de ti.
-
-            Me encanta simplemente estar contigo.
-
-            <br><br>
-
-            Y si pudiera pedirle algo al universo,
-            no pediría que fueras perfecta.
-
-            <br><br>
-
-            Pediría que sigas siendo tú.
-
-        </p>
 
     </div>
 
@@ -1390,31 +1551,60 @@ tan bonito dentro de mi corazón.
      FINAL
 ===================================================== -->
 
-<section class="final">
+<section
+    class="final"
+    id="finalSection">
 
-    <div class="final-content">
+    <div class="container">
 
-        <div class="final-star"></div>
-
-        <br><br><br>
+        <div class="final-heart">
+            ❤️
+        </div>
 
         <h2>
-            Te quiero,<br>
-            Mi Ojitos ❤️
+
+            Te quiero mucho,
+            <br>
+
+            Mi Ojitos
+
         </h2>
 
         <p>
 
-            De todas las casualidades
-            que pudieron ocurrir en este universo...
+            Y espero que nunca olvides algo:
+
+            <br><br>
+
+            Me hace feliz verte sonreír.
+
+            <br>
+
+            Me hace feliz verte crecer.
+
+            <br>
+
+            Me hace feliz verte cumplir tus sueños.
+
+            <br><br>
+
+            Y si algún día necesitas que alguien
+            te recuerde lo increíble que eres...
 
             <br><br>
 
             <strong>
-                mi favorita fue encontrarte a ti.
+                aquí estaré.
             </strong>
 
         </p>
+
+
+        <div class="signature">
+
+            Con muchísimo cariño ❤️
+
+        </div>
 
     </div>
 
@@ -1424,203 +1614,7 @@ tan bonito dentro de mi corazón.
 <script>
 
 /* =====================================================
-   CREAR ESTRELLAS DEL FONDO
-===================================================== */
-
-const stars =
-    document.getElementById("stars");
-
-for(let i = 0; i < 180; i++){
-
-    const star =
-        document.createElement("div");
-
-    star.className = "star";
-
-    star.style.left =
-        Math.random()*100 + "%";
-
-    star.style.top =
-        Math.random()*100 + "%";
-
-    star.style.animationDuration =
-        (1 + Math.random()*4) + "s";
-
-    star.style.animationDelay =
-        Math.random()*5 + "s";
-
-    const size =
-        Math.random()*3 + 1;
-
-    star.style.width =
-        size + "px";
-
-    star.style.height =
-        size + "px";
-
-    stars.appendChild(star);
-}
-
-
-/* =====================================================
-   ESTRELLAS INTERACTIVAS
-===================================================== */
-
-const clickStars =
-    document.querySelectorAll(".click-star");
-
-const message =
-    document.getElementById("message");
-
-const messageText =
-    document.getElementById("messageText");
-
-
-clickStars.forEach(star => {
-
-    star.addEventListener("click", () => {
-
-        messageText.textContent =
-            star.dataset.message;
-
-        message.classList.add("show");
-
-        createHearts(8);
-
-    });
-
-});
-
-
-function closeMessage(){
-
-    message.classList.remove("show");
-
-}
-
-
-/* =====================================================
-   ANIMACIONES AL HACER SCROLL
-===================================================== */
-
-const hidden =
-    document.querySelectorAll(".hidden");
-
-
-function reveal(){
-
-    hidden.forEach(element => {
-
-        const position =
-            element.getBoundingClientRect().top;
-
-        if(position <
-           window.innerHeight - 100){
-
-            element.classList.add("show");
-
-        }
-
-    });
-
-}
-
-
-window.addEventListener(
-    "scroll",
-    reveal
-);
-
-reveal();
-
-
-/* =====================================================
-   CORAZONES
-===================================================== */
-
-const hearts =
-    document.getElementById("hearts");
-
-
-function createHeart(amount = 1){
-
-    for(let i=0;i<amount;i++){
-
-        const heart =
-            document.createElement("div");
-
-        heart.className = "heart";
-
-        const symbols = [
-            "❤️",
-            "💕",
-            "💗",
-            "💖",
-            "✨"
-        ];
-
-        heart.textContent =
-            symbols[
-                Math.floor(
-                    Math.random()*symbols.length
-                )
-            ];
-
-        heart.style.left =
-            Math.random()*100 + "%";
-
-        heart.style.fontSize =
-            (12 + Math.random()*25) + "px";
-
-        heart.style.animationDuration =
-            (5 + Math.random()*6) + "s";
-
-        hearts.appendChild(heart);
-
-        setTimeout(() => {
-
-            heart.remove();
-
-        },12000);
-
-    }
-
-}
-
-
-setInterval(() => {
-
-    createHeart(1);
-
-},900);
-
-
-/* =====================================================
-   MOMENTO ESPECIAL
-===================================================== */
-
-function specialMoment(){
-
-    const special =
-        document.getElementById("special");
-
-    special.style.display = "flex";
-
-    createHearts(30);
-
-    setTimeout(() => {
-
-        special.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    },100);
-
-}
-
-
-/* =====================================================
-   MÚSICA
+   VARIABLES
 ===================================================== */
 
 const music =
@@ -1632,69 +1626,361 @@ const musicButton =
 let playing = false;
 
 
+/* =====================================================
+   MÚSICA
+===================================================== */
+
 function toggleMusic() {
 
     if (music.paused) {
 
         music.play()
-            .then(() => {
+        .then(() => {
 
-                musicButton.textContent = "♫";
-                playing = true;
+            playing = true;
 
-            })
-            .catch((error) => {
+            musicButton.textContent = "♫";
 
-                console.log("No se pudo reproducir la música:", error);
+        })
+        .catch(error => {
 
-                alert(
-                    "No se pudo reproducir la canción. " +
-                    "Revisa que el archivo MP3 esté en la misma carpeta que index.html."
-                );
+            console.log(error);
 
-            });
+            alert(
+                "No se pudo reproducir la música. " +
+                "Asegúrate de que musica.mp3 esté " +
+                "en la misma carpeta que index.html."
+            );
+
+        });
 
     } else {
 
         music.pause();
 
+        playing = false;
+
         musicButton.textContent = "♪";
 
-        playing = false;
     }
+
 }
 
+
 /* =====================================================
-   EFECTO AL HACER CLICK EN CUALQUIER PARTE
+   NAVEGAR A SECCIÓN
 ===================================================== */
 
-document.addEventListener("click", event => {
+function goTo(id) {
 
-    if(
-        event.target.classList.contains("click-star") ||
-        event.target.closest(".message") ||
-        event.target.closest("button")
-    ){
-        return;
+    const element =
+        document.getElementById(id);
+
+    element.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =====================================================
+   CREAR LUCES
+===================================================== */
+
+const lights =
+    document.getElementById("lights");
+
+for (
+    let i = 0;
+    i < 60;
+    i++
+) {
+
+    const light =
+        document.createElement("div");
+
+    light.className = "light";
+
+    light.style.left =
+        Math.random() * 100 + "%";
+
+    light.style.top =
+        Math.random() * 100 + "%";
+
+    light.style.animationDelay =
+        Math.random() * 5 + "s";
+
+    light.style.animationDuration =
+        3 + Math.random() * 5 + "s";
+
+    lights.appendChild(light);
+
+}
+
+
+/* =====================================================
+   PÉTALOS
+===================================================== */
+
+function createPetal() {
+
+    const petal =
+        document.createElement("div");
+
+    petal.className = "petal";
+
+    const flowers = [
+        "🌸",
+        "🌷",
+        "🌺",
+        "💕",
+        "❤️"
+    ];
+
+    petal.textContent =
+        flowers[
+            Math.floor(
+                Math.random() * flowers.length
+            )
+        ];
+
+    petal.style.left =
+        Math.random() * 100 + "%";
+
+    petal.style.fontSize =
+        12 + Math.random() * 18 + "px";
+
+    petal.style.animationDuration =
+        5 + Math.random() * 6 + "s";
+
+    document.body.appendChild(petal);
+
+    setTimeout(() => {
+
+        petal.remove();
+
+    }, 12000);
+
+}
+
+setInterval(createPetal, 1000);
+
+
+/* =====================================================
+   TARJETAS INTERACTIVAS
+===================================================== */
+
+const cardMessages = {
+
+    heart:
+        "Me gusta tu forma de ser. Esa manera que tienes de ser tú misma, con tus cosas buenas, tus locuras, tus momentos serios y esa parte bonita que quizá no todos alcanzan a conocer. ❤️",
+
+    smile:
+        "Tu sonrisa es de esas pequeñas cosas que pueden cambiar completamente un momento. Y sí... admito que me gusta mucho ser parte de las razones por las que sonríes. 🥹❤️",
+
+    talk:
+        "Podemos hablar de algo importante o de la cosa más absurda del mundo y aun así disfruto estar ahí. Creo que eso es una de las cosas que más me gusta de nosotros. 💕",
+
+    you:
+        "No necesitas hacer nada especial para gustarme. No necesitas impresionar a nadie. Simplemente siendo tú ya tienes una manera muy bonita de hacerte especial para mí. 🌷❤️"
+
+};
+
+
+function openCard(type) {
+
+    const box =
+        document.getElementById(
+            "cardMessage"
+        );
+
+    const text =
+        document.getElementById(
+            "cardMessageText"
+        );
+
+    text.textContent =
+        cardMessages[type];
+
+    box.classList.add("open");
+
+    createPetal();
+    createPetal();
+
+}
+
+
+/* =====================================================
+   REVEAL AL HACER SCROLL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+function revealOnScroll() {
+
+    revealElements.forEach(element => {
+
+        const position =
+            element.getBoundingClientRect().top;
+
+        if (
+            position <
+            window.innerHeight - 100
+        ) {
+
+            element.classList.add(
+                "visible"
+            );
+
+        }
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+
+revealOnScroll();
+
+
+/* =====================================================
+   MENSAJE FINAL
+===================================================== */
+
+function finalMessage() {
+
+    createManyPetals();
+
+    setTimeout(() => {
+
+        document
+            .getElementById("finalSection")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }, 500);
+
+}
+
+
+/* =====================================================
+   MUCHOS PÉTALOS
+===================================================== */
+
+function createManyPetals() {
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        setTimeout(() => {
+
+            createPetal();
+
+        }, i * 80);
+
     }
 
-    createHearts(3);
-
-});
+}
 
 
-message.addEventListener("click", event => {
+/* =====================================================
+   EFECTO DE CORAZONES AL HACER CLICK
+===================================================== */
 
-    if(event.target === message){
+document.addEventListener(
+    "click",
+    function(event) {
 
-        closeMessage();
+        if (
+            event.target.tagName === "BUTTON"
+        ) {
+            return;
+        }
+
+        for (
+            let i = 0;
+            i < 3;
+            i++
+        ) {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+            heart.textContent = "❤️";
+
+            heart.style.position =
+                "fixed";
+
+            heart.style.left =
+                event.clientX + "px";
+
+            heart.style.top =
+                event.clientY + "px";
+
+            heart.style.pointerEvents =
+                "none";
+
+            heart.style.zIndex =
+                "2000";
+
+            heart.style.fontSize =
+                "18px";
+
+            document.body.appendChild(
+                heart
+            );
+
+            const x =
+                (Math.random() - .5) * 120;
+
+            const y =
+                -80 - Math.random() * 100;
+
+            heart.animate(
+                [
+                    {
+                        transform:
+                            "translate(0,0) scale(1)",
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            `translate(${x}px,${y}px) scale(1.5)`,
+                        opacity: 0
+                    }
+                ],
+                {
+                    duration:
+                        1000 + Math.random() * 500,
+                    easing:
+                        "ease-out"
+                }
+            );
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 1600);
+
+        }
 
     }
-
-});
+);
 
 </script>
 
 </body>
 </html>
-```
