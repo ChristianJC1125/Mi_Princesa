@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Para ti, siempre ❤️</title>
     <style>
-        /* =====================================================
-           CONFIGURACIÓN GENERAL
-        ===================================================== */
+        /* ============================================================
+           CONFIGURACIÓN GENERAL - ROJO Y BLANCO
+           ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -20,8 +20,8 @@
 
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
-            background: #fef6f9;
-            color: #3d1e2b;
+            background: #fff5f5;
+            color: #4a1a1a;
             overflow-x: hidden;
         }
 
@@ -29,22 +29,22 @@
             font-family: inherit;
         }
 
-        /* =====================================================
-           FONDO CON DEGRADADO Y TEXTURA SUTIL
-        ===================================================== */
+        /* ============================================================
+           FONDO ROJO Y BLANCO CON DEGRADADO
+           ============================================================ */
         .background {
             position: fixed;
             inset: 0;
             z-index: -10;
             background:
-                radial-gradient(circle at 20% 30%, rgba(255, 200, 220, 0.5) 0%, transparent 35%),
-                radial-gradient(circle at 80% 70%, rgba(255, 230, 180, 0.4) 0%, transparent 40%),
-                linear-gradient(145deg, #fff5f9, #fff0f5, #fffbf5);
+                radial-gradient(circle at 20% 30%, rgba(255, 60, 60, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(255, 200, 200, 0.3) 0%, transparent 50%),
+                linear-gradient(145deg, #fff8f8, #fff0f0, #fffafa);
         }
 
-        /* =====================================================
-           LUCES FLOTANTES (MÁGICAS)
-        ===================================================== */
+        /* ============================================================
+           LUCES FLOTANTES ROJAS
+           ============================================================ */
         .lights {
             position: fixed;
             inset: 0;
@@ -54,60 +54,60 @@
 
         .light {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background: #fff;
+            width: 7px;
+            height: 7px;
+            background: #ff4d4d;
             border-radius: 50%;
-            box-shadow: 0 0 15px #ffb3c6, 0 0 30px #ffd9e6;
+            box-shadow: 0 0 18px #ff8080, 0 0 40px #ffb3b3;
             animation: floatLight 7s infinite ease-in-out;
         }
 
         @keyframes floatLight {
             0% {
-                transform: translateY(0px) scale(0.8);
-                opacity: 0.3;
+                transform: translateY(0px) scale(0.7);
+                opacity: 0.2;
             }
             50% {
-                transform: translateY(-60px) scale(1.2);
-                opacity: 1;
+                transform: translateY(-70px) scale(1.3);
+                opacity: 0.9;
             }
             100% {
-                transform: translateY(0px) scale(0.8);
-                opacity: 0.3;
+                transform: translateY(0px) scale(0.7);
+                opacity: 0.2;
             }
         }
 
-        /* =====================================================
-           PÉTALOS CAYENDO (MÁS ROMÁNTICOS)
-        ===================================================== */
+        /* ============================================================
+           PÉTALOS ROJOS Y BLANCOS
+           ============================================================ */
         .petal {
             position: fixed;
             top: -40px;
-            font-size: 22px;
+            font-size: 24px;
             pointer-events: none;
             z-index: 20;
             animation: falling linear forwards;
-            filter: drop-shadow(0 4px 6px rgba(255, 80, 130, 0.2));
+            filter: drop-shadow(0 4px 10px rgba(200, 0, 0, 0.2));
         }
 
         @keyframes falling {
             0% {
-                transform: translateY(-30px) rotate(0deg) scale(0.9);
+                transform: translateY(-30px) rotate(0deg) scale(0.8);
                 opacity: 0;
             }
             15% {
                 opacity: 1;
-                transform: translateY(20px) rotate(15deg) scale(1);
+                transform: translateY(20px) rotate(20deg) scale(1);
             }
             100% {
-                transform: translateY(110vh) translateX(120px) rotate(400deg);
+                transform: translateY(110vh) translateX(130px) rotate(420deg);
                 opacity: 0;
             }
         }
 
-        /* =====================================================
-           BOTÓN DE MÚSICA (RESPETADO Y MEJORADO)
-        ===================================================== */
+        /* ============================================================
+           BOTÓN DE MÚSICA (ROJO)
+           ============================================================ */
         .music-button {
             position: fixed;
             top: 22px;
@@ -115,28 +115,27 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            background: linear-gradient(145deg, #ff7aa2, #ff9fbb);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            background: linear-gradient(145deg, #e63946, #ff6b7a);
             color: white;
             font-size: 26px;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: 0 8px 30px rgba(255, 80, 130, 0.4);
+            box-shadow: 0 8px 35px rgba(200, 30, 30, 0.4);
             transition: 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(4px);
         }
 
         .music-button:hover {
-            transform: scale(1.1) rotate(6deg);
-            box-shadow: 0 10px 40px rgba(255, 80, 130, 0.6);
+            transform: scale(1.12) rotate(8deg);
+            box-shadow: 0 12px 45px rgba(200, 30, 30, 0.6);
         }
 
-        /* =====================================================
+        /* ============================================================
            SECCIONES
-        ===================================================== */
+           ============================================================ */
         section {
             min-height: 100vh;
             display: flex;
@@ -152,9 +151,9 @@
             text-align: center;
         }
 
-        /* =====================================================
-           PORTADA (HERO)
-        ===================================================== */
+        /* ============================================================
+           PORTADA (ROJO Y BLANCO)
+           ============================================================ */
         .hero {
             min-height: 100vh;
             text-align: center;
@@ -168,7 +167,7 @@
         @keyframes entrance {
             0% {
                 opacity: 0;
-                transform: translateY(60px) scale(0.96);
+                transform: translateY(60px) scale(0.95);
             }
             100% {
                 opacity: 1;
@@ -180,21 +179,21 @@
             font-size: 1rem;
             letter-spacing: 6px;
             text-transform: uppercase;
-            color: #d96a8f;
-            margin-bottom: 20px;
-            font-weight: 300;
+            color: #cc3344;
+            margin-bottom: 18px;
+            font-weight: 400;
         }
 
         .hero h1 {
             font-size: clamp(3.8rem, 12vw, 8.5rem);
             line-height: 0.95;
-            color: #d94d7d;
-            text-shadow: 4px 6px 0 #ffffff, 0 12px 35px rgba(210, 60, 120, 0.2);
+            color: #cc2233;
+            text-shadow: 4px 6px 0 #ffffff, 0 12px 40px rgba(200, 30, 30, 0.15);
             margin-bottom: 15px;
         }
 
         .hero h1 span {
-            color: #f5a3bc;
+            color: #ff4d6a;
             display: inline-block;
             animation: gentleFloat 3s infinite alternate;
         }
@@ -204,28 +203,28 @@
                 transform: translateY(0);
             }
             100% {
-                transform: translateY(-8px);
+                transform: translateY(-10px);
             }
         }
 
         .hero-description {
             margin: 30px auto;
-            max-width: 700px;
+            max-width: 720px;
             font-size: 1.25rem;
             line-height: 2;
-            color: #6d4b59;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 20px 30px;
+            color: #5a2a2a;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 22px 35px;
             border-radius: 60px;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 150, 180, 0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(200, 50, 50, 0.15);
         }
 
         .big-heart {
             font-size: 110px;
             display: inline-block;
             animation: heartbeat 1.6s infinite;
-            filter: drop-shadow(0 10px 25px rgba(255, 70, 130, 0.3));
+            filter: drop-shadow(0 10px 30px rgba(200, 0, 0, 0.25));
         }
 
         @keyframes heartbeat {
@@ -244,18 +243,18 @@
             }
         }
 
-        /* =====================================================
-           BOTONES PRINCIPALES (CON MENSAJES DE APOYO)
-        ===================================================== */
+        /* ============================================================
+           BOTONES PRINCIPALES (ROJOS)
+           ============================================================ */
         .main-button {
             border: none;
-            padding: 18px 42px;
+            padding: 18px 44px;
             border-radius: 60px;
-            background: linear-gradient(145deg, #e95787, #f48eab);
+            background: linear-gradient(145deg, #d62839, #ff4d6a);
             color: white;
             font-size: 1.1rem;
             cursor: pointer;
-            box-shadow: 0 12px 35px rgba(215, 70, 120, 0.3);
+            box-shadow: 0 12px 35px rgba(200, 30, 30, 0.3);
             transition: 0.3s;
             letter-spacing: 0.5px;
             font-weight: 500;
@@ -263,15 +262,15 @@
 
         .main-button:hover {
             transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 18px 45px rgba(215, 70, 120, 0.4);
+            box-shadow: 0 18px 50px rgba(200, 30, 30, 0.4);
         }
 
-        /* =====================================================
-           TÍTULOS Y TEXTOS
-        ===================================================== */
+        /* ============================================================
+           TÍTULOS (ROJOS)
+           ============================================================ */
         .section-title {
             font-size: clamp(2.6rem, 7vw, 5.2rem);
-            color: #c94f78;
+            color: #cc2233;
             margin-bottom: 20px;
             letter-spacing: -0.5px;
         }
@@ -281,16 +280,17 @@
             margin: 0 auto 20px;
             font-size: 1.2rem;
             line-height: 2;
-            color: #6b4a57;
-            background: rgba(255, 255, 255, 0.4);
-            padding: 15px 25px;
+            color: #5a2a2a;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 18px 28px;
             border-radius: 40px;
             backdrop-filter: blur(2px);
+            border: 1px solid rgba(200, 50, 50, 0.08);
         }
 
-        /* =====================================================
-           TARJETAS DE CARIÑO (BOTONES CON MENSAJES)
-        ===================================================== */
+        /* ============================================================
+           TARJETAS (ROJAS Y BLANCAS)
+           ============================================================ */
         .cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -302,10 +302,10 @@
             min-height: 200px;
             padding: 30px 20px;
             border-radius: 30px;
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(6px);
-            border: 1px solid rgba(220, 100, 140, 0.15);
-            box-shadow: 0 15px 45px rgba(180, 70, 110, 0.08);
+            border: 1px solid rgba(200, 50, 50, 0.12);
+            box-shadow: 0 15px 45px rgba(150, 30, 30, 0.06);
             cursor: pointer;
             transition: 0.4s;
             display: flex;
@@ -318,19 +318,20 @@
         }
 
         .card::after {
-            content: "💌";
+            content: "❤️";
             position: absolute;
             bottom: 10px;
             right: 15px;
-            font-size: 28px;
-            opacity: 0.15;
-            transform: rotate(10deg);
+            font-size: 30px;
+            opacity: 0.08;
+            transform: rotate(8deg);
         }
 
         .card:hover {
             transform: translateY(-12px) scale(1.01);
-            box-shadow: 0 25px 60px rgba(180, 70, 110, 0.18);
-            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 60px rgba(180, 40, 40, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #ff6b7a;
         }
 
         .card-icon {
@@ -339,20 +340,20 @@
         }
 
         .card h3 {
-            color: #bd4c73;
+            color: #aa2a3a;
             font-size: 1.3rem;
             margin-bottom: 10px;
         }
 
         .card p {
-            color: #765965;
+            color: #5a2a2a;
             line-height: 1.7;
             font-size: 1rem;
         }
 
-        /* =====================================================
-           MENSAJE OCULTO QUE APARECE AL TOCAR LAS TARJETAS
-        ===================================================== */
+        /* ============================================================
+           MENSAJE OCULTO (ROJO)
+           ============================================================ */
         .hidden-message {
             max-height: 0;
             overflow: hidden;
@@ -370,22 +371,22 @@
         .message-box {
             padding: 35px 30px;
             border-radius: 30px;
-            background: linear-gradient(145deg, #ffffff, #fff2f7);
-            border: 1px solid rgba(220, 80, 130, 0.15);
-            box-shadow: 0 20px 55px rgba(180, 60, 100, 0.1);
+            background: linear-gradient(145deg, #ffffff, #fff0f0);
+            border: 1px solid rgba(200, 50, 50, 0.12);
+            box-shadow: 0 20px 55px rgba(150, 30, 30, 0.08);
         }
 
         .message-box p {
             font-size: 1.2rem;
             line-height: 2;
-            color: #674551;
+            color: #4a1a1a;
         }
 
-        /* =====================================================
-           SECCIÓN DE APOYO INCONDICIONAL
-        ===================================================== */
+        /* ============================================================
+           SECCIÓN DE APOYO (ROJO Y BLANCO)
+           ============================================================ */
         .support-section {
-            background: linear-gradient(145deg, rgba(255, 235, 242, 0.6), rgba(255, 250, 235, 0.6));
+            background: linear-gradient(145deg, rgba(255, 235, 235, 0.6), rgba(255, 245, 245, 0.6));
         }
 
         .support-icon {
@@ -409,22 +410,23 @@
             margin: 0 auto;
             font-size: 1.25rem;
             line-height: 2.2;
-            color: #654450;
-            background: rgba(255, 255, 255, 0.3);
+            color: #4a1a1a;
+            background: rgba(255, 255, 255, 0.5);
             padding: 25px 30px;
             border-radius: 50px;
             backdrop-filter: blur(3px);
+            border: 1px solid rgba(200, 50, 50, 0.08);
         }
 
         .highlight {
-            color: #d44f7c;
+            color: #cc2233;
             font-weight: bold;
             font-size: 1.4rem;
         }
 
-        /* =====================================================
-           POLAROIDS (RECUERDOS)
-        ===================================================== */
+        /* ============================================================
+           POLAROIDS (RECUERDOS MEJORADOS)
+           ============================================================ */
         .polaroids {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -435,10 +437,11 @@
         .polaroid {
             background: white;
             padding: 15px 15px 35px;
-            box-shadow: 0 20px 45px rgba(100, 50, 70, 0.12);
+            box-shadow: 0 20px 45px rgba(100, 30, 30, 0.10);
             transform: rotate(-2deg);
             transition: 0.4s;
             border-radius: 8px 8px 20px 20px;
+            border: 1px solid rgba(200, 50, 50, 0.06);
         }
 
         .polaroid:nth-child(2) {
@@ -450,7 +453,7 @@
 
         .polaroid:hover {
             transform: rotate(0deg) translateY(-12px) scale(1.03);
-            box-shadow: 0 30px 60px rgba(100, 50, 70, 0.2);
+            box-shadow: 0 30px 60px rgba(150, 30, 30, 0.15);
         }
 
         .polaroid-image {
@@ -458,49 +461,50 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(145deg, #ffe0eb, #fff1d8);
+            background: linear-gradient(145deg, #ffe0e0, #fff5f0);
             border-radius: 10px;
             font-size: 80px;
         }
 
         .polaroid p {
             margin-top: 18px;
-            color: #785462;
+            color: #4a1a1a;
             font-size: 1rem;
             font-style: italic;
+            font-weight: 500;
         }
 
-        /* =====================================================
-           CARTA (MENSAJE PROFUNDO)
-        ===================================================== */
+        /* ============================================================
+           CARTA (ROJA)
+           ============================================================ */
         .letter {
             margin-top: 50px;
             padding: clamp(35px, 7vw, 75px);
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(4px);
             border-radius: 40px;
             text-align: left;
-            box-shadow: 0 30px 90px rgba(160, 60, 100, 0.08);
-            border: 1px solid rgba(220, 100, 140, 0.1);
+            box-shadow: 0 30px 90px rgba(150, 30, 30, 0.06);
+            border: 1px solid rgba(200, 50, 50, 0.08);
         }
 
         .letter p {
             font-size: 1.2rem;
             line-height: 2.2;
-            color: #654450;
+            color: #4a1a1a;
             margin-bottom: 25px;
         }
 
         .letter .highlight {
-            color: #d64e7b;
+            color: #cc2233;
             font-weight: bold;
         }
 
-        /* =====================================================
-           OJITOS (SECCIÓN ESPECIAL)
-        ===================================================== */
+        /* ============================================================
+           OJITOS (ROJO)
+           ============================================================ */
         .eyes-section {
-            background: linear-gradient(145deg, #fff0f5, #fff8ed);
+            background: linear-gradient(145deg, #fff0f0, #fff8f5);
         }
 
         .eyes {
@@ -521,7 +525,7 @@
 
         .eyes-title {
             font-size: clamp(2.8rem, 8vw, 6rem);
-            color: #cf5079;
+            color: #cc2233;
             margin-bottom: 25px;
         }
 
@@ -530,31 +534,32 @@
             margin: 0 auto;
             font-size: 1.3rem;
             line-height: 2.2;
-            color: #674551;
-            background: rgba(255, 255, 255, 0.3);
+            color: #4a1a1a;
+            background: rgba(255, 255, 255, 0.4);
             padding: 25px 30px;
             border-radius: 50px;
             backdrop-filter: blur(2px);
+            border: 1px solid rgba(200, 50, 50, 0.06);
         }
 
-        /* =====================================================
-           FINAL (PROMESA DE ESTAR SIEMPRE)
-        ===================================================== */
+        /* ============================================================
+           FINAL (ROJO Y BLANCO)
+           ============================================================ */
         .final {
             min-height: 100vh;
-            background: radial-gradient(circle at center, #ffe2ed, #fff5f8 60%, #fff);
+            background: radial-gradient(circle at center, #ffe6e6, #fff5f5 60%, #fff);
             text-align: center;
         }
 
         .final-heart {
             font-size: clamp(120px, 22vw, 200px);
             animation: heartbeat 1.6s infinite;
-            filter: drop-shadow(0 20px 40px rgba(220, 60, 110, 0.25));
+            filter: drop-shadow(0 20px 40px rgba(200, 30, 30, 0.2));
         }
 
         .final h2 {
             font-size: clamp(3.2rem, 10vw, 7rem);
-            color: #c94472;
+            color: #cc2233;
             line-height: 1.1;
             margin-top: 25px;
         }
@@ -564,24 +569,25 @@
             margin: 30px auto;
             font-size: 1.3rem;
             line-height: 2.2;
-            color: #6d4a57;
-            background: rgba(255, 255, 255, 0.4);
+            color: #4a1a1a;
+            background: rgba(255, 255, 255, 0.5);
             padding: 25px 30px;
             border-radius: 60px;
             backdrop-filter: blur(2px);
+            border: 1px solid rgba(200, 50, 50, 0.06);
         }
 
         .signature {
             margin-top: 45px;
-            color: #d15a82;
+            color: #cc2233;
             font-style: italic;
             font-size: 1.4rem;
             letter-spacing: 1px;
         }
 
-        /* =====================================================
-           REVEAL (ANIMACIÓN AL SCROLL)
-        ===================================================== */
+        /* ============================================================
+           REVEAL
+           ============================================================ */
         .reveal {
             opacity: 0;
             transform: translateY(70px);
@@ -593,9 +599,9 @@
             transform: translateY(0);
         }
 
-        /* =====================================================
-           BOTONES DE MENSAJES DE CARIÑO (NUEVOS)
-        ===================================================== */
+        /* ============================================================
+           BOTONES DE CARIÑO (ROJOS)
+           ============================================================ */
         .cuddle-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -605,16 +611,16 @@
         }
 
         .cuddle-btn {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(220, 100, 140, 0.25);
+            border: 1px solid rgba(200, 50, 50, 0.2);
             padding: 14px 28px;
             border-radius: 50px;
             font-size: 1.1rem;
-            color: #5a3b47;
+            color: #4a1a1a;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 6px 20px rgba(180, 70, 110, 0.08);
+            box-shadow: 0 6px 20px rgba(150, 30, 30, 0.06);
             font-weight: 500;
             display: inline-flex;
             align-items: center;
@@ -624,17 +630,17 @@
         .cuddle-btn:hover {
             transform: translateY(-6px) scale(1.04);
             background: white;
-            box-shadow: 0 12px 35px rgba(180, 70, 110, 0.15);
-            border-color: #f48eab;
+            box-shadow: 0 12px 35px rgba(180, 40, 40, 0.12);
+            border-color: #ff6b7a;
         }
 
         .cuddle-btn .emoji {
             font-size: 24px;
         }
 
-        /* =====================================================
+        /* ============================================================
            RESPONSIVE
-        ===================================================== */
+           ============================================================ */
         @media (max-width: 750px) {
             .cards {
                 grid-template-columns: 1fr;
@@ -667,66 +673,66 @@
 </head>
 <body>
 
-    <!-- =====================================================
+    <!-- ============================================================
     FONDO
-    ===================================================== -->
+    ============================================================ -->
     <div class="background"></div>
     <div class="lights" id="lights"></div>
 
-    <!-- =====================================================
+    <!-- ============================================================
     BOTÓN DE MÚSICA (RESPETADO)
-    ===================================================== -->
+    ============================================================ -->
     <button class="music-button" id="musicButton" onclick="toggleMusic()">♪</button>
     <audio id="music" loop>
         <source src="Asi Como Tu.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- =====================================================
+    <!-- ============================================================
     PORTADA
-    ===================================================== -->
+    ============================================================ -->
     <section class="hero">
         <div class="hero-content">
-            <div class="small-title">Hecho con el corazón</div>
+            <div class="small-title">Con todo mi corazón</div>
             <div class="big-heart">❤️</div>
             <h1>Para la <span>niña</span> de mis ojos</h1>
             <p class="hero-description">
-                Hay personas que llegan y dejan huella.<br>
-                Tú eres esa persona que quiero tener cerca siempre.
+                Eres esa persona que ilumina mis días.<br />
+                Y quiero que sepas que siempre, siempre, estaré aquí para ti.
             </p>
-            <button class="main-button" onclick="goTo('reasons')">Quiero decirte algo 💕</button>
+            <button class="main-button" onclick="goTo('reasons')">Abrir mi corazón 💌</button>
         </div>
     </section>
 
-    <!-- =====================================================
+    <!-- ============================================================
     RAZONES (TARJETAS CON MENSAJES DE CARIÑO)
-    ===================================================== -->
+    ============================================================ -->
     <section id="reasons">
         <div class="container reveal">
-            <h2 class="section-title">Cosas que me encantan de ti</h2>
+            <h2 class="section-title">Cosas que amo de ti</h2>
             <p class="section-subtitle">
-                Cada detalle, cada palabra, cada gesto. Esto es solo un poco de lo que siento.
+                No son solo palabras. Cada una de estas razones late con fuerza.
             </p>
 
             <div class="cards">
                 <div class="card" onclick="openCard('heart')">
-                    <div class="card-icon">💗</div>
-                    <h3>Tu esencia</h3>
-                    <p>Esa luz que llevas dentro y que hace que todo sea mejor.</p>
+                    <div class="card-icon">❤️</div>
+                    <h3>Tu alma</h3>
+                    <p>Esa luz única que llevas dentro y que enamora sin esfuerzo.</p>
                 </div>
                 <div class="card" onclick="openCard('smile')">
                     <div class="card-icon">😊</div>
                     <h3>Tu sonrisa</h3>
-                    <p>La que ilumina incluso los días más grises.</p>
+                    <p>La que desarma cualquier tormenta y llena todo de calma.</p>
                 </div>
                 <div class="card" onclick="openCard('talk')">
                     <div class="card-icon">💬</div>
-                    <h3>Hablar contigo</h3>
-                    <p>De lo profundo o de tonterías, siempre es especial.</p>
+                    <h3>Tus palabras</h3>
+                    <p>Cada conversación contigo es un tesoro que atesoro.</p>
                 </div>
                 <div class="card" onclick="openCard('you')">
-                    <div class="card-icon">🌷</div>
+                    <div class="card-icon">🌹</div>
                     <h3>Simplemente tú</h3>
-                    <p>Sin filtros, sin máscaras. Tal como eres.</p>
+                    <p>Sin filtros, sin máscaras. Tal como eres, eres perfecta.</p>
                 </div>
             </div>
 
@@ -738,122 +744,122 @@
         </div>
     </section>
 
-    <!-- =====================================================
+    <!-- ============================================================
     APOYO INCONDICIONAL (SIEMPRE ESTARÉ PARA TI)
-    ===================================================== -->
+    ============================================================ -->
     <section class="support-section">
         <div class="container reveal">
             <div class="support-icon">🤗</div>
             <h2 class="section-title">Siempre, en cada paso</h2>
             <p class="support-text">
-                <span class="highlight">Nunca estarás sola.</span><br><br>
-                Si necesitas un abrazo, aquí estaré.<br>
-                Si necesitas alguien que escuche, aquí estaré.<br>
-                Si necesitas que te recuerde lo increíble que eres, aquí estaré.<br><br>
-                <span class="highlight">Siempre.</span>
+                <span class="highlight">Nunca, nunca estarás sola.</span><br /><br />
+                Si necesitas un abrazo, aquí estaré.<br />
+                Si necesitas una mano, aquí estaré.<br />
+                Si necesitas que te recuerde lo valiosa que eres, aquí estaré.<br /><br />
+                <span class="highlight">Siempre, sin condiciones.</span>
             </p>
             <!-- Botones con mensajes de cariño -->
             <div class="cuddle-buttons">
-                <button class="cuddle-btn" onclick="showCuddleMessage('abrazo')"><span class="emoji">🤗</span> Un abrazo</button>
-                <button class="cuddle-btn" onclick="showCuddleMessage('animo')"><span class="emoji">🌟</span> Eres fuerte</button>
+                <button class="cuddle-btn" onclick="showCuddleMessage('abrazo')"><span class="emoji">🤗</span> Un abrazo fuerte</button>
+                <button class="cuddle-btn" onclick="showCuddleMessage('animo')"><span class="emoji">🌟</span> Eres increíble</button>
                 <button class="cuddle-btn" onclick="showCuddleMessage('siempre')"><span class="emoji">💖</span> Siempre contigo</button>
                 <button class="cuddle-btn" onclick="showCuddleMessage('orgullo')"><span class="emoji">🏅</span> Estoy orgulloso</button>
-                <button class="cuddle-btn" onclick="showCuddleMessage('luz')"><span class="emoji">✨</span> Eres luz</button>
+                <button class="cuddle-btn" onclick="showCuddleMessage('luz')"><span class="emoji">✨</span> Eres mi luz</button>
             </div>
         </div>
     </section>
 
-    <!-- =====================================================
-    RECUERDOS (POLAROIDS)
-    ===================================================== -->
+    <!-- ============================================================
+    RECUERDOS (POLAROIDS MEJORADOS)
+    ============================================================ -->
     <section>
         <div class="container reveal">
-            <h2 class="section-title">Recuerdos que quiero seguir creando</h2>
-            <p class="section-subtitle">No importa si son grandes o pequeños, contigo todo es especial.</p>
+            <h2 class="section-title">Recuerdos que atesoro</h2>
+            <p class="section-subtitle">Momentos que guardo en mi corazón y que quiero seguir viviendo contigo.</p>
             <div class="polaroids">
                 <div class="polaroid">
-                    <div class="polaroid-image">☕</div>
-                    <p>Charlas eternas y risas sinceras.</p>
-                </div>
-                <div class="polaroid">
-                    <div class="polaroid-image">😂</div>
-                    <p>Reír hasta que duela el alma.</p>
-                </div>
-                <div class="polaroid">
                     <div class="polaroid-image">🌅</div>
-                    <p>Atardeceres que se vuelven inolvidables.</p>
+                    <p>"Tus ojos al atardecer, cuando el sol se despide y todo se vuelve oro."</p>
+                </div>
+                <div class="polaroid">
+                    <div class="polaroid-image">🎶</div>
+                    <p>"Esa canción que sonaba cuando reías sin parar, y yo no podía dejar de mirarte."</p>
+                </div>
+                <div class="polaroid">
+                    <div class="polaroid-image">☕</div>
+                    <p>"Las mañanas lentas, con café y conversaciones que no querían terminar."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- =====================================================
+    <!-- ============================================================
     CARTA PROFUNDA
-    ===================================================== -->
+    ============================================================ -->
     <section>
         <div class="container reveal">
             <h2 class="section-title">Si pudiera decirte todo...</h2>
             <div class="letter">
-                <p>Me gustas muchísimo, pero no solo por fuera. Me gusta tu forma de ser, tu manera de ver el mundo, tu risa, tus silencios, tus ganas de seguir adelante.</p>
-                <p>Quiero verte cumplir tus sueños, uno por uno. Quiero estar ahí cuando logres eso que tanto deseas, y también cuando las cosas no salgan como esperabas.</p>
-                <p><span class="highlight">Porque no quiero una versión perfecta de ti. Quiero a ti, con tus luces y tus sombras, con tus alegrías y tus días grises.</span></p>
-                <p>Y quiero que sepas que, pase lo que pase, <span class="highlight">siempre tendrás un lugar en mi corazón y un hombro donde apoyarte.</span></p>
+                <p>Me gustas de una manera que no sé explicar. No es solo tu sonrisa o tu mirada, es tu esencia, tu forma de hacer que el mundo sea más bonito.</p>
+                <p>Quiero verte cumplir cada uno de tus sueños. Quiero estar a tu lado cuando celebres tus logros y también cuando necesites un hombro en el que apoyarte.</p>
+                <p><span class="highlight">No necesito una versión perfecta de ti. Necesito a la persona real, auténtica, que eres tú.</span></p>
+                <p>Porque pase lo que pase, <span class="highlight">siempre tendrás un lugar en mi corazón</span> y alguien que cree en ti incluso cuando tú dudes.</p>
             </div>
         </div>
     </section>
 
-    <!-- =====================================================
+    <!-- ============================================================
     NIÑA DE MIS OJOS
-    ===================================================== -->
+    ============================================================ -->
     <section class="eyes-section">
         <div class="container reveal">
             <div class="eyes">👀❤️</div>
             <h2 class="eyes-title">La niña de mis ojos</h2>
             <p class="eyes-text">
-                Porque eres de esas personas que no pasan desapercibidas.<br>
-                Porque con solo un mensaje tuyo, mi día mejora.<br>
-                Porque quiero seguir conociéndote, cuidándote, y haciéndote sonreír.<br><br>
+                Porque eres de esas personas que marcan la diferencia.<br />
+                Porque con solo pensar en ti, todo se ilumina.<br />
+                Porque quiero cuidarte, escucharte y hacerte sonreír cada día.<br /><br />
                 <strong>Sí, eres mi niña de mis ojos. Y siempre lo serás.</strong>
             </p>
         </div>
     </section>
 
-    <!-- =====================================================
+    <!-- ============================================================
     ÚLTIMO MENSAJE ANTES DEL FINAL
-    ===================================================== -->
+    ============================================================ -->
     <section>
         <div class="container reveal">
             <h2 class="section-title">Antes de irte...</h2>
             <p class="section-subtitle">
-                Cierra los ojos, respira hondo y recuerda que hay alguien que te quiere ver feliz.
+                Cierra los ojos, respira hondo y recuerda que hay alguien que te quiere ver feliz, siempre.
             </p>
-            <br>
+            <br />
             <button class="main-button" onclick="finalMessage()">Abrir mi último mensaje ❤️</button>
         </div>
     </section>
 
-    <!-- =====================================================
+    <!-- ============================================================
     FINAL (PROMESA ETERNA)
-    ===================================================== -->
+    ============================================================ -->
     <section class="final" id="finalSection">
         <div class="container">
             <div class="final-heart">❤️</div>
-            <h2>Te quiero mucho, <br> Mi Ojitos</h2>
+            <h2>Te quiero mucho, <br /> Mi Ojitos</h2>
             <p>
-                Me hace feliz verte sonreír.<br>
-                Me hace feliz verte crecer.<br>
-                Me hace feliz verte cumplir tus sueños.<br><br>
-                <strong>Y si algún día olvidas lo increíble que eres,<br>
-                aquí estaré para recordártelo.</strong>
+                Me hace feliz verte sonreír.<br />
+                Me hace feliz verte crecer.<br />
+                Me hace feliz verte cumplir tus sueños.<br /><br />
+                <strong>Y si algún día olvidas lo increíble que eres,<br />
+                aquí estaré para recordártelo, una y otra vez.</strong>
             </p>
-            <div class="signature">Con todo mi cariño, siempre ❤️</div>
+            <div class="signature">Con todo mi amor, siempre ❤️</div>
         </div>
     </section>
 
     <script>
-        /* =====================================================
+        /* ============================================================
            MÚSICA
-        ===================================================== */
+           ============================================================ */
         const music = document.getElementById("music");
         const musicButton = document.getElementById("musicButton");
         let playing = false;
@@ -873,16 +879,16 @@
             }
         }
 
-        /* =====================================================
+        /* ============================================================
            NAVEGAR A SECCIÓN
-        ===================================================== */
+           ============================================================ */
         function goTo(id) {
             document.getElementById(id).scrollIntoView({ behavior: "smooth" });
         }
 
-        /* =====================================================
+        /* ============================================================
            LUCES FLOTANTES
-        ===================================================== */
+           ============================================================ */
         const lightsContainer = document.getElementById("lights");
         for (let i = 0; i < 65; i++) {
             const light = document.createElement("div");
@@ -894,13 +900,13 @@
             lightsContainer.appendChild(light);
         }
 
-        /* =====================================================
+        /* ============================================================
            PÉTALOS (CAEN CONTINUAMENTE)
-        ===================================================== */
+           ============================================================ */
         function createPetal() {
             const petal = document.createElement("div");
             petal.className = "petal";
-            const flowers = ["🌸", "🌷", "🌺", "💕", "❤️", "✨"];
+            const flowers = ["🌸", "🌷", "🌺", "❤️", "🍁", "🌹", "♥️"];
             petal.textContent = flowers[Math.floor(Math.random() * flowers.length)];
             petal.style.left = Math.random() * 100 + "%";
             petal.style.fontSize = 14 + Math.random() * 22 + "px";
@@ -910,14 +916,14 @@
         }
         setInterval(createPetal, 900);
 
-        /* =====================================================
+        /* ============================================================
            TARJETAS INTERACTIVAS (MENSAJES DE CARIÑO)
-        ===================================================== */
+           ============================================================ */
         const cardMessages = {
-            heart: "Tu esencia es única. Me encanta cómo eres, con tus virtudes y tus pequeñas locuras. Eres especial. ❤️",
-            smile: "Tu sonrisa es de esas que pueden cambiar el día de cualquiera. Me encanta ser parte de las razones por las que sonríes. 😊",
-            talk: "Hablar contigo es como encontrar un oasis en medio del desierto. Siempre vale la pena. 💬",
-            you: "No necesitas hacer nada extraordinario para gustarme. Simplemente tú, tal como eres, ya es suficiente. 🌷"
+            heart: "Tu alma es de esas que dejan huella. Me encanta cada parte de ti, incluso las que tú crees que no son perfectas. Eres maravillosa. ❤️",
+            smile: "Tu sonrisa es un regalo. Cuando sonríes, todo a tu alrededor se vuelve más bonito. No dejes de hacerlo nunca. 😊",
+            talk: "Cada palabra tuya es especial. Me encanta escucharte, aprender de ti y perderme en tus historias. 💬",
+            you: "No necesitas cambiar nada. Tal como eres, con tus virtudes y tus sombras, eres perfecta para mí. 🌹"
         };
 
         function openCard(type) {
@@ -929,33 +935,30 @@
             createPetal();
         }
 
-        /* =====================================================
+        /* ============================================================
            BOTONES DE CARIÑO (MENSAJES ESPECIALES)
-        ===================================================== */
+           ============================================================ */
         const cuddleMessages = {
-            abrazo: "Te mando un abrazo enorme, de esos que aprietan y dicen 'estoy aquí'. 🤗",
-            animo: "Eres más fuerte de lo que crees. Puedes con todo, y estoy aquí para apoyarte. 🌟",
-            siempre: "Pase lo que pase, siempre estaré a tu lado. No lo olvides. 💖",
-            orgullo: "Estoy tan orgulloso de ti, de cada paso que das, de cada sueño que persigues. 🏅",
-            luz: "Eres luz en la vida de muchos, pero especialmente en la mía. Brilla siempre. ✨"
+            abrazo: "Te abrazo fuerte, de esos que duran y dicen 'estoy aquí, siempre'. 🤗",
+            animo: "Eres más fuerte de lo que imaginas. Puedes con todo, y yo estoy a tu lado. 🌟",
+            siempre: "Pase lo que pase, siempre serás mi prioridad. Siempre. 💖",
+            orgullo: "Cada día que pasa, me siento más orgulloso de ti. Eres increíble. 🏅",
+            luz: "Eres la luz que ilumina mis días. Nunca dejes de brillar. ✨"
         };
 
         function showCuddleMessage(type) {
-            const msg = cuddleMessages[type];
-            // Mostrar en el área de mensajes ocultos (reutilizamos)
             const box = document.getElementById("cardMessage");
             const text = document.getElementById("cardMessageText");
-            text.textContent = msg;
+            text.textContent = cuddleMessages[type];
             box.classList.add("open");
-            // Lluvia de pétalos para celebrar
             for (let i = 0; i < 12; i++) {
                 setTimeout(createPetal, i * 120);
             }
         }
 
-        /* =====================================================
+        /* ============================================================
            REVEAL AL SCROLL
-        ===================================================== */
+           ============================================================ */
         const revealElements = document.querySelectorAll(".reveal");
 
         function revealOnScroll() {
@@ -969,42 +972,42 @@
         window.addEventListener("scroll", revealOnScroll);
         revealOnScroll();
 
-        /* =====================================================
+        /* ============================================================
            MENSAJE FINAL (CON MUCHOS PÉTALOS)
-        ===================================================== */
+           ============================================================ */
         function finalMessage() {
-            // Lluvia intensa de pétalos
-            for (let i = 0; i < 40; i++) {
-                setTimeout(createPetal, i * 90);
+            for (let i = 0; i < 45; i++) {
+                setTimeout(createPetal, i * 80);
             }
             setTimeout(() => {
                 document.getElementById("finalSection").scrollIntoView({ behavior: "smooth" });
             }, 500);
         }
 
-        /* =====================================================
+        /* ============================================================
            CORAZONES AL HACER CLICK (EFECTO)
-        ===================================================== */
+           ============================================================ */
         document.addEventListener("click", function(e) {
             if (e.target.tagName === "BUTTON") return;
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 5; i++) {
                 const heart = document.createElement("div");
                 heart.textContent = "❤️";
                 heart.style.position = "fixed";
-                heart.style.left = (e.clientX + (Math.random() - 0.5) * 80) + "px";
-                heart.style.top = (e.clientY + (Math.random() - 0.5) * 80) + "px";
+                heart.style.left = (e.clientX + (Math.random() - 0.5) * 90) + "px";
+                heart.style.top = (e.clientY + (Math.random() - 0.5) * 90) + "px";
                 heart.style.pointerEvents = "none";
                 heart.style.zIndex = "2000";
-                heart.style.fontSize = (16 + Math.random() * 20) + "px";
-                heart.style.filter = "drop-shadow(0 4px 12px rgba(255,0,80,0.3))";
+                heart.style.fontSize = (16 + Math.random() * 22) + "px";
+                heart.style.color = "#cc2233";
+                heart.style.filter = "drop-shadow(0 4px 16px rgba(200,0,0,0.3))";
                 document.body.appendChild(heart);
-                const x = (Math.random() - 0.5) * 160;
-                const y = -100 - Math.random() * 140;
+                const x = (Math.random() - 0.5) * 180;
+                const y = -120 - Math.random() * 160;
                 heart.animate([
                     { transform: "translate(0,0) scale(1)", opacity: 1 },
-                    { transform: `translate(${x}px, ${y}px) scale(1.8)`, opacity: 0 }
-                ], { duration: 1200 + Math.random() * 500, easing: "ease-out" });
-                setTimeout(() => heart.remove(), 1800);
+                    { transform: `translate(${x}px, ${y}px) scale(2)`, opacity: 0 }
+                ], { duration: 1300 + Math.random() * 500, easing: "ease-out" });
+                setTimeout(() => heart.remove(), 1900);
             }
         });
     </script>
