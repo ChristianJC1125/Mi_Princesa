@@ -1,1004 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Para ti, siempre ❤️</title>
-    <style>
-        /* ============================================================
-           CONFIGURACIÓN GENERAL - ROJO Y BLANCO
-           ============================================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: #fff5f5;
-            color: #4a1a1a;
-            overflow-x: hidden;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-        /* ============================================================
-           FONDO ROJO Y BLANCO CON DEGRADADO
-           ============================================================ */
-        .background {
-            position: fixed;
-            inset: 0;
-            z-index: -10;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(255, 60, 60, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 80% 70%, rgba(255, 200, 200, 0.3) 0%, transparent 50%),
-                linear-gradient(145deg, #fff8f8, #fff0f0, #fffafa);
-        }
-
-        /* ============================================================
-           LUCES FLOTANTES ROJAS
-           ============================================================ */
-        .lights {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: -5;
-        }
-
-        .light {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            background: #ff4d4d;
-            border-radius: 50%;
-            box-shadow: 0 0 18px #ff8080, 0 0 40px #ffb3b3;
-            animation: floatLight 7s infinite ease-in-out;
-        }
-
-        @keyframes floatLight {
-            0% {
-                transform: translateY(0px) scale(0.7);
-                opacity: 0.2;
-            }
-            50% {
-                transform: translateY(-70px) scale(1.3);
-                opacity: 0.9;
-            }
-            100% {
-                transform: translateY(0px) scale(0.7);
-                opacity: 0.2;
-            }
-        }
-
-        /* ============================================================
-           PÉTALOS ROJOS Y BLANCOS
-           ============================================================ */
-        .petal {
-            position: fixed;
-            top: -40px;
-            font-size: 24px;
-            pointer-events: none;
-            z-index: 20;
-            animation: falling linear forwards;
-            filter: drop-shadow(0 4px 10px rgba(200, 0, 0, 0.2));
-        }
-
-        @keyframes falling {
-            0% {
-                transform: translateY(-30px) rotate(0deg) scale(0.8);
-                opacity: 0;
-            }
-            15% {
-                opacity: 1;
-                transform: translateY(20px) rotate(20deg) scale(1);
-            }
-            100% {
-                transform: translateY(110vh) translateX(130px) rotate(420deg);
-                opacity: 0;
-            }
-        }
-
-        /* ============================================================
-           BOTÓN DE MÚSICA (ROJO)
-           ============================================================ */
-        .music-button {
-            position: fixed;
-            top: 22px;
-            right: 22px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.9);
-            background: linear-gradient(145deg, #e63946, #ff6b7a);
-            color: white;
-            font-size: 26px;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 8px 35px rgba(200, 30, 30, 0.4);
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .music-button:hover {
-            transform: scale(1.12) rotate(8deg);
-            box-shadow: 0 12px 45px rgba(200, 30, 30, 0.6);
-        }
-
-        /* ============================================================
-           SECCIONES
-           ============================================================ */
-        section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 90px 20px;
-            position: relative;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            text-align: center;
-        }
-
-        /* ============================================================
-           PORTADA (ROJO Y BLANCO)
-           ============================================================ */
-        .hero {
-            min-height: 100vh;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            animation: entrance 2s ease;
-        }
-
-        @keyframes entrance {
-            0% {
-                opacity: 0;
-                transform: translateY(60px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .small-title {
-            font-size: 1rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: #cc3344;
-            margin-bottom: 18px;
-            font-weight: 400;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.8rem, 12vw, 8.5rem);
-            line-height: 0.95;
-            color: #cc2233;
-            text-shadow: 4px 6px 0 #ffffff, 0 12px 40px rgba(200, 30, 30, 0.15);
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: #ff4d6a;
-            display: inline-block;
-            animation: gentleFloat 3s infinite alternate;
-        }
-
-        @keyframes gentleFloat {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .hero-description {
-            margin: 30px auto;
-            max-width: 720px;
-            font-size: 1.25rem;
-            line-height: 2;
-            color: #5a2a2a;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 22px 35px;
-            border-radius: 60px;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(200, 50, 50, 0.15);
-        }
-
-        .big-heart {
-            font-size: 110px;
-            display: inline-block;
-            animation: heartbeat 1.6s infinite;
-            filter: drop-shadow(0 10px 30px rgba(200, 0, 0, 0.25));
-        }
-
-        @keyframes heartbeat {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            14% {
-                transform: scale(1.25);
-            }
-            28% {
-                transform: scale(1);
-            }
-            42% {
-                transform: scale(1.15);
-            }
-        }
-
-        /* ============================================================
-           BOTONES PRINCIPALES (ROJOS)
-           ============================================================ */
-        .main-button {
-            border: none;
-            padding: 18px 44px;
-            border-radius: 60px;
-            background: linear-gradient(145deg, #d62839, #ff4d6a);
-            color: white;
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 12px 35px rgba(200, 30, 30, 0.3);
-            transition: 0.3s;
-            letter-spacing: 0.5px;
-            font-weight: 500;
-        }
-
-        .main-button:hover {
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 18px 50px rgba(200, 30, 30, 0.4);
-        }
-
-        /* ============================================================
-           TÍTULOS (ROJOS)
-           ============================================================ */
-        .section-title {
-            font-size: clamp(2.6rem, 7vw, 5.2rem);
-            color: #cc2233;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-        }
-
-        .section-subtitle {
-            max-width: 780px;
-            margin: 0 auto 20px;
-            font-size: 1.2rem;
-            line-height: 2;
-            color: #5a2a2a;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 18px 28px;
-            border-radius: 40px;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(200, 50, 50, 0.08);
-        }
-
-        /* ============================================================
-           TARJETAS (ROJAS Y BLANCAS)
-           ============================================================ */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-top: 50px;
-        }
-
-        .card {
-            min-height: 200px;
-            padding: 30px 20px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(200, 50, 50, 0.12);
-            box-shadow: 0 15px 45px rgba(150, 30, 30, 0.06);
-            cursor: pointer;
-            transition: 0.4s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::after {
-            content: "❤️";
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            font-size: 30px;
-            opacity: 0.08;
-            transform: rotate(8deg);
-        }
-
-        .card:hover {
-            transform: translateY(-12px) scale(1.01);
-            box-shadow: 0 25px 60px rgba(180, 40, 40, 0.15);
-            background: rgba(255, 255, 255, 0.95);
-            border-color: #ff6b7a;
-        }
-
-        .card-icon {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #aa2a3a;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #5a2a2a;
-            line-height: 1.7;
-            font-size: 1rem;
-        }
-
-        /* ============================================================
-           MENSAJE OCULTO (ROJO)
-           ============================================================ */
-        .hidden-message {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.9s ease, opacity 0.8s ease, margin 0.6s ease;
-            margin-top: 0;
-        }
-
-        .hidden-message.open {
-            max-height: 600px;
-            opacity: 1;
-            margin-top: 40px;
-        }
-
-        .message-box {
-            padding: 35px 30px;
-            border-radius: 30px;
-            background: linear-gradient(145deg, #ffffff, #fff0f0);
-            border: 1px solid rgba(200, 50, 50, 0.12);
-            box-shadow: 0 20px 55px rgba(150, 30, 30, 0.08);
-        }
-
-        .message-box p {
-            font-size: 1.2rem;
-            line-height: 2;
-            color: #4a1a1a;
-        }
-
-        /* ============================================================
-           SECCIÓN DE APOYO (ROJO Y BLANCO)
-           ============================================================ */
-        .support-section {
-            background: linear-gradient(145deg, rgba(255, 235, 235, 0.6), rgba(255, 245, 245, 0.6));
-        }
-
-        .support-icon {
-            font-size: 95px;
-            margin-bottom: 20px;
-            animation: trophyFloat 3s infinite ease-in-out;
-        }
-
-        @keyframes trophyFloat {
-            0%,
-            100% {
-                transform: translateY(0) rotate(-2deg);
-            }
-            50% {
-                transform: translateY(-18px) rotate(2deg);
-            }
-        }
-
-        .support-text {
-            max-width: 780px;
-            margin: 0 auto;
-            font-size: 1.25rem;
-            line-height: 2.2;
-            color: #4a1a1a;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 25px 30px;
-            border-radius: 50px;
-            backdrop-filter: blur(3px);
-            border: 1px solid rgba(200, 50, 50, 0.08);
-        }
-
-        .highlight {
-            color: #cc2233;
-            font-weight: bold;
-            font-size: 1.4rem;
-        }
-
-        /* ============================================================
-           POLAROIDS (RECUERDOS MEJORADOS)
-           ============================================================ */
-        .polaroids {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .polaroid {
-            background: white;
-            padding: 15px 15px 35px;
-            box-shadow: 0 20px 45px rgba(100, 30, 30, 0.10);
-            transform: rotate(-2deg);
-            transition: 0.4s;
-            border-radius: 8px 8px 20px 20px;
-            border: 1px solid rgba(200, 50, 50, 0.06);
-        }
-
-        .polaroid:nth-child(2) {
-            transform: rotate(4deg);
-        }
-        .polaroid:nth-child(3) {
-            transform: rotate(-3deg);
-        }
-
-        .polaroid:hover {
-            transform: rotate(0deg) translateY(-12px) scale(1.03);
-            box-shadow: 0 30px 60px rgba(150, 30, 30, 0.15);
-        }
-
-        .polaroid-image {
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(145deg, #ffe0e0, #fff5f0);
-            border-radius: 10px;
-            font-size: 80px;
-        }
-
-        .polaroid p {
-            margin-top: 18px;
-            color: #4a1a1a;
-            font-size: 1rem;
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        /* ============================================================
-           CARTA (ROJA)
-           ============================================================ */
-        .letter {
-            margin-top: 50px;
-            padding: clamp(35px, 7vw, 75px);
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(4px);
-            border-radius: 40px;
-            text-align: left;
-            box-shadow: 0 30px 90px rgba(150, 30, 30, 0.06);
-            border: 1px solid rgba(200, 50, 50, 0.08);
-        }
-
-        .letter p {
-            font-size: 1.2rem;
-            line-height: 2.2;
-            color: #4a1a1a;
-            margin-bottom: 25px;
-        }
-
-        .letter .highlight {
-            color: #cc2233;
-            font-weight: bold;
-        }
-
-        /* ============================================================
-           OJITOS (ROJO)
-           ============================================================ */
-        .eyes-section {
-            background: linear-gradient(145deg, #fff0f0, #fff8f5);
-        }
-
-        .eyes {
-            font-size: 100px;
-            margin-bottom: 20px;
-            animation: eyesFloat 4s infinite ease-in-out;
-        }
-
-        @keyframes eyesFloat {
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-15px) scale(1.05);
-            }
-        }
-
-        .eyes-title {
-            font-size: clamp(2.8rem, 8vw, 6rem);
-            color: #cc2233;
-            margin-bottom: 25px;
-        }
-
-        .eyes-text {
-            max-width: 750px;
-            margin: 0 auto;
-            font-size: 1.3rem;
-            line-height: 2.2;
-            color: #4a1a1a;
-            background: rgba(255, 255, 255, 0.4);
-            padding: 25px 30px;
-            border-radius: 50px;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(200, 50, 50, 0.06);
-        }
-
-        /* ============================================================
-           FINAL (ROJO Y BLANCO)
-           ============================================================ */
-        .final {
-            min-height: 100vh;
-            background: radial-gradient(circle at center, #ffe6e6, #fff5f5 60%, #fff);
-            text-align: center;
-        }
-
-        .final-heart {
-            font-size: clamp(120px, 22vw, 200px);
-            animation: heartbeat 1.6s infinite;
-            filter: drop-shadow(0 20px 40px rgba(200, 30, 30, 0.2));
-        }
-
-        .final h2 {
-            font-size: clamp(3.2rem, 10vw, 7rem);
-            color: #cc2233;
-            line-height: 1.1;
-            margin-top: 25px;
-        }
-
-        .final p {
-            max-width: 750px;
-            margin: 30px auto;
-            font-size: 1.3rem;
-            line-height: 2.2;
-            color: #4a1a1a;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 25px 30px;
-            border-radius: 60px;
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(200, 50, 50, 0.06);
-        }
-
-        .signature {
-            margin-top: 45px;
-            color: #cc2233;
-            font-style: italic;
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-        }
-
-        /* ============================================================
-           REVEAL
-           ============================================================ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(70px);
-            transition: 1.3s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ============================================================
-           BOTONES DE CARIÑO (ROJOS)
-           ============================================================ */
-        .cuddle-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 35px;
-        }
-
-        .cuddle-btn {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(200, 50, 50, 0.2);
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            color: #4a1a1a;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 6px 20px rgba(150, 30, 30, 0.06);
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cuddle-btn:hover {
-            transform: translateY(-6px) scale(1.04);
-            background: white;
-            box-shadow: 0 12px 35px rgba(180, 40, 40, 0.12);
-            border-color: #ff6b7a;
-        }
-
-        .cuddle-btn .emoji {
-            font-size: 24px;
-        }
-
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
-        @media (max-width: 750px) {
-            .cards {
-                grid-template-columns: 1fr;
-            }
-            .polaroids {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 4rem;
-            }
-            .hero-description {
-                font-size: 1rem;
-                padding: 15px 20px;
-            }
-            .letter p {
-                font-size: 1rem;
-            }
-            .section-subtitle {
-                font-size: 1rem;
-            }
-            .card {
-                min-height: 170px;
-            }
-            .cuddle-btn {
-                padding: 12px 22px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi Ojitos 🤍</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  color:#3d2940;background:#fbf7ff;overflow-x:hidden
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(circle at 15% 20%,#f6dff2 0,transparent 32%),
+    radial-gradient(circle at 85% 75%,#dceeff 0,transparent 34%),
+    linear-gradient(135deg,#fffaff,#f5f8ff)
+}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:-1}
+.star{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff;animation:twinkle 3s infinite}
+@keyframes twinkle{50%{opacity:.25;transform:scale(.5)}}
+section{min-height:100vh;padding:90px 20px;display:flex;align-items:center;justify-content:center}
+.container{width:min(1050px,100%);text-align:center}
+.hero{text-align:center}
+.badge{letter-spacing:5px;text-transform:uppercase;font-size:.8rem;color:#8c6595;margin-bottom:25px}
+.heart{font-size:100px;filter:drop-shadow(0 15px 25px #d9b7d9);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+h1{
+  font-size:clamp(3.4rem,10vw,8rem);line-height:.95;
+  color:#62446e;margin:20px 0
+}
+h1 span{color:#b56fae}
+.lead{
+  max-width:780px;margin:30px auto;padding:25px 30px;
+  font-size:1.25rem;line-height:2;background:#ffffffb8;
+  border:1px solid #eadcf0;border-radius:35px;backdrop-filter:blur(10px)
+}
+.btn{
+  border:0;border-radius:50px;padding:17px 34px;font:inherit;font-size:1.05rem;
+  color:white;background:linear-gradient(135deg,#8d629b,#6c8fbd);
+  box-shadow:0 12px 35px #6d567433;cursor:pointer;transition:.3s
+}
+.btn:hover{transform:translateY(-5px) scale(1.03)}
+.title{font-size:clamp(2.5rem,7vw,5rem);color:#62446e;margin-bottom:18px}
+.subtitle{font-size:1.15rem;line-height:1.9;max-width:800px;margin:auto;color:#6b596e}
+.promise{
+  margin-top:45px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px
+}
+.card{
+  min-height:210px;padding:30px 22px;border-radius:30px;background:#ffffffc9;
+  border:1px solid #eadcf0;box-shadow:0 20px 55px #5c456b12;
+  transition:.35s;display:flex;flex-direction:column;justify-content:center
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 28px 65px #5c456b22}
+.icon{font-size:52px;margin-bottom:15px}
+.card h3{font-size:1.35rem;color:#76527f;margin-bottom:10px}
+.card p{line-height:1.7;color:#66576a}
+.support{background:#eee9fa99}
+.support-box{
+  max-width:850px;margin:35px auto 0;padding:45px 35px;border-radius:40px;
+  background:#ffffffcf;border:1px solid #e8d9ef;box-shadow:0 25px 70px #60466b16
+}
+.support-box p{font-size:1.25rem;line-height:2.05}
+.highlight{color:#9a5e94;font-weight:bold}
+.buttons{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:35px}
+.love-btn{
+  padding:14px 22px;border-radius:30px;border:1px solid #dbc8e4;background:#fff;
+  color:#634b68;font:inherit;cursor:pointer;transition:.3s
+}
+.love-btn:hover{background:#f5eafb;transform:translateY(-4px)}
+.response{
+  margin:30px auto 0;max-width:760px;min-height:80px;padding:22px;
+  border-radius:25px;background:#f8f1fb;color:#684f6e;line-height:1.8;
+  display:none;animation:appear .5s
+}
+.response.show{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.letter{
+  margin:35px auto 0;max-width:850px;text-align:left;padding:50px;
+  background:#fffdfd;border-radius:25px;box-shadow:0 25px 70px #60466b12;
+  border:1px solid #eee2ef
+}
+.letter p{font-size:1.18rem;line-height:2;margin-bottom:22px}
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.memory{
+  padding:30px 20px;min-height:220px;border-radius:28px;
+  background:linear-gradient(145deg,#fff,#f7f1fb);border:1px solid #eadff0
+}
+.memory .icon{font-size:60px}
+.final{
+  background:radial-gradient(circle at center,#f1e5f6,#fbf7ff 60%)
+}
+.final h2{font-size:clamp(3rem,9vw,7rem);color:#62446e}
+.final p{max-width:800px;margin:30px auto;font-size:1.25rem;line-height:2.1}
+.signature{color:#9a5e94;font-style:italic;font-size:1.35rem;margin-top:35px}
+.music{
+  position:fixed;right:22px;top:22px;z-index:20;width:58px;height:58px;
+  border-radius:50%;border:1px solid #fff;background:#765985;color:#fff;font-size:24px;cursor:pointer;
+  box-shadow:0 10px 30px #5b466644
+}
+.float-heart{
+  position:fixed;pointer-events:none;z-index:30;font-size:22px;
+  animation:fly 1.5s ease-out forwards
+}
+@keyframes fly{to{transform:translateY(-140px) scale(1.8);opacity:0}}
+@media(max-width:760px){
+  .promise,.memory-grid{grid-template-columns:1fr}
+  section{padding:75px 16px}
+  .letter{padding:30px 22px}
+  .lead,.support-box p,.letter p{font-size:1.05rem}
+}
+</style>
 </head>
 <body>
 
-    <!-- ============================================================
-    FONDO
-    ============================================================ -->
-    <div class="background"></div>
-    <div class="lights" id="lights"></div>
+<div class="stars" id="stars"></div>
+<button class="music" id="musicButton" onclick="toggleMusic()">♪</button>
+<audio id="music" loop><source src="Asi Como Tu.mp3" type="audio/mpeg"></audio>
 
-    <!-- ============================================================
-    BOTÓN DE MÚSICA (RESPETADO)
-    ============================================================ -->
-    <button class="music-button" id="musicButton" onclick="toggleMusic()">♪</button>
-    <audio id="music" loop>
-        <source src="Asi Como Tu.mp3" type="audio/mpeg">
-    </audio>
+<section class="hero">
+<div class="container">
+  <div class="badge">Para la persona que quiero cuidar siempre</div>
+  <div class="heart">🤍</div>
+  <h1>Para mi <span>Ojitos</span></h1>
+  <p class="lead">
+    Quiero que esta pequeña página te recuerde algo que para mí es muy importante:
+    <strong>no tienes que pasar por todo tú sola.</strong><br>
+    En tus días bonitos, en tus días difíciles y hasta en esos momentos en los que no
+    tengas ganas de hablar, aquí voy a estar.
+  </p>
+  <button class="btn" onclick="go('promise')">Quiero decirte algo 💌</button>
+</div>
+</section>
 
-    <!-- ============================================================
-    PORTADA
-    ============================================================ -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="small-title">Con todo mi corazón</div>
-            <div class="big-heart">❤️</div>
-            <h1>Para la <span>niña</span> de mis ojos</h1>
-            <p class="hero-description">
-                Eres esa persona que ilumina mis días.<br />
-                Y quiero que sepas que siempre, siempre, estaré aquí para ti.
-            </p>
-            <button class="main-button" onclick="goTo('reasons')">Abrir mi corazón 💌</button>
-        </div>
-    </section>
+<section id="promise">
+<div class="container">
+  <h2 class="title">Hay algo que quiero que nunca olvides</h2>
+  <p class="subtitle">No prometo que todos los días serán fáciles, pero sí quiero que recuerdes que tendrás a alguien dispuesto a escucharte, abrazarte y acompañarte.</p>
+  <div class="promise">
+    <div class="card"><div class="icon">🤗</div><h3>Si necesitas un abrazo</h3><p>No importa la hora ni el motivo. Si necesitas sentirte acompañada, aquí tienes mis brazos.</p></div>
+    <div class="card"><div class="icon">🌧️</div><h3>Si tienes un día malo</h3><p>No voy a pedirte que sonrías. Puedes sentir, llorar y descansar. Yo me quedo contigo.</p></div>
+    <div class="card"><div class="icon">🌷</div><h3>Si dudas de ti</h3><p>Voy a recordarte todas esas cosas bonitas que quizá en ese momento no alcances a ver en ti.</p></div>
+  </div>
+</div>
+</section>
 
-    <!-- ============================================================
-    RAZONES (TARJETAS CON MENSAJES DE CARIÑO)
-    ============================================================ -->
-    <section id="reasons">
-        <div class="container reveal">
-            <h2 class="section-title">Cosas que amo de ti</h2>
-            <p class="section-subtitle">
-                No son solo palabras. Cada una de estas razones late con fuerza.
-            </p>
+<section class="support">
+<div class="container">
+  <h2 class="title">Cuando necesites un poquito de cariño...</h2>
+  <p class="subtitle">Presiona cualquiera de estos botones. Cada uno guarda un mensaje para ti. 🤍</p>
+  <div class="buttons">
+    <button class="love-btn" onclick="message('abrazo')">🤗 Necesito un abrazo</button>
+    <button class="love-btn" onclick="message('triste')">🌧️ Hoy estoy triste</button>
+    <button class="love-btn" onclick="message('cansada')">🌙 Estoy cansada</button>
+    <button class="love-btn" onclick="message('miedo')">🫶 Tengo miedo</button>
+    <button class="love-btn" onclick="message('orgullo')">✨ Recuérdame lo que valgo</button>
+    <button class="love-btn" onclick="message('amor')">💗 Dime algo bonito</button>
+    <button class="love-btn" onclick="message('siempre')">🏡 Recuérdame que estás aquí</button>
+  </div>
+  <div class="response" id="response"></div>
+</div>
+</section>
 
-            <div class="cards">
-                <div class="card" onclick="openCard('heart')">
-                    <div class="card-icon">❤️</div>
-                    <h3>Tu alma</h3>
-                    <p>Esa luz única que llevas dentro y que enamora sin esfuerzo.</p>
-                </div>
-                <div class="card" onclick="openCard('smile')">
-                    <div class="card-icon">😊</div>
-                    <h3>Tu sonrisa</h3>
-                    <p>La que desarma cualquier tormenta y llena todo de calma.</p>
-                </div>
-                <div class="card" onclick="openCard('talk')">
-                    <div class="card-icon">💬</div>
-                    <h3>Tus palabras</h3>
-                    <p>Cada conversación contigo es un tesoro que atesoro.</p>
-                </div>
-                <div class="card" onclick="openCard('you')">
-                    <div class="card-icon">🌹</div>
-                    <h3>Simplemente tú</h3>
-                    <p>Sin filtros, sin máscaras. Tal como eres, eres perfecta.</p>
-                </div>
-            </div>
+<section>
+<div class="container">
+  <h2 class="title">Una carta para ti</h2>
+  <div class="letter">
+    <p>Mi Ojitos, quiero que sepas que no tienes que ser fuerte todo el tiempo. También puedes cansarte, sentirte perdida, llorar o simplemente necesitar que alguien se quede a tu lado.</p>
+    <p>Y si algún día llega uno de esos momentos, <span class="highlight">no tengas miedo de buscarme.</span> No voy a juzgarte por lo que sientas. Quiero ser esa persona con la que puedas hablar sin miedo, guardar silencio sin incomodidad y llorar sin tener que explicar nada.</p>
+    <p>Quiero acompañarte mientras persigues tus sueños, celebrar tus logros y sostenerte cuando las cosas no salgan como esperabas.</p>
+    <p><span class="highlight">No quiero que esta página solo sea bonita; quiero que sea un pequeño recordatorio de que eres importante para mí y de que siempre tendrás un lugar donde sentirte querida.</span></p>
+  </div>
+</div>
+</section>
 
-            <div class="hidden-message" id="cardMessage">
-                <div class="message-box">
-                    <p id="cardMessageText"></p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section>
+<div class="container">
+  <h2 class="title">Para que sonrías un poquito 🌷</h2>
+  <p class="subtitle">Algunas cosas que quiero que recuerdes cuando vuelvas a esta página.</p>
+  <div class="memory-grid">
+    <div class="memory"><div class="icon">👀</div><p><strong>Tus ojitos</strong><br>Son de esas pequeñas cosas que podrían cambiarme un día entero.</p></div>
+    <div class="memory"><div class="icon">🌸</div><p><strong>Tu forma de ser</strong><br>No necesitas parecerte a nadie. Me gusta la persona que eres.</p></div>
+    <div class="memory"><div class="icon">⭐</div><p><strong>Tus sueños</strong><br>Voy a alegrarme por cada paso que des, incluso por los que parezcan pequeñitos.</p></div>
+  </div>
+</div>
+</section>
 
-    <!-- ============================================================
-    APOYO INCONDICIONAL (SIEMPRE ESTARÉ PARA TI)
-    ============================================================ -->
-    <section class="support-section">
-        <div class="container reveal">
-            <div class="support-icon">🤗</div>
-            <h2 class="section-title">Siempre, en cada paso</h2>
-            <p class="support-text">
-                <span class="highlight">Nunca, nunca estarás sola.</span><br /><br />
-                Si necesitas un abrazo, aquí estaré.<br />
-                Si necesitas una mano, aquí estaré.<br />
-                Si necesitas que te recuerde lo valiosa que eres, aquí estaré.<br /><br />
-                <span class="highlight">Siempre, sin condiciones.</span>
-            </p>
-            <!-- Botones con mensajes de cariño -->
-            <div class="cuddle-buttons">
-                <button class="cuddle-btn" onclick="showCuddleMessage('abrazo')"><span class="emoji">🤗</span> Un abrazo fuerte</button>
-                <button class="cuddle-btn" onclick="showCuddleMessage('animo')"><span class="emoji">🌟</span> Eres increíble</button>
-                <button class="cuddle-btn" onclick="showCuddleMessage('siempre')"><span class="emoji">💖</span> Siempre contigo</button>
-                <button class="cuddle-btn" onclick="showCuddleMessage('orgullo')"><span class="emoji">🏅</span> Estoy orgulloso</button>
-                <button class="cuddle-btn" onclick="showCuddleMessage('luz')"><span class="emoji">✨</span> Eres mi luz</button>
-            </div>
-        </div>
-    </section>
+<section class="final">
+<div class="container">
+  <div class="heart">🫶</div>
+  <h2>Siempre tú, mi Ojitos</h2>
+  <p>
+    Si algún día sientes que el mundo pesa demasiado, vuelve aquí.<br>
+    Lee esto despacito y recuerda:
+    <strong>no tienes que cargar con todo sola.</strong><br><br>
+    Si quieres hablar, te escucho.<br>
+    Si quieres llorar, te acompaño.<br>
+    Si quieres un abrazo, aquí está.<br>
+    Y si solamente quieres saber que alguien está contigo... <strong>aquí estoy.</strong>
+  </p>
+  <div class="signature">Con todo mi cariño, siempre estaré para ti. 🤍</div>
+</div>
+</section>
 
-    <!-- ============================================================
-    RECUERDOS (POLAROIDS MEJORADOS)
-    ============================================================ -->
-    <section>
-        <div class="container reveal">
-            <h2 class="section-title">Recuerdos que atesoro</h2>
-            <p class="section-subtitle">Momentos que guardo en mi corazón y que quiero seguir viviendo contigo.</p>
-            <div class="polaroids">
-                <div class="polaroid">
-                    <div class="polaroid-image">🌅</div>
-                    <p>"Tus ojos como un atardecer, cuando el sol se despide y todo se vuelve oro."</p>
-                </div>
-                <div class="polaroid">
-                    <div class="polaroid-image">🎶</div>
-                    <p>"Esa canción que sonaba mientras te abrazaba"</p>
-                </div>
-                <div class="polaroid">
-                    <div class="polaroid-image">☕</div>
-                    <p>"Las mañanas cando despierto pensando en ti "</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container reveal">
-            <h2 class="section-title">Si pudiera decirte todo...</h2>
-            <div class="letter">
-                <p>Me gustas de una manera que no sé explicar. No es solo tu sonrisa o tu mirada, es tu esencia, tu forma de hacer que el mundo sea más bonito.</p>
-                <p>Quiero verte feliz luchando por tus sueños. Quiero estar a tu lado cuando celebres tus logros y también cuando necesites un hombro en el que apoyarte.</p>
-                <p><span class="highlight">No necesito una versión perfecta de ti. Necesito a la persona real, auténtica, que eres tú.</span></p>
-                <p>Porque pase lo que pase, <span class="highlight">siempre tendrás un lugar en mi corazón</span> y alguien que cree en ti incluso cuando tú dudes.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="eyes-section">
-        <div class="container reveal">
-            <div class="eyes">👀❤️</div>
-            <h2 class="eyes-title">La princesa de mis ojos</h2>
-            <p class="eyes-text">
-                Porque eres de esas personas que marcan la diferencia.<br />
-                Porque con solo pensar en ti, todo se ilumina.<br />
-                Porque quiero cuidarte, escucharte y hacerte sonreír cada día.<br /><br />
-                <strong>Sí, eres mi niña de mis ojos. Y siempre lo serás.</strong>
-            </p>
-        </div>
-    </section>
-
-    <section>
-        <div class="container reveal">
-            <h2 class="section-title">Antes de irte...</h2>
-            <p class="section-subtitle">
-              Cuando te sientas: Triste,Estresada,Enojada Cierra los ojos, respira hondo y recuerda que hay alguien que te quiere ver feliz, siempre.
-            </p>
-            <br />
-            <button class="main-button" onclick="finalMessage()">Recuerda Siempre Esto❤️</button>
-        </div>
-    </section>
-
-    <section class="final" id="finalSection">
-        <div class="container">
-            <div class="final-heart">❤️</div>
-            <h2>Te quiero mucho, <br /> Mi Ojitos</h2>
-            <p>
-                Me hace feliz verte sonreír.<br />
-                Me hace feliz verte crecer.<br />
-                Me hara feliz verte cumplir tus sueños.<br /><br />
-                <strong>Y si algún día olvidas que tu puedes y lo increíble que eres,<br />
-                aquí estaré para recordártelo, una y otra vez.</strong>
-            </p>
-            <div class="signature">Con todo mi amor, siempre ❤️</div>
-        </div>
-    </section>
-
-    <script>
-        /* ============================================================
-           MÚSICA
-           ============================================================ */
-        const music = document.getElementById("music");
-        const musicButton = document.getElementById("musicButton");
-        let playing = false;
-
-        function toggleMusic() {
-            if (music.paused) {
-                music.play().then(() => {
-                    playing = true;
-                    musicButton.textContent = "♫";
-                }).catch(() => {
-                    alert("No se pudo reproducir la música. Asegúrate de que 'Cuco - Melting.mp3' esté en la misma carpeta.");
-                });
-            } else {
-                music.pause();
-                playing = false;
-                musicButton.textContent = "♪";
-            }
-        }
-
-        /* ============================================================
-           NAVEGAR A SECCIÓN
-           ============================================================ */
-        function goTo(id) {
-            document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-        }
-
-        /* ============================================================
-           LUCES FLOTANTES
-           ============================================================ */
-        const lightsContainer = document.getElementById("lights");
-        for (let i = 0; i < 65; i++) {
-            const light = document.createElement("div");
-            light.className = "light";
-            light.style.left = Math.random() * 100 + "%";
-            light.style.top = Math.random() * 100 + "%";
-            light.style.animationDelay = Math.random() * 6 + "s";
-            light.style.animationDuration = 4 + Math.random() * 5 + "s";
-            lightsContainer.appendChild(light);
-        }
-
-        /* ============================================================
-           PÉTALOS (CAEN CONTINUAMENTE)
-           ============================================================ */
-        function createPetal() {
-            const petal = document.createElement("div");
-            petal.className = "petal";
-            const flowers = ["🌸", "🌷", "🌺", "❤️", "🍁", "🌹", "♥️"];
-            petal.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-            petal.style.left = Math.random() * 100 + "%";
-            petal.style.fontSize = 14 + Math.random() * 22 + "px";
-            petal.style.animationDuration = 6 + Math.random() * 7 + "s";
-            document.body.appendChild(petal);
-            setTimeout(() => petal.remove(), 13000);
-        }
-        setInterval(createPetal, 900);
-
-        /* ============================================================
-           TARJETAS INTERACTIVAS (MENSAJES DE CARIÑO)
-           ============================================================ */
-        const cardMessages = {
-            heart: "Tu alma es de esas que dejan huella. Me encanta cada parte de ti, incluso las que tú crees que no son perfectas. Eres maravillosa. ❤️",
-            smile: "Tu sonrisa es un regalo. Cuando sonríes, todo a tu alrededor se vuelve más bonito. No dejes de hacerlo nunca. 😊",
-            talk: "Cada palabra tuya es especial. Me encanta escucharte, aprender de ti y perderme en tus historias. 💬",
-            you: "No necesitas cambiar nada. Tal como eres, con tus virtudes y tus sombras, eres perfecta para mí. 🌹"
-        };
-
-        function openCard(type) {
-            const box = document.getElementById("cardMessage");
-            const text = document.getElementById("cardMessageText");
-            text.textContent = cardMessages[type];
-            box.classList.add("open");
-            createPetal();
-            createPetal();
-        }
-
-        /* ============================================================
-           BOTONES DE CARIÑO (MENSAJES ESPECIALES)
-           ============================================================ */
-        const cuddleMessages = {
-            abrazo: "Te abrazo fuerte, de esos que duran y dicen 'estoy aquí, siempre'. 🤗",
-            animo: "Eres más fuerte de lo que imaginas. Puedes con todo, y yo estoy a tu lado. 🌟",
-            siempre: "Pase lo que pase, siempre serás mi prioridad. Siempre. 💖",
-            orgullo: "Cada día que pasa, me siento más orgulloso de ti. Eres increíble. 🏅",
-            luz: "Eres la luz que ilumina mis días. Nunca dejes de brillar. ✨"
-        };
-
-        function showCuddleMessage(type) {
-            const box = document.getElementById("cardMessage");
-            const text = document.getElementById("cardMessageText");
-            text.textContent = cuddleMessages[type];
-            box.classList.add("open");
-            for (let i = 0; i < 12; i++) {
-                setTimeout(createPetal, i * 120);
-            }
-        }
-
-        /* ============================================================
-           REVEAL AL SCROLL
-           ============================================================ */
-        const revealElements = document.querySelectorAll(".reveal");
-
-        function revealOnScroll() {
-            revealElements.forEach(el => {
-                const top = el.getBoundingClientRect().top;
-                if (top < window.innerHeight - 80) {
-                    el.classList.add("visible");
-                }
-            });
-        }
-        window.addEventListener("scroll", revealOnScroll);
-        revealOnScroll();
-
-        /* ============================================================
-           MENSAJE FINAL (CON MUCHOS PÉTALOS)
-           ============================================================ */
-        function finalMessage() {
-            for (let i = 0; i < 45; i++) {
-                setTimeout(createPetal, i * 80);
-            }
-            setTimeout(() => {
-                document.getElementById("finalSection").scrollIntoView({ behavior: "smooth" });
-            }, 500);
-        }
-
-        /* ============================================================
-           CORAZONES AL HACER CLICK (EFECTO)
-           ============================================================ */
-        document.addEventListener("click", function(e) {
-            if (e.target.tagName === "BUTTON") return;
-            for (let i = 0; i < 5; i++) {
-                const heart = document.createElement("div");
-                heart.textContent = "❤️";
-                heart.style.position = "fixed";
-                heart.style.left = (e.clientX + (Math.random() - 0.5) * 90) + "px";
-                heart.style.top = (e.clientY + (Math.random() - 0.5) * 90) + "px";
-                heart.style.pointerEvents = "none";
-                heart.style.zIndex = "2000";
-                heart.style.fontSize = (16 + Math.random() * 22) + "px";
-                heart.style.color = "#cc2233";
-                heart.style.filter = "drop-shadow(0 4px 16px rgba(200,0,0,0.3))";
-                document.body.appendChild(heart);
-                const x = (Math.random() - 0.5) * 180;
-                const y = -120 - Math.random() * 160;
-                heart.animate([
-                    { transform: "translate(0,0) scale(1)", opacity: 1 },
-                    { transform: `translate(${x}px, ${y}px) scale(2)`, opacity: 0 }
-                ], { duration: 1300 + Math.random() * 500, easing: "ease-out" });
-                setTimeout(() => heart.remove(), 1900);
-            }
-        });
-    </script>
-
+<script>
+const messages={
+  abrazo:"Ven aquí, mi Ojitos. 🤗 Si pudiera estar a tu lado ahora mismo, te daría un abrazo de esos que no necesitan palabras. Quédate un ratito ahí; no tienes que resolverlo todo hoy. Estoy contigo. 🤍",
+  triste:"Si hoy estás triste, está bien. No tienes que fingir que todo está perfecto conmigo. Llora si lo necesitas, descansa si lo necesitas y recuerda que no tienes que atravesar este momento sola. 🌷",
+  cansada:"Descansa, preciosa. No tienes que demostrarle nada a nadie todo el tiempo. Has hecho lo mejor que has podido y eso también cuenta. Mañana será otro día; por ahora, respira y cuídate mucho. 🌙",
+  miedo:"Si tienes miedo, toma mi mano aunque sea con el corazón. No puedo prometerte que todo será fácil, pero sí puedo recordarte que eres mucho más fuerte de lo que crees y que no tienes que enfrentarlo todo sola. 🫶",
+  orgullo:"Estoy orgulloso de ti no solamente por tus logros, sino por cada vez que sigues adelante aun cuando te cuesta. Eres valiosa incluso en los días en los que no te sientes así. ✨",
+  amor:"Eres una persona muy especial para mí. Me encanta verte sonreír, escucharte, conocer tus pensamientos y descubrir cada día un poquito más de la persona tan bonita que eres. 💗",
+  siempre:"Guárdate esto: cuando necesites a alguien, puedes buscarme. Quiero estar en tus momentos felices, pero también en esos momentos en los que solamente necesitas compañía. Aquí estoy, Ojitos. 🏡"
+};
+function message(type){
+  const box=document.getElementById("response");
+  box.textContent=messages[type];
+  box.classList.remove("show");
+  void box.offsetWidth;
+  box.classList.add("show");
+  hearts(10);
+}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+function hearts(n=5){
+  for(let i=0;i<n;i++){
+    setTimeout(()=>{
+      const h=document.createElement("div");
+      h.className="float-heart";h.textContent=["🤍","💗","🌷","✨"][Math.floor(Math.random()*4)];
+      h.style.left=(20+Math.random()*60)+"vw";h.style.bottom="20px";
+      document.body.appendChild(h);setTimeout(()=>h.remove(),1600);
+    },i*100);
+  }
+}
+const stars=document.getElementById("stars");
+for(let i=0;i<70;i++){
+  const s=document.createElement("div");s.className="star";
+  s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*4+"s";stars.appendChild(s);
+}
+const music=document.getElementById("music"), musicButton=document.getElementById("musicButton");
+function toggleMusic(){
+  if(music.paused){
+    music.play().then(()=>musicButton.textContent="♫").catch(()=>alert("Asegúrate de que 'Asi Como Tu.mp3' esté en la misma carpeta que este HTML."));
+  }else{music.pause();musicButton.textContent="♪"}
+}
+document.addEventListener("click",e=>{if(e.target.tagName!=="BUTTON" && e.target.tagName!=="INPUT")hearts(2)});
+</script>
 </body>
 </html>
