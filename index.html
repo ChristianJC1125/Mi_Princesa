@@ -19,992 +19,565 @@
 
     <style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* =====================================================
+   RESPONSIVE COMPLETO
+===================================================== */
 
+/* TABLETS */
 
-        html,
-        body {
+@media (max-width: 1024px) {
 
-            width: 100%;
-            height: 100%;
+    .top-message {
+        top: 20px;
+        width: 90%;
+    }
 
-            overflow: hidden;
+    .top-message span {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
 
-            font-family:
-                "Segoe UI",
-                Arial,
-                sans-serif;
+    .controls {
+        top: 20px;
+        right: 20px;
+    }
 
-            background: #02010a;
+    .modal-content {
+        width: min(85%, 600px);
+    }
 
-            color: white;
+}
 
-        }
 
+/* =====================================================
+   CELULAR
+===================================================== */
 
-        button {
+@media (max-width: 700px) {
 
-            font-family: inherit;
+    html,
+    body {
+        width: 100%;
+        height: 100%;
 
-            cursor: pointer;
+        overflow: hidden;
 
-        }
+        touch-action: none;
+    }
 
 
-        /* ===============================================
-           UNIVERSO
-        ================================================ */
+    /* ---------------------------------------------
+       INTRO
+    ---------------------------------------------- */
 
-        #universe {
+    .intro-content {
 
-            position: fixed;
+        width: 90%;
 
-            inset: 0;
+        padding:
+            20px;
 
-            width: 100%;
-            height: 100%;
+    }
 
-            overflow: hidden;
 
-            opacity: 0;
+    .intro-stars {
 
-            transition:
-                opacity 2s ease;
+        font-size:
+            1.5rem;
 
-        }
+        margin-bottom:
+            20px;
 
+    }
 
-        #universe.active {
 
-            opacity: 1;
+    .small-text {
 
-        }
+        font-size:
+            0.9rem;
 
+        line-height:
+            1.5;
 
-        #three-container {
+    }
 
-            position: absolute;
 
-            inset: 0;
+    .intro-content h1 {
 
-        }
+        font-size:
+            clamp(
+                1.8rem,
+                8vw,
+                2.8rem
+            );
 
+        line-height:
+            1.2;
 
-        /* ===============================================
-           INTRO
-        ================================================ */
+        margin-bottom:
+            20px;
 
-        #intro {
+    }
 
-            position: fixed;
 
-            inset: 0;
+    .name {
 
-            z-index: 1000;
+        font-size:
+            clamp(
+                1.8rem,
+                9vw,
+                2.8rem
+            );
 
-            display: flex;
+        margin-bottom:
+            30px;
 
-            align-items: center;
+    }
 
-            justify-content: center;
 
-            text-align: center;
+    #startButton {
 
-            background:
+        width: 100%;
 
-                radial-gradient(
-                    circle at center,
-                    rgba(70, 30, 100, 0.35),
-                    rgba(0, 0, 0, 0.96) 70%
-                );
+        max-width:
+            300px;
 
-            transition:
+        padding:
+            15px 20px;
 
-                opacity 2s ease,
-                visibility 2s ease;
+        font-size:
+            0.95rem;
 
-        }
+    }
 
 
-        #intro.hidden {
+    /* ---------------------------------------------
+       TITULO
+    ---------------------------------------------- */
 
-            opacity: 0;
+    .top-message {
 
-            visibility: hidden;
+        top:
+            15px;
 
-        }
+        left:
+            50%;
 
+        width:
+            90%;
 
-        .intro-content {
+        transform:
+            translateX(-50%);
 
-            width: min(90%, 800px);
+    }
 
-            animation:
 
-                introAppear 2s ease forwards;
+    .top-message span {
 
-        }
+        display:
+            block;
 
+        font-size:
+            0.75rem;
 
-        .intro-stars {
+        letter-spacing:
+            2px;
 
-            font-size: 2rem;
+        line-height:
+            1.4;
 
-            margin-bottom: 30px;
+    }
 
-            animation:
 
-                floatingStars 3s ease-in-out infinite;
+    .top-message p {
 
-        }
+        font-size:
+            0.7rem;
 
+        margin-top:
+            5px;
 
-        .small-text {
+    }
 
-            font-size: 1.1rem;
 
-            color:
-                rgba(255,255,255,0.7);
+    /* ---------------------------------------------
+       BOTONES
+    ---------------------------------------------- */
 
-            margin-bottom: 20px;
+    .controls {
 
-        }
+        position:
+            absolute;
 
+        top:
+            auto;
 
-        .intro-content h1 {
+        right:
+            12px;
 
-            font-size:
-                clamp(
-                    2rem,
-                    5vw,
-                    4.5rem
-                );
+        bottom:
+            65px;
 
-            font-weight: 300;
+        display:
+            flex;
 
-            line-height: 1.2;
+        flex-direction:
+            column;
 
-            margin-bottom: 25px;
+        gap:
+            8px;
 
-            text-shadow:
+        z-index:
+            30;
 
-                0 0 20px
-                rgba(255,255,255,0.3);
+    }
 
-        }
 
+    .controls button {
 
-        .name {
+        padding:
+            10px 13px;
 
-            font-size:
-                clamp(
-                    2rem,
-                    5vw,
-                    3.5rem
-                );
+        font-size:
+            0.75rem;
 
-            font-weight: bold;
+        border-radius:
+            25px;
 
-            margin-bottom: 45px;
+        min-width:
+            105px;
 
-            background:
+    }
 
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #ff9ecf,
-                    #ffffff
-                );
 
-            -webkit-background-clip: text;
+    /* ---------------------------------------------
+       CONTADOR
+    ---------------------------------------------- */
 
-            background-clip: text;
+    .counter {
 
-            color: transparent;
+        left:
+            12px;
 
-        }
+        bottom:
+            15px;
 
+        padding:
+            8px 13px;
 
-        #startButton {
+        font-size:
+            0.75rem;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.4);
+        z-index:
+            30;
 
-            padding:
-                16px 30px;
+    }
 
-            border-radius: 50px;
 
-            color: white;
+    /* ---------------------------------------------
+       MENSAJE CENTRAL
+    ---------------------------------------------- */
 
-            background:
-                rgba(255,255,255,0.08);
+    .center-message {
 
-            backdrop-filter: blur(10px);
+        display:
+            none;
 
-            transition: 0.4s;
+    }
 
-            box-shadow:
 
-                0 0 30px
-                rgba(255,100,180,0.2);
+    /* ---------------------------------------------
+       MODAL
+    ---------------------------------------------- */
 
-        }
+    .modal {
 
+        padding:
+            15px;
 
-        #startButton:hover {
+    }
 
-            transform: scale(1.08);
 
-            background:
-                rgba(255,120,190,0.2);
+    .modal-content {
 
-            box-shadow:
+        width:
+            100%;
 
-                0 0 50px
-                rgba(255,100,180,0.5);
+        max-width:
+            420px;
 
-        }
+        padding:
+            40px 22px 30px;
 
+        border-radius:
+            22px;
 
-        /* ===============================================
-           ENCABEZADO
-        ================================================ */
+        max-height:
+            85vh;
 
-        .top-message {
+        overflow-y:
+            auto;
 
-            position: absolute;
+    }
 
-            top: 25px;
 
-            left: 50%;
+    .modal-star {
 
-            transform:
-                translateX(-50%);
+        font-size:
+            2.5rem;
 
-            text-align: center;
+        margin-bottom:
+            15px;
 
-            z-index: 10;
+    }
 
-            pointer-events: none;
 
-        }
+    .modal-content h2 {
 
+        font-size:
+            1.45rem;
 
-        .top-message span {
+        line-height:
+            1.3;
 
-            font-size:
-                clamp(
-                    0.9rem,
-                    2vw,
-                    1.3rem
-                );
+        margin-bottom:
+            18px;
 
-            letter-spacing: 4px;
+    }
 
-            text-shadow:
 
-                0 0 15px
-                rgba(255,255,255,0.8);
+    .modal-content p {
 
-        }
+        font-size:
+            1rem;
 
+        line-height:
+            1.7;
 
-        .top-message p {
+    }
 
-            margin-top: 8px;
 
-            font-size: 0.8rem;
+    .modal-heart {
 
-            opacity: 0.6;
+        margin-top:
+            20px;
 
-        }
+        font-size:
+            1.7rem;
 
+    }
 
-        /* ===============================================
-           CONTROLES
-        ================================================ */
 
-        .controls {
+    .close-button {
 
-            position: absolute;
+        top:
+            8px;
 
-            top: 25px;
+        right:
+            12px;
 
-            right: 25px;
+        font-size:
+            1.8rem;
 
-            z-index: 20;
+    }
 
-            display: flex;
 
-            gap: 10px;
+    /* ---------------------------------------------
+       AYUDA
+    ---------------------------------------------- */
 
-        }
+    .help-content p {
 
+        font-size:
+            0.95rem;
 
-        .controls button {
+        margin-top:
+            15px;
 
-            padding:
-                10px 15px;
+        line-height:
+            1.6;
 
-            border-radius: 30px;
+    }
 
-            border:
-                1px solid
-                rgba(255,255,255,0.2);
 
-            background:
-                rgba(10,10,30,0.45);
+    /* ---------------------------------------------
+       FINAL
+    ---------------------------------------------- */
 
-            color: white;
+    #finalMessage {
 
-            backdrop-filter: blur(10px);
+        padding:
+            20px;
 
-            transition: 0.3s;
+        overflow-y:
+            auto;
 
-        }
+    }
 
 
-        .controls button:hover {
+    .final-content {
 
-            background:
-                rgba(255,255,255,0.15);
+        width:
+            100%;
 
-            transform:
-                translateY(-2px);
+        max-width:
+            420px;
 
-        }
+    }
 
 
-        /* ===============================================
-           CONTADOR
-        ================================================ */
+    .big-heart {
 
-        .counter {
+        font-size:
+            4rem;
 
-            position: absolute;
+        margin-bottom:
+            20px;
 
-            bottom: 25px;
+    }
 
-            left: 25px;
 
-            z-index: 20;
+    .final-content h1 {
 
-            padding:
-                10px 18px;
+        font-size:
+            clamp(
+                1.7rem,
+                7vw,
+                2.5rem
+            );
 
-            border-radius: 30px;
+        line-height:
+            1.2;
 
-            background:
-                rgba(10,10,30,0.5);
+        margin-bottom:
+            18px;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.15);
+    }
 
-            backdrop-filter:
-                blur(10px);
 
-            font-size: 0.9rem;
+    .final-content p {
 
-        }
+        font-size:
+            0.95rem;
 
+        line-height:
+            1.6;
 
-        /* ===============================================
-           MENSAJE CENTRAL
-        ================================================ */
+    }
 
-        .center-message {
 
-            position: absolute;
+    .final-content h2 {
 
-            bottom: 25px;
+        font-size:
+            1.3rem;
 
-            left: 50%;
+        line-height:
+            1.5;
 
-            transform:
-                translateX(-50%);
+        margin-bottom:
+            25px;
 
-            z-index: 10;
+    }
 
-            text-align: center;
 
-            pointer-events: none;
+    .final-signature {
 
-            opacity: 0.6;
+        font-size:
+            0.9rem;
 
-        }
+        line-height:
+            1.7;
 
+        margin-bottom:
+            25px;
 
-        .center-message p {
+    }
 
-            font-size: 0.8rem;
 
-        }
+    #closeFinal {
 
+        padding:
+            12px 20px;
 
-        .center-message span {
+        font-size:
+            0.9rem;
 
-            display: block;
+    }
 
-            margin-top: 5px;
+}
 
-            animation:
-                pulse 2s infinite;
 
-        }
+/* =====================================================
+   CELULARES MUY PEQUEÑOS
+===================================================== */
 
+@media (max-width: 380px) {
 
-        /* ===============================================
-           MODALES
-        ================================================ */
+    .top-message span {
 
-        .modal {
+        font-size:
+            0.65rem;
 
-            position: fixed;
+        letter-spacing:
+            1px;
 
-            inset: 0;
+    }
 
-            z-index: 500;
 
-            display: flex;
+    .controls {
 
-            align-items: center;
+        bottom:
+            60px;
 
-            justify-content: center;
+    }
 
-            padding: 20px;
 
-            background:
-                rgba(0,0,10,0.7);
+    .controls button {
 
-            backdrop-filter:
-                blur(12px);
+        min-width:
+            90px;
 
-            opacity: 0;
+        padding:
+            8px 10px;
 
-            visibility: hidden;
+        font-size:
+            0.68rem;
 
-            transition:
+    }
 
-                opacity 0.5s ease,
-                visibility 0.5s ease;
 
-        }
+    .counter {
 
+        font-size:
+            0.7rem;
 
-        .modal.show {
+    }
 
-            opacity: 1;
 
-            visibility: visible;
+    .modal-content {
 
-        }
+        padding:
+            35px 18px 25px;
 
+    }
 
-        .modal-content {
 
-            position: relative;
+    .modal-content h2 {
 
-            width:
-                min(90%, 600px);
+        font-size:
+            1.25rem;
 
-            padding:
-                50px 40px;
+    }
 
-            text-align: center;
 
-            border-radius: 25px;
+    .modal-content p {
 
-            border:
-                1px solid
-                rgba(255,255,255,0.2);
+        font-size:
+            0.9rem;
 
-            background:
+    }
 
-                linear-gradient(
-                    145deg,
-                    rgba(35,20,65,0.95),
-                    rgba(10,5,25,0.95)
-                );
-
-            box-shadow:
-
-                0 0 80px
-                rgba(180,70,180,0.3);
-
-            animation:
-                modalAppear 0.6s ease;
-
-        }
-
-
-        .close-button {
-
-            position: absolute;
-
-            top: 15px;
-
-            right: 18px;
-
-            border: none;
-
-            background: transparent;
-
-            color: white;
-
-            font-size: 2rem;
-
-            opacity: 0.6;
-
-            transition: 0.3s;
-
-        }
-
-
-        .close-button:hover {
-
-            opacity: 1;
-
-            transform:
-                rotate(90deg);
-
-        }
-
-
-        .modal-star {
-
-            font-size: 3rem;
-
-            margin-bottom: 20px;
-
-            animation:
-                floatingStars 2s infinite;
-
-        }
-
-
-        .modal-content h2 {
-
-            font-size: 2rem;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .modal-content p {
-
-            font-size: 1.2rem;
-
-            line-height: 1.8;
-
-            color:
-                rgba(255,255,255,0.85);
-
-        }
-
-
-        .modal-heart {
-
-            margin-top: 30px;
-
-            font-size: 2rem;
-
-            animation:
-                heartbeat 1.5s infinite;
-
-        }
-
-
-        /* ===============================================
-           AYUDA
-        ================================================ */
-
-        .help-content p {
-
-            margin-top: 20px;
-
-        }
-
-
-        /* ===============================================
-           FINAL
-        ================================================ */
-
-        #finalMessage {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 900;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 25px;
-
-            background:
-
-                radial-gradient(
-                    circle,
-                    rgba(100,30,100,0.6),
-                    rgba(0,0,10,0.98)
-                );
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            transition:
-
-                opacity 1.5s ease,
-                visibility 1.5s ease;
-
-        }
-
-
-        #finalMessage.show {
-
-            opacity: 1;
-
-            visibility: visible;
-
-        }
-
-
-        .final-content {
-
-            width:
-                min(90%, 700px);
-
-            animation:
-                modalAppear 1s ease;
-
-        }
-
-
-        .big-heart {
-
-            font-size: 6rem;
-
-            margin-bottom: 30px;
-
-            animation:
-                heartbeat 1.5s infinite;
-
-            filter:
-
-                drop-shadow(
-                    0 0 30px
-                    rgba(255,70,150,0.7)
-                );
-
-        }
-
-
-        .final-content h1 {
-
-            font-size:
-                clamp(
-                    2rem,
-                    5vw,
-                    4rem
-                );
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .final-content p {
-
-            font-size: 1.2rem;
-
-            color:
-                rgba(255,255,255,0.7);
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .final-content h2 {
-
-            font-size:
-                clamp(
-                    1.3rem,
-                    3vw,
-                    2rem
-                );
-
-            color: #ffb1dc;
-
-            line-height: 1.5;
-
-            margin-bottom: 35px;
-
-        }
-
-
-        .final-signature {
-
-            font-size: 1rem;
-
-            line-height: 1.8;
-
-            opacity: 0.7;
-
-            margin-bottom: 35px;
-
-        }
-
-
-        #closeFinal {
-
-            padding:
-                14px 25px;
-
-            border-radius: 30px;
-
-            color: white;
-
-            background:
-                rgba(255,255,255,0.1);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.25);
-
-            transition: 0.3s;
-
-        }
-
-
-        #closeFinal:hover {
-
-            background:
-                rgba(255,100,180,0.2);
-
-            transform:
-                scale(1.05);
-
-        }
-
-
-        /* ===============================================
-           ANIMACIONES
-        ================================================ */
-
-        @keyframes introAppear {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(30px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-
-            }
-
-        }
-
-
-        @keyframes floatingStars {
-
-            0%,
-            100% {
-
-                transform:
-                    translateY(0);
-
-            }
-
-            50% {
-
-                transform:
-                    translateY(-10px);
-
-            }
-
-        }
-
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-
-                opacity: 0.3;
-
-                transform:
-                    scale(1);
-
-            }
-
-            50% {
-
-                opacity: 1;
-
-                transform:
-                    scale(1.2);
-
-            }
-
-        }
-
-
-        @keyframes heartbeat {
-
-            0%,
-            100% {
-
-                transform:
-                    scale(1);
-
-            }
-
-            15% {
-
-                transform:
-                    scale(1.15);
-
-            }
-
-            30% {
-
-                transform:
-                    scale(1);
-
-            }
-
-            45% {
-
-                transform:
-                    scale(1.12);
-
-            }
-
-        }
-
-
-        @keyframes modalAppear {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    scale(0.8)
-                    translateY(30px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    scale(1)
-                    translateY(0);
-
-            }
-
-        }
-
-
-        /* ===============================================
-           CELULAR
-        ================================================ */
-
-        @media (max-width: 700px) {
-
-            .controls {
-
-                top: auto;
-
-                bottom: 70px;
-
-                right: 15px;
-
-                flex-direction:
-                    column;
-
-            }
-
-
-            .counter {
-
-                bottom: 20px;
-
-                left: 15px;
-
-            }
-
-
-            .center-message {
-
-                display: none;
-
-            }
-
-
-            .top-message {
-
-                top: 15px;
-
-            }
-
-
-            .top-message span {
-
-                letter-spacing: 2px;
-
-            }
-
-
-            .modal-content {
-
-                padding:
-                    40px 25px;
-
-            }
-
-
-            .modal-content p {
-
-                font-size: 1rem;
-
-            }
-
-
-            .big-heart {
-
-                font-size: 4.5rem;
-
-            }
-
-        }
+}
 
     </style>
 
