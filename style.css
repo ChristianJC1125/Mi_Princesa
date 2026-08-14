@@ -1,0 +1,684 @@
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #02010a;
+    color: white;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   UNIVERSO
+===================================================== */
+
+#universe {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+#universe.active {
+    opacity: 1;
+}
+
+#three-container {
+    position: absolute;
+    inset: 0;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+#intro {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(70, 30, 100, 0.35),
+            rgba(0, 0, 0, 0.95) 70%
+        );
+
+    transition:
+        opacity 2s ease,
+        visibility 2s ease;
+}
+
+#intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-content {
+    width: min(90%, 800px);
+
+    animation:
+        introAppear 2s ease forwards;
+}
+
+.intro-stars {
+    font-size: 2rem;
+    margin-bottom: 30px;
+
+    animation:
+        floatingStars 3s ease-in-out infinite;
+}
+
+.small-text {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 20px;
+}
+
+.intro-content h1 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.3);
+}
+
+.name {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: bold;
+
+    margin-bottom: 45px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ff9ecf,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+#startButton {
+    border: 1px solid rgba(255,255,255,0.4);
+
+    padding: 16px 30px;
+
+    border-radius: 50px;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.4s;
+
+    box-shadow:
+        0 0 30px rgba(255, 100, 180, 0.2);
+}
+
+#startButton:hover {
+    transform: scale(1.08);
+
+    background:
+        rgba(255, 120, 190, 0.2);
+
+    box-shadow:
+        0 0 50px rgba(255, 100, 180, 0.5);
+}
+
+
+/* =====================================================
+   CABECERA
+===================================================== */
+
+.top-message {
+    position: absolute;
+
+    top: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+.top-message span {
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,0.8);
+}
+
+.top-message p {
+    margin-top: 8px;
+
+    font-size: 0.8rem;
+
+    opacity: 0.6;
+}
+
+
+/* =====================================================
+   CONTROLES
+===================================================== */
+
+.controls {
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    z-index: 20;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.controls button {
+    padding: 10px 15px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background:
+        rgba(10, 10, 30, 0.45);
+
+    color: white;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s;
+}
+
+.controls button:hover {
+    background:
+        rgba(255,255,255,0.15);
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   CONTADOR
+===================================================== */
+
+.counter {
+    position: absolute;
+
+    bottom: 25px;
+    left: 25px;
+
+    z-index: 20;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(10,10,30,0.5);
+
+    border:
+        1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 0.9rem;
+}
+
+
+/* =====================================================
+   MENSAJE CENTRAL
+===================================================== */
+
+.center-message {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    text-align: center;
+
+    pointer-events: none;
+
+    opacity: 0.6;
+}
+
+.center-message p {
+    font-size: 0.8rem;
+}
+
+.center-message span {
+    display: block;
+
+    margin-top: 5px;
+
+    animation:
+        pulse 2s infinite;
+}
+
+
+/* =====================================================
+   MODALES
+===================================================== */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 500;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,10,0.7);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+
+    width: min(90%, 600px);
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    border:
+        1px solid rgba(255,255,255,0.2);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35,20,65,0.95),
+            rgba(10,5,25,0.95)
+        );
+
+    box-shadow:
+        0 0 80px rgba(180,70,180,0.3);
+
+    animation:
+        modalAppear 0.6s ease;
+}
+
+.close-button {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 2rem;
+
+    opacity: 0.6;
+
+    transition: 0.3s;
+}
+
+.close-button:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.modal-star {
+    font-size: 3rem;
+
+    margin-bottom: 20px;
+
+    animation:
+        floatingStars 2s infinite;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+
+    margin-bottom: 25px;
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,0.85);
+}
+
+.modal-heart {
+    margin-top: 30px;
+
+    font-size: 2rem;
+
+    animation:
+        heartbeat 1.5s infinite;
+}
+
+
+/* =====================================================
+   AYUDA
+===================================================== */
+
+.help-content p {
+    margin-top: 20px;
+}
+
+
+/* =====================================================
+   MENSAJE FINAL
+===================================================== */
+
+#finalMessage {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 900;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100,30,100,0.6),
+            rgba(0,0,10,0.98)
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+#finalMessage.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.final-content {
+    width: min(90%, 700px);
+
+    animation:
+        modalAppear 1s ease;
+}
+
+.big-heart {
+    font-size: 6rem;
+
+    margin-bottom: 30px;
+
+    animation:
+        heartbeat 1.5s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 30px rgba(255,70,150,0.7)
+        );
+}
+
+.final-content h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+
+    margin-bottom: 25px;
+}
+
+.final-content p {
+    font-size: 1.2rem;
+
+    color: rgba(255,255,255,0.7);
+
+    margin-bottom: 15px;
+}
+
+.final-content h2 {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+
+    color: #ffb1dc;
+
+    line-height: 1.5;
+
+    margin-bottom: 35px;
+}
+
+.final-signature {
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+    opacity: 0.7;
+
+    margin-bottom: 35px;
+}
+
+#closeFinal {
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,0.1);
+
+    border:
+        1px solid rgba(255,255,255,0.25);
+
+    transition: 0.3s;
+}
+
+#closeFinal:hover {
+    background:
+        rgba(255,100,180,0.2);
+
+    transform: scale(1.05);
+}
+
+
+/* =====================================================
+   ANIMACIONES
+===================================================== */
+
+@keyframes introAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes floatingStars {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.12);
+    }
+
+}
+
+@keyframes modalAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .controls {
+        top: auto;
+        bottom: 70px;
+        right: 15px;
+
+        flex-direction: column;
+    }
+
+    .counter {
+        bottom: 20px;
+        left: 15px;
+    }
+
+    .center-message {
+        display: none;
+    }
+
+    .top-message {
+        top: 15px;
+    }
+
+    .top-message span {
+        letter-spacing: 2px;
+    }
+
+    .modal-content {
+        padding: 40px 25px;
+    }
+
+    .modal-content p {
+        font-size: 1rem;
+    }
+
+    .big-heart {
+        font-size: 4.5rem;
+    }
+
+}
