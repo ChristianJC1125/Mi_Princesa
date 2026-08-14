@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -7,577 +7,1671 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     >
 
-    <title>El Universo de Mi Ojitos ❤️</title>
+    <meta
+        name="theme-color"
+        content="#02010a"
+    >
+
+    <title>
+        El Universo de Mi Ojitos ❤️
+    </title>
 
 
-    <!-- =================================================
-         CSS
-    ================================================== -->
+    <!-- =====================================================
+         ESTILOS
+    ====================================================== -->
 
     <style>
 
-/* =====================================================
-   RESPONSIVE COMPLETO
-===================================================== */
+        /* =================================================
+           RESET
+        ================================================== */
 
-/* TABLETS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-@media (max-width: 1024px) {
 
-    .top-message {
-        top: 20px;
-        width: 90%;
-    }
+        html,
+        body {
 
-    .top-message span {
-        font-size: 1rem;
-        letter-spacing: 3px;
-    }
+            width: 100%;
+            height: 100%;
 
-    .controls {
-        top: 20px;
-        right: 20px;
-    }
+            overflow: hidden;
 
-    .modal-content {
-        width: min(85%, 600px);
-    }
+            background: #02010a;
 
-}
+            color: white;
 
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
 
-/* =====================================================
-   CELULAR
-===================================================== */
+            touch-action: none;
 
-@media (max-width: 700px) {
+        }
 
-    html,
-    body {
-        width: 100%;
-        height: 100%;
 
-        overflow: hidden;
+        body {
+            overscroll-behavior: none;
+        }
 
-        touch-action: none;
-    }
 
+        button {
 
-    /* ---------------------------------------------
-       INTRO
-    ---------------------------------------------- */
+            font-family: inherit;
 
-    .intro-content {
+            cursor: pointer;
 
-        width: 90%;
+            -webkit-tap-highlight-color:
+                transparent;
 
-        padding:
-            20px;
+        }
 
-    }
 
+        /* =================================================
+           UNIVERSO
+        ================================================== */
 
-    .intro-stars {
+        #universe {
 
-        font-size:
-            1.5rem;
+            position: fixed;
 
-        margin-bottom:
-            20px;
+            inset: 0;
 
-    }
+            width: 100%;
+            height: 100%;
 
+            overflow: hidden;
 
-    .small-text {
+            opacity: 0;
 
-        font-size:
-            0.9rem;
+            visibility: hidden;
 
-        line-height:
-            1.5;
+            transition:
+                opacity 2s ease,
+                visibility 2s ease;
 
-    }
+        }
 
 
-    .intro-content h1 {
+        #universe.active {
 
-        font-size:
-            clamp(
-                1.8rem,
-                8vw,
-                2.8rem
-            );
+            opacity: 1;
 
-        line-height:
-            1.2;
+            visibility: visible;
 
-        margin-bottom:
-            20px;
+        }
 
-    }
 
+        #three-container {
 
-    .name {
+            position: absolute;
 
-        font-size:
-            clamp(
-                1.8rem,
-                9vw,
-                2.8rem
-            );
+            inset: 0;
 
-        margin-bottom:
-            30px;
+            width: 100%;
+            height: 100%;
 
-    }
+        }
 
 
-    #startButton {
+        #three-container canvas {
 
-        width: 100%;
+            display: block;
 
-        max-width:
-            300px;
+            width: 100%;
+            height: 100%;
 
-        padding:
-            15px 20px;
+        }
 
-        font-size:
-            0.95rem;
 
-    }
+        /* =================================================
+           PANTALLA DE INTRODUCCIÓN
+        ================================================== */
 
+        #intro {
 
-    /* ---------------------------------------------
-       TITULO
-    ---------------------------------------------- */
+            position: fixed;
 
-    .top-message {
+            inset: 0;
 
-        top:
-            15px;
+            z-index: 1000;
 
-        left:
-            50%;
+            display: flex;
 
-        width:
-            90%;
+            justify-content: center;
 
-        transform:
-            translateX(-50%);
+            align-items: center;
 
-    }
+            text-align: center;
 
+            padding: 25px;
 
-    .top-message span {
+            background:
 
-        display:
-            block;
+                radial-gradient(
+                    circle at center,
+                    rgba(100, 30, 130, 0.35),
+                    rgba(0, 0, 0, 0.96) 70%
+                );
 
-        font-size:
-            0.75rem;
+            transition:
 
-        letter-spacing:
-            2px;
+                opacity 2s ease,
+                visibility 2s ease;
 
-        line-height:
-            1.4;
+        }
 
-    }
 
+        #intro::before {
 
-    .top-message p {
+            content: "";
 
-        font-size:
-            0.7rem;
+            position: absolute;
 
-        margin-top:
-            5px;
+            inset: 0;
 
-    }
+            background-image:
 
+                radial-gradient(
+                    white 1px,
+                    transparent 1px
+                );
 
-    /* ---------------------------------------------
-       BOTONES
-    ---------------------------------------------- */
+            background-size:
+                70px 70px;
 
-    .controls {
+            opacity: 0.18;
 
-        position:
-            absolute;
+            animation:
+                moveBackground 25s linear infinite;
 
-        top:
-            auto;
+        }
 
-        right:
-            12px;
 
-        bottom:
-            65px;
+        #intro.hidden {
 
-        display:
-            flex;
+            opacity: 0;
 
-        flex-direction:
-            column;
+            visibility: hidden;
 
-        gap:
-            8px;
+        }
 
-        z-index:
-            30;
 
-    }
+        .intro-content {
 
+            position: relative;
 
-    .controls button {
+            z-index: 2;
 
-        padding:
-            10px 13px;
+            width:
+                min(900px, 100%);
 
-        font-size:
-            0.75rem;
+            animation:
+                introAppear 2s ease forwards;
 
-        border-radius:
-            25px;
+        }
 
-        min-width:
-            105px;
 
-    }
+        .intro-stars {
 
+            font-size:
+                clamp(
+                    1.5rem,
+                    4vw,
+                    2.5rem
+                );
 
-    /* ---------------------------------------------
-       CONTADOR
-    ---------------------------------------------- */
+            margin-bottom:
+                25px;
 
-    .counter {
+            letter-spacing:
+                20px;
 
-        left:
-            12px;
+            animation:
+                floatingStars 3s ease-in-out infinite;
 
-        bottom:
-            15px;
+        }
 
-        padding:
-            8px 13px;
 
-        font-size:
-            0.75rem;
+        .small-text {
 
-        z-index:
-            30;
+            font-size:
+                clamp(
+                    0.85rem,
+                    2vw,
+                    1.15rem
+                );
 
-    }
+            color:
+                rgba(255,255,255,0.7);
 
+            margin-bottom:
+                20px;
 
-    /* ---------------------------------------------
-       MENSAJE CENTRAL
-    ---------------------------------------------- */
+        }
 
-    .center-message {
 
-        display:
-            none;
+        .intro-content h1 {
 
-    }
+            font-size:
+                clamp(
+                    2rem,
+                    6vw,
+                    5rem
+                );
 
+            font-weight:
+                300;
 
-    /* ---------------------------------------------
-       MODAL
-    ---------------------------------------------- */
+            line-height:
+                1.15;
 
-    .modal {
+            margin-bottom:
+                25px;
 
-        padding:
-            15px;
+            text-shadow:
 
-    }
+                0 0 20px
+                rgba(255,255,255,0.3),
 
+                0 0 50px
+                rgba(255,100,200,0.2);
 
-    .modal-content {
+        }
 
-        width:
-            100%;
 
-        max-width:
-            420px;
+        .name {
 
-        padding:
-            40px 22px 30px;
+            font-size:
+                clamp(
+                    2rem,
+                    7vw,
+                    4rem
+                );
 
-        border-radius:
-            22px;
+            font-weight:
+                bold;
 
-        max-height:
-            85vh;
+            margin-bottom:
+                40px;
 
-        overflow-y:
-            auto;
+            background:
 
-    }
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #ff9ecf,
+                    #ffffff,
+                    #dba7ff,
+                    #ffffff
+                );
 
+            background-size:
+                300% 100%;
 
-    .modal-star {
+            -webkit-background-clip:
+                text;
 
-        font-size:
-            2.5rem;
+            background-clip:
+                text;
 
-        margin-bottom:
-            15px;
+            color:
+                transparent;
 
-    }
+            animation:
+                gradientText 5s ease infinite;
 
+        }
 
-    .modal-content h2 {
 
-        font-size:
-            1.45rem;
+        #startButton {
 
-        line-height:
-            1.3;
+            padding:
+                16px 30px;
 
-        margin-bottom:
-            18px;
+            min-width:
+                250px;
 
-    }
+            border-radius:
+                50px;
 
+            border:
+                1px solid
+                rgba(255,255,255,0.35);
 
-    .modal-content p {
+            color:
+                white;
 
-        font-size:
-            1rem;
+            background:
+                rgba(255,255,255,0.08);
 
-        line-height:
-            1.7;
+            backdrop-filter:
+                blur(12px);
 
-    }
+            box-shadow:
 
+                0 0 25px
+                rgba(255,100,180,0.2);
 
-    .modal-heart {
+            transition:
+                0.4s ease;
 
-        margin-top:
-            20px;
+        }
 
-        font-size:
-            1.7rem;
 
-    }
+        #startButton:hover {
 
+            transform:
+                scale(1.08);
 
-    .close-button {
+            background:
+                rgba(255,100,180,0.2);
 
-        top:
-            8px;
+            box-shadow:
 
-        right:
-            12px;
+                0 0 50px
+                rgba(255,100,180,0.5);
 
-        font-size:
-            1.8rem;
+        }
 
-    }
 
+        #startButton:active {
 
-    /* ---------------------------------------------
-       AYUDA
-    ---------------------------------------------- */
+            transform:
+                scale(0.96);
 
-    .help-content p {
+        }
 
-        font-size:
-            0.95rem;
 
-        margin-top:
-            15px;
+        /* =================================================
+           ENCABEZADO
+        ================================================== */
 
-        line-height:
-            1.6;
+        .top-message {
 
-    }
+            position: absolute;
 
+            top: 25px;
 
-    /* ---------------------------------------------
-       FINAL
-    ---------------------------------------------- */
+            left: 50%;
 
-    #finalMessage {
+            transform:
+                translateX(-50%);
 
-        padding:
-            20px;
+            width:
+                90%;
 
-        overflow-y:
-            auto;
+            max-width:
+                800px;
 
-    }
+            text-align:
+                center;
 
+            z-index:
+                20;
 
-    .final-content {
+            pointer-events:
+                none;
 
-        width:
-            100%;
+        }
 
-        max-width:
-            420px;
 
-    }
+        .top-message span {
 
+            display:
+                block;
 
-    .big-heart {
+            font-size:
+                clamp(
+                    0.75rem,
+                    2vw,
+                    1.3rem
+                );
 
-        font-size:
-            4rem;
+            letter-spacing:
+                clamp(
+                    1px,
+                    0.5vw,
+                    5px
+                );
 
-        margin-bottom:
-            20px;
+            text-shadow:
 
-    }
+                0 0 15px
+                rgba(255,255,255,0.8),
 
+                0 0 35px
+                rgba(255,100,200,0.4);
 
-    .final-content h1 {
+        }
 
-        font-size:
-            clamp(
-                1.7rem,
-                7vw,
-                2.5rem
-            );
 
-        line-height:
-            1.2;
+        .top-message p {
 
-        margin-bottom:
-            18px;
+            margin-top:
+                8px;
 
-    }
+            font-size:
+                0.8rem;
 
+            color:
+                rgba(255,255,255,0.55);
 
-    .final-content p {
+        }
 
-        font-size:
-            0.95rem;
 
-        line-height:
-            1.6;
+        /* =================================================
+           CONTROLES
+        ================================================== */
 
-    }
+        .controls {
 
+            position:
+                absolute;
 
-    .final-content h2 {
+            top:
+                25px;
 
-        font-size:
-            1.3rem;
+            right:
+                25px;
 
-        line-height:
-            1.5;
+            z-index:
+                30;
 
-        margin-bottom:
-            25px;
+            display:
+                flex;
 
-    }
+            gap:
+                10px;
 
+        }
 
-    .final-signature {
 
-        font-size:
-            0.9rem;
+        .glass-button {
 
-        line-height:
-            1.7;
+            padding:
+                10px 15px;
 
-        margin-bottom:
-            25px;
+            border-radius:
+                30px;
 
-    }
+            border:
+                1px solid
+                rgba(255,255,255,0.2);
 
+            color:
+                white;
 
-    #closeFinal {
+            background:
+                rgba(10,10,30,0.45);
 
-        padding:
-            12px 20px;
+            backdrop-filter:
+                blur(12px);
 
-        font-size:
-            0.9rem;
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.2);
 
-    }
+            transition:
+                0.3s ease;
 
-}
+        }
 
 
-/* =====================================================
-   CELULARES MUY PEQUEÑOS
-===================================================== */
+        .glass-button:hover {
 
-@media (max-width: 380px) {
+            background:
+                rgba(255,255,255,0.15);
 
-    .top-message span {
+            transform:
+                translateY(-2px);
 
-        font-size:
-            0.65rem;
+        }
 
-        letter-spacing:
-            1px;
 
-    }
+        .glass-button:active {
 
+            transform:
+                scale(0.94);
 
-    .controls {
+        }
 
-        bottom:
-            60px;
 
-    }
+        /* =================================================
+           CONTADOR
+        ================================================== */
 
+        .counter {
 
-    .controls button {
+            position:
+                absolute;
 
-        min-width:
-            90px;
+            bottom:
+                25px;
 
-        padding:
-            8px 10px;
+            left:
+                25px;
 
-        font-size:
-            0.68rem;
+            z-index:
+                30;
 
-    }
+            padding:
+                10px 17px;
 
+            border-radius:
+                30px;
 
-    .counter {
+            background:
+                rgba(10,10,30,0.5);
 
-        font-size:
-            0.7rem;
+            border:
+                1px solid
+                rgba(255,255,255,0.15);
 
-    }
+            backdrop-filter:
+                blur(12px);
 
+            font-size:
+                0.9rem;
 
-    .modal-content {
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.2);
 
-        padding:
-            35px 18px 25px;
+        }
 
-    }
 
+        #foundMessages {
 
-    .modal-content h2 {
+            color:
+                #ff9ed2;
 
-        font-size:
-            1.25rem;
+            font-weight:
+                bold;
 
-    }
+        }
 
 
-    .modal-content p {
+        /* =================================================
+           INSTRUCCIÓN CENTRAL
+        ================================================== */
 
-        font-size:
-            0.9rem;
+        .center-message {
 
-    }
+            position:
+                absolute;
 
-}
+            bottom:
+                25px;
+
+            left:
+                50%;
+
+            transform:
+                translateX(-50%);
+
+            z-index:
+                15;
+
+            text-align:
+                center;
+
+            pointer-events:
+                none;
+
+            color:
+                rgba(255,255,255,0.55);
+
+        }
+
+
+        .center-message p {
+
+            font-size:
+                0.8rem;
+
+        }
+
+
+        .center-message span {
+
+            display:
+                block;
+
+            margin-top:
+                5px;
+
+            animation:
+                pulse 2s infinite;
+
+        }
+
+
+        /* =================================================
+           MODALES
+        ================================================== */
+
+        .modal {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            z-index:
+                500;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                rgba(0,0,10,0.72);
+
+            backdrop-filter:
+                blur(12px);
+
+            opacity:
+                0;
+
+            visibility:
+                hidden;
+
+            transition:
+                opacity 0.5s ease,
+                visibility 0.5s ease;
+
+        }
+
+
+        .modal.show {
+
+            opacity:
+                1;
+
+            visibility:
+                visible;
+
+        }
+
+
+        .modal-content {
+
+            position:
+                relative;
+
+            width:
+                min(600px, 100%);
+
+            max-height:
+                90vh;
+
+            overflow-y:
+                auto;
+
+            padding:
+                50px 40px;
+
+            text-align:
+                center;
+
+            border-radius:
+                25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.2);
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(35,20,65,0.97),
+                    rgba(10,5,25,0.97)
+                );
+
+            box-shadow:
+
+                0 0 80px
+                rgba(180,70,180,0.35);
+
+            animation:
+                modalAppear 0.6s ease;
+
+        }
+
+
+        .close-button {
+
+            position:
+                absolute;
+
+            top:
+                12px;
+
+            right:
+                18px;
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                white;
+
+            font-size:
+                2rem;
+
+            line-height:
+                1;
+
+            opacity:
+                0.6;
+
+            transition:
+                0.3s;
+
+        }
+
+
+        .close-button:hover {
+
+            opacity:
+                1;
+
+            transform:
+                rotate(90deg);
+
+        }
+
+
+        .modal-star {
+
+            font-size:
+                3rem;
+
+            margin-bottom:
+                20px;
+
+            animation:
+                floatingStars 2s infinite;
+
+        }
+
+
+        .modal-content h2 {
+
+            font-size:
+                clamp(
+                    1.5rem,
+                    4vw,
+                    2rem
+                );
+
+            margin-bottom:
+                25px;
+
+            color:
+                #ffd2ec;
+
+        }
+
+
+        .modal-content p {
+
+            font-size:
+                clamp(
+                    1rem,
+                    2.5vw,
+                    1.2rem
+                );
+
+            line-height:
+                1.8;
+
+            color:
+                rgba(255,255,255,0.86);
+
+        }
+
+
+        .modal-heart {
+
+            margin-top:
+                30px;
+
+            font-size:
+                2rem;
+
+            animation:
+                heartbeat 1.5s infinite;
+
+        }
+
+
+        .help-content p {
+
+            margin-top:
+                18px;
+
+        }
+
+
+        /* =================================================
+           FINAL
+        ================================================== */
+
+        #finalMessage {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            z-index:
+                900;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                25px;
+
+            overflow-y:
+                auto;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(100,30,100,0.65),
+                    rgba(0,0,10,0.98)
+                );
+
+            opacity:
+                0;
+
+            visibility:
+                hidden;
+
+            transition:
+                opacity 1.5s ease,
+                visibility 1.5s ease;
+
+        }
+
+
+        #finalMessage.show {
+
+            opacity:
+                1;
+
+            visibility:
+                visible;
+
+        }
+
+
+        .final-content {
+
+            width:
+                min(700px, 100%);
+
+            animation:
+                modalAppear 1s ease;
+
+        }
+
+
+        .big-heart {
+
+            font-size:
+                clamp(
+                    4rem,
+                    10vw,
+                    7rem
+                );
+
+            margin-bottom:
+                25px;
+
+            animation:
+                heartbeat 1.5s infinite;
+
+            filter:
+
+                drop-shadow(
+                    0 0 30px
+                    rgba(255,70,150,0.7)
+                );
+
+        }
+
+
+        .final-content h1 {
+
+            font-size:
+                clamp(
+                    1.8rem,
+                    5vw,
+                    4rem
+                );
+
+            line-height:
+                1.2;
+
+            margin-bottom:
+                25px;
+
+        }
+
+
+        .final-content p {
+
+            font-size:
+                clamp(
+                    0.95rem,
+                    2.5vw,
+                    1.2rem
+                );
+
+            color:
+                rgba(255,255,255,0.7);
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .final-content h2 {
+
+            font-size:
+                clamp(
+                    1.25rem,
+                    3vw,
+                    2rem
+                );
+
+            color:
+                #ffb1dc;
+
+            line-height:
+                1.5;
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        .final-signature {
+
+            font-size:
+                1rem;
+
+            line-height:
+                1.8;
+
+            opacity:
+                0.7;
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        #closeFinal {
+
+            padding:
+                13px 24px;
+
+            border-radius:
+                30px;
+
+            color:
+                white;
+
+            background:
+                rgba(255,255,255,0.1);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.25);
+
+            transition:
+                0.3s;
+
+        }
+
+
+        #closeFinal:hover {
+
+            background:
+                rgba(255,100,180,0.2);
+
+            transform:
+                scale(1.05);
+
+        }
+
+
+        /* =================================================
+           ANIMACIONES
+        ================================================== */
+
+        @keyframes introAppear {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(30px);
+
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        @keyframes floatingStars {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-10px);
+
+            }
+
+        }
+
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+
+                opacity:
+                    0.3;
+
+                transform:
+                    scale(1);
+
+            }
+
+            50% {
+
+                opacity:
+                    1;
+
+                transform:
+                    scale(1.2);
+
+            }
+
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1);
+
+            }
+
+            15% {
+
+                transform:
+                    scale(1.15);
+
+            }
+
+            30% {
+
+                transform:
+                    scale(1);
+
+            }
+
+            45% {
+
+                transform:
+                    scale(1.12);
+
+            }
+
+        }
+
+
+        @keyframes modalAppear {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    scale(0.8)
+                    translateY(30px);
+
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+
+            }
+
+        }
+
+
+        @keyframes gradientText {
+
+            0% {
+
+                background-position:
+                    0% 50%;
+
+            }
+
+            50% {
+
+                background-position:
+                    100% 50%;
+
+            }
+
+            100% {
+
+                background-position:
+                    0% 50%;
+
+            }
+
+        }
+
+
+        @keyframes moveBackground {
+
+            from {
+
+                transform:
+                    translate(0,0);
+
+            }
+
+            to {
+
+                transform:
+                    translate(70px,70px);
+
+            }
+
+        }
+
+
+        /* =================================================
+           TABLET
+        ================================================== */
+
+        @media (max-width: 1024px) {
+
+            .controls {
+
+                top:
+                    20px;
+
+                right:
+                    20px;
+
+            }
+
+
+            .top-message {
+
+                top:
+                    20px;
+
+            }
+
+        }
+
+
+        /* =================================================
+           CELULAR
+        ================================================== */
+
+        @media (max-width: 700px) {
+
+            .top-message {
+
+                top:
+                    15px;
+
+                width:
+                    75%;
+
+            }
+
+
+            .top-message span {
+
+                font-size:
+                    0.7rem;
+
+                letter-spacing:
+                    2px;
+
+                line-height:
+                    1.4;
+
+            }
+
+
+            .top-message p {
+
+                font-size:
+                    0.65rem;
+
+                margin-top:
+                    4px;
+
+            }
+
+
+            .controls {
+
+                top:
+                    auto;
+
+                right:
+                    12px;
+
+                bottom:
+                    65px;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    7px;
+
+            }
+
+
+            .glass-button {
+
+                min-width:
+                    105px;
+
+                padding:
+                    9px 11px;
+
+                font-size:
+                    0.72rem;
+
+            }
+
+
+            .counter {
+
+                left:
+                    12px;
+
+                bottom:
+                    15px;
+
+                padding:
+                    8px 13px;
+
+                font-size:
+                    0.72rem;
+
+            }
+
+
+            .center-message {
+
+                display:
+                    none;
+
+            }
+
+
+            .modal {
+
+                padding:
+                    15px;
+
+            }
+
+
+            .modal-content {
+
+                width:
+                    100%;
+
+                max-width:
+                    420px;
+
+                max-height:
+                    85vh;
+
+                padding:
+                    40px 22px 28px;
+
+                border-radius:
+                    22px;
+
+            }
+
+
+            .modal-star {
+
+                font-size:
+                    2.5rem;
+
+                margin-bottom:
+                    15px;
+
+            }
+
+
+            .modal-content h2 {
+
+                font-size:
+                    1.4rem;
+
+                margin-bottom:
+                    17px;
+
+            }
+
+
+            .modal-content p {
+
+                font-size:
+                    0.98rem;
+
+                line-height:
+                    1.7;
+
+            }
+
+
+            .modal-heart {
+
+                margin-top:
+                    20px;
+
+                font-size:
+                    1.7rem;
+
+            }
+
+
+            .close-button {
+
+                top:
+                    8px;
+
+                right:
+                    12px;
+
+                font-size:
+                    1.8rem;
+
+            }
+
+
+            .help-content p {
+
+                font-size:
+                    0.92rem;
+
+                line-height:
+                    1.6;
+
+            }
+
+
+            #finalMessage {
+
+                padding:
+                    20px;
+
+            }
+
+
+            .final-content {
+
+                width:
+                    100%;
+
+                max-width:
+                    420px;
+
+            }
+
+
+            .big-heart {
+
+                font-size:
+                    4.5rem;
+
+                margin-bottom:
+                    20px;
+
+            }
+
+
+            .final-content h1 {
+
+                font-size:
+                    1.8rem;
+
+                margin-bottom:
+                    18px;
+
+            }
+
+
+            .final-content p {
+
+                font-size:
+                    0.95rem;
+
+                line-height:
+                    1.6;
+
+            }
+
+
+            .final-content h2 {
+
+                font-size:
+                    1.25rem;
+
+                margin-bottom:
+                    25px;
+
+            }
+
+
+            .final-signature {
+
+                font-size:
+                    0.9rem;
+
+                margin-bottom:
+                    25px;
+
+            }
+
+        }
+
+
+        /* =================================================
+           CELULARES PEQUEÑOS
+        ================================================== */
+
+        @media (max-width: 380px) {
+
+            .top-message {
+
+                width:
+                    70%;
+
+            }
+
+
+            .top-message span {
+
+                font-size:
+                    0.62rem;
+
+                letter-spacing:
+                    1px;
+
+            }
+
+
+            .controls {
+
+                bottom:
+                    58px;
+
+            }
+
+
+            .glass-button {
+
+                min-width:
+                    90px;
+
+                padding:
+                    8px 9px;
+
+                font-size:
+                    0.65rem;
+
+            }
+
+
+            .counter {
+
+                font-size:
+                    0.68rem;
+
+            }
+
+
+            .modal-content {
+
+                padding:
+                    35px 18px 25px;
+
+            }
+
+
+            .modal-content h2 {
+
+                font-size:
+                    1.2rem;
+
+            }
+
+
+            .modal-content p {
+
+                font-size:
+                    0.88rem;
+
+            }
+
+        }
+
+
+        /* =================================================
+           PANTALLAS MUY ALTAS
+        ================================================== */
+
+        @media (min-height: 900px) and (max-width: 700px) {
+
+            .controls {
+
+                bottom:
+                    80px;
+
+            }
+
+
+            .counter {
+
+                bottom:
+                    25px;
+
+            }
+
+        }
 
     </style>
 
@@ -587,9 +1681,9 @@
 <body>
 
 
-    <!-- =================================================
-         PANTALLA DE ENTRADA
-    ================================================== -->
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
 
     <div id="intro">
 
@@ -599,17 +1693,21 @@
                 ✦ ✧ ✦
             </div>
 
+
             <p class="small-text">
                 Hay millones de estrellas en el universo...
             </p>
+
 
             <h1>
                 pero yo solo necesitaba encontrar una.
             </h1>
 
+
             <div class="name">
                 Mi Ojitos ❤️
             </div>
+
 
             <button id="startButton">
                 Entrar a nuestro universo ✨
@@ -620,16 +1718,17 @@
     </div>
 
 
-    <!-- =================================================
+    <!-- =====================================================
          UNIVERSO
-    ================================================== -->
+    ====================================================== -->
 
     <main id="universe">
+
 
         <div id="three-container"></div>
 
 
-        <!-- ENCABEZADO -->
+        <!-- TITULO -->
 
         <header class="top-message">
 
@@ -638,7 +1737,7 @@
             </span>
 
             <p>
-                Explora las estrellas...
+                Toca o haz clic en las estrellas...
             </p>
 
         </header>
@@ -648,12 +1747,19 @@
 
         <div class="controls">
 
-            <button id="musicButton">
+            <button
+                id="musicButton"
+                class="glass-button"
+            >
                 🎵 Música
             </button>
 
-            <button id="helpButton">
-                ✨ ¿Cómo explorar?
+
+            <button
+                id="helpButton"
+                class="glass-button"
+            >
+                ✨ Explorar
             </button>
 
         </div>
@@ -678,12 +1784,12 @@
         </div>
 
 
-        <!-- MENSAJE CENTRAL -->
+        <!-- INSTRUCCIÓN -->
 
         <div class="center-message">
 
             <p>
-                Mueve el mouse para explorar
+                Mueve el mouse o desliza el dedo
             </p>
 
             <span>
@@ -694,12 +1800,16 @@
 
 
         <!-- =================================================
-             MODAL DE MENSAJES
+             MODAL MENSAJE
         ================================================== -->
 
-        <div id="messageModal" class="modal">
+        <div
+            id="messageModal"
+            class="modal"
+        >
 
             <div class="modal-content">
+
 
                 <button
                     id="closeModal"
@@ -708,20 +1818,25 @@
                     ×
                 </button>
 
+
                 <div class="modal-star">
                     ✨
                 </div>
+
 
                 <h2 id="modalTitle">
                     Para ti...
                 </h2>
 
+
                 <p id="modalText">
                 </p>
+
 
                 <div class="modal-heart">
                     ❤️
                 </div>
+
 
             </div>
 
@@ -729,12 +1844,16 @@
 
 
         <!-- =================================================
-             MODAL DE AYUDA
+             AYUDA
         ================================================== -->
 
-        <div id="helpModal" class="modal">
+        <div
+            id="helpModal"
+            class="modal"
+        >
 
             <div class="modal-content help-content">
+
 
                 <button
                     id="closeHelp"
@@ -743,27 +1862,40 @@
                     ×
                 </button>
 
+
                 <h2>
                     🌌 Explora nuestro universo
                 </h2>
 
-                <p>
-                    Mueve el mouse para mirar alrededor.
-                </p>
 
                 <p>
-                    Haz clic sobre las estrellas
-                    brillantes para descubrir mensajes.
+                    🖱️ En computadora:
+                    mueve el mouse para mirar alrededor.
                 </p>
 
-                <p>
-                    Algunas estrellas esconden
-                    mensajes especiales. ✨
-                </p>
 
                 <p>
-                    Intenta descubrirlos todos.
+                    📱 En celular:
+                    desliza el dedo para mover el universo.
                 </p>
+
+
+                <p>
+                    ⭐ Toca o haz clic sobre una estrella
+                    brillante para descubrir un mensaje.
+                </p>
+
+
+                <p>
+                    💌 Intenta descubrir todos los mensajes.
+                </p>
+
+
+                <p>
+                    ❤️ Cuando encuentres todos,
+                    algo especial aparecerá...
+                </p>
+
 
             </div>
 
@@ -771,29 +1903,36 @@
 
 
         <!-- =================================================
-             MENSAJE FINAL
+             FINAL
         ================================================== -->
 
-        <div id="finalMessage">
+        <div
+            id="finalMessage"
+        >
 
             <div class="final-content">
+
 
                 <div class="big-heart">
                     ❤️
                 </div>
 
+
                 <h1>
                     Encontraste todos nuestros mensajes
                 </h1>
+
 
                 <p>
                     Entre todos los lugares que existen
                     en este universo...
                 </p>
 
+
                 <h2>
                     mi lugar favorito siempre será contigo.
                 </h2>
+
 
                 <div class="final-signature">
 
@@ -803,20 +1942,25 @@
 
                 </div>
 
-                <button id="closeFinal">
+
+                <button
+                    id="closeFinal"
+                >
                     Volver a explorar ✨
                 </button>
+
 
             </div>
 
         </div>
 
+
     </main>
 
 
-    <!-- =================================================
+    <!-- =====================================================
          MÚSICA
-    ================================================== -->
+    ====================================================== -->
 
     <audio
         id="backgroundMusic"
@@ -832,9 +1976,9 @@
     </audio>
 
 
-    <!-- =================================================
+    <!-- =====================================================
          THREE.JS
-    ================================================== -->
+    ====================================================== -->
 
     <script type="importmap">
 
@@ -850,19 +1994,18 @@
     </script>
 
 
-    <!-- =================================================
+    <!-- =====================================================
          JAVASCRIPT
-    ================================================== -->
+    ====================================================== -->
 
     <script type="module">
 
-        import * as THREE
-        from "three";
+        import * as THREE from "three";
 
 
-        /* ===============================================
-           ELEMENTOS
-        ================================================ */
+        /* =================================================
+           ELEMENTOS HTML
+        ================================================== */
 
         const container =
             document.getElementById(
@@ -966,9 +2109,9 @@
             );
 
 
-        /* ===============================================
-           ESCENA
-        ================================================ */
+        /* =================================================
+           ESCENA 3D
+        ================================================== */
 
         const scene =
             new THREE.Scene();
@@ -980,9 +2123,9 @@
             );
 
 
-        /* ===============================================
+        /* =================================================
            CÁMARA
-        ================================================ */
+        ================================================== */
 
         const camera =
             new THREE.PerspectiveCamera(
@@ -1006,16 +2149,18 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            RENDERER
-        ================================================ */
+        ================================================== */
 
         const renderer =
             new THREE.WebGLRenderer({
 
-                antialias: true,
+                antialias:
+                    true,
 
-                alpha: true
+                alpha:
+                    true
 
             });
 
@@ -1047,14 +2192,15 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            LUCES
-        ================================================ */
+        ================================================== */
 
         const ambientLight =
             new THREE.AmbientLight(
 
                 0xffffff,
+
                 1
 
             );
@@ -1069,7 +2215,9 @@
             new THREE.PointLight(
 
                 0xff80c8,
+
                 8,
+
                 100
 
             );
@@ -1087,9 +2235,9 @@
         );
 
 
-        /* ===============================================
-           UNIVERSO
-        ================================================ */
+        /* =================================================
+           GRUPO DEL UNIVERSO
+        ================================================== */
 
         const universeGroup =
             new THREE.Group();
@@ -1100,12 +2248,18 @@
         );
 
 
-        /* ===============================================
-           ESTRELLAS
-        ================================================ */
+        /* =================================================
+           ESTRELLAS DEL ESPACIO
+        ================================================== */
+
+        const isMobile =
+            window.innerWidth <= 700;
+
 
         const starCount =
-            7000;
+            isMobile
+                ? 3500
+                : 7000;
 
 
         const starGeometry =
@@ -1118,17 +2272,12 @@
             );
 
 
-        const starSizes =
-            new Float32Array(
-                starCount
-            );
-
-
         for (
             let i = 0;
             i < starCount;
             i++
         ) {
+
 
             const radius =
                 200 +
@@ -1171,21 +2320,20 @@
 
             starPositions[
                 i * 3
-            ] = x;
+            ] =
+                x;
 
 
             starPositions[
                 i * 3 + 1
-            ] = y;
+            ] =
+                y;
 
 
             starPositions[
                 i * 3 + 2
-            ] = z;
-
-
-            starSizes[i] =
-                Math.random() * 2;
+            ] =
+                z;
 
         }
 
@@ -1195,20 +2343,11 @@
             "position",
 
             new THREE.BufferAttribute(
+
                 starPositions,
+
                 3
-            )
 
-        );
-
-
-        starGeometry.setAttribute(
-
-            "size",
-
-            new THREE.BufferAttribute(
-                starSizes,
-                1
             )
 
         );
@@ -1217,15 +2356,22 @@
         const starMaterial =
             new THREE.PointsMaterial({
 
-                color: 0xffffff,
+                color:
+                    0xffffff,
 
-                size: 0.8,
+                size:
+                    isMobile
+                        ? 0.7
+                        : 0.8,
 
-                transparent: true,
+                transparent:
+                    true,
 
-                opacity: 0.8,
+                opacity:
+                    0.85,
 
-                sizeAttenuation: true
+                sizeAttenuation:
+                    true
 
             });
 
@@ -1245,11 +2391,12 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            MENSAJES
-        ================================================ */
+        ================================================== */
 
         const messages = [
+
 
             {
 
@@ -1268,7 +2415,7 @@
                     "Cuando tengas un día difícil 🌙",
 
                 text:
-                    "Si algún día sientes que ya no puedes más, ven conmigo. No tienes que explicarme todo. Si necesitas llorar, lloramos. Si necesitas silencio, me quedo contigo."
+                    "Si algún día sientes que ya no puedes más, ven conmigo. No tienes que explicarme todo. Si necesitas llorar, lloramos. Si necesitas silencio, me quedo contigo. Nunca tendrás que sentir que estás sola."
 
             },
 
@@ -1367,7 +2514,7 @@
                     "Si necesitas llorar 🤍",
 
                 text:
-                    "Nunca voy a juzgar tus lágrimas. Si algún día necesitas sacar todo lo que llevas dentro, puedes hacerlo conmigo."
+                    "Nunca voy a juzgar tus lágrimas. Si algún día necesitas sacar todo lo que llevas dentro, puedes hacerlo conmigo. No tienes que esconder lo que sientes."
 
             },
 
@@ -1422,18 +2569,20 @@
             messages.length;
 
 
-        /* ===============================================
+        /* =================================================
            ESTRELLAS INTERACTIVAS
-        ================================================ */
+        ================================================== */
 
-        let foundMessages = 0;
+        let foundMessages =
+            0;
 
 
         const discovered =
             new Set();
 
 
-        const interactiveStars = [];
+        const interactiveStars =
+            [];
 
 
         messages.forEach(
@@ -1444,7 +2593,9 @@
                 const geometry =
                     new THREE.SphereGeometry(
 
-                        0.35,
+                        isMobile
+                            ? 0.45
+                            : 0.35,
 
                         20,
 
@@ -1524,10 +2675,12 @@
                 );
 
 
+                /* AURA */
+
                 const glowGeometry =
                     new THREE.SphereGeometry(
 
-                        0.7,
+                        0.8,
 
                         16,
 
@@ -1570,9 +2723,9 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            PLANETAS
-        ================================================ */
+        ================================================== */
 
         function createPlanet(
 
@@ -1638,7 +2791,9 @@
         const planet1 =
             createPlanet(
 
-                3,
+                isMobile
+                    ? 2.2
+                    : 3,
 
                 0x5b286f,
 
@@ -1656,7 +2811,9 @@
         const planet2 =
             createPlanet(
 
-                2,
+                isMobile
+                    ? 1.6
+                    : 2,
 
                 0x312b78,
 
@@ -1671,9 +2828,9 @@
             );
 
 
-        /* ===============================================
+        /* =================================================
            ANILLO
-        ================================================ */
+        ================================================== */
 
         function addRing(
 
@@ -1684,7 +2841,7 @@
         ) {
 
 
-            const geometry =
+            const ringGeometry =
                 new THREE.RingGeometry(
 
                     inner,
@@ -1694,7 +2851,7 @@
                 );
 
 
-            const material =
+            const ringMaterial =
                 new THREE.MeshBasicMaterial({
 
                     color:
@@ -1715,9 +2872,9 @@
             const ring =
                 new THREE.Mesh(
 
-                    geometry,
+                    ringGeometry,
 
-                    material
+                    ringMaterial
 
                 );
 
@@ -1735,14 +2892,14 @@
 
         addRing(
             planet1,
-            4,
-            5.5
+            3.8,
+            5.2
         );
 
 
-        /* ===============================================
-           CORAZÓN
-        ================================================ */
+        /* =================================================
+           CORAZÓN 3D
+        ================================================== */
 
         function createHeart() {
 
@@ -1758,62 +2915,86 @@
 
 
             shape.bezierCurveTo(
+
                 5,
                 5,
+
                 4,
                 0,
+
                 0,
                 0
+
             );
 
 
             shape.bezierCurveTo(
+
                 -6,
                 0,
+
                 -6,
                 7,
+
                 -6,
                 7
+
             );
 
 
             shape.bezierCurveTo(
+
                 -6,
                 11,
+
                 -2,
                 15,
+
                 5,
                 19
+
             );
 
 
             shape.bezierCurveTo(
+
                 12,
                 15,
+
                 16,
                 11,
+
                 16,
                 7
+
             );
 
 
             shape.bezierCurveTo(
+
                 16,
                 7,
+
                 16,
                 0,
+
                 10,
                 0
+
             );
 
 
             shape.bezierCurveTo(
+
                 6,
                 0,
+
                 5,
                 5,
+
                 5,
                 5
+
             );
 
 
@@ -1878,11 +3059,17 @@
                 );
 
 
+            const heartScale =
+                isMobile
+                    ? 0.28
+                    : 0.35;
+
+
             heart.scale.set(
 
-                0.35,
-                0.35,
-                0.35
+                heartScale,
+                heartScale,
+                heartScale
 
             );
 
@@ -1905,9 +3092,9 @@
             createHeart();
 
 
-        /* ===============================================
+        /* =================================================
            LUZ DEL CORAZÓN
-        ================================================ */
+        ================================================== */
 
         const heartLight =
             new THREE.PointLight(
@@ -1922,9 +3109,11 @@
 
 
         heartLight.position.set(
+
             0,
             0,
             2
+
         );
 
 
@@ -1933,9 +3122,9 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            RAYCASTER
-        ================================================ */
+        ================================================== */
 
         const raycaster =
             new THREE.Raycaster();
@@ -1945,6 +3134,10 @@
             new THREE.Vector2();
 
 
+        /* =================================================
+           MOVIMIENTO
+        ================================================== */
+
         let targetRotationX =
             0;
 
@@ -1953,9 +3146,13 @@
             0;
 
 
-        /* ===============================================
-           MOUSE
-        ================================================ */
+        let currentRotationX =
+            0;
+
+
+        let currentRotationY =
+            0;
+
 
         window.addEventListener(
 
@@ -1990,9 +3187,220 @@
         );
 
 
-        /* ===============================================
-           CLICK EN ESTRELLAS
-        ================================================ */
+        /* =================================================
+           TOQUE
+        ================================================== */
+
+        let touchStartX =
+            0;
+
+
+        let touchStartY =
+            0;
+
+
+        let lastTouchX =
+            0;
+
+
+        let lastTouchY =
+            0;
+
+
+        let touchMoved =
+            false;
+
+
+        window.addEventListener(
+
+            "touchstart",
+
+            (event) => {
+
+
+                if (
+                    event.touches.length !== 1
+                ) {
+                    return;
+                }
+
+
+                touchStartX =
+                    event.touches[0].clientX;
+
+
+                touchStartY =
+                    event.touches[0].clientY;
+
+
+                lastTouchX =
+                    touchStartX;
+
+
+                lastTouchY =
+                    touchStartY;
+
+
+                touchMoved =
+                    false;
+
+            },
+
+            {
+                passive:
+                    true
+            }
+
+        );
+
+
+        window.addEventListener(
+
+            "touchmove",
+
+            (event) => {
+
+
+                if (
+                    event.touches.length !== 1
+                ) {
+                    return;
+                }
+
+
+                const currentX =
+                    event.touches[0].clientX;
+
+
+                const currentY =
+                    event.touches[0].clientY;
+
+
+                const differenceX =
+                    currentX -
+                    lastTouchX;
+
+
+                const differenceY =
+                    currentY -
+                    lastTouchY;
+
+
+                if (
+
+                    Math.abs(
+                        currentX -
+                        touchStartX
+                    ) > 8 ||
+
+                    Math.abs(
+                        currentY -
+                        touchStartY
+                    ) > 8
+
+                ) {
+
+                    touchMoved =
+                        true;
+
+                }
+
+
+                universeGroup.rotation.y +=
+                    differenceX * 0.004;
+
+
+                universeGroup.rotation.x +=
+                    differenceY * 0.002;
+
+
+                lastTouchX =
+                    currentX;
+
+
+                lastTouchY =
+                    currentY;
+
+            },
+
+            {
+                passive:
+                    true
+            }
+
+        );
+
+
+        /* =================================================
+           FUNCIÓN PARA DETECTAR ESTRELLAS
+        ================================================== */
+
+        function checkStarClick(
+
+            clientX,
+            clientY
+
+        ) {
+
+
+            mouse.x =
+
+                (clientX /
+                window.innerWidth)
+                * 2 - 1;
+
+
+            mouse.y =
+
+                -(clientY /
+                window.innerHeight)
+                * 2 + 1;
+
+
+            raycaster.setFromCamera(
+
+                mouse,
+
+                camera
+
+            );
+
+
+            const intersections =
+                raycaster.intersectObjects(
+
+                    interactiveStars
+
+                );
+
+
+            if (
+                intersections.length === 0
+            ) {
+
+                return;
+
+            }
+
+
+            const star =
+                intersections[0].object;
+
+
+            openMessage(
+
+                star.userData.index,
+
+                star.userData.message
+
+            );
+
+        }
+
+
+        /* =================================================
+           CLICK PC
+        ================================================== */
 
         window.addEventListener(
 
@@ -2001,55 +3409,18 @@
             (event) => {
 
 
-                mouse.x =
-
-                    (event.clientX /
-                    window.innerWidth)
-                    * 2 - 1;
-
-
-                mouse.y =
-
-                    -(event.clientY /
-                    window.innerHeight)
-                    * 2 + 1;
-
-
-                raycaster.setFromCamera(
-
-                    mouse,
-
-                    camera
-
-                );
-
-
-                const intersections =
-                    raycaster.intersectObjects(
-
-                        interactiveStars
-
-                    );
-
-
                 if (
-                    intersections.length === 0
+                    touchMoved
                 ) {
-
                     return;
-
                 }
 
 
-                const star =
-                    intersections[0].object;
+                checkStarClick(
 
+                    event.clientX,
 
-                openMessage(
-
-                    star.userData.index,
-
-                    star.userData.message
+                    event.clientY
 
                 );
 
@@ -2058,9 +3429,56 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
+           TOQUE CELULAR
+        ================================================== */
+
+        window.addEventListener(
+
+            "touchend",
+
+            (event) => {
+
+
+                if (
+                    touchMoved
+                ) {
+                    return;
+                }
+
+
+                if (
+                    event.changedTouches.length !== 1
+                ) {
+                    return;
+                }
+
+
+                const touch =
+                    event.changedTouches[0];
+
+
+                checkStarClick(
+
+                    touch.clientX,
+
+                    touch.clientY
+
+                );
+
+            },
+
+            {
+                passive:
+                    true
+            }
+
+        );
+
+
+        /* =================================================
            ABRIR MENSAJE
-        ================================================ */
+        ================================================== */
 
         function openMessage(
 
@@ -2123,9 +3541,9 @@
         }
 
 
-        /* ===============================================
+        /* =================================================
            CERRAR MENSAJE
-        ================================================ */
+        ================================================== */
 
         closeModal.addEventListener(
 
@@ -2165,9 +3583,9 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            AYUDA
-        ================================================ */
+        ================================================== */
 
         helpButton.addEventListener(
 
@@ -2199,9 +3617,32 @@
         );
 
 
-        /* ===============================================
+        helpModal.addEventListener(
+
+            "click",
+
+            (event) => {
+
+
+                if (
+                    event.target ===
+                    helpModal
+                ) {
+
+                    helpModal.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+
+        );
+
+
+        /* =================================================
            MÚSICA
-        ================================================ */
+        ================================================== */
 
         let musicPlaying =
             false;
@@ -2234,7 +3675,9 @@
                             "⏸️ Música";
 
 
-                    } else {
+                    }
+
+                    else {
 
 
                         backgroundMusic.pause();
@@ -2250,11 +3693,13 @@
                     }
 
 
-                } catch (error) {
+                }
+
+                catch (error) {
 
 
                     console.log(
-                        "No se pudo reproducir la música:",
+                        "No se pudo reproducir la música.",
                         error
                     );
 
@@ -2265,9 +3710,9 @@
         );
 
 
-        /* ===============================================
-           INICIAR
-        ================================================ */
+        /* =================================================
+           INICIAR UNIVERSO
+        ================================================== */
 
         startButton.addEventListener(
 
@@ -2301,11 +3746,13 @@
                         "⏸️ Música";
 
 
-                } catch (error) {
+                }
+
+                catch (error) {
 
 
                     console.log(
-                        "El navegador bloqueó la música."
+                        "El navegador requiere interacción para reproducir la música."
                     );
 
                 }
@@ -2315,9 +3762,9 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            FINAL
-        ================================================ */
+        ================================================== */
 
         function showFinalMessage() {
 
@@ -2343,9 +3790,9 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            ANIMACIÓN
-        ================================================ */
+        ================================================== */
 
         const clock =
             new THREE.Clock();
@@ -2363,25 +3810,39 @@
                 clock.getElapsedTime();
 
 
+            /* ROTACIÓN AUTOMÁTICA */
+
             universeGroup.rotation.y +=
                 0.0008;
 
 
-            universeGroup.rotation.x +=
+            /* MOVIMIENTO SUAVE DEL MOUSE */
+
+            currentRotationX +=
 
                 (
                     targetRotationX -
-                    universeGroup.rotation.x
-                ) * 0.01;
+                    currentRotationX
+                ) * 0.02;
 
 
-            universeGroup.rotation.y +=
+            currentRotationY +=
 
                 (
                     targetRotationY -
-                    universeGroup.rotation.y
-                ) * 0.002;
+                    currentRotationY
+                ) * 0.02;
 
+
+            universeGroup.rotation.x +=
+                currentRotationX * 0.002;
+
+
+            universeGroup.rotation.y +=
+                currentRotationY * 0.002;
+
+
+            /* ESTRELLAS */
 
             stars.rotation.y =
                 elapsed * 0.003;
@@ -2392,6 +3853,8 @@
                     elapsed * 0.05
                 ) * 0.05;
 
+
+            /* ESTRELLAS INTERACTIVAS */
 
             interactiveStars.forEach(
 
@@ -2420,6 +3883,8 @@
             );
 
 
+            /* PLANETAS */
+
             planet1.rotation.y +=
                 0.002;
 
@@ -2427,6 +3892,8 @@
             planet2.rotation.y +=
                 0.0015;
 
+
+            /* CORAZÓN */
 
             const heartbeat =
 
@@ -2436,11 +3903,22 @@
                 ) * 0.05;
 
 
+            const baseScale =
+                isMobile
+                    ? 0.28
+                    : 0.35;
+
+
             heart.scale.set(
 
-                0.35 * heartbeat,
-                0.35 * heartbeat,
-                0.35 * heartbeat
+                baseScale *
+                heartbeat,
+
+                baseScale *
+                heartbeat,
+
+                baseScale *
+                heartbeat
 
             );
 
@@ -2449,9 +3927,14 @@
                 elapsed * 0.4;
 
 
+            /* RENDER */
+
             renderer.render(
+
                 scene,
+
                 camera
+
             );
 
         }
@@ -2460,9 +3943,9 @@
         animate();
 
 
-        /* ===============================================
+        /* =================================================
            RESIZE
-        ================================================ */
+        ================================================== */
 
         window.addEventListener(
 
@@ -2483,7 +3966,18 @@
                 renderer.setSize(
 
                     window.innerWidth,
+
                     window.innerHeight
+
+                );
+
+
+                renderer.setPixelRatio(
+
+                    Math.min(
+                        window.devicePixelRatio,
+                        2
+                    )
 
                 );
 
@@ -2492,9 +3986,9 @@
         );
 
 
-        /* ===============================================
+        /* =================================================
            ESCAPE
-        ================================================ */
+        ================================================== */
 
         window.addEventListener(
 
