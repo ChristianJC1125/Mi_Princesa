@@ -16,7 +16,6 @@
 
     <style>
 
-
         * {
             margin: 0;
             padding: 0;
@@ -50,6 +49,7 @@
         ========================================================== */
 
         #universo {
+
             position: fixed;
 
             inset: 0;
@@ -63,6 +63,7 @@
         }
 
         #universo canvas {
+
             display: block;
 
             width: 100% !important;
@@ -75,6 +76,7 @@
         ========================================================== */
 
         .nebula {
+
             position: fixed;
 
             inset: 0;
@@ -141,8 +143,7 @@
             align-items: center;
             justify-content: center;
 
-            padding:
-                25px;
+            padding: 25px;
 
             background:
 
@@ -676,7 +677,7 @@
 
 
         /* =========================================================
-           BOTÓN MÚSICA
+           BOTÓN MÚSICA — NUEVO DISEÑO
         ========================================================== */
 
         #musica {
@@ -692,47 +693,84 @@
             z-index: 100;
 
             width:
-                clamp(42px, 12vw, 50px);
+                clamp(46px, 12vw, 54px);
 
             height:
-                clamp(42px, 12vw, 50px);
+                clamp(46px, 12vw, 54px);
 
             border-radius: 50%;
 
             border:
                 1px solid
-                rgba(255,255,255,.25);
+                rgba(255,255,255,.28);
 
             background:
 
-                linear-gradient(
-                    135deg,
-                    rgba(255,105,200,.20),
-                    rgba(140,70,255,.20)
+                radial-gradient(
+                    circle at 35% 30%,
+                    rgba(255,255,255,.18),
+                    rgba(255,105,200,.12) 45%,
+                    rgba(120,60,220,.18)
                 );
 
-            color: white;
+            color:
+                #ffd7ef;
 
             cursor: pointer;
 
             backdrop-filter:
-                blur(15px);
+                blur(18px);
 
             -webkit-backdrop-filter:
-                blur(15px);
+                blur(18px);
 
             display: none;
 
-            font-size:
-                clamp(16px, 5vw, 20px);
+            align-items: center;
+
+            justify-content: center;
 
             box-shadow:
+
                 0 0 15px
-                rgba(255,105,200,.15);
+                rgba(255,105,200,.15),
+
+                inset 0 0 15px
+                rgba(255,255,255,.05);
 
             transition:
                 transform .3s ease,
-                box-shadow .3s ease;
+                box-shadow .3s ease,
+                border-color .3s ease;
+        }
+
+        .icono-musica {
+
+            display: block;
+
+            font-family:
+                Georgia,
+                serif;
+
+            font-size:
+                27px;
+
+            line-height: 1;
+
+            transform:
+                translateY(-1px);
+
+            text-shadow:
+
+                0 0 8px
+                rgba(255,145,215,.7),
+
+                0 0 18px
+                rgba(180,90,255,.35);
+
+            transition:
+                transform .3s ease,
+                opacity .3s ease;
         }
 
         #musica:hover {
@@ -740,19 +778,28 @@
             transform:
                 scale(1.08);
 
+            border-color:
+                rgba(255,180,225,.5);
+
             box-shadow:
 
                 0 0 20px
-                rgba(255,105,200,.4),
+                rgba(255,105,200,.35),
 
                 0 0 40px
                 rgba(150,80,255,.2);
         }
 
+        #musica:hover .icono-musica {
+
+            transform:
+                scale(1.12);
+        }
+
         #musica:active {
 
             transform:
-                scale(.90);
+                scale(.92);
         }
 
 
@@ -774,8 +821,7 @@
 
             justify-content: center;
 
-            padding:
-                20px;
+            padding: 20px;
 
             background:
 
@@ -1230,8 +1276,15 @@
     </audio>
 
 
-    <button id="musica">
-        🎵
+    <button
+        id="musica"
+        aria-label="Controlar música"
+    >
+
+        <span class="icono-musica">
+            ♫
+        </span>
+
     </button>
 
 
@@ -1361,6 +1414,11 @@ const botonVolver =
 const botonMusica =
     document.getElementById("musica");
 
+const iconoMusica =
+    botonMusica.querySelector(
+        ".icono-musica"
+    );
+
 const audioUniverso =
     document.getElementById("audioUniverso");
 
@@ -1370,10 +1428,6 @@ const audioUniverso =
 ============================================================ */
 
 const mensajes = [
-
-    /* ========================================================
-       CONSTELACIÓN 1 — C&A
-    ========================================================= */
 
     {
         tipo: "ca",
@@ -1435,10 +1489,6 @@ const mensajes = [
     },
 
 
-    /* ========================================================
-       CONSTELACIÓN 2 — PAREJA
-    ========================================================= */
-
     {
         tipo: "pareja",
 
@@ -1499,10 +1549,6 @@ const mensajes = [
         `
     },
 
-
-    /* ========================================================
-       CONSTELACIÓN 3 — FECHA
-    ========================================================= */
 
     {
         tipo: "fecha",
@@ -1579,10 +1625,6 @@ const mensajes = [
     },
 
 
-    /* ========================================================
-       4
-    ========================================================= */
-
     {
         tipo: "normal",
 
@@ -1634,10 +1676,6 @@ const mensajes = [
     },
 
 
-    /* ========================================================
-       5
-    ========================================================= */
-
     {
         tipo: "normal",
 
@@ -1680,10 +1718,6 @@ const mensajes = [
         `
     },
 
-
-    /* ========================================================
-       6
-    ========================================================= */
 
     {
         tipo: "normal",
@@ -1740,10 +1774,6 @@ const mensajes = [
         `
     },
 
-
-    /* ========================================================
-       7
-    ========================================================= */
 
     {
         tipo: "normal",
@@ -1813,10 +1843,6 @@ const mensajes = [
     },
 
 
-    /* ========================================================
-       8
-    ========================================================= */
-
     {
         tipo: "normal",
 
@@ -1872,10 +1898,6 @@ const mensajes = [
         `
     },
 
-
-    /* ========================================================
-       9
-    ========================================================= */
 
     {
         tipo: "normal",
@@ -1948,10 +1970,6 @@ let grupoConstelacion;
 let reloj;
 
 let mensajeActual = 0;
-
-let mouseX = 0;
-
-let mouseY = 0;
 
 
 /* ============================================================
@@ -2055,21 +2073,6 @@ function iniciarUniverso() {
     );
 
 
-    window.addEventListener(
-        "mousemove",
-        moverCamara
-    );
-
-
-    window.addEventListener(
-        "touchmove",
-        moverCamaraTouch,
-        {
-            passive: true
-        }
-    );
-
-
     animar();
 
 }
@@ -2113,6 +2116,15 @@ function actualizarCamara() {
             40;
 
     }
+
+
+    /*
+       La cámara siempre comienza
+       completamente centrada.
+    */
+
+    camara.position.x = 0;
+    camara.position.y = 0;
 
 }
 
@@ -2281,7 +2293,7 @@ function crearEstrellas() {
 
 
 /* ============================================================
-   ESCALA RESPONSIVE DE CONSTELACIÓN
+   ESCALA RESPONSIVE
 ============================================================ */
 
 function escalaConstelacion() {
@@ -2289,23 +2301,29 @@ function escalaConstelacion() {
     const ancho =
         window.innerWidth;
 
+
     if (ancho <= 360) {
         return .58;
     }
+
 
     if (ancho <= 430) {
         return .68;
     }
 
+
     if (ancho <= 600) {
         return .78;
     }
+
 
     if (ancho <= 900) {
         return .90;
     }
 
+
     return 1;
+
 }
 
 
@@ -2353,8 +2371,6 @@ function agregarEstrella(
         estrella
     );
 
-
-    /* punto luminoso */
 
     const luz =
         new THREE.PointLight(
@@ -2430,6 +2446,7 @@ function conectar(
 
             opacity:
                 opacity
+
         });
 
 
@@ -2545,8 +2562,6 @@ function crearCA() {
     );
 
 
-    /* estrella central */
-
     agregarEstrella(
         -1,
         0,
@@ -2580,14 +2595,10 @@ function crearCA() {
 
 
 /* ============================================================
-   CONSTELACIÓN PAREJA ABRAZADA
+   CONSTELACIÓN PAREJA
 ============================================================ */
 
 function crearPareja() {
-
-    /*
-        PERSONA IZQUIERDA
-    */
 
     const A = [
 
@@ -2600,10 +2611,6 @@ function crearPareja() {
     ];
 
 
-    /*
-        PERSONA DERECHA
-    */
-
     const B = [
 
         [3.8, 3.8, 0],
@@ -2614,8 +2621,6 @@ function crearPareja() {
 
     ];
 
-
-    /* CABEZAS */
 
     agregarEstrella(
         A[0][0],
@@ -2634,8 +2639,6 @@ function crearPareja() {
         .34
     );
 
-
-    /* CUERPOS */
 
     for (
         let i = 0;
@@ -2670,8 +2673,6 @@ function crearPareja() {
 
     }
 
-
-    /* CUERPOS */
 
     conectar(
         A[0],
@@ -2715,14 +2716,14 @@ function crearPareja() {
     );
 
 
-    /* BRAZOS ABRAZÁNDOSE */
-
     const brazoA = [
+
         [-3.8, 1.8, 0],
         [-2.0, 1.1, 0],
         [0, 1.0, 0],
         [2.0, 1.1, 0],
         [3.8, 1.8, 0]
+
     ];
 
 
@@ -2740,6 +2741,7 @@ function crearPareja() {
             .19
         );
 
+
         conectar(
             brazoA[i],
             brazoA[i + 1],
@@ -2749,8 +2751,6 @@ function crearPareja() {
 
     }
 
-
-    /* CORAZÓN ENTRE LOS DOS */
 
     agregarEstrella(
         0,
@@ -2789,10 +2789,6 @@ function crearPareja() {
 ============================================================ */
 
 function crearFecha() {
-
-    /*
-       Forma inspirada en una estrella/calendario.
-    */
 
     const puntos = [
 
@@ -2848,8 +2844,6 @@ function crearFecha() {
 
     }
 
-
-    /* estrella central */
 
     agregarEstrella(
         0,
@@ -3026,7 +3020,9 @@ function crearConstelacion(indice) {
     }
 
 
-    /* posición responsive */
+    /* ========================================================
+       POSICIÓN
+    ======================================================== */
 
     if (
         window.innerWidth <= 600
@@ -3048,10 +3044,22 @@ function crearConstelacion(indice) {
     grupoConstelacion.position.x =
         0;
 
-
     grupoConstelacion.position.z =
         0;
 
+
+    /* ========================================================
+       ROTACIÓN COMPLETAMENTE ESTÁTICA
+    ======================================================== */
+
+    grupoConstelacion.rotation.x = 0;
+    grupoConstelacion.rotation.y = 0;
+    grupoConstelacion.rotation.z = 0;
+
+
+    /* ========================================================
+       ANIMACIÓN DE ENTRADA
+    ======================================================== */
 
     grupoConstelacion.scale.multiplyScalar(
         .01
@@ -3080,36 +3088,39 @@ function animar() {
         reloj.getElapsedTime();
 
 
-    /* ESTRELLAS */
+    /* ========================================================
+       ESTRELLAS DEL FONDO
+       MOVIMIENTO CASI IMPERCEPTIBLE
+    ======================================================== */
 
     if (estrellas) {
 
         estrellas.rotation.y =
-            tiempo * .008;
+            tiempo * 0.0008;
 
         estrellas.rotation.x =
             Math.sin(
-                tiempo * .05
-            ) * .03;
+                tiempo * 0.015
+            ) * 0.003;
 
     }
 
 
-    /* CONSTELACIÓN */
+    /* ========================================================
+       CONSTELACIÓN
+       COMPLETAMENTE ESTÁTICA
+    ======================================================== */
 
     if (grupoConstelacion) {
 
-        grupoConstelacion.rotation.z =
-            Math.sin(
-                tiempo * .25
-            ) * .025;
+        grupoConstelacion.rotation.x = 0;
+        grupoConstelacion.rotation.y = 0;
+        grupoConstelacion.rotation.z = 0;
 
 
-        grupoConstelacion.rotation.y =
-            Math.sin(
-                tiempo * .2
-            ) * .06;
-
+        /* ====================================================
+           ANIMACIÓN DE APARICIÓN
+        ==================================================== */
 
         if (
             grupoConstelacion.scale.x < 1
@@ -3119,14 +3130,10 @@ function animar() {
                 1.04
             );
 
+
             if (
                 grupoConstelacion.scale.x > 1
             ) {
-
-                /*
-                    Recuperamos la escala
-                    correcta según pantalla.
-                */
 
                 const datos =
                     mensajes[
@@ -3149,9 +3156,7 @@ function animar() {
 
                 else if (
                     datos &&
-                    (
-                        datos.tipo === "fecha"
-                    )
+                    datos.tipo === "fecha"
                 ) {
 
                     escala *= .85;
@@ -3179,22 +3184,20 @@ function animar() {
     }
 
 
-    /* CÁMARA SUAVE */
+    /* ========================================================
+       CÁMARA COMPLETAMENTE ESTABLE
+    ======================================================== */
 
     if (camara) {
 
         camara.position.x +=
-            (
-                mouseX * 2 -
-                camara.position.x
-            ) * .015;
+            (0 - camara.position.x) *
+            .08;
 
 
         camara.position.y +=
-            (
-                -mouseY * 1.5 -
-                camara.position.y
-            ) * .015;
+            (0 - camara.position.y) *
+            .08;
 
     }
 
@@ -3208,61 +3211,18 @@ function animar() {
 
 
 /* ============================================================
-   MOUSE
-============================================================ */
-
-function moverCamara(evento) {
-
-    mouseX =
-        evento.clientX /
-        window.innerWidth -
-        .5;
-
-
-    mouseY =
-        evento.clientY /
-        window.innerHeight -
-        .5;
-
-}
-
-
-/* ============================================================
-   TOUCH
-============================================================ */
-
-function moverCamaraTouch(evento) {
-
-    if (
-        !evento.touches ||
-        !evento.touches[0]
-    ) {
-        return;
-    }
-
-
-    mouseX =
-        evento.touches[0].clientX /
-        window.innerWidth -
-        .5;
-
-
-    mouseY =
-        evento.touches[0].clientY /
-        window.innerHeight -
-        .5;
-
-}
-
-
-/* ============================================================
    RESIZE
 ============================================================ */
 
 function ajustarPantalla() {
 
-    if (!camara || !renderizador) {
+    if (
+        !camara ||
+        !renderizador
+    ) {
+
         return;
+
     }
 
 
@@ -3282,11 +3242,6 @@ function ajustarPantalla() {
         window.innerHeight
     );
 
-
-    /*
-       Si hay una constelación activa,
-       actualizar su tamaño.
-    */
 
     if (
         grupoConstelacion &&
@@ -3312,7 +3267,9 @@ function mostrarMensaje(indice) {
         indice < 0 ||
         indice >= mensajes.length
     ) {
+
         return;
+
     }
 
 
@@ -3412,7 +3369,7 @@ botonEntrar.addEventListener(
 
 
         botonMusica.style.display =
-            "block";
+            "flex";
 
 
         /* ====================================================
@@ -3427,14 +3384,14 @@ botonEntrar.addEventListener(
             .play()
             .then(() => {
 
-                botonMusica.textContent =
-                    "🔊";
+                iconoMusica.textContent =
+                    "♫";
 
             })
             .catch(() => {
 
-                botonMusica.textContent =
-                    "🎵";
+                iconoMusica.textContent =
+                    "♪";
 
             });
 
@@ -3465,8 +3422,14 @@ botonMusica.addEventListener(
                 .play()
                 .then(() => {
 
-                    botonMusica.textContent =
-                        "🔊";
+                    iconoMusica.textContent =
+                        "♫";
+
+                })
+                .catch(() => {
+
+                    iconoMusica.textContent =
+                        "♪";
 
                 });
 
@@ -3476,8 +3439,8 @@ botonMusica.addEventListener(
 
             audioUniverso.pause();
 
-            botonMusica.textContent =
-                "🔇";
+            iconoMusica.textContent =
+                "×";
 
         }
 
@@ -3666,6 +3629,11 @@ function crearCorazon() {
     grupoConstelacion.scale.setScalar(
         escala * .01
     );
+
+
+    grupoConstelacion.rotation.x = 0;
+    grupoConstelacion.rotation.y = 0;
+    grupoConstelacion.rotation.z = 0;
 
 
     grupoConstelacion.position.y =
