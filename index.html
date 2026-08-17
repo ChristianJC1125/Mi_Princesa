@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -31,6 +31,7 @@ body{
     width:100%;
     height:100%;
     overflow:hidden;
+
     font-family:
         "Segoe UI",
         Arial,
@@ -52,8 +53,10 @@ body{
 #universo{
     position:fixed;
     inset:0;
+
     width:100%;
     height:100%;
+
     z-index:1;
 }
 
@@ -63,7 +66,7 @@ canvas{
 
 
 /* =========================================================
-   FONDO NEÓN
+   BRILLOS DEL FONDO
 ========================================================= */
 
 .neon-background{
@@ -80,44 +83,40 @@ canvas{
 
         radial-gradient(
             circle at 15% 20%,
-            rgba(0,180,255,.20),
+            rgba(0,180,255,.18),
             transparent 28%
         ),
 
         radial-gradient(
             circle at 85% 25%,
-            rgba(255,0,153,.22),
+            rgba(255,0,153,.18),
             transparent 30%
         ),
 
         radial-gradient(
             circle at 50% 80%,
-            rgba(128,0,255,.25),
+            rgba(128,0,255,.20),
             transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(255,0,110,.08),
-            transparent 55%
         );
 
-    filter:blur(20px);
+    filter:blur(30px);
 
     animation:
-        fondoNeon 10s ease-in-out infinite alternate;
+        fondoNeon 12s ease-in-out infinite alternate;
 }
 
 @keyframes fondoNeon{
 
     0%{
-        transform:scale(1)
-        rotate(0deg);
+        transform:
+            scale(1)
+            rotate(0deg);
     }
 
     100%{
-        transform:scale(1.12)
-        rotate(2deg);
+        transform:
+            scale(1.12)
+            rotate(2deg);
     }
 }
 
@@ -139,14 +138,14 @@ canvas{
     background:
         radial-gradient(
             circle,
-            transparent 35%,
+            transparent 38%,
             rgba(0,0,0,.72) 100%
         );
 }
 
 
 /* =========================================================
-   LÍNEAS NEÓN
+   LÍNEAS DEL UNIVERSO
 ========================================================= */
 
 .neon-lines{
@@ -159,7 +158,7 @@ canvas{
 
     pointer-events:none;
 
-    opacity:.4;
+    opacity:.25;
 
     background:
 
@@ -202,7 +201,7 @@ canvas{
 
 
 /* =========================================================
-   PANTALLA INICIAL
+   INICIO
 ========================================================= */
 
 #inicio{
@@ -211,7 +210,7 @@ canvas{
 
     inset:0;
 
-    z-index:20;
+    z-index:30;
 
     display:flex;
 
@@ -223,8 +222,8 @@ canvas{
     background:
         radial-gradient(
             circle at center,
-            rgba(70,0,100,.25),
-            rgba(0,0,0,.88)
+            rgba(70,0,100,.28),
+            rgba(0,0,0,.90)
         );
 
     transition:
@@ -254,7 +253,7 @@ canvas{
 
 
 /* =========================================================
-   AURA DEL INICIO
+   AURA
 ========================================================= */
 
 .inicio-contenido::before{
@@ -263,8 +262,8 @@ canvas{
 
     position:absolute;
 
-    width:320px;
-    height:320px;
+    width:330px;
+    height:330px;
 
     left:50%;
     top:50%;
@@ -277,11 +276,11 @@ canvas{
     background:
         radial-gradient(
             circle,
-            rgba(255,0,153,.16),
+            rgba(255,0,153,.18),
             transparent 70%
         );
 
-    filter:blur(20px);
+    filter:blur(25px);
 
     z-index:-1;
 
@@ -306,21 +305,20 @@ canvas{
 
 
 /* =========================================================
-   ESTRELLAS SUPERIORES
+   ESTRELLAS INICIALES
 ========================================================= */
 
 .mini-estrellas{
 
     font-size:30px;
 
-    letter-spacing:25px;
+    letter-spacing:20px;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 
     color:white;
 
     text-shadow:
-
         0 0 8px white,
         0 0 20px #00d9ff,
         0 0 40px #ff00a8,
@@ -333,7 +331,7 @@ canvas{
 @keyframes estrellasBrillo{
 
     from{
-        opacity:.4;
+        opacity:.45;
         transform:scale(.95);
     }
 
@@ -351,11 +349,11 @@ canvas{
 .inicio-contenido h1{
 
     font-size:
-        clamp(50px,10vw,105px);
+        clamp(48px,10vw,105px);
 
     font-weight:300;
 
-    letter-spacing:6px;
+    letter-spacing:5px;
 
     background:
 
@@ -379,7 +377,9 @@ canvas{
         gradienteTitulo 6s linear infinite;
 
     filter:
-        drop-shadow(0 0 15px rgba(255,0,153,.35));
+        drop-shadow(
+            0 0 15px rgba(255,0,153,.35)
+        );
 }
 
 @keyframes gradienteTitulo{
@@ -400,7 +400,7 @@ canvas{
 
 .subtitulo{
 
-    margin-top:10px;
+    margin-top:8px;
 
     font-size:
         clamp(17px,4vw,25px);
@@ -410,7 +410,6 @@ canvas{
     color:#ffb8eb;
 
     text-shadow:
-
         0 0 8px #ff00a8,
         0 0 20px rgba(255,0,168,.6);
 }
@@ -424,14 +423,14 @@ canvas{
 
     max-width:650px;
 
-    margin:35px auto;
+    margin:30px auto;
 
     font-size:
         clamp(16px,4vw,21px);
 
     line-height:1.8;
 
-    color:rgba(255,255,255,.82);
+    color:rgba(255,255,255,.84);
 }
 
 .frase-inicial strong{
@@ -439,41 +438,40 @@ canvas{
     color:#fff;
 
     text-shadow:
-
         0 0 8px #ff00a8,
         0 0 20px #ff00a8;
 }
 
 
 /* =========================================================
-   BOTÓN PRINCIPAL
+   BOTONES PRINCIPALES
 ========================================================= */
 
 .boton-principal{
 
     position:relative;
 
-    padding:17px 38px;
+    padding:16px 32px;
 
     border-radius:50px;
 
-    border:1px solid rgba(255,255,255,.35);
+    border:
+        1px solid rgba(255,255,255,.35);
 
     color:white;
 
     background:
-
         linear-gradient(
             135deg,
-            rgba(255,0,153,.20),
-            rgba(111,0,255,.20)
+            rgba(255,0,153,.22),
+            rgba(111,0,255,.22)
         );
 
     backdrop-filter:blur(15px);
 
     cursor:pointer;
 
-    font-size:15px;
+    font-size:14px;
 
     letter-spacing:2px;
 
@@ -484,45 +482,14 @@ canvas{
         box-shadow .3s ease;
 }
 
-.boton-principal::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-120%;
-
-    width:100%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.35),
-            transparent
-        );
-
-    transform:skewX(-25deg);
-
-    transition:.7s;
-}
-
-.boton-principal:hover::before{
-
-    left:120%;
-}
-
 .boton-principal:hover{
 
     transform:
-        translateY(-4px)
-        scale(1.04);
+        translateY(-3px)
+        scale(1.03);
 
     box-shadow:
-
-        0 0 10px #ff00a8,
+        0 0 12px #ff00a8,
         0 0 30px rgba(255,0,168,.55),
         0 0 70px rgba(120,0,255,.35);
 }
@@ -561,24 +528,27 @@ canvas{
 
     position:absolute;
 
-    top:25px;
+    top:20px;
 
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width:90%;
 
     text-align:center;
+
+    z-index:20;
 }
 
 .titulo-superior small{
 
     display:block;
 
-    color:rgba(255,255,255,.5);
+    color:rgba(255,255,255,.55);
 
-    font-size:10px;
+    font-size:9px;
 
     letter-spacing:5px;
 
@@ -587,7 +557,7 @@ canvas{
 
 .titulo-superior h2{
 
-    margin-top:7px;
+    margin-top:6px;
 
     font-size:
         clamp(22px,5vw,34px);
@@ -597,7 +567,6 @@ canvas{
     color:#fff;
 
     text-shadow:
-
         0 0 8px #ff00a8,
         0 0 20px #ff00a8,
         0 0 40px #8a2be2;
@@ -605,18 +574,19 @@ canvas{
 
 
 /* =========================================================
-   INSTRUCCIÓN
+   INSTRUCCION
 ========================================================= */
 
 #instruccion{
 
     position:absolute;
 
-    top:105px;
+    top:95px;
 
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width:90%;
 
@@ -624,19 +594,18 @@ canvas{
 
     color:rgba(255,255,255,.65);
 
-    font-size:13px;
+    font-size:12px;
 
     letter-spacing:1px;
 
-    text-shadow:
-        0 0 8px rgba(255,0,168,.5);
+    z-index:20;
 
     transition:opacity .5s ease;
 }
 
 
 /* =========================================================
-   PANEL MENSAJE
+   PANEL DEL MENSAJE
 ========================================================= */
 
 #mensaje{
@@ -645,43 +614,41 @@ canvas{
 
     left:50%;
 
-    bottom:45px;
+    bottom:20px;
 
     transform:
         translateX(-50%)
-        translateY(40px);
+        translateY(30px);
 
-    width:min(720px,calc(100% - 30px));
+    width:min(
+        650px,
+        calc(100% - 30px)
+    );
 
-    max-height:58vh;
+    max-height:42vh;
 
     overflow-y:auto;
 
-    padding:32px;
+    padding:25px;
 
-    border-radius:28px;
+    border-radius:25px;
 
     background:
-
         linear-gradient(
             145deg,
-            rgba(15,5,35,.84),
-            rgba(38,5,55,.72)
+            rgba(10,3,28,.82),
+            rgba(38,5,55,.68)
         );
 
     border:
-
         1px solid rgba(255,0,180,.30);
 
     backdrop-filter:
-        blur(22px);
+        blur(18px);
 
     box-shadow:
-
-        0 0 10px rgba(255,0,153,.15),
-        0 0 35px rgba(255,0,153,.12),
-        0 20px 80px rgba(0,0,0,.6),
-
+        0 0 20px rgba(255,0,153,.12),
+        0 20px 70px rgba(0,0,0,.65),
         inset 0 0 30px rgba(130,0,255,.08);
 
     text-align:center;
@@ -691,9 +658,9 @@ canvas{
     pointer-events:none;
 
     transition:
-
         opacity .6s ease,
-        transform .6s ease;
+        transform .6s ease,
+        max-height .5s ease;
 }
 
 #mensaje.visible{
@@ -709,58 +676,29 @@ canvas{
 
 
 /* =========================================================
-   BORDE NEÓN
+   PANEL MINIMIZADO
 ========================================================= */
 
-#mensaje::before{
+#mensaje.minimizado{
 
-    content:"";
+    max-height:75px;
 
-    position:absolute;
+    overflow:hidden;
 
-    inset:-1px;
-
-    border-radius:28px;
-
-    padding:1px;
-
-    background:
-
-        linear-gradient(
-            120deg,
-            transparent,
-            #ff00a8,
-            #8a2be2,
-            #00d9ff,
-            transparent
-        );
-
-    -webkit-mask:
-        linear-gradient(#fff 0 0)
-        content-box,
-        linear-gradient(#fff 0 0);
-
-    -webkit-mask-composite:xor;
-
-    mask-composite:exclude;
-
-    opacity:.7;
-
-    animation:
-        bordeNeon 5s linear infinite;
+    padding:15px 20px;
 }
 
-@keyframes bordeNeon{
+#mensaje.minimizado #textoMensaje,
+#mensaje.minimizado .controles{
 
-    from{
-        filter:
-            hue-rotate(0deg);
-    }
+    display:none;
+}
 
-    to{
-        filter:
-            hue-rotate(360deg);
-    }
+#mensaje.minimizado h3{
+
+    margin:0;
+
+    font-size:16px;
 }
 
 
@@ -772,13 +710,13 @@ canvas{
 
     color:#c59cff;
 
-    font-size:10px;
+    font-size:9px;
 
-    letter-spacing:5px;
+    letter-spacing:4px;
 
     text-transform:uppercase;
 
-    margin-bottom:12px;
+    margin-bottom:8px;
 
     text-shadow:
         0 0 12px #8a2be2;
@@ -786,22 +724,21 @@ canvas{
 
 
 /* =========================================================
-   TITULO MENSAJE
+   TITULO DEL MENSAJE
 ========================================================= */
 
 #mensaje h3{
 
     font-size:
-        clamp(24px,6vw,37px);
+        clamp(21px,5vw,32px);
 
     font-weight:400;
 
-    margin-bottom:18px;
+    margin-bottom:15px;
 
     color:#fff;
 
     text-shadow:
-
         0 0 10px rgba(255,255,255,.4),
         0 0 25px rgba(255,0,168,.3);
 }
@@ -813,12 +750,13 @@ canvas{
 
 #mensaje p{
 
-    color:rgba(255,255,255,.84);
+    color:
+        rgba(255,255,255,.86);
 
     font-size:
-        clamp(15px,3.8vw,18px);
+        clamp(14px,3.6vw,17px);
 
-    line-height:1.8;
+    line-height:1.7;
 }
 
 #mensaje p strong{
@@ -828,7 +766,6 @@ canvas{
     font-weight:500;
 
     text-shadow:
-
         0 0 7px #ff00a8,
         0 0 15px rgba(255,0,168,.5);
 }
@@ -844,21 +781,24 @@ canvas{
 
     justify-content:center;
 
-    gap:12px;
+    gap:10px;
 
-    margin-top:24px;
+    margin-top:20px;
+
+    flex-wrap:wrap;
 }
 
 .btn{
 
-    border:1px solid rgba(255,0,168,.3);
+    border:
+        1px solid rgba(255,0,168,.3);
 
     background:
         rgba(255,255,255,.06);
 
     color:white;
 
-    padding:11px 20px;
+    padding:10px 17px;
 
     border-radius:30px;
 
@@ -866,7 +806,7 @@ canvas{
 
     transition:.3s;
 
-    font-size:14px;
+    font-size:13px;
 }
 
 .btn:hover{
@@ -878,14 +818,12 @@ canvas{
         translateY(-2px);
 
     box-shadow:
-
-        0 0 12px rgba(255,0,168,.5),
-        0 0 25px rgba(130,0,255,.25);
+        0 0 12px rgba(255,0,168,.5);
 }
 
 .btn:disabled{
 
-    opacity:.2;
+    opacity:.25;
 
     cursor:not-allowed;
 
@@ -896,31 +834,87 @@ canvas{
 
 
 /* =========================================================
-   BOTÓN MÚSICA
+   BOTONES DEL CIELO
+========================================================= */
+
+#controlesCielo{
+
+    position:fixed;
+
+    right:18px;
+
+    bottom:18px;
+
+    z-index:50;
+
+    display:flex;
+
+    gap:8px;
+
+    pointer-events:auto;
+}
+
+.cielo-btn{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    background:
+        rgba(20,5,35,.65);
+
+    color:white;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(12px);
+
+    font-size:18px;
+
+    box-shadow:
+        0 0 15px rgba(255,0,168,.18);
+
+    transition:.3s;
+}
+
+.cielo-btn:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(255,0,168,.5);
+}
+
+
+/* =========================================================
+   MUSICA
 ========================================================= */
 
 #musica{
 
     position:fixed;
 
-    right:22px;
+    right:18px;
 
-    top:20px;
+    top:18px;
 
-    z-index:40;
+    z-index:50;
 
-    width:52px;
+    width:48px;
 
-    height:52px;
+    height:48px;
 
     border-radius:50%;
 
     border:
-
         1px solid rgba(255,0,180,.45);
 
     background:
-
         radial-gradient(
             circle,
             rgba(255,0,168,.20),
@@ -939,24 +933,11 @@ canvas{
 
     justify-content:center;
 
-    font-size:21px;
+    font-size:20px;
 
     box-shadow:
-
         0 0 10px rgba(255,0,168,.4),
         0 0 30px rgba(130,0,255,.2);
-
-    transition:.3s;
-}
-
-#musica:hover{
-
-    transform:scale(1.1);
-
-    box-shadow:
-
-        0 0 15px #ff00a8,
-        0 0 40px #8a2be2;
 }
 
 #musica.reproduciendo{
@@ -993,7 +974,7 @@ canvas{
 
     inset:0;
 
-    z-index:50;
+    z-index:60;
 
     display:flex;
 
@@ -1001,10 +982,9 @@ canvas{
 
     justify-content:center;
 
-    padding:25px;
+    padding:20px;
 
     background:
-
         radial-gradient(
             circle at center,
             rgba(110,0,130,.35),
@@ -1018,7 +998,6 @@ canvas{
     pointer-events:none;
 
     transition:
-
         opacity 1.5s ease,
         visibility 1.5s ease;
 }
@@ -1034,7 +1013,7 @@ canvas{
 
 .final-contenido{
 
-    width:min(760px,100%);
+    width:min(720px,100%);
 
     text-align:center;
 
@@ -1047,16 +1026,15 @@ canvas{
 
 
 /* =========================================================
-   CORAZÓN
+   CORAZON
 ========================================================= */
 
 .final-corazon{
 
     font-size:
-        clamp(75px,18vw,160px);
+        clamp(75px,18vw,150px);
 
     filter:
-
         drop-shadow(0 0 10px #ff00a8)
         drop-shadow(0 0 30px #ff00a8)
         drop-shadow(0 0 60px #8a2be2);
@@ -1077,24 +1055,16 @@ canvas{
     }
 }
 
-
-/* =========================================================
-   TITULO FINAL
-========================================================= */
-
 .final-contenido h1{
 
-    margin-top:20px;
+    margin-top:15px;
 
     font-size:
-        clamp(32px,8vw,70px);
+        clamp(32px,8vw,65px);
 
     font-weight:300;
 
-    color:white;
-
     text-shadow:
-
         0 0 10px white,
         0 0 25px #ff00a8,
         0 0 50px #8a2be2;
@@ -1102,17 +1072,16 @@ canvas{
 
 .final-contenido h2{
 
-    margin-top:12px;
+    margin-top:10px;
 
     font-size:
-        clamp(24px,6vw,44px);
+        clamp(22px,6vw,42px);
 
     color:#ffb5e7;
 
     font-weight:400;
 
     text-shadow:
-
         0 0 10px #ff00a8,
         0 0 25px rgba(255,0,168,.7);
 }
@@ -1121,22 +1090,23 @@ canvas{
 
     max-width:680px;
 
-    margin:28px auto 0;
+    margin:25px auto 0;
 
-    color:rgba(255,255,255,.8);
+    color:
+        rgba(255,255,255,.82);
 
     font-size:
-        clamp(16px,4vw,20px);
+        clamp(15px,4vw,19px);
 
-    line-height:1.9;
+    line-height:1.8;
 }
 
 .final-frase{
 
-    margin-top:30px;
+    margin-top:25px;
 
     font-size:
-        clamp(18px,5vw,28px);
+        clamp(17px,5vw,27px);
 
     color:white;
 
@@ -1148,7 +1118,7 @@ canvas{
 
 .reiniciar{
 
-    margin-top:30px;
+    margin-top:25px;
 }
 
 
@@ -1183,7 +1153,8 @@ canvas{
 
     .inicio-contenido{
 
-        padding:25px 15px;
+        padding:
+            20px 12px;
     }
 
     .inicio-contenido h1{
@@ -1195,66 +1166,125 @@ canvas{
 
         font-size:20px;
 
-        letter-spacing:10px;
+        letter-spacing:8px;
+
+        margin-bottom:18px;
     }
 
     .frase-inicial{
 
-        margin:25px auto;
-    }
-
-    .boton-principal{
-
-        padding:15px 22px;
-
-        font-size:13px;
-    }
-
-    #musica{
-
-        width:46px;
-        height:46px;
-
-        right:15px;
-        top:15px;
-    }
-
-    #mensaje{
-
-        bottom:20px;
-
-        padding:25px 20px;
-
-        max-height:60vh;
-    }
-
-    #mensaje p{
+        margin:22px auto;
 
         line-height:1.65;
     }
 
-    .controles{
+    .boton-principal{
 
-        gap:8px;
+        padding:
+            14px 20px;
+
+        font-size:12px;
     }
 
-    .btn{
+    #musica{
 
-        padding:10px 15px;
+        right:12px;
+        top:12px;
+
+        width:44px;
+        height:44px;
     }
 
     #instruccion{
 
-        top:92px;
+        top:88px;
 
-        font-size:11px;
+        font-size:10px;
+    }
+
+    #mensaje{
+
+        bottom:12px;
+
+        width:
+            calc(100% - 20px);
+
+        padding:
+            20px 17px;
+
+        max-height:38vh;
+
+        border-radius:22px;
+    }
+
+    #mensaje p{
+
+        line-height:1.6;
+    }
+
+    #controlesCielo{
+
+        right:10px;
+
+        bottom:
+            calc(38vh + 20px);
+    }
+
+    .cielo-btn{
+
+        width:42px;
+
+        height:42px;
+
+        font-size:16px;
+    }
+
+    .controles{
+
+        gap:7px;
+    }
+
+    .btn{
+
+        padding:
+            9px 12px;
+
+        font-size:12px;
     }
 
 }
 
 
 /* =========================================================
-   REDUCIR ANIMACIONES SI EL USUARIO LO PREFIERE
+   MOVILES MUY PEQUEÑOS
+========================================================= */
+
+@media(max-width:380px){
+
+    #mensaje{
+
+        max-height:35vh;
+
+        padding:
+            17px 14px;
+    }
+
+    #controlesCielo{
+
+        bottom:
+            calc(35vh + 18px);
+    }
+
+    #mensaje h3{
+
+        font-size:19px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCIR ANIMACIONES
 ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
@@ -1280,7 +1310,7 @@ canvas{
 
 
 <!-- =========================================================
-     AUDIO
+     MUSICA
 ========================================================= -->
 
 <audio
@@ -1377,11 +1407,16 @@ canvas{
 
     <div id="instruccion">
 
-        Explora las estrellas y descubre
-        un pedacito de lo que siento por ti ✨
+        ✨ Mueve el cielo con tu dedo o con el mouse
+        <br>
+        🌸 Hay algo bonito escondido entre las estrellas
 
     </div>
 
+
+    <!-- =====================================================
+         MENSAJE
+    ===================================================== -->
 
     <div id="mensaje">
 
@@ -1392,16 +1427,13 @@ canvas{
             CONSTELACIÓN 01
         </div>
 
-
         <h3 id="tituloMensaje">
             Lo hermosa que eres
         </h3>
 
-
         <p id="textoMensaje">
             ...
         </p>
-
 
         <div class="controles">
 
@@ -1427,7 +1459,32 @@ canvas{
 
 
 <!-- =========================================================
-     BOTÓN MÚSICA
+     CONTROLES DEL CIELO
+========================================================= -->
+
+<div id="controlesCielo">
+
+    <button
+        class="cielo-btn"
+        id="verCielo"
+        title="Ver el cielo"
+    >
+        ✦
+    </button>
+
+    <button
+        class="cielo-btn"
+        id="verPeonia"
+        title="Mostrar peonías"
+    >
+        🌸
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     MUSICA
 ========================================================= -->
 
 <button id="musica">
@@ -1447,21 +1504,17 @@ canvas{
 
     <div class="final-contenido">
 
-
         <div class="final-corazon">
             ❤️
         </div>
-
 
         <h1>
             Mi Ojitos...
         </h1>
 
-
         <h2>
             TE QUIERO DEMASIADO
         </h2>
-
 
         <p>
 
@@ -1491,7 +1544,6 @@ canvas{
 
         </p>
 
-
         <div class="final-frase">
 
             "No quiero solamente
@@ -1504,7 +1556,6 @@ canvas{
 
         </div>
 
-
         <div class="reiniciar">
 
             <button
@@ -1516,11 +1567,9 @@ canvas{
 
         </div>
 
-
     </div>
 
 </section>
-
 
 
 <script>
@@ -1577,6 +1626,12 @@ const iconoMusica =
 const audioMusica =
     document.getElementById("audioMusica");
 
+const botonCielo =
+    document.getElementById("verCielo");
+
+const botonPeonia =
+    document.getElementById("verPeonia");
+
 
 /* =========================================================
    MENSAJES
@@ -1612,7 +1667,7 @@ const mensajes = [
             Me encanta tu forma de ser,
             tus gestos, tu manera de hablar,
             la forma en que sonríes
-            y hasta esos pequeños detalles
+            y esos pequeños detalles
             que quizá tú ni siquiera notas.
 
             <br><br>
@@ -1628,7 +1683,6 @@ const mensajes = [
 
         `
     },
-
 
     {
         titulo:"Te quiero demasiado",
@@ -1651,11 +1705,6 @@ const mensajes = [
 
             <br><br>
 
-            Te quiero más de lo que a veces
-            puedo explicar con palabras.
-
-            <br><br>
-
             Te quiero cuando sonríes,
             cuando estás feliz,
             cuando estás seria,
@@ -1671,7 +1720,6 @@ const mensajes = [
 
         `
     },
-
 
     {
         titulo:"Quiero conocerte completa",
@@ -1712,7 +1760,6 @@ const mensajes = [
 
         `
     },
-
 
     {
         titulo:"Cuando necesites un abrazo",
@@ -1764,7 +1811,6 @@ const mensajes = [
 
         `
     },
-
 
     {
         titulo:"En todos tus modos",
@@ -1830,7 +1876,6 @@ const mensajes = [
         `
     },
 
-
     {
         titulo:"Si alguna vez dudas de cuánto te quiero",
 
@@ -1875,16 +1920,10 @@ const mensajes = [
             Más de lo que puede mostrar
             esta página.
 
-            <br><br>
-
-            Y probablemente más
-            de lo que yo mismo sé explicar.
-
             ❤️
 
         `
     },
-
 
     {
         titulo:"Para mi niña bonita",
@@ -1947,9 +1986,19 @@ const mensajes = [
 let escena;
 let camara;
 let renderizador;
+
 let estrellas;
 let grupoConstelacion;
+let grupoPeonia;
+
 let reloj;
+
+let mouseX = 0;
+let mouseY = 0;
+
+let mensajeActual = 0;
+
+let peoniaVisible = true;
 
 
 /* =========================================================
@@ -1961,7 +2010,6 @@ function iniciarUniverso(){
     escena =
         new THREE.Scene();
 
-
     escena.fog =
         new THREE.FogExp2(
             0x02010a,
@@ -1971,13 +2019,12 @@ function iniciarUniverso(){
 
     camara =
         new THREE.PerspectiveCamera(
-            65,
+            60,
             window.innerWidth /
             window.innerHeight,
             .1,
             2000
         );
-
 
     camara.position.z = 40;
 
@@ -1986,7 +2033,6 @@ function iniciarUniverso(){
         new THREE.WebGLRenderer({
 
             antialias:true,
-
             alpha:true
 
         });
@@ -1995,7 +2041,7 @@ function iniciarUniverso(){
     renderizador.setPixelRatio(
         Math.min(
             window.devicePixelRatio,
-            2
+            1.8
         )
     );
 
@@ -2017,10 +2063,20 @@ function iniciarUniverso(){
     grupoConstelacion =
         new THREE.Group();
 
-
     escena.add(
         grupoConstelacion
     );
+
+
+    grupoPeonia =
+        new THREE.Group();
+
+    escena.add(
+        grupoPeonia
+    );
+
+
+    crearPeonia();
 
 
     reloj =
@@ -2061,8 +2117,8 @@ function crearEstrellas(){
 
     const cantidad =
         window.innerWidth < 600
-        ? 4200
-        : 7000;
+        ? 3000
+        : 5200;
 
 
     const posiciones =
@@ -2182,8 +2238,8 @@ function crearEstrellas(){
 
             size:
                 window.innerWidth < 600
-                ? .75
-                : .95,
+                ? .65
+                : .85,
 
             vertexColors:true,
 
@@ -2211,10 +2267,228 @@ function crearEstrellas(){
 
 
 /* =========================================================
+   PEONIA
+========================================================= */
+
+function crearPeonia(){
+
+    grupoPeonia.clear();
+
+
+    const centro =
+        new THREE.Group();
+
+
+    /*
+       La peonía se construye con muchas
+       capas de pétalos.
+    */
+
+    for(
+        let capa=0;
+        capa<5;
+        capa++
+    ){
+
+        const cantidad =
+            10 + capa * 4;
+
+
+        for(
+            let i=0;
+            i<cantidad;
+            i++
+        ){
+
+            const angulo =
+                (i / cantidad) *
+                Math.PI * 2;
+
+
+            const radio =
+                1.2 +
+                capa * .75;
+
+
+            const petalo =
+                crearPetalo(
+                    radio,
+                    capa
+                );
+
+
+            petalo.position.x =
+                Math.cos(angulo) *
+                radio;
+
+            petalo.position.y =
+                Math.sin(angulo) *
+                radio;
+
+
+            petalo.rotation.z =
+                angulo +
+                Math.PI / 2;
+
+
+            petalo.rotation.x =
+                .15 +
+                capa * .08;
+
+
+            centro.add(
+                petalo
+            );
+
+        }
+
+    }
+
+
+    /*
+       Centro brillante
+    */
+
+    for(
+        let i=0;
+        i<35;
+        i++
+    ){
+
+        const esfera =
+            new THREE.Mesh(
+
+                new THREE.SphereGeometry(
+                    .10,
+                    8,
+                    8
+                ),
+
+                new THREE.MeshBasicMaterial({
+                    color:
+                        i % 2 === 0
+                        ? 0xffd6f0
+                        : 0xff75c8
+                })
+
+            );
+
+
+        const angulo =
+            Math.random() *
+            Math.PI * 2;
+
+
+        const radio =
+            Math.random() * 1.3;
+
+
+        esfera.position.set(
+
+            Math.cos(angulo) * radio,
+
+            Math.sin(angulo) * radio,
+
+            Math.random() * .5
+
+        );
+
+
+        centro.add(
+            esfera
+        );
+
+    }
+
+
+    grupoPeonia.add(
+        centro
+    );
+
+
+    grupoPeonia.position.set(
+        9,
+        5,
+        -4
+    );
+
+
+    grupoPeonia.scale.set(
+        .01,
+        .01,
+        .01
+    );
+
+}
+
+
+function crearPetalo(
+    radio,
+    capa
+){
+
+    const geometria =
+        new THREE.SphereGeometry(
+            .95,
+            18,
+            10
+        );
+
+
+    geometria.scale(
+        1.0,
+        .55,
+        .18
+    );
+
+
+    const colores = [
+
+        0xffd4ed,
+        0xffa8dc,
+        0xff7ac8,
+        0xf05aad,
+        0xd946a6
+
+    ];
+
+
+    const material =
+        new THREE.MeshBasicMaterial({
+
+            color:
+                colores[
+                    capa %
+                    colores.length
+                ],
+
+            transparent:true,
+
+            opacity:
+                .75 +
+                Math.random() * .2,
+
+            side:
+                THREE.DoubleSide
+
+        });
+
+
+    return new THREE.Mesh(
+        geometria,
+        material
+    );
+
+}
+
+
+/* =========================================================
    CONSTELACIONES
 ========================================================= */
 
-function crearConstelacion(indice){
+function crearConstelacion(
+    indice
+){
 
     grupoConstelacion.clear();
 
@@ -2285,40 +2559,39 @@ function crearConstelacion(indice){
 
     const puntos =
         formas[
-            indice % formas.length
+            indice %
+            formas.length
         ];
 
 
-    /* ESTRELLAS */
+    /*
+       ESTRELLAS
+    */
 
     puntos.forEach(
         (punto,index)=>{
 
-            const geometria =
-                new THREE.SphereGeometry(
-                    index === 0
-                    ? .28
-                    : .19,
-                    20,
-                    20
-                );
-
-
-            const material =
-                new THREE.MeshBasicMaterial({
-
-                    color:
-                        index === 0
-                        ? 0xff28b7
-                        : 0xffffff
-
-                });
-
-
             const estrella =
                 new THREE.Mesh(
-                    geometria,
-                    material
+
+                    new THREE.SphereGeometry(
+                        index === 0
+                        ? .30
+                        : .20,
+
+                        18,
+                        18
+                    ),
+
+                    new THREE.MeshBasicMaterial({
+
+                        color:
+                            index === 0
+                            ? 0xff28b7
+                            : 0xffffff
+
+                    })
+
                 );
 
 
@@ -2334,8 +2607,13 @@ function crearConstelacion(indice){
             );
 
 
+            /*
+               Brillo alrededor
+            */
+
             const luz =
                 new THREE.PointLight(
+
                     index === 0
                     ? 0xff00aa
                     : 0x8b5cff,
@@ -2345,6 +2623,7 @@ function crearConstelacion(indice){
                     : 1.1,
 
                     18
+
                 );
 
 
@@ -2361,7 +2640,9 @@ function crearConstelacion(indice){
     );
 
 
-    /* LÍNEAS */
+    /*
+       LINEAS
+    */
 
     for(
         let i=0;
@@ -2389,6 +2670,7 @@ function crearConstelacion(indice){
 
         geometria.setAttribute(
             "position",
+
             new THREE.BufferAttribute(
                 vertices,
                 3
@@ -2406,7 +2688,7 @@ function crearConstelacion(indice){
 
                 transparent:true,
 
-                opacity:.65
+                opacity:.70
 
             });
 
@@ -2423,6 +2705,20 @@ function crearConstelacion(indice){
     }
 
 
+    /*
+       Posición superior para que
+       la carta no tape la constelación.
+    */
+
+    grupoConstelacion.position.set(
+        0,
+        window.innerWidth < 600
+        ? 7
+        : 5,
+        -3
+    );
+
+
     grupoConstelacion.scale.set(
         .01,
         .01,
@@ -2433,7 +2729,174 @@ function crearConstelacion(indice){
 
 
 /* =========================================================
-   ANIMACIÓN
+   CORAZON FINAL
+========================================================= */
+
+function crearCorazon(){
+
+    grupoConstelacion.clear();
+
+
+    const puntos = [];
+
+
+    for(
+        let t=0;
+        t<Math.PI*2;
+        t+=.07
+    ){
+
+        const x =
+            8 *
+            Math.pow(
+                Math.sin(t),
+                3
+            );
+
+
+        const y =
+            6 *
+            Math.cos(t)
+            -
+            2.5 *
+            Math.cos(2*t)
+            -
+            1.2 *
+            Math.cos(3*t)
+            -
+            .6 *
+            Math.cos(4*t);
+
+
+        puntos.push([
+            x,
+            y,
+            0
+        ]);
+
+    }
+
+
+    puntos.forEach(
+        punto=>{
+
+            const estrella =
+                new THREE.Mesh(
+
+                    new THREE.SphereGeometry(
+                        .14,
+                        10,
+                        10
+                    ),
+
+                    new THREE.MeshBasicMaterial({
+
+                        color:
+                            Math.random() > .5
+                            ? 0xff22b7
+                            : 0x9b5cff
+
+                    })
+
+                );
+
+
+            estrella.position.set(
+                punto[0],
+                punto[1],
+                punto[2]
+            );
+
+
+            grupoConstelacion.add(
+                estrella
+            );
+
+        }
+    );
+
+
+    for(
+        let i=0;
+        i<puntos.length;
+        i++
+    ){
+
+        const siguiente =
+            (i+1) %
+            puntos.length;
+
+
+        const geometria =
+            new THREE.BufferGeometry();
+
+
+        const vertices =
+            new Float32Array([
+
+                puntos[i][0],
+                puntos[i][1],
+                puntos[i][2],
+
+                puntos[siguiente][0],
+                puntos[siguiente][1],
+                puntos[siguiente][2]
+
+            ]);
+
+
+        geometria.setAttribute(
+            "position",
+
+            new THREE.BufferAttribute(
+                vertices,
+                3
+            )
+        );
+
+
+        const material =
+            new THREE.LineBasicMaterial({
+
+                color:0xff00a8,
+
+                transparent:true,
+
+                opacity:.75
+
+            });
+
+
+        grupoConstelacion.add(
+
+            new THREE.Line(
+                geometria,
+                material
+            )
+
+        );
+
+    }
+
+
+    grupoConstelacion.position.set(
+        0,
+        3,
+        -3
+    );
+
+
+    grupoConstelacion.scale.set(
+        .01,
+        .01,
+        .01
+    );
+
+}
+
+
+/* =========================================================
+   ANIMACION
 ========================================================= */
 
 function animar(){
@@ -2452,6 +2915,10 @@ function animar(){
         reloj.getElapsedTime();
 
 
+    /*
+       Estrellas
+    */
+
     if(estrellas){
 
         estrellas.rotation.y =
@@ -2465,13 +2932,16 @@ function animar(){
     }
 
 
+    /*
+       Constelación
+    */
+
     if(grupoConstelacion){
 
         grupoConstelacion.rotation.z =
             Math.sin(
                 tiempo * .4
             ) * .035;
-
 
         grupoConstelacion.rotation.y =
             Math.sin(
@@ -2505,7 +2975,57 @@ function animar(){
     }
 
 
-    /* Movimiento suave */
+    /*
+       Peonía
+    */
+
+    if(
+        grupoPeonia &&
+        peoniaVisible
+    ){
+
+        if(
+            grupoPeonia.scale.x < 1
+        ){
+
+            grupoPeonia.scale.multiplyScalar(
+                1.025
+            );
+
+
+            if(
+                grupoPeonia.scale.x > 1
+            ){
+
+                grupoPeonia.scale.set(
+                    1,
+                    1,
+                    1
+                );
+
+            }
+
+        }
+
+
+        grupoPeonia.rotation.z =
+            Math.sin(
+                tiempo * .3
+            ) * .05;
+
+
+        grupoPeonia.position.y =
+            5 +
+            Math.sin(
+                tiempo * .7
+            ) * .3;
+
+    }
+
+
+    /*
+       Movimiento de cámara
+    */
 
     camara.position.x +=
         (
@@ -2538,10 +3058,6 @@ function animar(){
    MOUSE
 ========================================================= */
 
-let mouseX = 0;
-let mouseY = 0;
-
-
 function moverCamara(evento){
 
     mouseX =
@@ -2557,6 +3073,10 @@ function moverCamara(evento){
 
 }
 
+
+/* =========================================================
+   TOUCH
+========================================================= */
 
 function moverCamaraTouch(evento){
 
@@ -2588,6 +3108,14 @@ function moverCamaraTouch(evento){
 
 function ajustarPantalla(){
 
+    if(
+        !camara ||
+        !renderizador
+    ){
+        return;
+    }
+
+
     camara.aspect =
         window.innerWidth /
         window.innerHeight;
@@ -2608,10 +3136,9 @@ function ajustarPantalla(){
    MOSTRAR MENSAJE
 ========================================================= */
 
-let mensajeActual = 0;
-
-
-function mostrarMensaje(indice){
+function mostrarMensaje(
+    indice
+){
 
     if(
         indice < 0 ||
@@ -2646,7 +3173,12 @@ function mostrarMensaje(indice){
 
         numeroMensaje.textContent =
             `CONSTELACIÓN ${
-                String(indice+1).padStart(2,"0")
+                String(
+                    indice + 1
+                ).padStart(
+                    2,
+                    "0"
+                )
             }`;
 
 
@@ -2698,7 +3230,7 @@ function actualizarBotones(){
 
 
 /* =========================================================
-   ENTRAR + MÚSICA
+   ENTRAR
 ========================================================= */
 
 botonEntrar.addEventListener(
@@ -2719,10 +3251,6 @@ botonEntrar.addEventListener(
             "flex";
 
 
-        /* =====================================================
-           INICIAR MÚSICA
-        ===================================================== */
-
         try{
 
             audioMusica.volume =
@@ -2742,7 +3270,7 @@ botonEntrar.addEventListener(
         catch(error){
 
             console.log(
-                "No se pudo reproducir automáticamente:",
+                "La música necesita interacción:",
                 error
             );
 
@@ -2756,14 +3284,93 @@ botonEntrar.addEventListener(
 
             mostrarMensaje(0);
 
-        },900);
+        },800);
 
     }
 );
 
 
 /* =========================================================
-   BOTÓN DE MÚSICA
+   VER CIELO
+========================================================= */
+
+botonCielo.addEventListener(
+    "click",
+    ()=>{
+
+        mensaje.classList.toggle(
+            "minimizado"
+        );
+
+
+        if(
+            mensaje.classList.contains(
+                "minimizado"
+            )
+        ){
+
+            botonCielo.textContent =
+                "💌";
+
+            instruccion.innerHTML =
+                "✨ Ahora sí... contempla nuestro cielo";
+
+        }
+
+        else{
+
+            botonCielo.textContent =
+                "✦";
+
+            instruccion.innerHTML =
+                "✨ Mueve el cielo con tu dedo o con el mouse";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PEONIA
+========================================================= */
+
+botonPeonia.addEventListener(
+    "click",
+    ()=>{
+
+        peoniaVisible =
+            !peoniaVisible;
+
+
+        if(
+            peoniaVisible
+        ){
+
+            grupoPeonia.visible =
+                true;
+
+            botonPeonia.textContent =
+                "🌸";
+
+        }
+
+        else{
+
+            grupoPeonia.visible =
+                false;
+
+            botonPeonia.textContent =
+                "🌙";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MUSICA
 ========================================================= */
 
 botonMusica.addEventListener(
@@ -2790,12 +3397,8 @@ botonMusica.addEventListener(
             catch(error){
 
                 console.log(
-                    "Error al reproducir:",
+                    "Error de audio:",
                     error
-                );
-
-                alert(
-                    "No se encontró la música. Revisa que el archivo se llame musica.mp3 y esté junto al HTML."
                 );
 
             }
@@ -2885,6 +3488,14 @@ function mostrarFinal(){
         "0";
 
 
+    botonCielo.style.display =
+        "none";
+
+
+    botonPeonia.style.display =
+        "none";
+
+
     crearCorazon();
 
 
@@ -2899,176 +3510,7 @@ function mostrarFinal(){
             "visible"
         );
 
-    },2500);
-
-}
-
-
-/* =========================================================
-   CORAZÓN
-========================================================= */
-
-function crearCorazon(){
-
-    grupoConstelacion.clear();
-
-
-    const puntos=[];
-
-
-    for(
-        let t=0;
-        t<Math.PI*2;
-        t+=.07
-    ){
-
-        const x =
-            8 *
-            Math.pow(
-                Math.sin(t),
-                3
-            );
-
-
-        const y =
-            6 *
-            Math.cos(t)
-            -
-            2.5 *
-            Math.cos(2*t)
-            -
-            1.2 *
-            Math.cos(3*t)
-            -
-            .6 *
-            Math.cos(4*t);
-
-
-        puntos.push([
-            x,
-            y,
-            0
-        ]);
-
-    }
-
-
-    /* ESTRELLAS */
-
-    puntos.forEach(
-        punto=>{
-
-            const geometria =
-                new THREE.SphereGeometry(
-                    .14,
-                    12,
-                    12
-                );
-
-
-            const material =
-                new THREE.MeshBasicMaterial({
-
-                    color:
-                        Math.random() > .5
-                        ? 0xff22b7
-                        : 0x9b5cff
-
-                });
-
-
-            const estrella =
-                new THREE.Mesh(
-                    geometria,
-                    material
-                );
-
-
-            estrella.position.set(
-                punto[0],
-                punto[1],
-                punto[2]
-            );
-
-
-            grupoConstelacion.add(
-                estrella
-            );
-
-        }
-    );
-
-
-    /* LÍNEAS */
-
-    for(
-        let i=0;
-        i<puntos.length;
-        i++
-    ){
-
-        const siguiente =
-            (i+1) %
-            puntos.length;
-
-
-        const geometria =
-            new THREE.BufferGeometry();
-
-
-        const vertices =
-            new Float32Array([
-
-                puntos[i][0],
-                puntos[i][1],
-                puntos[i][2],
-
-                puntos[siguiente][0],
-                puntos[siguiente][1],
-                puntos[siguiente][2]
-
-            ]);
-
-
-        geometria.setAttribute(
-            "position",
-            new THREE.BufferAttribute(
-                vertices,
-                3
-            )
-        );
-
-
-        const material =
-            new THREE.LineBasicMaterial({
-
-                color:
-                    0xff00a8,
-
-                transparent:true,
-
-                opacity:.75
-
-            });
-
-
-        grupoConstelacion.add(
-
-            new THREE.Line(
-                geometria,
-                material
-            )
-
-        );
-
-    }
-
-
-    grupoConstelacion.scale.set(
-        .01,
-        .01,
-        .01
-    );
+    },1800);
 
 }
 
@@ -3086,6 +3528,14 @@ botonVolver.addEventListener(
         );
 
 
+        botonCielo.style.display =
+            "block";
+
+
+        botonPeonia.style.display =
+            "block";
+
+
         setTimeout(()=>{
 
             interfaz.classList.add(
@@ -3097,6 +3547,11 @@ botonVolver.addEventListener(
                 "1";
 
 
+            mensaje.classList.remove(
+                "minimizado"
+            );
+
+
             mostrarMensaje(0);
 
         },800);
@@ -3106,7 +3561,7 @@ botonVolver.addEventListener(
 
 
 /* =========================================================
-   INICIALIZAR
+   INICIAR
 ========================================================= */
 
 iniciarUniverso();
@@ -3114,4 +3569,5 @@ iniciarUniverso();
 </script>
 
 </body>
+
 </html>
