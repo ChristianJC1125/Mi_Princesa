@@ -1,8 +1,6 @@
 <DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,14 +8,9 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     >
 
-    <meta
-        name="theme-color"
-        content="#02010a"
-    >
+    <title>Mi Ojitos 🌌❤️</title>
 
-    <title>
-        El Universo de Mi Ojitos ❤️
-    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
 
@@ -27,4889 +20,2196 @@
             box-sizing: border-box;
         }
 
-
         html,
         body {
-
             width: 100%;
             height: 100%;
-
             overflow: hidden;
-
+            font-family: "Segoe UI", Arial, sans-serif;
             background: #02010a;
-
             color: white;
-
-            font-family:
-                "Segoe UI",
-                Arial,
-                sans-serif;
-
-            touch-action: none;
-
         }
-
 
         body {
-            overscroll-behavior: none;
+            position: relative;
         }
 
+        /* =========================================================
+           CANVAS THREE.JS
+        ========================================================== */
 
-        button {
-
-            font-family: inherit;
-
-            cursor: pointer;
-
-            -webkit-tap-highlight-color:
-                transparent;
-
-        }
-
-
-        /* =====================================================
-           INTRO
-        ====================================================== */
-
-        #intro {
-
+        #universo {
             position: fixed;
-
             inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-            z-index: 2000;
+        canvas {
+            display: block;
+        }
+
+        /* =========================================================
+           CAPA DE NEBULOSA
+        ========================================================== */
+
+        .nebula {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle at 20% 30%,
+                    rgba(162, 54, 255, 0.18),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(255, 45, 150, 0.13),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(79, 30, 170, 0.10),
+                    transparent 45%
+                );
+
+            animation: respirarNebulosa 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes respirarNebulosa {
+            from {
+                opacity: 0.65;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.08);
+            }
+        }
+
+        /* =========================================================
+           PANTALLA DE INICIO
+        ========================================================== */
+
+        #inicio {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
 
             display: flex;
-
-            justify-content: center;
-
             align-items: center;
-
-            text-align: center;
+            justify-content: center;
 
             padding: 25px;
 
             background:
-
                 radial-gradient(
                     circle at center,
-                    rgba(110, 30, 140, 0.45),
-                    rgba(0, 0, 0, 0.98) 75%
+                    rgba(78, 20, 100, 0.25),
+                    rgba(0, 0, 0, 0.92)
                 );
 
             transition:
-                opacity 1.5s ease,
-                visibility 1.5s ease;
-
+                opacity 1.2s ease,
+                visibility 1.2s ease;
         }
 
+        #inicio.oculto {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
 
-        #intro::before {
+        .inicio-contenido {
+            width: min(700px, 100%);
+            text-align: center;
+        }
 
-            content: "";
+        .mini-estrellas {
+            font-size: 28px;
+            letter-spacing: 25px;
+            color: #ffffff;
+            margin-bottom: 35px;
 
-            position: absolute;
+            animation: brillo 2s infinite alternate;
+        }
 
-            inset: 0;
+        @keyframes brillo {
+            from {
+                opacity: 0.35;
+            }
 
-            background-image:
+            to {
+                opacity: 1;
+                text-shadow:
+                    0 0 10px white,
+                    0 0 25px #d58cff,
+                    0 0 45px #ff69c8;
+            }
+        }
 
-                radial-gradient(
-                    white 1px,
-                    transparent 1px
+        .inicio-contenido h1 {
+            font-size: clamp(42px, 9vw, 90px);
+            font-weight: 300;
+            letter-spacing: 5px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #ffb6e9,
+                #dba2ff,
+                #ffffff
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            animation: tituloBrillo 4s ease-in-out infinite;
+        }
+
+        @keyframes tituloBrillo {
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.5);
+            }
+        }
+
+        .subtitulo {
+            margin-top: 12px;
+
+            font-size: clamp(17px, 4vw, 24px);
+            color: #ffc9ec;
+            letter-spacing: 3px;
+        }
+
+        .frase-inicial {
+            max-width: 600px;
+            margin: 35px auto;
+
+            font-size: clamp(17px, 4vw, 22px);
+            line-height: 1.8;
+
+            color: rgba(255,255,255,0.85);
+        }
+
+        .boton-principal {
+            border: 1px solid rgba(255,255,255,0.35);
+
+            padding: 16px 38px;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 89, 177, 0.18),
+                    rgba(151, 72, 255, 0.18)
                 );
 
-            background-size:
-                65px 65px;
+            color: white;
 
-            opacity: 0.18;
+            font-size: 17px;
+            letter-spacing: 2px;
 
-            animation:
-                moveBackground 25s linear infinite;
+            cursor: pointer;
 
-            pointer-events: none;
+            backdrop-filter: blur(15px);
 
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                background .3s ease;
         }
 
+        .boton-principal:hover {
+            transform: translateY(-4px) scale(1.03);
 
-        #intro.hidden {
+            box-shadow:
+                0 0 20px rgba(255, 105, 200, .35),
+                0 0 60px rgba(150, 80, 255, .25);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 89, 177, 0.35),
+                    rgba(151, 72, 255, 0.35)
+                );
+        }
+
+        /* =========================================================
+           INTERFAZ SUPERIOR
+        ========================================================== */
+
+        #interfaz {
+            position: fixed;
+            inset: 0;
+
+            z-index: 10;
+
+            pointer-events: none;
 
             opacity: 0;
 
-            visibility: hidden;
+            transition: opacity 1s ease;
+        }
+
+        #interfaz.visible {
+            opacity: 1;
+        }
+
+        .titulo-superior {
+            position: absolute;
+
+            top: 25px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            text-align: center;
+
+            width: 90%;
+
+            pointer-events: none;
+        }
+
+        .titulo-superior small {
+            display: block;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .titulo-superior h2 {
+            margin-top: 6px;
+
+            font-size: clamp(20px, 5vw, 30px);
+
+            font-weight: 300;
+
+            color: #ffd4ef;
+
+            text-shadow:
+                0 0 15px rgba(255, 105, 200, .5);
+        }
+
+        /* =========================================================
+           PANEL DE MENSAJE
+        ========================================================== */
+
+        #mensaje {
+            position: absolute;
+
+            left: 50%;
+            bottom: 65px;
+
+            transform:
+                translateX(-50%)
+                translateY(30px);
+
+            width: min(680px, calc(100% - 30px));
+
+            padding: 30px 28px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(24, 8, 40, .78),
+                    rgba(55, 15, 68, .62)
+                );
+
+            border: 1px solid rgba(255,255,255,.16);
+
+            backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 20px 70px rgba(0,0,0,.5),
+                inset 0 0 30px rgba(255,100,200,.04);
+
+            text-align: center;
+
+            opacity: 0;
 
             pointer-events: none;
 
-        }
-
-
-        .intro-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            width:
-                min(900px, 100%);
-
-            animation:
-                introAppear 2s ease forwards;
-
-        }
-
-
-        .intro-stars {
-
-            font-size:
-                clamp(
-                    1.5rem,
-                    5vw,
-                    3rem
-                );
-
-            margin-bottom:
-                25px;
-
-            letter-spacing:
-                15px;
-
-            animation:
-                floatingStars 3s ease-in-out infinite;
-
-        }
-
-
-        .small-text {
-
-            color:
-                rgba(255,255,255,0.7);
-
-            font-size:
-                clamp(
-                    0.85rem,
-                    2vw,
-                    1.1rem
-                );
-
-            margin-bottom:
-                20px;
-
-        }
-
-
-        .intro-content h1 {
-
-            font-size:
-                clamp(
-                    2rem,
-                    6vw,
-                    5rem
-                );
-
-            font-weight:
-                300;
-
-            line-height:
-                1.15;
-
-            margin-bottom:
-                25px;
-
-        }
-
-
-        .name {
-
-            font-size:
-                clamp(
-                    2rem,
-                    7vw,
-                    4.5rem
-                );
-
-            font-weight:
-                bold;
-
-            margin-bottom:
-                40px;
-
-            background:
-
-                linear-gradient(
-                    90deg,
-                    white,
-                    #ff8fc9,
-                    white,
-                    #c78cff,
-                    white
-                );
-
-            background-size:
-                300% 100%;
-
-            -webkit-background-clip:
-                text;
-
-            background-clip:
-                text;
-
-            color:
-                transparent;
-
-            animation:
-                gradientText 5s ease infinite;
-
-        }
-
-
-        #startButton {
-
-            padding:
-                16px 30px;
-
-            min-width:
-                250px;
-
-            border-radius:
-                50px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.35);
-
-            color:
-                white;
-
-            background:
-                rgba(255,255,255,0.08);
-
-            backdrop-filter:
-                blur(12px);
-
-            box-shadow:
-                0 0 30px
-                rgba(255,100,180,0.25);
-
             transition:
-                0.4s ease;
-
+                opacity .6s ease,
+                transform .6s ease;
         }
 
-
-        #startButton:hover {
+        #mensaje.visible {
+            opacity: 1;
 
             transform:
-                scale(1.07);
+                translateX(-50%)
+                translateY(0);
 
-            background:
-                rgba(255,100,180,0.2);
-
-            box-shadow:
-                0 0 55px
-                rgba(255,100,180,0.5);
-
+            pointer-events: auto;
         }
 
+        .numero-mensaje {
+            color: #dca9ff;
 
-        /* =====================================================
-           UNIVERSO
-        ====================================================== */
+            font-size: 11px;
 
-        #universe {
+            letter-spacing: 4px;
 
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        #mensaje h3 {
+            font-size: clamp(23px, 6vw, 34px);
+
+            font-weight: 400;
+
+            color: #fff;
+
+            margin-bottom: 16px;
+
+            text-shadow:
+                0 0 15px rgba(255,255,255,.15);
+        }
+
+        #mensaje p {
+            color: rgba(255,255,255,.82);
+
+            font-size: clamp(15px, 3.8vw, 18px);
+
+            line-height: 1.75;
+        }
+
+        #mensaje p strong {
+            color: #ffb9e4;
+
+            font-weight: 500;
+        }
+
+        /* =========================================================
+           BOTONES
+        ========================================================== */
+
+        .controles {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 22px;
+        }
+
+        .btn {
+            border: 1px solid rgba(255,255,255,.2);
+
+            background: rgba(255,255,255,.07);
+
+            color: white;
+
+            padding: 11px 20px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            transition: .3s ease;
+
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,.16);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 0 20px rgba(255,105,200,.2);
+        }
+
+        .btn:disabled {
+            opacity: .25;
+
+            cursor: default;
+
+            transform: none;
+        }
+
+        /* =========================================================
+           INSTRUCCIÓN
+        ========================================================== */
+
+        #instruccion {
+            position: absolute;
+
+            top: 105px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 90%;
+
+            text-align: center;
+
+            color: rgba(255,255,255,.55);
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+
+            transition: opacity .5s ease;
+        }
+
+        /* =========================================================
+           BOTÓN MÚSICA
+        ========================================================== */
+
+        #musica {
+            position: fixed;
+
+            right: 18px;
+            top: 18px;
+
+            z-index: 30;
+
+            width: 44px;
+            height: 44px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,.2);
+
+            background: rgba(255,255,255,.08);
+
+            color: white;
+
+            cursor: pointer;
+
+            backdrop-filter: blur(10px);
+
+            display: none;
+
+            font-size: 18px;
+        }
+
+        /* =========================================================
+           FINAL
+        ========================================================== */
+
+        #final {
             position: fixed;
 
             inset: 0;
 
-            width: 100%;
-            height: 100%;
+            z-index: 50;
 
-            overflow: hidden;
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 25px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(90,20,110,.35),
+                    rgba(0,0,0,.95)
+                );
 
             opacity: 0;
 
             visibility: hidden;
 
+            pointer-events: none;
+
             transition:
                 opacity 1.5s ease,
                 visibility 1.5s ease;
-
         }
 
-
-        #universe.active {
-
+        #final.visible {
             opacity: 1;
 
             visibility: visible;
 
+            pointer-events: auto;
         }
 
-
-        #three-container {
-
-            position: absolute;
-
-            inset: 0;
-
-            width: 100%;
-            height: 100%;
-
-            z-index: 1;
-
-        }
-
-
-        #three-container canvas {
-
-            display: block;
-
-            width: 100%;
-            height: 100%;
-
-        }
-
-
-        /* =====================================================
-           TEXTO SUPERIOR
-        ====================================================== */
-
-        .top-message {
-
-            position: absolute;
-
-            top: 25px;
-
-            left: 50%;
-
-            transform:
-                translateX(-50%);
-
-            width: 75%;
-
-            max-width: 800px;
+        .final-contenido {
+            width: min(750px, 100%);
 
             text-align: center;
-
-            z-index: 20;
-
-            pointer-events: none;
-
         }
 
-
-        .top-message span {
-
-            display: block;
-
-            font-size:
-                clamp(
-                    0.7rem,
-                    2vw,
-                    1.25rem
-                );
-
-            letter-spacing:
-                clamp(
-                    1px,
-                    0.5vw,
-                    5px
-                );
-
-            text-shadow:
-
-                0 0 15px
-                rgba(255,255,255,0.8),
-
-                0 0 35px
-                rgba(255,100,200,0.5);
-
-        }
-
-
-        .top-message p {
-
-            margin-top:
-                8px;
-
-            font-size:
-                0.8rem;
-
-            color:
-                rgba(255,255,255,0.55);
-
-        }
-
-
-        /* =====================================================
-           CONTROLES
-        ====================================================== */
-
-        .controls {
-
-            position:
-                absolute;
-
-            top:
-                25px;
-
-            right:
-                25px;
-
-            z-index:
-                50;
-
-            display:
-                flex;
-
-            gap:
-                10px;
-
-        }
-
-
-        .glass-button {
-
-            padding:
-                10px 15px;
-
-            border-radius:
-                30px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.2);
-
-            color:
-                white;
-
-            background:
-                rgba(10,10,30,0.65);
-
-            backdrop-filter:
-                blur(12px);
-
-            transition:
-                0.3s ease;
-
-        }
-
-
-        .glass-button:hover {
-
-            transform:
-                translateY(-2px);
-
-            background:
-                rgba(255,255,255,0.15);
-
-        }
-
-
-        /* =====================================================
-           CONTADOR
-        ====================================================== */
-
-        .counter {
-
-            position:
-                absolute;
-
-            bottom:
-                25px;
-
-            left:
-                25px;
-
-            z-index:
-                50;
-
-            padding:
-                10px 17px;
-
-            border-radius:
-                30px;
-
-            background:
-                rgba(10,10,30,0.6);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.15);
-
-            backdrop-filter:
-                blur(12px);
-
-            font-size:
-                0.9rem;
-
-        }
-
-
-        #foundMessages {
-
-            color:
-                #ff9ed2;
-
-            font-weight:
-                bold;
-
-        }
-
-
-        /* =====================================================
-           TEXTO CENTRAL
-        ====================================================== */
-
-        .center-message {
-
-            position:
-                absolute;
-
-            bottom:
-                25px;
-
-            left:
-                50%;
-
-            transform:
-                translateX(-50%);
-
-            z-index:
-                15;
-
-            text-align:
-                center;
-
-            pointer-events:
-                none;
-
-            color:
-                rgba(255,255,255,0.55);
-
-        }
-
-
-        .center-message p {
-
-            font-size:
-                0.8rem;
-
-        }
-
-
-        /* =====================================================
-           MODALES
-        ====================================================== */
-
-        .modal {
-
-            position:
-                fixed;
-
-            inset:
-                0;
-
-            z-index:
-                1000;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            padding:
-                20px;
-
-            background:
-                rgba(0,0,10,0.78);
-
-            backdrop-filter:
-                blur(14px);
-
-            opacity:
-                0;
-
-            visibility:
-                hidden;
-
-            pointer-events:
-                none;
-
-            transition:
-                0.45s ease;
-
-        }
-
-
-        .modal.show {
-
-            opacity:
-                1;
-
-            visibility:
-                visible;
-
-            pointer-events:
-                auto;
-
-        }
-
-
-        .modal-content {
-
-            position:
-                relative;
-
-            width:
-                min(600px, 100%);
-
-            max-height:
-                82vh;
-
-            overflow-y:
-                auto;
-
-            padding:
-                45px 38px 35px;
-
-            text-align:
-                center;
-
-            border-radius:
-                25px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.2);
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(35,20,65,0.98),
-                    rgba(10,5,25,0.99)
-                );
-
-            box-shadow:
-                0 0 80px
-                rgba(180,70,180,0.35);
-
-            animation:
-                modalAppear 0.45s ease;
-
-        }
-
-
-        .close-button {
-
-            position:
-                absolute;
-
-            top:
-                10px;
-
-            right:
-                15px;
-
-            width:
-                38px;
-
-            height:
-                38px;
-
-            border:
-                none;
-
-            border-radius:
-                50%;
-
-            background:
-                rgba(255,255,255,0.07);
-
-            color:
-                white;
-
-            font-size:
-                1.7rem;
-
-            opacity:
-                0.7;
-
-            transition:
-                0.3s;
-
-        }
-
-
-        .close-button:hover {
-
-            opacity:
-                1;
-
-            transform:
-                rotate(90deg);
-
-        }
-
-
-        .modal-star {
-
-            font-size:
-                3rem;
-
-            line-height:
-                1;
-
-            margin-bottom:
-                18px;
-
-            animation:
-                floatingStars 2s infinite;
-
-        }
-
-
-        .modal-content h2 {
-
-            font-size:
-                clamp(
-                    1.35rem,
-                    4vw,
-                    2rem
-                );
-
-            line-height:
-                1.3;
-
-            color:
-                #ffd2ec;
-
-            margin-bottom:
-                20px;
-
-        }
-
-
-        .modal-content p {
-
-            font-size:
-                clamp(
-                    0.95rem,
-                    2.5vw,
-                    1.15rem
-                );
-
-            line-height:
-                1.8;
-
-            color:
-                rgba(255,255,255,0.9);
-
-            white-space:
-                normal;
-
-            overflow-wrap:
-                break-word;
-
-        }
-
-
-        .modal-heart {
-
-            margin-top:
-                22px;
-
-            font-size:
-                2rem;
-
-            animation:
-                heartbeat 1.5s infinite;
-
-        }
-
-
-        /* =====================================================
-           FINAL
-        ====================================================== */
-
-        #finalMessage {
-
-            position:
-                fixed;
-
-            inset:
-                0;
-
-            z-index:
-                900;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            text-align:
-                center;
-
-            padding:
-                25px;
-
-            overflow:
-                hidden;
-
-            background:
-
-                radial-gradient(
-                    circle at center,
-                    rgba(120,30,130,0.92),
-                    rgba(0,0,10,1) 80%
-                );
-
-            opacity:
-                0;
-
-            visibility:
-                hidden;
-
-            pointer-events:
-                none;
-
-            transition:
-                1.2s ease;
-
-        }
-
-
-        #finalMessage.show {
-
-            opacity:
-                1;
-
-            visibility:
-                visible;
-
-            pointer-events:
-                auto;
-
-        }
-
-
-        .final-content {
-
-            width:
-                min(700px, 100%);
-
-            position:
-                relative;
-
-            z-index:
-                10;
-
-        }
-
-
-        .big-heart {
-
-            font-size:
-                clamp(
-                    4rem,
-                    10vw,
-                    7rem
-                );
-
-            margin-bottom:
-                25px;
-
-            animation:
-                heartbeat 1.5s infinite;
+        .final-corazon {
+            font-size: clamp(70px, 18vw, 150px);
 
             filter:
-                drop-shadow(
-                    0 0 35px
-                    rgba(255,50,150,0.8)
-                );
-
-        }
-
-
-        .final-step {
-
-            display:
-                none;
+                drop-shadow(0 0 15px #ff4da6)
+                drop-shadow(0 0 45px #a832ff);
 
             animation:
-                finalAppear 0.8s ease;
-
+                latido 1.5s infinite;
         }
 
-
-        .final-step.active {
-
-            display:
-                block;
-
-        }
-
-
-        .final-step h1 {
-
-            font-size:
-                clamp(
-                    1.8rem,
-                    5vw,
-                    3.5rem
-                );
-
-            line-height:
-                1.2;
-
-            margin-bottom:
-                25px;
-
-            text-shadow:
-                0 0 30px
-                rgba(255,120,200,0.5);
-
-        }
-
-
-        .final-step p {
-
-            font-size:
-                clamp(
-                    1rem,
-                    2.5vw,
-                    1.2rem
-                );
-
-            line-height:
-                1.8;
-
-            color:
-                rgba(255,255,255,0.88);
-
-            margin-bottom:
-                15px;
-
-        }
-
-
-        .final-button {
-
-            margin-top:
-                25px;
-
-            padding:
-                15px 25px;
-
-            border-radius:
-                50px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.3);
-
-            color:
-                white;
-
-            background:
-                rgba(255,255,255,0.1);
-
-            backdrop-filter:
-                blur(10px);
-
-            box-shadow:
-                0 0 30px
-                rgba(255,100,190,0.2);
-
-            transition:
-                0.35s ease;
-
-        }
-
-
-        .final-button:hover {
-
-            transform:
-                scale(1.07);
-
-            background:
-                rgba(255,100,190,0.2);
-
-            box-shadow:
-                0 0 50px
-                rgba(255,100,190,0.5);
-
-        }
-
-
-        /* =====================================================
-           PROPUESTA
-        ====================================================== */
-
-        #proposalScene {
-
-            position:
-                absolute;
-
-            inset:
-                0;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            text-align:
-                center;
-
-            padding:
-                25px;
-
-            opacity:
-                0;
-
-            transform:
-                scale(0.7);
-
-            transition:
-                1.5s ease;
-
-            z-index:
-                30;
-
-        }
-
-
-        #proposalScene.visible {
-
-            opacity:
-                1;
-
-            transform:
-                scale(1);
-
-        }
-
-
-        #proposalScene h1 {
-
-            font-size:
-                clamp(
-                    2.2rem,
-                    7vw,
-                    6rem
-                );
-
-            line-height:
-                1.15;
-
-            margin:
-                25px 0;
-
-            color:
-                white;
-
-            text-shadow:
-
-                0 0 15px
-                rgba(255,255,255,0.8),
-
-                0 0 40px
-                rgba(255,70,180,0.8),
-
-                0 0 90px
-                rgba(180,50,255,0.5);
-
-            animation:
-                proposalGlow 2s infinite alternate;
-
-        }
-
-
-        .proposal-stars {
-
-            font-size:
-                clamp(
-                    1.5rem,
-                    4vw,
-                    3rem
-                );
-
-            letter-spacing:
-                15px;
-
-            animation:
-                floatingStars 2s infinite;
-
-        }
-
-
-        .proposal-buttons {
-
-            display:
-                flex;
-
-            gap:
-                15px;
-
-            justify-content:
-                center;
-
-            flex-wrap:
-                wrap;
-
-        }
-
-
-        .yes-button,
-        .think-button {
-
-            padding:
-                14px 30px;
-
-            border-radius:
-                50px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.3);
-
-            color:
-                white;
-
-            font-size:
-                1rem;
-
-            transition:
-                0.3s ease;
-
-        }
-
-
-        .yes-button {
-
-            background:
-                rgba(255,50,130,0.3);
-
-            box-shadow:
-                0 0 30px
-                rgba(255,50,150,0.3);
-
-        }
-
-
-        .think-button {
-
-            background:
-                rgba(255,255,255,0.08);
-
-        }
-
-
-        .yes-button:hover,
-        .think-button:hover {
-
-            transform:
-                scale(1.08);
-
-        }
-
-
-        /* =====================================================
-           EXPLOSIÓN
-        ====================================================== */
-
-        .explosion-star {
-
-            position:
-                absolute;
-
-            left:
-                50%;
-
-            top:
-                50%;
-
-            font-size:
-                1.3rem;
-
-            pointer-events:
-                none;
-
-            animation:
-                starExplosion 3s ease-out forwards;
-
-        }
-
-
-        /* =====================================================
-           CONSTELACIÓN
-        ====================================================== */
-
-        .constellation-star {
-
-            position:
-                absolute;
-
-            width:
-                6px;
-
-            height:
-                6px;
-
-            border-radius:
-                50%;
-
-            background:
-                white;
-
-            box-shadow:
-
-                0 0 8px
-                white,
-
-                0 0 20px
-                #ff9ed2,
-
-                0 0 35px
-                #d77aff;
-
-            opacity:
-                0;
-
-            transform:
-                scale(0);
-
-            transition:
-                1.5s ease;
-
-        }
-
-
-        /* =====================================================
-           RESPUESTA SÍ
-        ====================================================== */
-
-        .yes-final {
-
-            animation:
-                finalAppear 1s ease;
-
-        }
-
-
-        .yes-heart {
-
-            font-size:
-                clamp(
-                    4rem,
-                    12vw,
-                    8rem
-                );
-
-            animation:
-                heartbeat 1.2s infinite;
-
-            margin-bottom:
-                25px;
-
-        }
-
-
-        .yes-final h1 {
-
-            font-size:
-                clamp(
-                    2rem,
-                    5vw,
-                    4rem
-                );
-
-            margin-bottom:
-                20px;
-
-        }
-
-
-        .yes-final h2 {
-
-            font-size:
-                clamp(
-                    1.3rem,
-                    3vw,
-                    2rem
-                );
-
-            color:
-                #ffb2dd;
-
-            margin-bottom:
-                25px;
-
-        }
-
-
-        .yes-final p {
-
-            max-width:
-                600px;
-
-            margin:
-                10px auto;
-
-            font-size:
-                1.1rem;
-
-            line-height:
-                1.7;
-
-            color:
-                rgba(255,255,255,0.8);
-
-        }
-
-
-        .yes-final strong {
-
-            display:
-                block;
-
-            margin-top:
-                25px;
-
-            font-size:
-                1.3rem;
-
-            color:
-                #ffb2dd;
-
-        }
-
-
-        /* =====================================================
-           ANIMACIONES
-        ====================================================== */
-
-        @keyframes introAppear {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(30px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-
-            }
-
-        }
-
-
-        @keyframes floatingStars {
-
+        @keyframes latido {
             0%,
             100% {
-
-                transform:
-                    translateY(0);
-
+                transform: scale(1);
             }
 
             50% {
-
-                transform:
-                    translateY(-10px);
-
+                transform: scale(1.12);
             }
-
         }
 
+        .final-contenido h1 {
+            margin-top: 20px;
 
-        @keyframes heartbeat {
+            font-size: clamp(30px, 8vw, 65px);
 
-            0%,
-            100% {
+            font-weight: 300;
 
-                transform:
-                    scale(1);
+            color: white;
 
-            }
-
-            15% {
-
-                transform:
-                    scale(1.15);
-
-            }
-
-            30% {
-
-                transform:
-                    scale(1);
-
-            }
-
-            45% {
-
-                transform:
-                    scale(1.12);
-
-            }
-
+            text-shadow:
+                0 0 20px rgba(255,105,200,.7);
         }
 
+        .final-contenido h2 {
+            margin-top: 12px;
 
-        @keyframes gradientText {
+            font-size: clamp(23px, 6vw, 42px);
 
-            0% {
+            font-weight: 400;
 
-                background-position:
-                    0% 50%;
-
-            }
-
-            50% {
-
-                background-position:
-                    100% 50%;
-
-            }
-
-            100% {
-
-                background-position:
-                    0% 50%;
-
-            }
-
+            color: #ffb8e4;
         }
 
+        .final-contenido p {
+            max-width: 650px;
 
-        @keyframes moveBackground {
+            margin: 28px auto 0;
 
-            from {
+            color: rgba(255,255,255,.78);
 
-                transform:
-                    translate(0,0);
+            font-size: clamp(16px, 4vw, 20px);
 
-            }
-
-            to {
-
-                transform:
-                    translate(65px,65px);
-
-            }
-
+            line-height: 1.9;
         }
 
+        .final-frase {
+            margin-top: 30px;
 
-        @keyframes modalAppear {
+            font-size: clamp(18px, 5vw, 27px);
 
-            from {
+            color: #fff;
 
-                opacity: 0;
-
-                transform:
-                    scale(0.88)
-                    translateY(25px);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    scale(1)
-                    translateY(0);
-
-            }
-
+            font-style: italic;
         }
 
-
-        @keyframes finalAppear {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(30px)
-                    scale(0.95);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-
-            }
-
+        .reiniciar {
+            margin-top: 30px;
         }
 
-
-        @keyframes proposalGlow {
-
-            from {
-
-                filter:
-                    brightness(1);
-
-            }
-
-            to {
-
-                filter:
-                    brightness(1.4);
-
-            }
-
-        }
-
-
-        @keyframes starExplosion {
-
-            0% {
-
-                opacity: 1;
-
-                transform:
-                    translate(0,0)
-                    scale(0.5);
-
-            }
-
-            100% {
-
-                opacity: 0;
-
-                transform:
-                    translate(
-                        var(--x),
-                        var(--y)
-                    )
-                    scale(1.5);
-
-            }
-
-        }
-
-
-        /* =====================================================
+        /* =========================================================
            RESPONSIVE
-        ====================================================== */
+        ========================================================== */
 
-        @media(max-width: 700px) {
+        @media (max-width: 600px) {
 
-            .top-message {
-
-                top:
-                    15px;
-
-                width:
-                    72%;
-
+            .inicio-contenido h1 {
+                letter-spacing: 2px;
             }
 
-
-            .top-message span {
-
-                font-size:
-                    0.68rem;
-
-                letter-spacing:
-                    1.5px;
-
+            .mini-estrellas {
+                letter-spacing: 10px;
+                font-size: 20px;
             }
 
-
-            .top-message p {
-
-                font-size:
-                    0.62rem;
-
+            .frase-inicial {
+                margin: 25px auto;
             }
 
+            #mensaje {
+                bottom: 25px;
 
-            .controls {
+                padding: 24px 20px;
 
-                top:
-                    auto;
+                max-height: 58vh;
 
-                right:
-                    12px;
-
-                bottom:
-                    65px;
-
-                flex-direction:
-                    column;
-
-                gap:
-                    7px;
-
+                overflow-y: auto;
             }
 
-
-            .glass-button {
-
-                min-width:
-                    105px;
-
-                padding:
-                    9px 11px;
-
-                font-size:
-                    0.72rem;
-
+            #mensaje p {
+                line-height: 1.6;
             }
 
-
-            .counter {
-
-                left:
-                    12px;
-
-                bottom:
-                    15px;
-
-                padding:
-                    8px 13px;
-
-                font-size:
-                    0.72rem;
-
+            .controles {
+                gap: 8px;
             }
 
-
-            .center-message {
-
-                display:
-                    none;
-
+            .btn {
+                padding: 10px 16px;
             }
 
-
-            .modal {
-
-                padding:
-                    15px;
-
+            #instruccion {
+                top: 90px;
+                font-size: 11px;
             }
-
-
-            .modal-content {
-
-                width:
-                    100%;
-
-                max-width:
-                    420px;
-
-                max-height:
-                    78vh;
-
-                padding:
-                    42px 22px 28px;
-
-                border-radius:
-                    22px;
-
-            }
-
-
-            .modal-content h2 {
-
-                font-size:
-                    1.3rem;
-
-            }
-
-
-            .modal-content p {
-
-                font-size:
-                    0.93rem;
-
-                line-height:
-                    1.7;
-
-            }
-
-
-            .proposal-buttons {
-
-                flex-direction:
-                    column;
-
-                width:
-                    100%;
-
-                max-width:
-                    300px;
-
-            }
-
-
-            .yes-button,
-            .think-button {
-
-                width:
-                    100%;
-
-            }
-
-
-            .proposal-stars {
-
-                letter-spacing:
-                    5px;
-
-            }
-
-
-            .final-button {
-
-                width:
-                    100%;
-
-                max-width:
-                    330px;
-
-            }
-
-        }
-
-
-        @media(max-width:380px) {
-
-            .controls {
-
-                bottom:
-                    58px;
-
-            }
-
-
-            .glass-button {
-
-                min-width:
-                    90px;
-
-                padding:
-                    8px 9px;
-
-                font-size:
-                    0.65rem;
-
-            }
-
-
-            .counter {
-
-                font-size:
-                    0.68rem;
-
-            }
-
-
-            .modal-content {
-
-                max-height:
-                    75vh;
-
-                padding:
-                    38px 18px 25px;
-
-            }
-
         }
 
     </style>
-
 </head>
-
 
 <body>
 
+    <!-- =========================================================
+         UNIVERSO
+    ========================================================== -->
 
-    <!-- =====================================================
-         INTRO
-    ====================================================== -->
+    <div id="universo"></div>
 
-    <div id="intro">
+    <div class="nebula"></div>
 
-        <div class="intro-content">
 
-            <div class="intro-stars">
+    <!-- =========================================================
+         PANTALLA INICIAL
+    ========================================================== -->
+
+    <section id="inicio">
+
+        <div class="inicio-contenido">
+
+            <div class="mini-estrellas">
                 ✦ ✧ ✦
             </div>
 
+            <h1>Mi Ojitos</h1>
 
-            <p class="small-text">
-                Hay millones de estrellas en el universo...
-            </p>
-
-
-            <h1>
-                pero yo solo necesitaba encontrar una.
-            </h1>
-
-
-            <div class="name">
-                Mi Ojitos ❤️
+            <div class="subtitulo">
+                Mi pequeño universo
             </div>
 
+            <p class="frase-inicial">
+                Entre millones de estrellas, galaxias y universos,
+                hay una persona que hace que todo tenga un poquito
+                más de sentido para mí.
+                <br><br>
+
+                <strong>Y esa persona eres tú. ❤️</strong>
+            </p>
 
             <button
-                id="startButton"
-                type="button"
+                class="boton-principal"
+                id="entrar"
             >
-
-                Entrar a nuestro universo ✨
-
+                ENTRAR A NUESTRO UNIVERSO ✨
             </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         INTERFAZ
+    ========================================================== -->
+
+    <div id="interfaz">
+
+        <div class="titulo-superior">
+
+            <small>
+                Un pequeño universo para ti
+            </small>
+
+            <h2>
+                Mi Ojitos ❤️
+            </h2>
+
+        </div>
+
+
+        <div id="instruccion">
+            Toca una estrella brillante para descubrir un pedacito de lo que siento por ti ✨
+        </div>
+
+
+        <div id="mensaje">
+
+            <div class="numero-mensaje" id="numero">
+                CONSTELACIÓN 01
+            </div>
+
+            <h3 id="tituloMensaje">
+                Lo hermosa que eres
+            </h3>
+
+            <p id="textoMensaje">
+                ...
+            </p>
+
+            <div class="controles">
+
+                <button
+                    class="btn"
+                    id="anterior"
+                >
+                    ← Anterior
+                </button>
+
+                <button
+                    class="btn"
+                    id="siguiente"
+                >
+                    Siguiente →
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- =====================================================
-         UNIVERSO
-    ====================================================== -->
-
-    <main id="universe">
-
-
-        <div id="three-container"></div>
-
-
-        <header class="top-message">
-
-            <span>
-                ✨ EL UNIVERSO DE MI OJITOS ✨
-            </span>
-
-            <p>
-                Toca las estrellas brillantes para descubrir
-                nuestros mensajes...
-            </p>
-
-        </header>
-
-
-        <div class="controls">
-
-            <button
-                id="musicButton"
-                class="glass-button"
-                type="button"
-            >
-                🎵 Música
-            </button>
-
-
-            <button
-                id="helpButton"
-                class="glass-button"
-                type="button"
-            >
-                ✨ Explorar
-            </button>
-
-        </div>
-
-
-        <div class="counter">
-
-            <span id="foundMessages">
-                0
-            </span>
-
-            /
-
-            <span id="totalMessages">
-                0
-            </span>
-
-            💌
-
-        </div>
-
-
-        <div class="center-message">
-
-            <p>
-                Mueve el mouse o desliza el dedo
-            </p>
-
-        </div>
-
-
-        <!-- =================================================
-             MODAL DE MENSAJES
-        ================================================== -->
-
-        <div
-            id="messageModal"
-            class="modal"
-        >
-
-            <div class="modal-content">
-
-                <button
-                    id="closeModal"
-                    class="close-button"
-                    type="button"
-                >
-                    ×
-                </button>
-
-
-                <div class="modal-star">
-                    ✨
-                </div>
-
-
-                <h2 id="modalTitle">
-                    Para ti...
-                </h2>
-
-
-                <p id="modalText">
-                </p>
-
-
-                <div class="modal-heart">
-                    ❤️
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             AYUDA
-        ================================================== -->
-
-        <div
-            id="helpModal"
-            class="modal"
-        >
-
-            <div class="modal-content">
-
-                <button
-                    id="closeHelp"
-                    class="close-button"
-                    type="button"
-                >
-                    ×
-                </button>
-
-
-                <div class="modal-star">
-                    🌌
-                </div>
-
-
-                <h2>
-                    Explora nuestro universo
-                </h2>
-
-
-                <p>
-                    🖱️ En computadora mueve el mouse
-                    para mirar alrededor.
-                </p>
-
-
-                <br>
-
-
-                <p>
-                    📱 En celular desliza el dedo
-                    para mover el universo.
-                </p>
-
-
-                <br>
-
-
-                <p>
-                    ⭐ Toca las estrellas rosas
-                    para descubrir mensajes.
-                </p>
-
-
-                <br>
-
-
-                <p>
-                    💌 Encuentra todas las estrellas.
-                </p>
-
-
-                <br>
-
-
-                <p>
-                    ❤️ Al final habrá algo
-                    que quiero preguntarte.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             FINAL
-        ================================================== -->
-
-        <div id="finalMessage">
-
-            <div class="final-content">
-
-
-                <div
-                    id="finalHeart"
-                    class="big-heart"
-                >
-                    ❤️
-                </div>
-
-
-                <!-- PASO 1 -->
-
-                <div
-                    id="finalStep1"
-                    class="final-step active"
-                >
-
-                    <h1>
-                        Encontraste todas nuestras estrellas ✨
-                    </h1>
-
-
-                    <p>
-                        Pero creo que todavía hay algo
-                        que quiero decirte...
-                    </p>
-
-
-                    <button
-                        id="nextFinal1"
-                        class="final-button"
-                        type="button"
-                    >
-                        Hay algo más que quiero decirte ❤️
-                    </button>
-
-                </div>
-
-
-                <!-- PASO 2 -->
-
-                <div
-                    id="finalStep2"
-                    class="final-step"
-                >
-
-                    <h1>
-                        Quiero que recuerdes algo...
-                    </h1>
-
-
-                    <p>
-                        Te voy a querer y a amar
-                        en todos tus modos.
-                    </p>
-
-
-                    <p>
-                        En tus días felices,
-                        en tus días difíciles,
-                        cuando tengas ganas de reír
-                        y cuando necesites llorar.
-                    </p>
-
-
-                    <p>
-                        No tienes que ser perfecta
-                        para que yo quiera estar contigo.
-                    </p>
-
-
-                    <button
-                        id="nextFinal2"
-                        class="final-button"
-                        type="button"
-                    >
-                        Continuar ✨
-                    </button>
-
-                </div>
-
-
-                <!-- PASO 3 -->
-
-                <div
-                    id="finalStep3"
-                    class="final-step"
-                >
-
-                    <h1>
-                        No quiero que tengas miedo
-                        de ser tú ❤️
-                    </h1>
-
-
-                    <p>
-                        Quiero que conmigo puedas ser tú misma,
-                        sin tener que esconder tus sentimientos,
-                        tus inseguridades, tus sueños
-                        ni tus días malos.
-                    </p>
-
-
-                    <p>
-                        Si algún día necesitas llorar,
-                        aquí estaré.
-                    </p>
-
-
-                    <p>
-                        Si necesitas un abrazo,
-                        aquí tendrás dos brazos esperándote.
-                    </p>
-
-
-                    <button
-                        id="nextFinal3"
-                        class="final-button"
-                        type="button"
-                    >
-                        Hay una última cosa... 🌌
-                    </button>
-
-                </div>
-
-
-                <!-- PASO 4 -->
-
-                <div
-                    id="finalStep4"
-                    class="final-step"
-                >
-
-                    <h1>
-                        Y después de todo este universo...
-                    </h1>
-
-
-                    <p>
-                        De todas estas estrellas,
-                        de todos estos mensajes
-                        y de todo lo que quería decirte...
-                    </p>
-
-
-                    <p>
-                        hay una pregunta que llevo
-                        un ratito queriendo hacerte.
-                    </p>
-
-
-                    <button
-                        id="proposalButton"
-                        class="final-button"
-                        type="button"
-                    >
-                        Descubrir la última estrella ✨
-                    </button>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-    <!-- =====================================================
+    <!-- =========================================================
          MÚSICA
-    ====================================================== -->
+    ========================================================== -->
 
-    <audio
-        id="backgroundMusic"
-        loop
-        preload="auto"
-    >
-
-        <source
-            src="Those Eyes.mp3"
-            type="audio/mpeg"
-        >
-
-    </audio>
+    <button id="musica">
+        ♪
+    </button>
 
 
-    <!-- =====================================================
-         THREE.JS
-    ====================================================== -->
+    <!-- =========================================================
+         FINAL
+    ========================================================== -->
 
-    <script type="importmap">
+    <section id="final">
+
+        <div class="final-contenido">
+
+            <div class="final-corazon">
+                ❤️
+            </div>
+
+            <h1>
+                Mi Ojitos...
+            </h1>
+
+            <h2>
+                TE QUIERO DEMASIADO
+            </h2>
+
+            <p>
+
+                No sé si existe una forma suficiente de explicar
+                todo lo que siento por ti.
+
+                <br><br>
+
+                Por eso hice este pequeño universo.
+
+                <br><br>
+
+                Para recordarte que eres hermosa,
+                que eres especial,
+                que me encanta tu forma de ser
+                y que quiero seguir descubriendo
+                cada pequeño pedacito de ti.
+
+                <br><br>
+
+                Te quiero cuando sonríes,
+                cuando estás feliz,
+                cuando estás cansada,
+                cuando necesitas un abrazo
+                y también cuando simplemente quieres
+                quedarte en silencio.
+
+            </p>
+
+            <div class="final-frase">
+
+                "No quiero solamente los días bonitos contigo...
+                <br>
+                quiero estar presente en todos tus modos."
+
+            </div>
+
+            <div class="reiniciar">
+
+                <button
+                    class="boton-principal"
+                    id="volver"
+                >
+                    VOLVER A VER NUESTRO UNIVERSO ✨
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+<script>
+
+/* ============================================================
+   VARIABLES PRINCIPALES
+============================================================ */
+
+const contenedor = document.getElementById("universo");
+
+const inicio = document.getElementById("inicio");
+
+const interfaz = document.getElementById("interfaz");
+
+const final = document.getElementById("final");
+
+const mensaje = document.getElementById("mensaje");
+
+const tituloMensaje = document.getElementById("tituloMensaje");
+
+const textoMensaje = document.getElementById("textoMensaje");
+
+const numeroMensaje = document.getElementById("numero");
+
+const instruccion = document.getElementById("instruccion");
+
+const botonEntrar = document.getElementById("entrar");
+
+const botonSiguiente = document.getElementById("siguiente");
+
+const botonAnterior = document.getElementById("anterior");
+
+const botonVolver = document.getElementById("volver");
+
+
+/* ============================================================
+   MENSAJES
+============================================================ */
+
+const mensajes = [
 
     {
-        "imports": {
+        titulo: "Lo hermosa que eres",
 
-            "three":
-            "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js"
+        texto: `
+            Mi Ojitos... ❤️<br><br>
 
-        }
+            Quiero que sepas algo que quizá nunca me canse
+            de decirte:<br><br>
+
+            <strong>eres hermosa.</strong><br><br>
+
+            Y no hablo solamente de tus ojos,
+            de tu sonrisa o de la forma en que te ves.
+            <br><br>
+
+            Me encanta tu forma de ser,
+            tus gestos, tu manera de hablar,
+            la forma en que sonríes
+            y hasta esos pequeños detalles
+            que quizá tú ni siquiera notas.
+            <br><br>
+
+            A veces simplemente te miro y pienso:
+            <br><br>
+
+            <strong>
+                "Qué bonita es mi niña." ❤️
+            </strong>
+        `
+    },
+
+    {
+        titulo: "Te quiero demasiado",
+
+        texto: `
+            No sé exactamente en qué momento
+            comenzaste a convertirte en alguien
+            tan importante para mí.
+            <br><br>
+
+            Pero sí sé algo:
+            <br><br>
+
+            <strong>
+                te quiero muchísimo.
+            </strong>
+            <br><br>
+
+            Te quiero más de lo que a veces
+            puedo explicar con palabras.
+            <br><br>
+
+            Te quiero cuando sonríes,
+            cuando estás feliz,
+            cuando estás seria,
+            cuando estás cansada
+            y cuando simplemente eres tú.
+            <br><br>
+
+            <strong>
+                Te quiero demasiado, Mi Ojitos. ❤️
+            </strong>
+        `
+    },
+
+    {
+        titulo: "Quiero conocerte completa",
+
+        texto: `
+            No quiero conocer solamente
+            tu lado bonito.
+            <br><br>
+
+            Quiero conocer tus sueños,
+            tus miedos,
+            tus metas,
+            las cosas que te hacen reír
+            y también aquellas cosas
+            que te hacen sentir triste.
+            <br><br>
+
+            Quiero saber qué te emociona,
+            qué te hace sentir segura,
+            qué cosas quieres conseguir
+            y qué sueños tienes para tu vida.
+            <br><br>
+
+            Porque cada pequeño pedacito de ti
+            forma parte de la persona
+            que tanto quiero.
+            <br><br>
+
+            <strong>
+                Quiero conocerte en todos tus modos. ❤️
+            </strong>
+        `
+    },
+
+    {
+        titulo: "Cuando necesites un abrazo",
+
+        texto: `
+            Si algún día estás triste,
+            no tienes que fingir conmigo
+            que todo está bien.
+            <br><br>
+
+            Si necesitas llorar,
+            puedes hacerlo.
+            <br><br>
+
+            Si necesitas hablar,
+            te voy a escuchar.
+            <br><br>
+
+            Y si no quieres decir absolutamente nada,
+            también está bien.
+            <br><br>
+
+            Puedes simplemente acercarte
+            y decirme:
+            <br><br>
+
+            <strong>
+                "Necesito un abrazo."
+            </strong>
+            <br><br>
+
+            Y ahí voy a estar.
+            🫂❤️
+            <br><br>
+
+            Porque quiero que sepas
+            que nunca tienes que pasar
+            por un momento difícil
+            sintiendo que estás completamente sola.
+        `
+    },
+
+    {
+        titulo: "En todos tus modos",
+
+        texto: `
+            Te voy a querer en todos tus modos.
+            <br><br>
+
+            Cuando estés feliz.
+            <br>
+
+            Cuando estés cansada.
+            <br>
+
+            Cuando tengas un día increíble.
+            <br>
+
+            Cuando tengas un día horrible.
+            <br>
+
+            Cuando quieras hablar durante horas.
+            <br>
+
+            Cuando solamente quieras estar en silencio.
+            <br>
+
+            Cuando tengas confianza.
+            <br>
+
+            Cuando tengas miedo.
+            <br><br>
+
+            Cuando te sientas hermosa
+            y también cuando tú misma
+            no puedas verla.
+            <br><br>
+
+            <strong>
+                No quiero una versión perfecta de ti.
+                <br><br>
+                Quiero a mi Ojitos.
+            </strong>
+            ❤️
+        `
+    },
+
+    {
+        titulo: "Si alguna vez dudas de cuánto te quiero",
+
+        texto: `
+            Si alguna vez llegas a preguntarte
+            cuánto te quiero...
+            <br><br>
+
+            mira las estrellas.
+            ✨
+            <br><br>
+
+            Cada una podría representar
+            una de las veces que has logrado
+            sacarme una sonrisa.
+            <br><br>
+
+            Y aun así no alcanzarían.
+            <br><br>
+
+            Porque hay sentimientos
+            que simplemente no caben
+            en números.
+            <br><br>
+
+            <strong>
+                Te quiero más de lo que
+                pueden decir estas palabras.
+            </strong>
+            <br><br>
+
+            Más de lo que puede mostrar
+            esta página.
+            <br><br>
+
+            Y probablemente más
+            de lo que yo mismo sé explicar.
+            ❤️
+        `
+    },
+
+    {
+        titulo: "Para mi niña bonita",
+
+        texto: `
+            Mi Ojitos...
+            <br><br>
+
+            Si alguna vez olvidas lo especial
+            que eres, quiero que vuelvas
+            a leer esto.
+            <br><br>
+
+            Eres una persona hermosa.
+            <br><br>
+
+            Eres importante.
+            <br><br>
+
+            Eres valiosa.
+            <br><br>
+
+            Mereces sentirte querida,
+            escuchada, respetada
+            y acompañada.
+            <br><br>
+
+            Y quiero que nunca olvides
+            que hay alguien aquí
+            que disfruta muchísimo
+            tenerte en su vida.
+            <br><br>
+
+            <strong>
+                Te quiero muchísimo,
+                Mi Ojitos. ❤️
+            </strong>
+        `
     }
 
-    </script>
+];
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
+/* ============================================================
+   THREE.JS
+============================================================ */
 
-    <script type="module">
+let escena;
 
-        import * as THREE from "three";
+let camara;
+
+let renderizador;
+
+let estrellas;
+
+let grupoConstelacion;
+
+let reloj;
+
+let animacionActiva = false;
 
 
-        /* =====================================================
-           ELEMENTOS
-        ====================================================== */
+/* ============================================================
+   CONFIGURAR ESCENA
+============================================================ */
 
-        const container =
-            document.getElementById(
-                "three-container"
+function iniciarUniverso() {
+
+    escena = new THREE.Scene();
+
+    escena.fog = new THREE.FogExp2(
+        0x02010a,
+        0.0012
+    );
+
+
+    /* ---------------------------------------------------------
+       CÁMARA
+    --------------------------------------------------------- */
+
+    camara = new THREE.PerspectiveCamera(
+        65,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        2000
+    );
+
+    camara.position.z = 40;
+
+
+    /* ---------------------------------------------------------
+       RENDERIZADOR
+    --------------------------------------------------------- */
+
+    renderizador = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+    });
+
+    renderizador.setPixelRatio(
+        Math.min(window.devicePixelRatio, 2)
+    );
+
+    renderizador.setSize(
+        window.innerWidth,
+        window.innerHeight
+    );
+
+    contenedor.appendChild(
+        renderizador.domElement
+    );
+
+
+    /* ---------------------------------------------------------
+       ESTRELLAS
+    --------------------------------------------------------- */
+
+    crearEstrellas();
+
+
+    /* ---------------------------------------------------------
+       CONSTELACIÓN
+    --------------------------------------------------------- */
+
+    grupoConstelacion = new THREE.Group();
+
+    escena.add(grupoConstelacion);
+
+
+    /* ---------------------------------------------------------
+       RELOJ
+    --------------------------------------------------------- */
+
+    reloj = new THREE.Clock();
+
+
+    /* ---------------------------------------------------------
+       RESIZE
+    --------------------------------------------------------- */
+
+    window.addEventListener(
+        "resize",
+        ajustarPantalla
+    );
+
+
+    /* ---------------------------------------------------------
+       MOUSE / TOUCH
+    --------------------------------------------------------- */
+
+    window.addEventListener(
+        "mousemove",
+        moverCamara
+    );
+
+
+    window.addEventListener(
+        "touchmove",
+        moverCamaraTouch,
+        {
+            passive: true
+        }
+    );
+
+
+    /* ---------------------------------------------------------
+       ANIMACIÓN
+    --------------------------------------------------------- */
+
+    animar();
+
+}
+
+
+/* ============================================================
+   CREAR ESTRELLAS
+============================================================ */
+
+function crearEstrellas() {
+
+    const cantidad =
+        window.innerWidth < 600
+            ? 3500
+            : 6000;
+
+    const posiciones =
+        new Float32Array(cantidad * 3);
+
+    const colores =
+        new Float32Array(cantidad * 3);
+
+    for (
+        let i = 0;
+        i < cantidad;
+        i++
+    ) {
+
+        const radio =
+            100 +
+            Math.random() * 850;
+
+        const theta =
+            Math.random() * Math.PI * 2;
+
+        const phi =
+            Math.acos(
+                2 * Math.random() - 1
             );
 
 
-        const intro =
-            document.getElementById(
-                "intro"
-            );
+        posiciones[i * 3] =
+            radio *
+            Math.sin(phi) *
+            Math.cos(theta);
 
+        posiciones[i * 3 + 1] =
+            radio *
+            Math.sin(phi) *
+            Math.sin(theta);
 
-        const universe =
-            document.getElementById(
-                "universe"
-            );
+        posiciones[i * 3 + 2] =
+            radio *
+            Math.cos(phi);
 
 
-        const startButton =
-            document.getElementById(
-                "startButton"
-            );
+        /* colores */
 
+        const tipo =
+            Math.random();
 
-        const musicButton =
-            document.getElementById(
-                "musicButton"
-            );
+        if (tipo < 0.65) {
 
+            colores[i * 3] = 1;
 
-        const helpButton =
-            document.getElementById(
-                "helpButton"
-            );
+            colores[i * 3 + 1] = 1;
 
+            colores[i * 3 + 2] = 1;
 
-        const helpModal =
-            document.getElementById(
-                "helpModal"
-            );
+        } else if (tipo < 0.85) {
 
+            colores[i * 3] = 1;
 
-        const closeHelp =
-            document.getElementById(
-                "closeHelp"
-            );
+            colores[i * 3 + 1] = 0.65;
 
+            colores[i * 3 + 2] = 0.9;
 
-        const messageModal =
-            document.getElementById(
-                "messageModal"
-            );
+        } else {
 
+            colores[i * 3] = 0.65;
 
-        const closeModal =
-            document.getElementById(
-                "closeModal"
-            );
+            colores[i * 3 + 1] = 0.75;
 
-
-        const modalTitle =
-            document.getElementById(
-                "modalTitle"
-            );
-
-
-        const modalText =
-            document.getElementById(
-                "modalText"
-            );
-
-
-        const backgroundMusic =
-            document.getElementById(
-                "backgroundMusic"
-            );
-
-
-        const foundMessagesElement =
-            document.getElementById(
-                "foundMessages"
-            );
-
-
-        const totalMessagesElement =
-            document.getElementById(
-                "totalMessages"
-            );
-
-
-        const finalMessage =
-            document.getElementById(
-                "finalMessage"
-            );
-
-
-        const finalHeart =
-            document.getElementById(
-                "finalHeart"
-            );
-
-
-        const finalStep1 =
-            document.getElementById(
-                "finalStep1"
-            );
-
-
-        const finalStep2 =
-            document.getElementById(
-                "finalStep2"
-            );
-
-
-        const finalStep3 =
-            document.getElementById(
-                "finalStep3"
-            );
-
-
-        const finalStep4 =
-            document.getElementById(
-                "finalStep4"
-            );
-
-
-        const nextFinal1 =
-            document.getElementById(
-                "nextFinal1"
-            );
-
-
-        const nextFinal2 =
-            document.getElementById(
-                "nextFinal2"
-            );
-
-
-        const nextFinal3 =
-            document.getElementById(
-                "nextFinal3"
-            );
-
-
-        const proposalButton =
-            document.getElementById(
-                "proposalButton"
-            );
-
-
-        /* =====================================================
-           ESCENA 3D
-        ====================================================== */
-
-        const scene =
-            new THREE.Scene();
-
-
-        scene.background =
-            new THREE.Color(
-                0x02010a
-            );
-
-
-        /* =====================================================
-           CÁMARA
-        ====================================================== */
-
-        const camera =
-            new THREE.PerspectiveCamera(
-
-                65,
-
-                window.innerWidth /
-                window.innerHeight,
-
-                0.1,
-
-                2000
-
-            );
-
-
-        camera.position.set(
-            0,
-            0,
-            28
-        );
-
-
-        /* =====================================================
-           RENDERER
-        ====================================================== */
-
-        const renderer =
-            new THREE.WebGLRenderer({
-
-                antialias:
-                    true,
-
-                alpha:
-                    true
-
-            });
-
-
-        renderer.setPixelRatio(
-
-            Math.min(
-                window.devicePixelRatio,
-                2
-            )
-
-        );
-
-
-        renderer.setSize(
-
-            window.innerWidth,
-
-            window.innerHeight
-
-        );
-
-
-        renderer.outputColorSpace =
-            THREE.SRGBColorSpace;
-
-
-        container.appendChild(
-            renderer.domElement
-        );
-
-
-        /*
-         * Solo el canvas recibe los clics
-         * destinados a las estrellas.
-         *
-         * Esto es MUY IMPORTANTE.
-         */
-
-        const canvas =
-            renderer.domElement;
-
-
-        /* =====================================================
-           LUCES
-        ====================================================== */
-
-        scene.add(
-
-            new THREE.AmbientLight(
-                0xffffff,
-                1
-            )
-
-        );
-
-
-        const mainLight =
-            new THREE.PointLight(
-
-                0xff70c5,
-                12,
-                100
-
-            );
-
-
-        mainLight.position.set(
-            0,
-            0,
-            5
-        );
-
-
-        scene.add(
-            mainLight
-        );
-
-
-        /* =====================================================
-           GRUPO DEL UNIVERSO
-        ====================================================== */
-
-        const universeGroup =
-            new THREE.Group();
-
-
-        scene.add(
-            universeGroup
-        );
-
-
-        /* =====================================================
-           ESTRELLAS DEL FONDO
-        ====================================================== */
-
-        const mobile =
-            window.innerWidth <= 700;
-
-
-        const starCount =
-            mobile
-                ? 3000
-                : 6500;
-
-
-        const starGeometry =
-            new THREE.BufferGeometry();
-
-
-        const positions =
-            new Float32Array(
-                starCount * 3
-            );
-
-
-        for (
-            let i = 0;
-            i < starCount;
-            i++
-        ) {
-
-            const radius =
-                100 +
-                Math.random() * 900;
-
-
-            const theta =
-                Math.random() *
-                Math.PI * 2;
-
-
-            const phi =
-                Math.acos(
-                    2 * Math.random() - 1
-                );
-
-
-            positions[i * 3] =
-                radius *
-                Math.sin(phi) *
-                Math.cos(theta);
-
-
-            positions[i * 3 + 1] =
-                radius *
-                Math.sin(phi) *
-                Math.sin(theta);
-
-
-            positions[i * 3 + 2] =
-                radius *
-                Math.cos(phi);
+            colores[i * 3 + 2] = 1;
 
         }
 
+    }
 
-        starGeometry.setAttribute(
 
-            "position",
+    const geometria =
+        new THREE.BufferGeometry();
 
-            new THREE.BufferAttribute(
-                positions,
-                3
-            )
+    geometria.setAttribute(
+        "position",
+        new THREE.BufferAttribute(
+            posiciones,
+            3
+        )
+    );
 
+    geometria.setAttribute(
+        "color",
+        new THREE.BufferAttribute(
+            colores,
+            3
+        )
+    );
+
+
+    const material =
+        new THREE.PointsMaterial({
+
+            size:
+                window.innerWidth < 600
+                    ? 0.75
+                    : 0.95,
+
+            vertexColors: true,
+
+            transparent: true,
+
+            opacity: 0.85,
+
+            sizeAttenuation: true
+
+        });
+
+
+    estrellas =
+        new THREE.Points(
+            geometria,
+            material
         );
 
+    escena.add(estrellas);
 
-        const starMaterial =
-            new THREE.PointsMaterial({
-
-                color:
-                    0xffffff,
-
-                size:
-                    mobile
-                        ? 0.7
-                        : 0.8,
-
-                transparent:
-                    true,
-
-                opacity:
-                    0.85
-
-            });
+}
 
 
-        const backgroundStars =
-            new THREE.Points(
+/* ============================================================
+   CREAR CONSTELACIÓN
+============================================================ */
 
-                starGeometry,
+function crearConstelacion(indice) {
 
-                starMaterial
-
-            );
-
-
-        universeGroup.add(
-            backgroundStars
-        );
+    grupoConstelacion.clear();
 
 
-        /* =====================================================
-           MENSAJES
-        ====================================================== */
-
-        const messages = [
-
-            {
-                title:
-                    "Para ti ❤️",
-
-                text:
-                    "No sé en qué momento te convertiste en alguien tan importante para mí, pero hoy sé que tenerte en mi vida es uno de mis regalos favoritos."
-            },
+    if (
+        indice < 0 ||
+        indice >= mensajes.length
+    ) {
+        return;
+    }
 
 
-            {
-                title:
-                    "Cuando tengas un día difícil 🌙",
+    /*
+        Diferentes formas para cada mensaje.
+    */
 
-                text:
-                    "Si algún día sientes que ya no puedes más, ven conmigo. No tienes que explicarme todo. Si necesitas llorar, lloramos. Si necesitas silencio, me quedo contigo. Nunca tendrás que sentir que estás sola."
-            },
+    const formas = [
 
+        /* forma 1 */
 
-            {
-                title:
-                    "Lo que admiro de ti ✨",
+        [
+            [-5, 2, 0],
+            [-2, 5, 0],
+            [1, 3, 0],
+            [4, 5, 0],
+            [5, 1, 0]
+        ],
 
-                text:
-                    "Admiro tu forma de ser, tu manera de seguir adelante y esa parte de ti que quizá tú no siempre ves, pero que para mí hace que seas una persona increíble."
-            },
+        /* forma 2 */
 
+        [
+            [-5, 3, 0],
+            [-2, 0, 0],
+            [0, 4, 0],
+            [2, 0, 0],
+            [5, 3, 0]
+        ],
 
-            {
-                title:
-                    "Un abrazo para ti 🤍",
+        /* forma 3 */
 
-                text:
-                    "Si pudiera aparecer frente a ti cada vez que necesitaras un abrazo, créeme que lo haría. Y probablemente me quedaría abrazándote un poquito más de lo necesario."
-            },
+        [
+            [-5, 0, 0],
+            [-2, 3, 0],
+            [0, 0, 0],
+            [2, 3, 0],
+            [5, 0, 0]
+        ],
 
+        /* forma 4 */
 
-            {
-                title:
-                    "No tienes que ser perfecta 🌷",
+        [
+            [-4, 3, 0],
+            [-2, 0, 0],
+            [0, -3, 0],
+            [2, 0, 0],
+            [4, 3, 0]
+        ],
 
-                text:
-                    "Quiero que conmigo puedas ser tú misma. Con tus días buenos, tus días malos, tus inseguridades, tus sueños y todo aquello que te hace ser quien eres."
-            },
+        /* forma 5 */
 
+        [
+            [-5, 1, 0],
+            [-3, 4, 0],
+            [0, 2, 0],
+            [3, 4, 0],
+            [5, 1, 0],
+            [0, -2, 0]
+        ],
 
-            {
-                title:
-                    "Mi lugar favorito 💗",
+        /* forma 6 */
 
-                text:
-                    "Entre tantos lugares del mundo, hay uno en el que siempre quisiera estar: cerca de ti."
-            },
+        [
+            [-5, 0, 0],
+            [-2, 4, 0],
+            [0, 0, 0],
+            [2, 4, 0],
+            [5, 0, 0],
+            [0, -4, 0]
+        ],
 
+        /* forma 7 */
 
-            {
-                title:
-                    "Cuando dudes de ti ⭐",
+        [
+            [-5, 2, 0],
+            [-3, -1, 0],
+            [0, 2, 0],
+            [3, -1, 0],
+            [5, 2, 0],
+            [0, 5, 0]
+        ]
 
-                text:
-                    "Cuando tú no puedas ver todo lo que vales, déjame recordártelo. Porque hay cosas bonitas en ti que quizá todavía no alcanzas a ver."
-            },
-
-
-            {
-                title:
-                    "Una promesa 🌹",
-
-                text:
-                    "No puedo prometer que todos los días serán perfectos, pero sí puedo prometer que mientras esté contigo intentaré que nunca te falte alguien que te escuche, te cuide y te recuerde cuánto vales."
-            },
-
-
-            {
-                title:
-                    "Nuestro pequeño universo 🪐",
-
-                text:
-                    "Quizá este universo solamente exista dentro de una pantalla, pero cada palabra que puse aquí tiene un poquito de lo que siento por ti."
-            },
-
-
-            {
-                title:
-                    "Mi pensamiento favorito 💫",
-
-                text:
-                    "A veces estoy haciendo cualquier cosa y de repente apareces en mi pensamiento. Y sin darme cuenta, termino sonriendo."
-            },
-
-
-            {
-                title:
-                    "Si necesitas llorar 🤍",
-
-                text:
-                    "Nunca voy a juzgar tus lágrimas. Si algún día necesitas sacar todo lo que llevas dentro, puedes hacerlo conmigo. No tienes que esconder lo que sientes."
-            },
+    ];
 
 
-            {
-                title:
-                    "Quiero conocerte más 🌙",
-
-                text:
-                    "Quiero conocer tus sueños, tus miedos, tus pequeñas costumbres, las cosas que te hacen feliz y hasta esas historias que todavía no me has contado."
-            },
-
-
-            {
-                title:
-                    "Algo que quiero construir ❤️",
-
-                text:
-                    "No quiero solamente coleccionar momentos bonitos contigo. Quiero construir recuerdos que algún día podamos mirar atrás y decir: qué bonito fue vivir todo esto juntos."
-            },
-
-
-            {
-                title:
-                    "Si alguna vez te sientes sola ✨",
-
-                text:
-                    "Mira esta estrella y recuerda que, aunque no pueda estar físicamente a tu lado en cada momento, siempre habrá alguien que quiere verte bien."
-            },
-
-
-            {
-                title:
-                    "La última estrella 💖",
-
-                text:
-                    "De todas las estrellas que existen, yo elegiría encontrarte a ti una y otra vez."
-            }
-
+    const puntos =
+        formas[
+            indice % formas.length
         ];
 
 
-        totalMessagesElement.textContent =
-            messages.length;
+    /* ---------------------------------------------------------
+       CREAR ESTRELLAS DE LA CONSTELACIÓN
+    --------------------------------------------------------- */
 
+    puntos.forEach(
+        (punto, index) => {
 
-        /* =====================================================
-           ESTRELLAS INTERACTIVAS
-        ====================================================== */
-
-        const interactiveStars = [];
-
-
-        messages.forEach(
-            (message, index) => {
-
-                const group =
-                    new THREE.Group();
-
-
-                const geometry =
-                    new THREE.SphereGeometry(
-
-                        mobile
-                            ? 0.65
-                            : 0.55,
-
-                        24,
-
-                        24
-
-                    );
-
-
-                const material =
-                    new THREE.MeshBasicMaterial({
-
-                        color:
-                            0xffb8e2
-
-                    });
-
-
-                const star =
-                    new THREE.Mesh(
-
-                        geometry,
-
-                        material
-
-                    );
-
-
-                const angle =
-                    (index / messages.length) *
-                    Math.PI * 2;
-
-
-                const radius =
-                    8 +
-                    Math.random() * 7;
-
-
-                const y =
-                    -8 +
-                    Math.random() * 16;
-
-
-                group.position.set(
-
-                    Math.cos(angle) *
-                    radius,
-
-                    y,
-
-                    Math.sin(angle) *
-                    radius -
-                    5
-
+            const geometria =
+                new THREE.SphereGeometry(
+                    0.18,
+                    16,
+                    16
                 );
 
+            const material =
+                new THREE.MeshBasicMaterial({
+                    color:
+                        index === 0
+                            ? 0xff8bdc
+                            : 0xffffff
+                });
 
-                star.userData = {
-
-                    index:
-                        index,
-
-                    message:
-                        message
-
-                };
-
-
-                /*
-                 * Zona invisible para hacer
-                 * las estrellas mucho más fáciles
-                 * de tocar.
-                 */
-
-                const hitGeometry =
-                    new THREE.SphereGeometry(
-                        1.8,
-                        12,
-                        12
-                    );
-
-
-                const hitMaterial =
-                    new THREE.MeshBasicMaterial({
-
-                        transparent:
-                            true,
-
-                        opacity:
-                            0,
-
-                        depthWrite:
-                            false
-
-                    });
-
-
-                const hitArea =
-                    new THREE.Mesh(
-
-                        hitGeometry,
-
-                        hitMaterial
-
-                    );
-
-
-                hitArea.userData = {
-
-                    index:
-                        index,
-
-                    message:
-                        message,
-
-                    clickableStar:
-                        true
-
-                };
-
-
-                group.add(
-                    star
+            const estrella =
+                new THREE.Mesh(
+                    geometria,
+                    material
                 );
 
+            estrella.position.set(
+                punto[0],
+                punto[1],
+                punto[2]
+            );
 
-                group.add(
-                    hitArea
+            grupoConstelacion.add(
+                estrella
+            );
+
+
+            /* luz */
+
+            const luz =
+                new THREE.PointLight(
+                    0xff8bdc,
+                    1.3,
+                    12
                 );
 
+            luz.position.copy(
+                estrella.position
+            );
 
-                const glowGeometry =
-                    new THREE.SphereGeometry(
-                        1.3,
-                        16,
-                        16
-                    );
+            grupoConstelacion.add(luz);
 
-
-                const glowMaterial =
-                    new THREE.MeshBasicMaterial({
-
-                        color:
-                            0xff6fbc,
-
-                        transparent:
-                            true,
-
-                        opacity:
-                            0.12,
-
-                        depthWrite:
-                            false
-
-                    });
+        }
+    );
 
 
-                const glow =
-                    new THREE.Mesh(
+    /* ---------------------------------------------------------
+       LÍNEAS
+    --------------------------------------------------------- */
 
-                        glowGeometry,
+    for (
+        let i = 0;
+        i < puntos.length - 1;
+        i++
+    ) {
 
-                        glowMaterial
+        const geometriaLinea =
+            new THREE.BufferGeometry();
 
-                    );
+        const vertices = new Float32Array([
 
+            puntos[i][0],
+            puntos[i][1],
+            puntos[i][2],
 
-                group.add(
-                    glow
-                );
+            puntos[i + 1][0],
+            puntos[i + 1][1],
+            puntos[i + 1][2]
 
+        ]);
 
-                universeGroup.add(
-                    group
-                );
-
-
-                interactiveStars.push(
-                    hitArea
-                );
-
-            }
+        geometriaLinea.setAttribute(
+            "position",
+            new THREE.BufferAttribute(
+                vertices,
+                3
+            )
         );
 
 
-        /* =====================================================
-           PLANETAS
-        ====================================================== */
+        const materialLinea =
+            new THREE.LineBasicMaterial({
 
-        function createPlanet(
-            radius,
-            color,
-            x,
-            y,
-            z
-        ) {
+                color: 0xff8bdc,
 
-            const geometry =
-                new THREE.SphereGeometry(
+                transparent: true,
 
-                    radius,
-                    40,
-                    40
-
-                );
-
-
-            const material =
-                new THREE.MeshStandardMaterial({
-
-                    color:
-                        color,
-
-                    roughness:
-                        0.8,
-
-                    metalness:
-                        0.1
-
-                });
-
-
-            const planet =
-                new THREE.Mesh(
-
-                    geometry,
-                    material
-
-                );
-
-
-            planet.position.set(
-                x,
-                y,
-                z
-            );
-
-
-            universeGroup.add(
-                planet
-            );
-
-
-            return planet;
-
-        }
-
-
-        const planet1 =
-            createPlanet(
-                mobile ? 1.8 : 2.7,
-                0x5b286f,
-                -17,
-                7,
-                -18
-            );
-
-
-        const planet2 =
-            createPlanet(
-                mobile ? 1.3 : 2,
-                0x312b78,
-                18,
-                -9,
-                -13
-            );
-
-
-        /* =====================================================
-           ANILLO
-        ====================================================== */
-
-        const ringGeometry =
-            new THREE.RingGeometry(
-                3.4,
-                4.5,
-                64
-            );
-
-
-        const ringMaterial =
-            new THREE.MeshBasicMaterial({
-
-                color:
-                    0xffa8dc,
-
-                side:
-                    THREE.DoubleSide,
-
-                transparent:
-                    true,
-
-                opacity:
-                    0.45
+                opacity: 0.5
 
             });
 
 
-        const ring =
-            new THREE.Mesh(
-
-                ringGeometry,
-                ringMaterial
-
+        const linea =
+            new THREE.Line(
+                geometriaLinea,
+                materialLinea
             );
 
+        grupoConstelacion.add(linea);
 
-        ring.rotation.x =
-            Math.PI / 2.5;
+    }
 
 
-        planet1.add(
-            ring
+    /* ---------------------------------------------------------
+       ANIMACIÓN DE ENTRADA
+    --------------------------------------------------------- */
+
+    grupoConstelacion.scale.set(
+        0.01,
+        0.01,
+        0.01
+    );
+
+}
+
+
+/* ============================================================
+   ANIMACIÓN
+============================================================ */
+
+function animar() {
+
+    requestAnimationFrame(animar);
+
+
+    if (!escena) {
+        return;
+    }
+
+
+    const tiempo =
+        reloj.getElapsedTime();
+
+
+    /* movimiento de estrellas */
+
+    if (estrellas) {
+
+        estrellas.rotation.y =
+            tiempo * 0.008;
+
+        estrellas.rotation.x =
+            Math.sin(tiempo * 0.05) * 0.03;
+
+    }
+
+
+    /* constelación */
+
+    if (grupoConstelacion) {
+
+        grupoConstelacion.rotation.z =
+            Math.sin(tiempo * 0.25) * 0.025;
+
+        grupoConstelacion.rotation.y =
+            Math.sin(tiempo * 0.2) * 0.08;
+
+
+        if (
+            grupoConstelacion.scale.x < 1
+        ) {
+
+            grupoConstelacion.scale.multiplyScalar(
+                1.025
+            );
+
+            if (
+                grupoConstelacion.scale.x > 1
+            ) {
+
+                grupoConstelacion.scale.set(
+                    1,
+                    1,
+                    1
+                );
+
+            }
+
+        }
+
+    }
+
+
+    renderizador.render(
+        escena,
+        camara
+    );
+
+}
+
+
+/* ============================================================
+   MOVIMIENTO DEL MOUSE
+============================================================ */
+
+let mouseX = 0;
+
+let mouseY = 0;
+
+function moverCamara(evento) {
+
+    mouseX =
+        (evento.clientX /
+            window.innerWidth -
+            0.5);
+
+    mouseY =
+        (evento.clientY /
+            window.innerHeight -
+            0.5);
+
+}
+
+
+function moverCamaraTouch(evento) {
+
+    if (
+        !evento.touches ||
+        !evento.touches[0]
+    ) {
+        return;
+    }
+
+    mouseX =
+        (evento.touches[0].clientX /
+            window.innerWidth -
+            0.5);
+
+    mouseY =
+        (evento.touches[0].clientY /
+            window.innerHeight -
+            0.5);
+
+}
+
+
+/* ============================================================
+   AJUSTAR PANTALLA
+============================================================ */
+
+function ajustarPantalla() {
+
+    camara.aspect =
+        window.innerWidth /
+        window.innerHeight;
+
+    camara.updateProjectionMatrix();
+
+    renderizador.setSize(
+        window.innerWidth,
+        window.innerHeight
+    );
+
+}
+
+
+/* ============================================================
+   MOSTRAR MENSAJE
+============================================================ */
+
+let mensajeActual = 0;
+
+
+function mostrarMensaje(indice) {
+
+    if (
+        indice < 0 ||
+        indice >= mensajes.length
+    ) {
+        return;
+    }
+
+
+    mensajeActual = indice;
+
+
+    const datos =
+        mensajes[indice];
+
+
+    /* desaparecer */
+
+    mensaje.classList.remove(
+        "visible"
+    );
+
+
+    setTimeout(() => {
+
+        tituloMensaje.textContent =
+            datos.titulo;
+
+        textoMensaje.innerHTML =
+            datos.texto;
+
+        numeroMensaje.textContent =
+            `CONSTELACIÓN ${String(indice + 1).padStart(2, "0")}`;
+
+
+        crearConstelacion(
+            indice
         );
 
 
-        /* =====================================================
-           CORAZÓN 3D
-        ====================================================== */
-
-        function createHeart() {
-
-            const shape =
-                new THREE.Shape();
+        mensaje.classList.add(
+            "visible"
+        );
 
 
-            shape.moveTo(
-                5,
-                5
+        actualizarBotones();
+
+    }, 400);
+
+}
+
+
+/* ============================================================
+   BOTONES
+============================================================ */
+
+function actualizarBotones() {
+
+    botonAnterior.disabled =
+        mensajeActual === 0;
+
+
+    if (
+        mensajeActual ===
+        mensajes.length - 1
+    ) {
+
+        botonSiguiente.textContent =
+            "Ver el final ✨";
+
+    } else {
+
+        botonSiguiente.textContent =
+            "Siguiente →";
+
+    }
+
+}
+
+
+/* ============================================================
+   ENTRAR
+============================================================ */
+
+botonEntrar.addEventListener(
+    "click",
+    () => {
+
+        inicio.classList.add(
+            "oculto"
+        );
+
+        interfaz.classList.add(
+            "visible"
+        );
+
+
+        document.getElementById(
+            "musica"
+        ).style.display = "block";
+
+
+        setTimeout(() => {
+
+            mostrarMensaje(0);
+
+        }, 1000);
+
+    }
+);
+
+
+/* ============================================================
+   SIGUIENTE
+============================================================ */
+
+botonSiguiente.addEventListener(
+    "click",
+    () => {
+
+        if (
+            mensajeActual <
+            mensajes.length - 1
+        ) {
+
+            mostrarMensaje(
+                mensajeActual + 1
             );
 
+        } else {
 
-            shape.bezierCurveTo(
-                5,
-                5,
-                4,
-                0,
-                0,
-                0
+            mostrarFinal();
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   ANTERIOR
+============================================================ */
+
+botonAnterior.addEventListener(
+    "click",
+    () => {
+
+        if (
+            mensajeActual > 0
+        ) {
+
+            mostrarMensaje(
+                mensajeActual - 1
             );
 
+        }
 
-            shape.bezierCurveTo(
-                -6,
-                0,
-                -6,
-                7,
-                -6,
-                7
+    }
+);
+
+
+/* ============================================================
+   FINAL
+============================================================ */
+
+function mostrarFinal() {
+
+    mensaje.classList.remove(
+        "visible"
+    );
+
+    instruccion.style.opacity = "0";
+
+
+    /* crear corazón de estrellas */
+
+    crearCorazon();
+
+
+    setTimeout(() => {
+
+        interfaz.classList.remove(
+            "visible"
+        );
+
+        final.classList.add(
+            "visible"
+        );
+
+    }, 2800);
+
+}
+
+
+/* ============================================================
+   CORAZÓN DE ESTRELLAS
+============================================================ */
+
+function crearCorazon() {
+
+    grupoConstelacion.clear();
+
+
+    const puntos = [];
+
+
+    for (
+        let t = 0;
+        t < Math.PI * 2;
+        t += 0.08
+    ) {
+
+        const x =
+            8 *
+            Math.pow(
+                Math.sin(t),
+                3
             );
 
-
-            shape.bezierCurveTo(
-                -6,
-                11,
-                -2,
-                15,
-                5,
-                19
-            );
-
-
-            shape.bezierCurveTo(
-                12,
-                15,
-                16,
-                11,
-                16,
-                7
-            );
+        const y =
+            6 *
+                Math.cos(t)
+                -
+            2.5 *
+                Math.cos(2 * t)
+                -
+            1.2 *
+                Math.cos(3 * t)
+                -
+            0.6 *
+                Math.cos(4 * t);
 
 
-            shape.bezierCurveTo(
-                16,
-                7,
-                16,
-                0,
-                10,
-                0
-            );
+        puntos.push([
+            x,
+            y,
+            0
+        ]);
+
+    }
 
 
-            shape.bezierCurveTo(
-                6,
-                0,
-                5,
-                5,
-                5,
-                5
-            );
+    /* estrellas */
 
+    puntos.forEach(
+        (punto) => {
 
-            const geometry =
-                new THREE.ExtrudeGeometry(
-
-                    shape,
-
-                    {
-
-                        depth:
-                            2,
-
-                        bevelEnabled:
-                            true,
-
-                        bevelSegments:
-                            5,
-
-                        bevelSize:
-                            0.7,
-
-                        bevelThickness:
-                            0.7
-
-                    }
-
+            const geometria =
+                new THREE.SphereGeometry(
+                    0.13,
+                    12,
+                    12
                 );
-
-
-            geometry.center();
-
 
             const material =
-                new THREE.MeshStandardMaterial({
-
-                    color:
-                        0xff3d91,
-
-                    emissive:
-                        0x8f164f,
-
-                    emissiveIntensity:
-                        1.5,
-
-                    roughness:
-                        0.3,
-
-                    metalness:
-                        0.2
-
+                new THREE.MeshBasicMaterial({
+                    color: 0xff9bdd
                 });
 
-
-            const heart =
+            const estrella =
                 new THREE.Mesh(
-
-                    geometry,
+                    geometria,
                     material
-
                 );
 
-
-            const scale =
-                mobile
-                    ? 0.22
-                    : 0.3;
-
-
-            heart.scale.set(
-                scale,
-                scale,
-                scale
+            estrella.position.set(
+                punto[0],
+                punto[1],
+                punto[2]
             );
 
-
-            heart.rotation.z =
-                Math.PI;
-
-
-            universeGroup.add(
-                heart
-            );
-
-
-            return heart;
-
-        }
-
-
-        const heart =
-            createHeart();
-
-
-        /* =====================================================
-           LUZ DEL CORAZÓN
-        ====================================================== */
-
-        const heartLight =
-            new THREE.PointLight(
-
-                0xff3d91,
-                12,
-                35
-
-            );
-
-
-        heartLight.position.set(
-            0,
-            0,
-            3
-        );
-
-
-        universeGroup.add(
-            heartLight
-        );
-
-
-        /* =====================================================
-           RAYCASTER
-        ====================================================== */
-
-        const raycaster =
-            new THREE.Raycaster();
-
-
-        const mouse =
-            new THREE.Vector2();
-
-
-        /* =====================================================
-           COMPROBAR ESTRELLA
-        ====================================================== */
-
-        function checkStarClick(
-            clientX,
-            clientY
-        ) {
-
-            const rect =
-                canvas.getBoundingClientRect();
-
-
-            mouse.x =
-                (
-                    (
-                        clientX -
-                        rect.left
-                    ) /
-                    rect.width
-                ) * 2 - 1;
-
-
-            mouse.y =
-                -(
-                    (
-                        clientY -
-                        rect.top
-                    ) /
-                    rect.height
-                ) * 2 + 1;
-
-
-            raycaster.setFromCamera(
-                mouse,
-                camera
-            );
-
-
-            const intersections =
-                raycaster.intersectObjects(
-                    interactiveStars,
-                    false
-                );
-
-
-            if (
-                intersections.length > 0
-            ) {
-
-                const object =
-                    intersections[0].object;
-
-
-                openMessage(
-                    object.userData.index,
-                    object.userData.message
-                );
-
-
-                return true;
-
-            }
-
-
-            /*
-             * Segunda oportunidad:
-             * buscamos visualmente la estrella
-             * más cercana.
-             */
-
-            let closest =
-                null;
-
-
-            let closestDistance =
-                Infinity;
-
-
-            interactiveStars.forEach(
-                (star) => {
-
-                    const worldPosition =
-                        new THREE.Vector3();
-
-
-                    star.getWorldPosition(
-                        worldPosition
-                    );
-
-
-                    const projected =
-                        worldPosition
-                            .clone()
-                            .project(camera);
-
-
-                    if (
-                        projected.z < -1 ||
-                        projected.z > 1
-                    ) {
-
-                        return;
-
-                    }
-
-
-                    const screenX =
-                        (
-                            projected.x + 1
-                        ) *
-                        0.5 *
-                        window.innerWidth;
-
-
-                    const screenY =
-                        (
-                            -projected.y + 1
-                        ) *
-                        0.5 *
-                        window.innerHeight;
-
-
-                    const distance =
-                        Math.hypot(
-
-                            screenX -
-                            clientX,
-
-                            screenY -
-                            clientY
-
-                        );
-
-
-                    if (
-
-                        distance < 100 &&
-
-                        distance <
-                        closestDistance
-
-                    ) {
-
-                        closestDistance =
-                            distance;
-
-                        closest =
-                            star;
-
-                    }
-
-                }
-            );
-
-
-            if (closest) {
-
-                openMessage(
-
-                    closest.userData.index,
-
-                    closest.userData.message
-
-                );
-
-
-                return true;
-
-            }
-
-
-            return false;
-
-        }
-
-
-        /* =====================================================
-           CLICK SOLO EN EL CANVAS
-           
-           🔴 AQUÍ ESTÁ UNA DE LAS CORRECCIONES
-           
-           Antes estaba en window.
-           Ahora SOLO escucha el canvas 3D.
-        ====================================================== */
-
-        canvas.addEventListener(
-            "click",
-            (event) => {
-
-                checkStarClick(
-
-                    event.clientX,
-
-                    event.clientY
-
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           MOVIMIENTO DEL MOUSE
-        ====================================================== */
-
-        let targetX = 0;
-
-        let targetY = 0;
-
-        let currentX = 0;
-
-        let currentY = 0;
-
-
-        window.addEventListener(
-            "mousemove",
-            (event) => {
-
-                targetX =
-                    (
-                        event.clientX /
-                        window.innerWidth -
-                        0.5
-                    ) * 0.6;
-
-
-                targetY =
-                    (
-                        event.clientY /
-                        window.innerHeight -
-                        0.5
-                    ) * 0.3;
-
-            }
-        );
-
-
-        /* =====================================================
-           TOUCH
-        ====================================================== */
-
-        let touchStartX = 0;
-
-        let touchStartY = 0;
-
-        let lastTouchX = 0;
-
-        let lastTouchY = 0;
-
-        let touchMoved = false;
-
-
-        canvas.addEventListener(
-            "touchstart",
-            (event) => {
-
-                if (
-                    event.touches.length !== 1
-                ) {
-
-                    return;
-
-                }
-
-
-                touchStartX =
-                    event.touches[0].clientX;
-
-
-                touchStartY =
-                    event.touches[0].clientY;
-
-
-                lastTouchX =
-                    touchStartX;
-
-
-                lastTouchY =
-                    touchStartY;
-
-
-                touchMoved =
-                    false;
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        canvas.addEventListener(
-            "touchmove",
-            (event) => {
-
-                if (
-                    event.touches.length !== 1
-                ) {
-
-                    return;
-
-                }
-
-
-                const x =
-                    event.touches[0].clientX;
-
-
-                const y =
-                    event.touches[0].clientY;
-
-
-                const dx =
-                    x -
-                    lastTouchX;
-
-
-                const dy =
-                    y -
-                    lastTouchY;
-
-
-                if (
-
-                    Math.abs(
-                        x -
-                        touchStartX
-                    ) > 8 ||
-
-                    Math.abs(
-                        y -
-                        touchStartY
-                    ) > 8
-
-                ) {
-
-                    touchMoved =
-                        true;
-
-                }
-
-
-                universeGroup.rotation.y +=
-                    dx * 0.004;
-
-
-                universeGroup.rotation.x +=
-                    dy * 0.002;
-
-
-                lastTouchX =
-                    x;
-
-
-                lastTouchY =
-                    y;
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        canvas.addEventListener(
-            "touchend",
-            (event) => {
-
-                if (
-                    touchMoved
-                ) {
-
-                    return;
-
-                }
-
-
-                if (
-                    event.changedTouches.length !== 1
-                ) {
-
-                    return;
-
-                }
-
-
-                const touch =
-                    event.changedTouches[0];
-
-
-                checkStarClick(
-
-                    touch.clientX,
-
-                    touch.clientY
-
-                );
-
-            },
-            {
-                passive: true
-            }
-        );
-
-
-        /* =====================================================
-           MENSAJES ENCONTRADOS
-        ====================================================== */
-
-        const discovered =
-            new Set();
-
-
-        let foundMessages =
-            0;
-
-
-        /* =====================================================
-           ABRIR MENSAJE
-           
-           🔴 ESTA FUNCIÓN TAMBIÉN FUE CORREGIDA
-        ====================================================== */
-
-        function openMessage(
-            index,
-            message
-        ) {
-
-            /*
-             * Mostrar el contenido.
-             */
-
-            modalTitle.textContent =
-                message.title;
-
-
-            modalText.textContent =
-                message.text;
-
-
-            /*
-             * Si todavía no lo había encontrado,
-             * lo contamos.
-             */
-
-            if (
-                !discovered.has(index)
-            ) {
-
-                discovered.add(
-                    index
-                );
-
-
-                foundMessages++;
-
-
-                foundMessagesElement.textContent =
-                    foundMessages;
-
-            }
-
-
-            /*
-             * Mostrar modal.
-             */
-
-            messageModal.classList.add(
-                "show"
-            );
-
-
-            /*
-             * ¿Encontró todas?
-             */
-
-            if (
-                foundMessages >=
-                messages.length
-            ) {
-
-                /*
-                 * Esperamos para que pueda
-                 * leer el último mensaje.
-                 */
-
-                setTimeout(
-                    () => {
-
-                        /*
-                         * 🔴 CERRAMOS EL MODAL
-                         * ANTES DE MOSTRAR EL FINAL.
-                         */
-
-                        messageModal.classList.remove(
-                            "show"
-                        );
-
-
-                        /*
-                         * Mostramos la pantalla final.
-                         */
-
-                        finalMessage.classList.add(
-                            "show"
-                        );
-
-
-                        /*
-                         * Aseguramos que empiece
-                         * desde el primer paso.
-                         */
-
-                        finalStep1.classList.add(
-                            "active"
-                        );
-
-
-                        finalStep2.classList.remove(
-                            "active"
-                        );
-
-
-                        finalStep3.classList.remove(
-                            "active"
-                        );
-
-
-                        finalStep4.classList.remove(
-                            "active"
-                        );
-
-                    },
-                    1800
-                );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           CERRAR MENSAJE
-        ====================================================== */
-
-        closeModal.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-
-                messageModal.classList.remove(
-                    "show"
-                );
-
-            }
-        );
-
-
-        messageModal.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-
-                if (
-                    event.target ===
-                    messageModal
-                ) {
-
-                    messageModal.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           AYUDA
-        ====================================================== */
-
-        helpButton.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-
-                helpModal.classList.add(
-                    "show"
-                );
-
-            }
-        );
-
-
-        closeHelp.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-
-                helpModal.classList.remove(
-                    "show"
-                );
-
-            }
-        );
-
-
-        helpModal.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-
-                if (
-                    event.target ===
-                    helpModal
-                ) {
-
-                    helpModal.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           MÚSICA
-        ====================================================== */
-
-        let musicPlaying =
-            false;
-
-
-        musicButton.addEventListener(
-            "click",
-            async (event) => {
-
-                event.stopPropagation();
-
-
-                try {
-
-                    if (
-                        !musicPlaying
-                    ) {
-
-                        await
-                            backgroundMusic.play();
-
-
-                        musicPlaying =
-                            true;
-
-
-                        musicButton.textContent =
-                            "⏸️ Música";
-
-                    }
-
-                    else {
-
-                        backgroundMusic.pause();
-
-
-                        musicPlaying =
-                            false;
-
-
-                        musicButton.textContent =
-                            "🎵 Música";
-
-                    }
-
-                }
-
-                catch (error) {
-
-                    console.log(
-                        "La música no pudo reproducirse.",
-                        error
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           INICIAR UNIVERSO
-           
-           🔴 TAMBIÉN CORREGIDO
-        ====================================================== */
-
-        startButton.addEventListener(
-            "click",
-            async (event) => {
-
-                /*
-                 * Evita cualquier propagación.
-                 */
-
-                event.stopPropagation();
-
-
-                /*
-                 * Ocultamos intro.
-                 */
-
-                intro.classList.add(
-                    "hidden"
-                );
-
-
-                /*
-                 * Mostramos universo.
-                 */
-
-                universe.classList.add(
-                    "active"
-                );
-
-
-                /*
-                 * Música.
-                 */
-
-                try {
-
-                    await
-                        backgroundMusic.play();
-
-
-                    musicPlaying =
-                        true;
-
-
-                    musicButton.textContent =
-                        "⏸️ Música";
-
-                }
-
-                catch (error) {
-
-                    console.log(
-                        "El navegador bloqueó el autoplay."
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           CAMBIAR PASO FINAL
-        ====================================================== */
-
-        function changeFinalStep(
-            current,
-            next
-        ) {
-
-            current.classList.remove(
-                "active"
-            );
-
-
-            setTimeout(
-                () => {
-
-                    next.classList.add(
-                        "active"
-                    );
-
-                },
-                250
+            grupoConstelacion.add(
+                estrella
             );
 
         }
+    );
 
 
-        nextFinal1.addEventListener(
-            "click",
-            (event) => {
+    /* líneas */
 
-                event.stopPropagation();
+    for (
+        let i = 0;
+        i < puntos.length;
+        i++
+    ) {
+
+        const siguiente =
+            (i + 1) %
+            puntos.length;
 
 
-                changeFinalStep(
-                    finalStep1,
-                    finalStep2
-                );
+        const geometria =
+            new THREE.BufferGeometry();
 
-            }
+
+        const vertices =
+            new Float32Array([
+
+                puntos[i][0],
+                puntos[i][1],
+                puntos[i][2],
+
+                puntos[siguiente][0],
+                puntos[siguiente][1],
+                puntos[siguiente][2]
+
+            ]);
+
+
+        geometria.setAttribute(
+            "position",
+            new THREE.BufferAttribute(
+                vertices,
+                3
+            )
         );
 
 
-        nextFinal2.addEventListener(
-            "click",
-            (event) => {
+        const material =
+            new THREE.LineBasicMaterial({
 
-                event.stopPropagation();
+                color: 0xff75c8,
+
+                transparent: true,
+
+                opacity: 0.7
+
+            });
 
 
-                changeFinalStep(
-                    finalStep2,
-                    finalStep3
-                );
+        grupoConstelacion.add(
+            new THREE.Line(
+                geometria,
+                material
+            )
+        );
 
-            }
+    }
+
+
+    grupoConstelacion.scale.set(
+        0.01,
+        0.01,
+        0.01
+    );
+
+}
+
+
+/* ============================================================
+   VOLVER A EMPEZAR
+============================================================ */
+
+botonVolver.addEventListener(
+    "click",
+    () => {
+
+        final.classList.remove(
+            "visible"
         );
 
 
-        nextFinal3.addEventListener(
-            "click",
-            (event) => {
+        setTimeout(() => {
 
-                event.stopPropagation();
-
-
-                changeFinalStep(
-                    finalStep3,
-                    finalStep4
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           PROPUESTA
-        ====================================================== */
-
-        proposalButton.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-
-                createProposalScene();
-
-            }
-        );
-
-
-        function createProposalScene() {
-
-            /*
-             * Evitar crear la escena dos veces.
-             */
-
-            if (
-                document.getElementById(
-                    "proposalScene"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            finalStep4.style.display =
-                "none";
-
-
-            finalHeart.style.display =
-                "none";
-
-
-            createConstellation();
-
-
-            const proposal =
-                document.createElement(
-                    "div"
-                );
-
-
-            proposal.id =
-                "proposalScene";
-
-
-            proposal.innerHTML = `
-
-                <div class="proposal-stars">
-                    ✨ ⭐ ✦ ⭐ ✨
-                </div>
-
-                <h1>
-                    ¿QUIERES SER MI NOVIA?
-                </h1>
-
-                <p>
-                    ❤️
-                </p>
-
-                <div class="proposal-buttons">
-
-                    <button
-                        id="yesButton"
-                        class="yes-button"
-                        type="button"
-                    >
-                        SÍ ❤️
-                    </button>
-
-                    <button
-                        id="thinkButton"
-                        class="think-button"
-                        type="button"
-                    >
-                        Déjame pensarlo 🌙
-                    </button>
-
-                </div>
-
-            `;
-
-
-            finalMessage.appendChild(
-                proposal
+            interfaz.classList.add(
+                "visible"
             );
 
+            instruccion.style.opacity =
+                "1";
 
-            /*
-             * Explosión de estrellas.
-             */
+            mostrarMensaje(0);
 
-            createStarExplosion();
+        }, 1000);
 
+    }
+);
 
-            setTimeout(
-                () => {
 
-                    proposal.classList.add(
-                        "visible"
-                    );
+/* ============================================================
+   INICIALIZAR
+============================================================ */
 
-                },
-                100
-            );
+iniciarUniverso();
 
-
-            document
-                .getElementById(
-                    "yesButton"
-                )
-                .addEventListener(
-                    "click",
-                    showYesMessage
-                );
-
-
-            document
-                .getElementById(
-                    "thinkButton"
-                )
-                .addEventListener(
-                    "click",
-                    showThinkMessage
-                );
-
-        }
-
-
-        /* =====================================================
-           CONSTELACIÓN
-        ====================================================== */
-
-        function createConstellation() {
-
-            const points = [
-
-                [-320,-80],
-                [-280,-80],
-                [-240,-80],
-                [-300,-80],
-                [-280,-20],
-                [-280,40],
-                [-320,40],
-                [-240,40],
-
-                [-200,-80],
-                [-160,-80],
-                [-120,-80],
-                [-200,-20],
-                [-200,40],
-
-                [-70,-80],
-                [-30,-80],
-                [10,-80],
-                [-50,-20],
-                [-50,40],
-
-                [60,-80],
-                [100,-80],
-                [140,-80],
-                [100,-20],
-                [100,40],
-
-                [180,-80],
-                [220,-80],
-                [260,-80],
-                [180,-20],
-                [260,40],
-
-                [-250,100],
-                [-210,100],
-                [-170,100],
-                [-130,100],
-                [-90,100],
-
-                [-30,100],
-                [10,100],
-                [50,100],
-                [90,100],
-
-                [150,100],
-                [190,100],
-                [230,100],
-
-                [-140,160],
-                [-100,160],
-                [-60,160],
-
-                [40,160],
-                [80,160],
-                [120,160]
-
-            ];
-
-
-            points.forEach(
-                (point, index) => {
-
-                    const star =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    star.className =
-                        "constellation-star";
-
-
-                    /*
-                     * En celular reducimos
-                     * la distancia de las estrellas.
-                     */
-
-                    const factor =
-                        window.innerWidth <= 700
-                            ? 0.55
-                            : 1;
-
-
-                    star.style.left =
-                        `calc(
-                            50% +
-                            ${point[0] * factor}px
-                        )`;
-
-
-                    star.style.top =
-                        `calc(
-                            50% +
-                            ${point[1] * factor}px
-                        )`;
-
-
-                    finalMessage.appendChild(
-                        star
-                    );
-
-
-                    setTimeout(
-                        () => {
-
-                            star.style.opacity =
-                                "1";
-
-
-                            star.style.transform =
-                                "scale(1)";
-
-                        },
-                        index * 35
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           EXPLOSIÓN
-        ====================================================== */
-
-        function createStarExplosion() {
-
-            for (
-                let i = 0;
-                i < 150;
-                i++
-            ) {
-
-                const star =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                star.className =
-                    "explosion-star";
-
-
-                star.textContent =
-                    Math.random() > 0.5
-                        ? "✦"
-                        : "✨";
-
-
-                const angle =
-                    Math.random() *
-                    Math.PI * 2;
-
-
-                const distance =
-                    100 +
-                    Math.random() * 500;
-
-
-                star.style.setProperty(
-                    "--x",
-                    `${Math.cos(angle) * distance}px`
-                );
-
-
-                star.style.setProperty(
-                    "--y",
-                    `${Math.sin(angle) * distance}px`
-                );
-
-
-                finalMessage.appendChild(
-                    star
-                );
-
-
-                setTimeout(
-                    () => {
-
-                        star.remove();
-
-                    },
-                    3000
-                );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           RESPUESTA SÍ
-        ====================================================== */
-
-        function showYesMessage() {
-
-            const proposal =
-                document.getElementById(
-                    "proposalScene"
-                );
-
-
-            proposal.innerHTML = `
-
-                <div class="yes-final">
-
-                    <div class="yes-heart">
-                        ❤️
-                    </div>
-
-                    <h1>
-                        Entonces...
-                    </h1>
-
-                    <h2>
-                        hagamos nuestro propio universo. 🌌
-                    </h2>
-
-                    <p>
-                        Prometo cuidar este pequeño
-                        universo que acabamos de crear.
-                    </p>
-
-                    <p>
-                        Y prometo recordarte siempre
-                        lo mucho que significas para mí.
-                    </p>
-
-                    <strong>
-                        Te quiero muchísimo,
-                        Mi Ojitos. ❤️
-                    </strong>
-
-                </div>
-
-            `;
-
-
-            createStarExplosion();
-
-        }
-
-
-        /* =====================================================
-           RESPUESTA PENSAR
-        ====================================================== */
-
-        function showThinkMessage() {
-
-            const proposal =
-                document.getElementById(
-                    "proposalScene"
-                );
-
-
-            proposal.innerHTML = `
-
-                <div class="yes-final">
-
-                    <div class="yes-heart">
-                        🌙
-                    </div>
-
-                    <h1>
-                        Tómate tu tiempo
-                    </h1>
-
-                    <p>
-                        No quiero que respondas
-                        por presión.
-                    </p>
-
-                    <p>
-                        Solamente quería que supieras
-                        lo que siento por ti.
-                    </p>
-
-                    <p>
-                        Y pase lo que pase,
-                        me alegra muchísimo
-                        haberte encontrado
-                        en este universo.
-                    </p>
-
-                    <strong>
-                        ❤️
-                    </strong>
-
-                </div>
-
-            `;
-
-        }
-
-
-        /* =====================================================
-           ANIMACIÓN
-        ====================================================== */
-
-        const clock =
-            new THREE.Clock();
-
-
-        function animate() {
-
-            requestAnimationFrame(
-                animate
-            );
-
-
-            const elapsed =
-                clock.getElapsedTime();
-
-
-            /*
-             * Rotación lenta.
-             */
-
-            universeGroup.rotation.y +=
-                0.0008;
-
-
-            /*
-             * Movimiento suave del mouse.
-             */
-
-            currentX +=
-                (
-                    targetX -
-                    currentX
-                ) * 0.02;
-
-
-            currentY +=
-                (
-                    targetY -
-                    currentY
-                ) * 0.02;
-
-
-            universeGroup.rotation.y +=
-                currentX * 0.002;
-
-
-            universeGroup.rotation.x +=
-                currentY * 0.001;
-
-
-            /*
-             * Fondo.
-             */
-
-            backgroundStars.rotation.y =
-                elapsed * 0.003;
-
-
-            /*
-             * Planetas.
-             */
-
-            planet1.rotation.y +=
-                0.002;
-
-
-            planet2.rotation.y +=
-                0.0015;
-
-
-            /*
-             * Corazón.
-             */
-
-            const heartbeat =
-                1 +
-                Math.sin(
-                    elapsed * 3
-                ) * 0.05;
-
-
-            const baseScale =
-                mobile
-                    ? 0.22
-                    : 0.3;
-
-
-            heart.scale.set(
-
-                baseScale *
-                heartbeat,
-
-                baseScale *
-                heartbeat,
-
-                baseScale *
-                heartbeat
-
-            );
-
-
-            heart.rotation.y =
-                elapsed * 0.4;
-
-
-            /*
-             * Estrellas interactivas.
-             */
-
-            interactiveStars.forEach(
-                (star, index) => {
-
-                    const scale =
-                        1 +
-                        Math.sin(
-                            elapsed * 3 +
-                            index
-                        ) * 0.25;
-
-
-                    star.scale.set(
-                        scale,
-                        scale,
-                        scale
-                    );
-
-                }
-            );
-
-
-            renderer.render(
-                scene,
-                camera
-            );
-
-        }
-
-
-        animate();
-
-
-        /* =====================================================
-           RESIZE
-        ====================================================== */
-
-        window.addEventListener(
-            "resize",
-            () => {
-
-                camera.aspect =
-                    window.innerWidth /
-                    window.innerHeight;
-
-
-                camera.updateProjectionMatrix();
-
-
-                renderer.setSize(
-
-                    window.innerWidth,
-
-                    window.innerHeight
-
-                );
-
-
-                renderer.setPixelRatio(
-
-                    Math.min(
-                        window.devicePixelRatio,
-                        2
-                    )
-
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           ESC
-        ====================================================== */
-
-        window.addEventListener(
-            "keydown",
-            (event) => {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    messageModal.classList.remove(
-                        "show"
-                    );
-
-
-                    helpModal.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-        );
-
-    </script>
+</script>
 
 </body>
-
 </html>
