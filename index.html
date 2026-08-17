@@ -1,1086 +1,1323 @@
 <DOCTYPE html>
 <html lang="es">
+
 <head>
 
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
->
-
-<title>C&A — Nuestro Universo 🌌❤️</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<style>
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,
-body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    font-family:"Segoe UI",Arial,sans-serif;
-    background:#02010a;
-    color:white;
-}
-
-body{
-    position:relative;
-}
-
-/* =========================================================
-   UNIVERSO
-========================================================= */
-
-#universo{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:1;
-}
-
-canvas{
-    display:block;
-}
-
-/* =========================================================
-   NEBULOSA
-========================================================= */
-
-.nebula{
-    position:fixed;
-    inset:0;
-    z-index:2;
-    pointer-events:none;
-
-    background:
-
-        radial-gradient(
-            circle at 20% 30%,
-            rgba(162,54,255,.18),
-            transparent 32%
-        ),
-
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(255,45,150,.13),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(79,30,170,.10),
-            transparent 45%
-        );
-
-    animation:respirarNebulosa 8s ease-in-out infinite alternate;
-}
-
-@keyframes respirarNebulosa{
-
-    from{
-        opacity:.65;
-        transform:scale(1);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1.08);
-    }
-}
-
-/* =========================================================
-   INICIO
-========================================================= */
+    <meta charset="UTF-8">
 
-#inicio{
-    position:fixed;
-    inset:0;
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
-    z-index:20;
+    <title>Mi Ojitos 🌌❤️</title>
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    padding:25px;
+    <style>
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(78,20,100,.25),
-            rgba(0,0,0,.92)
-        );
 
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-#inicio.oculto{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
 
-.inicio-contenido{
-    width:min(700px,100%);
-    text-align:center;
-}
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
 
-.mini-estrellas{
-    font-size:28px;
-    letter-spacing:25px;
-    color:white;
-    margin-bottom:35px;
+            background: #02010a;
+            color: white;
 
-    animation:brillo 2s infinite alternate;
-}
+            -webkit-tap-highlight-color: transparent;
+        }
 
-@keyframes brillo{
+        body {
+            position: relative;
+        }
 
-    from{
-        opacity:.35;
-    }
 
-    to{
-        opacity:1;
+        /* =========================================================
+           UNIVERSO
+        ========================================================== */
 
-        text-shadow:
-            0 0 10px white,
-            0 0 25px #d58cff,
-            0 0 45px #ff69c8;
-    }
-}
+        #universo {
+            position: fixed;
 
-.inicio-contenido h1{
+            inset: 0;
 
-    font-size:clamp(42px,9vw,90px);
+            width: 100%;
+            height: 100%;
 
-    font-weight:300;
+            z-index: 1;
 
-    letter-spacing:5px;
+            overflow: hidden;
+        }
 
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #ffb6e9,
-            #dba2ff,
-            #ffffff
-        );
+        #universo canvas {
+            display: block;
 
-    -webkit-background-clip:text;
-    background-clip:text;
+            width: 100% !important;
+            height: 100% !important;
+        }
 
-    color:transparent;
 
-    animation:tituloBrillo 4s ease-in-out infinite;
-}
+        /* =========================================================
+           NEBULOSA
+        ========================================================== */
 
-@keyframes tituloBrillo{
+        .nebula {
+            position: fixed;
 
-    0%,
-    100%{
-        filter:brightness(1);
-    }
+            inset: 0;
 
-    50%{
-        filter:brightness(1.5);
-    }
-}
+            z-index: 2;
 
-.subtitulo{
+            pointer-events: none;
 
-    margin-top:12px;
+            background:
 
-    font-size:clamp(17px,4vw,24px);
+                radial-gradient(
+                    circle at 20% 30%,
+                    rgba(162,54,255,.18),
+                    transparent 32%
+                ),
 
-    color:#ffc9ec;
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(255,45,150,.14),
+                    transparent 35%
+                ),
 
-    letter-spacing:3px;
-}
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(79,30,170,.10),
+                    transparent 45%
+                );
 
-.frase-inicial{
+            animation:
+                respirarNebulosa
+                8s ease-in-out
+                infinite alternate;
+        }
 
-    max-width:600px;
+        @keyframes respirarNebulosa {
 
-    margin:35px auto;
+            from {
+                opacity: .65;
+                transform: scale(1);
+            }
 
-    font-size:clamp(17px,4vw,22px);
+            to {
+                opacity: 1;
+                transform: scale(1.08);
+            }
 
-    line-height:1.8;
+        }
 
-    color:rgba(255,255,255,.85);
-}
 
-.boton-principal{
+        /* =========================================================
+           PANTALLA INICIAL
+        ========================================================== */
 
-    border:1px solid rgba(255,255,255,.35);
+        #inicio {
 
-    padding:16px 38px;
+            position: fixed;
 
-    border-radius:50px;
+            inset: 0;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,89,177,.18),
-            rgba(151,72,255,.18)
-        );
+            z-index: 20;
 
-    color:white;
+            display: flex;
 
-    font-size:17px;
+            align-items: center;
+            justify-content: center;
 
-    letter-spacing:2px;
+            padding:
+                25px;
 
-    cursor:pointer;
+            background:
 
-    backdrop-filter:blur(15px);
+                radial-gradient(
+                    circle at center,
+                    rgba(78,20,100,.28),
+                    rgba(0,0,0,.94)
+                );
 
-    transition:.3s ease;
-}
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+        }
 
-.boton-principal:hover{
+        #inicio.oculto {
 
-    transform:translateY(-4px) scale(1.03);
+            opacity: 0;
 
-    box-shadow:
-        0 0 20px rgba(255,105,200,.35),
-        0 0 60px rgba(150,80,255,.25);
-}
+            visibility: hidden;
 
-/* =========================================================
-   INTERFAZ
-========================================================= */
+            pointer-events: none;
+        }
 
-#interfaz{
+        .inicio-contenido {
 
-    position:fixed;
-    inset:0;
+            width:
+                min(700px, 100%);
 
-    z-index:10;
+            text-align: center;
+        }
 
-    pointer-events:none;
+        .mini-estrellas {
 
-    opacity:0;
+            font-size:
+                clamp(20px, 5vw, 30px);
 
-    transition:opacity 1s ease;
-}
+            letter-spacing:
+                clamp(8px, 4vw, 25px);
 
-#interfaz.visible{
-    opacity:1;
-}
+            color: white;
 
-.titulo-superior{
+            margin-bottom: 30px;
 
-    position:absolute;
+            animation:
+                brillo
+                2s
+                infinite
+                alternate;
+        }
 
-    top:25px;
-    left:50%;
+        @keyframes brillo {
 
-    transform:translateX(-50%);
+            from {
+                opacity: .35;
+            }
 
-    text-align:center;
+            to {
 
-    width:90%;
+                opacity: 1;
 
-    pointer-events:none;
-}
+                text-shadow:
+                    0 0 10px white,
+                    0 0 25px #d58cff,
+                    0 0 45px #ff69c8;
+            }
 
-.titulo-superior small{
+        }
 
-    display:block;
+        .inicio-contenido h1 {
 
-    color:rgba(255,255,255,.55);
+            font-size:
+                clamp(45px, 11vw, 90px);
 
-    font-size:11px;
+            font-weight: 300;
 
-    letter-spacing:4px;
+            letter-spacing:
+                clamp(1px, 1vw, 5px);
 
-    text-transform:uppercase;
-}
+            background:
 
-.titulo-superior h2{
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #ffb6e9,
+                    #dba2ff,
+                    #ffffff
+                );
 
-    margin-top:6px;
+            -webkit-background-clip: text;
 
-    font-size:clamp(20px,5vw,30px);
+            background-clip: text;
 
-    font-weight:300;
+            color: transparent;
 
-    color:#ffd4ef;
+            animation:
+                tituloBrillo
+                4s
+                ease-in-out
+                infinite;
+        }
 
-    text-shadow:
-        0 0 15px rgba(255,105,200,.5);
-}
+        @keyframes tituloBrillo {
 
-/* =========================================================
-   NOMBRE DE CONSTELACIÓN
-========================================================= */
+            0%,
+            100% {
+                filter: brightness(1);
+            }
 
-#nombreConstelacion{
+            50% {
+                filter: brightness(1.5);
+            }
 
-    position:absolute;
+        }
 
-    top:150px;
-    left:50%;
+        .subtitulo {
 
-    transform:translateX(-50%);
+            margin-top: 10px;
 
-    width:90%;
+            font-size:
+                clamp(16px, 4vw, 24px);
 
-    text-align:center;
+            color: #ffc9ec;
 
-    color:rgba(255,255,255,.6);
+            letter-spacing:
+                clamp(1px, 1vw, 3px);
+        }
 
-    font-size:12px;
+        .frase-inicial {
 
-    letter-spacing:3px;
+            max-width: 600px;
 
-    text-transform:uppercase;
+            margin:
+                30px auto;
 
-    text-shadow:
-        0 0 12px rgba(255,105,200,.5);
+            font-size:
+                clamp(15px, 4vw, 22px);
 
-    transition:opacity .5s ease;
-}
+            line-height: 1.8;
 
-/* =========================================================
-   INSTRUCCIÓN
-========================================================= */
+            color:
+                rgba(255,255,255,.86);
+        }
 
-#instruccion{
+        .boton-principal {
 
-    position:absolute;
+            border:
+                1px solid
+                rgba(255,255,255,.35);
 
-    top:105px;
-    left:50%;
+            padding:
+                15px
+                clamp(20px, 6vw, 38px);
 
-    transform:translateX(-50%);
+            border-radius:
+                50px;
 
-    width:90%;
+            background:
 
-    text-align:center;
+                linear-gradient(
+                    135deg,
+                    rgba(255,89,177,.18),
+                    rgba(151,72,255,.18)
+                );
 
-    color:rgba(255,255,255,.55);
+            color: white;
 
-    font-size:13px;
+            font-size:
+                clamp(13px, 3.5vw, 17px);
 
-    letter-spacing:1px;
+            letter-spacing:
+                clamp(1px, .5vw, 2px);
 
-    transition:opacity .5s ease;
-}
+            cursor: pointer;
 
-/* =========================================================
-   MENSAJE
-========================================================= */
+            backdrop-filter:
+                blur(15px);
 
-#mensaje{
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                background .3s ease;
+        }
 
-    position:absolute;
+        .boton-principal:hover {
 
-    left:50%;
-    bottom:65px;
+            transform:
+                translateY(-4px)
+                scale(1.03);
 
-    transform:
-        translateX(-50%)
-        translateY(30px);
+            box-shadow:
 
-    width:min(680px,calc(100% - 30px));
+                0 0 20px
+                rgba(255,105,200,.35),
 
-    padding:30px 28px;
+                0 0 60px
+                rgba(150,80,255,.25);
+        }
 
-    border-radius:25px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(24,8,40,.80),
-            rgba(55,15,68,.66)
-        );
+        /* =========================================================
+           INTERFAZ
+        ========================================================== */
 
-    border:1px solid rgba(255,255,255,.16);
+        #interfaz {
 
-    backdrop-filter:blur(18px);
+            position: fixed;
 
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.5),
-        inset 0 0 30px rgba(255,100,200,.04);
+            inset: 0;
 
-    text-align:center;
+            z-index: 10;
 
-    opacity:0;
+            pointer-events: none;
 
-    pointer-events:none;
+            opacity: 0;
 
-    transition:
-        opacity .6s ease,
-        transform .6s ease;
-}
+            transition:
+                opacity 1s ease;
+        }
 
-#mensaje.visible{
+        #interfaz.visible {
 
-    opacity:1;
+            opacity: 1;
+        }
 
-    transform:
-        translateX(-50%)
-        translateY(0);
 
-    pointer-events:auto;
-}
+        /* =========================================================
+           TITULO SUPERIOR
+        ========================================================== */
 
-.numero-mensaje{
+        .titulo-superior {
 
-    color:#dca9ff;
+            position: absolute;
 
-    font-size:11px;
+            top:
+                clamp(18px, 4vh, 28px);
 
-    letter-spacing:4px;
+            left: 50%;
 
-    text-transform:uppercase;
+            transform:
+                translateX(-50%);
 
-    margin-bottom:12px;
-}
+            width:
+                min(90%, 700px);
 
-#mensaje h3{
+            text-align: center;
 
-    font-size:clamp(23px,6vw,34px);
+            pointer-events: none;
+        }
 
-    font-weight:400;
+        .titulo-superior small {
 
-    color:white;
+            display: block;
 
-    margin-bottom:16px;
+            color:
+                rgba(255,255,255,.55);
 
-    text-shadow:
-        0 0 15px rgba(255,255,255,.15);
-}
+            font-size:
+                clamp(9px, 2.5vw, 11px);
 
-#mensaje p{
+            letter-spacing:
+                clamp(2px, 1vw, 4px);
 
-    color:rgba(255,255,255,.84);
+            text-transform:
+                uppercase;
+        }
 
-    font-size:clamp(15px,3.8vw,18px);
+        .titulo-superior h2 {
 
-    line-height:1.75;
-}
+            margin-top: 6px;
 
-#mensaje p strong{
+            font-size:
+                clamp(20px, 5vw, 30px);
 
-    color:#ffb9e4;
+            font-weight: 300;
 
-    font-weight:500;
+            color: #ffd4ef;
 
-    text-shadow:
-        0 0 12px rgba(255,100,200,.25);
-}
+            text-shadow:
 
-/* =========================================================
-   BOTONES
-========================================================= */
+                0 0 15px
+                rgba(255,105,200,.5);
+        }
 
-.controles{
 
-    display:flex;
+        /* =========================================================
+           INSTRUCCION
+        ========================================================== */
 
-    justify-content:center;
+        #instruccion {
 
-    gap:12px;
+            position: absolute;
 
-    margin-top:22px;
-}
+            top:
+                clamp(82px, 13vh, 110px);
 
-.btn{
+            left: 50%;
 
-    border:1px solid rgba(255,255,255,.2);
+            transform:
+                translateX(-50%);
 
-    background:rgba(255,255,255,.07);
+            width:
+                min(90%, 700px);
 
-    color:white;
+            text-align: center;
 
-    padding:11px 20px;
+            color:
+                rgba(255,255,255,.55);
 
-    border-radius:30px;
+            font-size:
+                clamp(10px, 3vw, 13px);
 
-    cursor:pointer;
+            letter-spacing: 1px;
 
-    transition:.3s ease;
+            transition:
+                opacity .5s ease;
+        }
 
-    font-size:14px;
-}
 
-.btn:hover{
+        /* =========================================================
+           PANEL DE MENSAJE
+        ========================================================== */
 
-    background:rgba(255,255,255,.16);
+        #mensaje {
 
-    transform:translateY(-2px);
+            position: absolute;
 
-    box-shadow:
-        0 0 20px rgba(255,105,200,.2);
-}
+            left: 50%;
 
-.btn:disabled{
+            bottom:
+                clamp(18px, 5vh, 65px);
 
-    opacity:.25;
+            transform:
+                translateX(-50%)
+                translateY(30px);
 
-    cursor:default;
+            width:
+                min(
+                    680px,
+                    calc(100% - 30px)
+                );
 
-    transform:none;
-}
+            max-height:
+                47vh;
 
-/* =========================================================
-   MÚSICA
-   SE DEJA IGUAL
-========================================================= */
+            overflow-y: auto;
 
-#musica{
+            padding:
+                clamp(18px, 4vw, 30px)
+                clamp(18px, 5vw, 28px);
 
-    position:fixed;
+            border-radius:
+                25px;
 
-    right:18px;
-    top:18px;
+            background:
 
-    z-index:30;
+                linear-gradient(
+                    145deg,
+                    rgba(24,8,40,.82),
+                    rgba(55,15,68,.68)
+                );
 
-    width:44px;
-    height:44px;
+            border:
+                1px solid
+                rgba(255,255,255,.16);
 
-    border-radius:50%;
+            backdrop-filter:
+                blur(18px);
 
-    border:1px solid rgba(255,255,255,.2);
+            -webkit-backdrop-filter:
+                blur(18px);
 
-    background:rgba(255,255,255,.08);
+            box-shadow:
 
-    color:white;
+                0 20px 70px
+                rgba(0,0,0,.5),
 
-    cursor:pointer;
+                inset 0 0 30px
+                rgba(255,100,200,.04);
 
-    backdrop-filter:blur(10px);
+            text-align: center;
 
-    display:none;
+            opacity: 0;
 
-    font-size:18px;
-}
+            pointer-events: none;
 
-/* =========================================================
-   FINAL
-========================================================= */
+            transition:
+                opacity .6s ease,
+                transform .6s ease;
 
-#final{
+            scrollbar-width: thin;
+        }
 
-    position:fixed;
+        #mensaje.visible {
 
-    inset:0;
+            opacity: 1;
 
-    z-index:50;
+            transform:
+                translateX(-50%)
+                translateY(0);
 
-    display:flex;
+            pointer-events: auto;
+        }
 
-    align-items:center;
+        .numero-mensaje {
 
-    justify-content:center;
+            color: #dca9ff;
 
-    padding:25px;
+            font-size:
+                clamp(9px, 2.5vw, 11px);
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(90,20,110,.35),
-            rgba(0,0,0,.95)
-        );
+            letter-spacing:
+                clamp(2px, 1vw, 4px);
 
-    opacity:0;
+            text-transform:
+                uppercase;
 
-    visibility:hidden;
+            margin-bottom:
+                10px;
+        }
 
-    pointer-events:none;
+        #mensaje h3 {
 
-    transition:
-        opacity 1.5s ease,
-        visibility 1.5s ease;
-}
+            font-size:
+                clamp(21px, 6vw, 34px);
 
-#final.visible{
+            font-weight: 400;
 
-    opacity:1;
+            color: white;
 
-    visibility:visible;
+            margin-bottom:
+                14px;
 
-    pointer-events:auto;
-}
+            text-shadow:
+                0 0 15px
+                rgba(255,255,255,.15);
+        }
 
-.final-contenido{
+        #mensaje p {
 
-    width:min(750px,100%);
+            color:
+                rgba(255,255,255,.84);
 
-    text-align:center;
-}
+            font-size:
+                clamp(14px, 3.8vw, 18px);
 
-.final-corazon{
+            line-height:
+                1.7;
+        }
 
-    font-size:clamp(70px,18vw,150px);
+        #mensaje p strong {
 
-    filter:
-        drop-shadow(0 0 15px #ff4da6)
-        drop-shadow(0 0 45px #a832ff);
+            color:
+                #ffb9e4;
 
-    animation:latido 1.5s infinite;
-}
+            font-weight: 500;
 
-@keyframes latido{
+            text-shadow:
+                0 0 12px
+                rgba(255,105,200,.35);
+        }
 
-    0%,
-    100%{
-        transform:scale(1);
-    }
 
-    50%{
-        transform:scale(1.12);
-    }
-}
+        /* =========================================================
+           CONTROLES
+        ========================================================== */
 
-.final-contenido h1{
+        .controles {
 
-    margin-top:20px;
+            display: flex;
 
-    font-size:clamp(30px,8vw,65px);
+            justify-content: center;
 
-    font-weight:300;
+            align-items: center;
 
-    color:white;
+            gap: 10px;
 
-    text-shadow:
-        0 0 20px rgba(255,105,200,.7);
-}
+            margin-top: 18px;
 
-.final-contenido h2{
+            flex-wrap: wrap;
+        }
 
-    margin-top:12px;
+        .btn {
 
-    font-size:clamp(23px,6vw,42px);
+            border:
+                1px solid
+                rgba(255,255,255,.2);
 
-    font-weight:400;
+            background:
+                rgba(255,255,255,.07);
 
-    color:#ffb8e4;
-}
+            color: white;
 
-.final-contenido p{
+            padding:
+                10px 17px;
 
-    max-width:650px;
+            border-radius:
+                30px;
 
-    margin:28px auto 0;
+            cursor: pointer;
 
-    color:rgba(255,255,255,.78);
+            transition:
+                .3s ease;
 
-    font-size:clamp(16px,4vw,20px);
+            font-size:
+                clamp(12px, 3vw, 14px);
 
-    line-height:1.9;
-}
+            min-width: 105px;
+        }
 
-.final-frase{
+        .btn:hover {
 
-    margin-top:30px;
+            background:
+                rgba(255,255,255,.16);
 
-    font-size:clamp(18px,5vw,27px);
+            transform:
+                translateY(-2px);
 
-    color:white;
+            box-shadow:
+                0 0 20px
+                rgba(255,105,200,.2);
+        }
 
-    font-style:italic;
-}
+        .btn:disabled {
 
-.reiniciar{
-    margin-top:30px;
-}
+            opacity: .25;
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+            cursor: default;
 
-@media(max-width:600px){
+            transform: none;
+        }
 
-    .inicio-contenido h1{
-        letter-spacing:2px;
-    }
 
-    .mini-estrellas{
+        /* =========================================================
+           BOTÓN MÚSICA
+        ========================================================== */
 
-        letter-spacing:10px;
+        #musica {
 
-        font-size:20px;
-    }
+            position: fixed;
 
-    .frase-inicial{
+            right:
+                clamp(12px, 4vw, 20px);
 
-        margin:25px auto;
+            top:
+                clamp(12px, 3vw, 20px);
 
-        line-height:1.65;
-    }
+            z-index: 100;
 
-    .boton-principal{
+            width:
+                clamp(42px, 12vw, 50px);
 
-        padding:14px 22px;
+            height:
+                clamp(42px, 12vw, 50px);
 
-        font-size:13px;
+            border-radius: 50%;
 
-        letter-spacing:1px;
-    }
+            border:
+                1px solid
+                rgba(255,255,255,.25);
 
-    .titulo-superior{
-        top:18px;
-    }
+            background:
 
-    #instruccion{
+                linear-gradient(
+                    135deg,
+                    rgba(255,105,200,.20),
+                    rgba(140,70,255,.20)
+                );
 
-        top:82px;
+            color: white;
 
-        font-size:10px;
-    }
+            cursor: pointer;
 
-    #nombreConstelacion{
+            backdrop-filter:
+                blur(15px);
 
-        top:125px;
+            -webkit-backdrop-filter:
+                blur(15px);
 
-        font-size:9px;
+            display: none;
 
-        letter-spacing:2px;
-    }
+            font-size:
+                clamp(16px, 5vw, 20px);
 
-    #mensaje{
+            box-shadow:
+                0 0 15px
+                rgba(255,105,200,.15);
 
-        bottom:15px;
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
 
-        padding:21px 18px;
+        #musica:hover {
 
-        max-height:49vh;
+            transform:
+                scale(1.08);
 
-        overflow-y:auto;
+            box-shadow:
 
-        border-radius:22px;
-    }
+                0 0 20px
+                rgba(255,105,200,.4),
 
-    #mensaje h3{
+                0 0 40px
+                rgba(150,80,255,.2);
+        }
 
-        font-size:23px;
+        #musica:active {
 
-        margin-bottom:12px;
-    }
+            transform:
+                scale(.90);
+        }
 
-    #mensaje p{
 
-        font-size:14.5px;
+        /* =========================================================
+           FINAL
+        ========================================================== */
 
-        line-height:1.55;
-    }
+        #final {
 
-    .controles{
+            position: fixed;
 
-        gap:7px;
+            inset: 0;
 
-        margin-top:15px;
-    }
+            z-index: 50;
 
-    .btn{
+            display: flex;
 
-        padding:9px 14px;
+            align-items: center;
 
-        font-size:12px;
-    }
+            justify-content: center;
 
-    #musica{
+            padding:
+                20px;
 
-        right:12px;
-        top:12px;
+            background:
 
-        width:40px;
-        height:40px;
-    }
+                radial-gradient(
+                    circle at center,
+                    rgba(90,20,110,.35),
+                    rgba(0,0,0,.96)
+                );
 
-    .final-contenido{
+            opacity: 0;
 
-        max-height:90vh;
+            visibility: hidden;
 
-        overflow-y:auto;
+            pointer-events: none;
 
-        padding:10px;
-    }
+            transition:
+                opacity 1.5s ease,
+                visibility 1.5s ease;
 
-    .final-contenido p{
+            overflow-y: auto;
+        }
 
-        line-height:1.65;
+        #final.visible {
 
-        font-size:15px;
-    }
+            opacity: 1;
 
-    .final-frase{
+            visibility: visible;
 
-        font-size:18px;
+            pointer-events: auto;
+        }
 
-        line-height:1.5;
-    }
-}
+        .final-contenido {
 
-</style>
+            width:
+                min(750px, 100%);
+
+            text-align: center;
+
+            padding:
+                20px 0;
+        }
+
+        .final-corazon {
+
+            font-size:
+                clamp(65px, 20vw, 150px);
+
+            filter:
+
+                drop-shadow(
+                    0 0 15px #ff4da6
+                )
+
+                drop-shadow(
+                    0 0 45px #a832ff
+                );
+
+            animation:
+                latido
+                1.5s
+                infinite;
+        }
+
+        @keyframes latido {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        .final-contenido h1 {
+
+            margin-top: 15px;
+
+            font-size:
+                clamp(28px, 8vw, 65px);
+
+            font-weight: 300;
+
+            color: white;
+
+            text-shadow:
+                0 0 20px
+                rgba(255,105,200,.7);
+        }
+
+        .final-contenido h2 {
+
+            margin-top: 10px;
+
+            font-size:
+                clamp(20px, 6vw, 42px);
+
+            font-weight: 400;
+
+            color: #ffb8e4;
+        }
+
+        .final-contenido p {
+
+            max-width: 650px;
+
+            margin:
+                25px auto 0;
+
+            color:
+                rgba(255,255,255,.80);
+
+            font-size:
+                clamp(14px, 4vw, 20px);
+
+            line-height: 1.8;
+        }
+
+        .final-frase {
+
+            margin-top: 25px;
+
+            font-size:
+                clamp(16px, 5vw, 27px);
+
+            color: white;
+
+            font-style: italic;
+
+            line-height: 1.6;
+        }
+
+        .reiniciar {
+
+            margin-top: 25px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE CELULAR
+        ========================================================== */
+
+        @media (max-width: 600px) {
+
+            .inicio-contenido {
+
+                max-width: 95%;
+            }
+
+            .frase-inicial {
+
+                margin:
+                    22px auto;
+
+                line-height:
+                    1.65;
+            }
+
+            #instruccion {
+
+                width:
+                    85%;
+
+                top: 82px;
+            }
+
+            #mensaje {
+
+                width:
+                    calc(100% - 20px);
+
+                bottom:
+                    12px;
+
+                max-height:
+                    43vh;
+
+                padding:
+                    18px 16px;
+
+                border-radius:
+                    20px;
+            }
+
+            #mensaje p {
+
+                line-height:
+                    1.55;
+            }
+
+            .controles {
+
+                gap: 7px;
+
+                margin-top: 15px;
+            }
+
+            .btn {
+
+                padding:
+                    9px 13px;
+
+                min-width:
+                    95px;
+            }
+
+        }
+
+
+        /* =========================================================
+           CELULARES PEQUEÑOS
+        ========================================================== */
+
+        @media (max-width: 380px) {
+
+            .titulo-superior {
+
+                top: 14px;
+            }
+
+            .titulo-superior h2 {
+
+                font-size: 19px;
+            }
+
+            #instruccion {
+
+                top: 70px;
+
+                font-size: 9px;
+            }
+
+            #mensaje {
+
+                max-height:
+                    45vh;
+
+                padding:
+                    15px 13px;
+            }
+
+            #mensaje h3 {
+
+                font-size:
+                    20px;
+            }
+
+            #mensaje p {
+
+                font-size:
+                    13px;
+            }
+
+        }
+
+
+        /* =========================================================
+           PANTALLAS BAJAS
+        ========================================================== */
+
+        @media (max-height: 700px) {
+
+            #mensaje {
+
+                max-height:
+                    40vh;
+
+                bottom:
+                    10px;
+            }
+
+            #instruccion {
+
+                top: 75px;
+            }
+
+        }
+
+
+        /* =========================================================
+           PANTALLAS MUY BAJAS EN CELULAR
+        ========================================================== */
+
+        @media (
+            max-width: 600px
+        ) and (
+            max-height: 600px
+        ) {
+
+            #mensaje {
+
+                max-height:
+                    36vh;
+            }
+
+            #instruccion {
+
+                display: none;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-<!-- =========================================================
-     UNIVERSO
-========================================================= -->
 
-<div id="universo"></div>
+    <!-- =========================================================
+         UNIVERSO
+    ========================================================== -->
 
-<div class="nebula"></div>
+    <div id="universo"></div>
 
+    <div class="nebula"></div>
 
-<!-- =========================================================
-     INICIO
-========================================================= -->
 
-<section id="inicio">
+    <!-- =========================================================
+         INICIO
+    ========================================================== -->
 
-    <div class="inicio-contenido">
+    <section id="inicio">
 
-        <div class="mini-estrellas">
-            ✦ ✧ ✦
-        </div>
+        <div class="inicio-contenido">
 
-        <h1>Mi Ojitos</h1>
+            <div class="mini-estrellas">
+                ✦ ✧ ✦
+            </div>
 
-        <div class="subtitulo">
-            Nuestro pequeño universo
-        </div>
+            <h1>
+                Mi Ojitos
+            </h1>
 
-        <p class="frase-inicial">
+            <div class="subtitulo">
+                Mi pequeño universo
+            </div>
 
-            Entre millones de estrellas,
-            galaxias y constelaciones,
-            hay una historia que para mí
-            brilla un poquito más que todas.
+            <p class="frase-inicial">
 
-            <br><br>
+                Entre millones de estrellas,
+                galaxias y universos,
+                hay una persona que hace
+                que todo tenga un poquito
+                más de sentido para mí.
 
-            Una historia que lleva dos letras:
+                <br><br>
 
-            <br><br>
+                <strong>
+                    Y esa persona eres tú. ❤️
+                </strong>
 
-            <strong>C & A ❤️</strong>
-
-            <br><br>
-
-            Y si alguna vez te preguntas
-            qué lugar ocupas en mi universo...
-
-            <br><br>
-
-            <strong>
-                solamente mira las estrellas.
-                La respuesta está ahí. ✨
-            </strong>
-
-        </p>
-
-        <button
-            class="boton-principal"
-            id="entrar"
-        >
-            ENTRAR A NUESTRO UNIVERSO ✨
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     INTERFAZ
-========================================================= -->
-
-<div id="interfaz">
-
-    <div class="titulo-superior">
-
-        <small>
-            Una constelación hecha para ti
-        </small>
-
-        <h2>
-            Mi Ojitos ❤️
-        </h2>
-
-    </div>
-
-
-    <div id="instruccion">
-
-        Cada constelación guarda
-        un pedacito de lo que siento por ti ✨
-
-    </div>
-
-
-    <div id="nombreConstelacion">
-        CONSTELACIÓN DE NUESTRO AMOR
-    </div>
-
-
-    <div id="mensaje">
-
-        <div
-            class="numero-mensaje"
-            id="numero"
-        >
-            CONSTELACIÓN 01
-        </div>
-
-        <h3 id="tituloMensaje">
-            Lo hermosa que eres
-        </h3>
-
-        <p id="textoMensaje">
-            ...
-        </p>
-
-        <div class="controles">
-
-            <button
-                class="btn"
-                id="anterior"
-            >
-                ← Anterior
-            </button>
-
-            <button
-                class="btn"
-                id="siguiente"
-            >
-                Siguiente →
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     MÚSICA
-     SE DEJA IGUAL
-========================================================= -->
-
-<button id="musica">
-    ♪
-</button>
-
-
-<!-- =========================================================
-     FINAL
-========================================================= -->
-
-<section id="final">
-
-    <div class="final-contenido">
-
-        <div class="final-corazon">
-            ❤️
-        </div>
-
-        <h1>
-            Mi Ojitos...
-        </h1>
-
-        <h2>
-            TE QUIERO DEMASIADO
-        </h2>
-
-        <p>
-
-            No sé si existe una forma suficientemente
-            bonita de explicarte todo lo que siento por ti.
-
-            <br><br>
-
-            Porque decirte "te quiero" se queda pequeño
-            cuando intento explicar lo importante
-            que te has vuelto para mí.
-
-            <br><br>
-
-            Me encanta tu sonrisa,
-            tus ojos,
-            tu forma de hablar,
-            tus pequeños gestos
-            y esas cosas que haces
-            sin darte cuenta
-            y que a mí me dejan completamente enamorado.
-
-            <br><br>
-
-            Me encanta poder llamarte
-            <strong>Mi Ojitos</strong>.
-
-            <br><br>
-
-            Y si algún día dudas de lo bonita
-            que eres...
-
-            <br><br>
-
-            recuerda que existe un universo entero
-            que hice solamente para recordártelo.
-
-        </p>
-
-        <div class="final-frase">
-
-            "De todas las estrellas que existen,
-            qué bonito fue coincidir contigo."
-
-            <br><br>
-
-            <strong>
-                C & A ❤️
-            </strong>
-
-        </div>
-
-        <div class="reiniciar">
+            </p>
 
             <button
                 class="boton-principal"
-                id="volver"
+                id="entrar"
             >
-                VOLVER A VER NUESTRO UNIVERSO ✨
+                ENTRAR A NUESTRO UNIVERSO ✨
             </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         INTERFAZ
+    ========================================================== -->
+
+    <div id="interfaz">
+
+        <div class="titulo-superior">
+
+            <small>
+                Un pequeño universo creado para ti
+            </small>
+
+            <h2>
+                Mi Ojitos ❤️
+            </h2>
+
+        </div>
+
+
+        <div id="instruccion">
+
+            Toca una estrella brillante
+            para descubrir un pedacito
+            de lo que siento por ti ✨
+
+        </div>
+
+
+        <div id="mensaje">
+
+            <div
+                class="numero-mensaje"
+                id="numero"
+            >
+                CONSTELACIÓN 01
+            </div>
+
+            <h3 id="tituloMensaje">
+                Lo hermosa que eres
+            </h3>
+
+            <p id="textoMensaje">
+                ...
+            </p>
+
+            <div class="controles">
+
+                <button
+                    class="btn"
+                    id="anterior"
+                >
+                    ← Anterior
+                </button>
+
+                <button
+                    class="btn"
+                    id="siguiente"
+                >
+                    Siguiente →
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
-</section>
+
+    <!-- =========================================================
+         MÚSICA
+    ========================================================== -->
+
+    <audio
+        id="audioUniverso"
+        loop
+        preload="auto"
+    >
+
+        <source
+            src="SI ME PREGUNTARAN.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+
+    <button id="musica">
+        🎵
+    </button>
+
+
+    <!-- =========================================================
+         FINAL
+    ========================================================== -->
+
+    <section id="final">
+
+        <div class="final-contenido">
+
+            <div class="final-corazon">
+                ❤️
+            </div>
+
+            <h1>
+                Mi Ojitos...
+            </h1>
+
+            <h2>
+                TE QUIERO DEMASIADO
+            </h2>
+
+            <p>
+
+                No sé si existe una forma
+                suficiente de explicar todo
+                lo que siento por ti.
+
+                <br><br>
+
+                Por eso hice este pequeño universo.
+
+                <br><br>
+
+                Para recordarte que eres hermosa,
+                que eres especial,
+                que me encanta tu forma de ser
+                y que quiero seguir descubriendo
+                cada pequeño pedacito de ti.
+
+                <br><br>
+
+                Te quiero cuando sonríes,
+                cuando estás feliz,
+                cuando estás cansada,
+                cuando necesitas un abrazo
+                y también cuando simplemente
+                quieres quedarte en silencio.
+
+            </p>
+
+            <div class="final-frase">
+
+                "No quiero solamente los días
+                bonitos contigo..."
+
+                <br>
+
+                quiero estar presente
+                en todos tus modos. ❤️
+
+            </div>
+
+            <div class="reiniciar">
+
+                <button
+                    class="boton-principal"
+                    id="volver"
+                >
+                    VOLVER A VER NUESTRO UNIVERSO ✨
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
 
 
 <script>
 
-/* =========================================================
-   VARIABLES
-========================================================= */
+/* ============================================================
+   ELEMENTOS
+============================================================ */
 
 const contenedor =
     document.getElementById("universo");
@@ -1109,9 +1346,6 @@ const numeroMensaje =
 const instruccion =
     document.getElementById("instruccion");
 
-const nombreConstelacion =
-    document.getElementById("nombreConstelacion");
-
 const botonEntrar =
     document.getElementById("entrar");
 
@@ -1124,471 +1358,454 @@ const botonAnterior =
 const botonVolver =
     document.getElementById("volver");
 
+const botonMusica =
+    document.getElementById("musica");
 
-/* =========================================================
+const audioUniverso =
+    document.getElementById("audioUniverso");
+
+
+/* ============================================================
    MENSAJES
-========================================================= */
+============================================================ */
 
 const mensajes = [
 
+    /* ========================================================
+       CONSTELACIÓN 1 — C&A
+    ========================================================= */
+
     {
-        titulo:"Lo hermosa que eres",
+        tipo: "ca",
 
-        constelacion:"CONSTELACIÓN C — LA PERSONA QUE ME ENCANTA",
+        titulo:
+            "Nuestra pequeña constelación",
 
-        texto:`
+        texto: `
 
             Mi Ojitos... ❤️
 
             <br><br>
 
-            Hay algo que probablemente voy a repetir
-            muchísimas veces porque simplemente
-            no me voy a cansar de pensarlo:
+            Hay dos letras que desde que
+            llegaste a mi vida tienen
+            un significado muchísimo más bonito:
 
             <br><br>
 
             <strong>
-            eres preciosa.
+                C & A
             </strong>
 
             <br><br>
 
-            Y no solamente por tus ojos,
-            por tu sonrisa o por lo bonita
-            que te ves.
+            Dos iniciales que quizá por separado
+            solamente son letras...
 
             <br><br>
 
-            Me pareces hermosa cuando sonríes,
-            cuando te emocionas,
-            cuando haces alguna cara sin darte cuenta,
-            cuando estás seria
-            y hasta cuando dices que no te ves bonita.
+            pero juntas representan
+            algo que para mí se volvió
+            demasiado especial.
 
             <br><br>
 
-            Porque incluso en esos momentos
-            en los que tú no alcanzas a ver
-            lo hermosa que eres...
+            Tú y yo.
+
+            <br><br>
+
+            Y si algún día miramos el cielo
+            y encontramos estas estrellas...
+
+            <br><br>
+
+            quiero que recuerdes que
+            en algún pequeño rincón del universo
+            existe una constelación que lleva
+            nuestras iniciales.
 
             <br><br>
 
             <strong>
-            yo sí la veo.
-            Y muchísimo. ❤️
+                C & A...
+                mi combinación favorita. ❤️
+            </strong>
+
+        `
+    },
+
+
+    /* ========================================================
+       CONSTELACIÓN 2 — PAREJA
+    ========================================================= */
+
+    {
+        tipo: "pareja",
+
+        titulo:
+            "La constelación donde siempre estás conmigo",
+
+        texto: `
+
+            ¿Ves esas dos personas
+            abrazándose entre las estrellas?
+
+            <br><br>
+
+            Quiero que representen
+            algo muy sencillo:
+
+            <br><br>
+
+            <strong>
+                tú y yo.
             </strong>
 
             <br><br>
 
-            A veces solamente te miro
+            Porque si algún día necesitas
+            un abrazo...
+
+            <br><br>
+
+            quiero ser esa persona
+            que puedas buscar.
+
+            <br><br>
+
+            No importa si fue un día increíble
+            o uno de esos días en los que
+            todo parece salir mal.
+
+            <br><br>
+
+            Quiero poder abrazarte,
+            escucharte y hacerte sentir
+            que por un momento
+            todo está un poquito mejor.
+
+            <br><br>
+
+            Y si pudiera convertir
+            un abrazo nuestro en estrellas...
+
+            <br><br>
+
+            <strong>
+                probablemente se vería
+                exactamente así. 🫂❤️
+            </strong>
+
+        `
+    },
+
+
+    /* ========================================================
+       CONSTELACIÓN 3 — FECHA
+    ========================================================= */
+
+    {
+        tipo: "fecha",
+
+        titulo:
+            "El día que cambió nuestro cielo",
+
+        texto: `
+
+            Hay fechas que pasan
+            como cualquier otro día...
+
+            <br><br>
+
+            y hay fechas que uno guarda
+            para siempre.
+
+            <br><br>
+
+            Para mí, una de ellas es:
+
+            <br><br>
+
+            <strong>
+                15 · 08 · 2026
+            </strong>
+
+            <br><br>
+
+            El día en que te pedí
+            que fueras mi novia.
+
+            <br><br>
+
+            Quizá solamente fueron
+            unas palabras...
+
+            <br><br>
+
+            pero para mí significaron
+            muchísimo más.
+
+            <br><br>
+
+            Porque desde ese momento
+            ya no solamente eras
+            una persona especial para mí.
+
+            <br><br>
+
+            Eras oficialmente
+            <strong>
+                mi niña.
+            </strong>
+
+            ❤️
+
+            <br><br>
+
+            Y por eso esta fecha
+            también merece tener
+            su propia constelación.
+
+            <br><br>
+
+            <strong>
+                15 · 08 · 2026
+                <br>
+                El comienzo de nuestro
+                pequeño universo.
+            </strong>
+
+        `
+    },
+
+
+    /* ========================================================
+       4
+    ========================================================= */
+
+    {
+        tipo: "normal",
+
+        titulo:
+            "Lo hermosa que eres",
+
+        texto: `
+
+            Mi Ojitos... ❤️
+
+            <br><br>
+
+            Quiero que sepas algo
+            que quizá nunca me canse
+            de decirte:
+
+            <br><br>
+
+            <strong>
+                eres hermosa.
+            </strong>
+
+            <br><br>
+
+            Y no hablo solamente de tus ojos,
+            de tu sonrisa o de la forma
+            en que te ves.
+
+            <br><br>
+
+            Me encanta tu forma de ser,
+            tus gestos, tu manera de hablar,
+            la forma en que sonríes
+            y esos pequeños detalles
+            que quizá tú ni siquiera notas.
+
+            <br><br>
+
+            A veces simplemente te miro
             y pienso:
 
             <br><br>
 
             <strong>
-            "¿Cómo puede existir una niña
-            tan bonita y encima ser mi niña?"
+                "Qué bonita es mi niña." ❤️
             </strong>
 
         `
     },
 
 
-    {
-        titulo:"Te quiero demasiado",
-
-        constelacion:"CONSTELACIÓN A — TODO LO QUE SIENTO POR TI",
-
-        texto:`
-
-            No sé exactamente en qué momento
-            dejaste de ser solamente alguien especial
-            y comenzaste a convertirte
-            en alguien que ocupa un lugar
-            enorme dentro de mí.
-
-            <br><br>
-
-            Pero me gusta muchísimo
-            que haya pasado.
-
-            <br><br>
-
-            Porque ahora apareces
-            en mis pensamientos
-            cuando menos lo espero.
-
-            <br><br>
-
-            Veo algo bonito
-            y pienso en ti.
-
-            <br>
-
-            Escucho una canción
-            y pienso en ti.
-
-            <br>
-
-            Miro las estrellas
-            y también pienso en ti.
-
-            <br><br>
-
-            Y creo que ya entendí
-            que mi mente tiene una costumbre:
-
-            <br><br>
-
-            <strong>
-            encontrarte en todo lo bonito.
-            </strong>
-
-            <br><br>
-
-            Te quiero muchísimo,
-            Mi Ojitos.
-
-            <br><br>
-
-            Más de lo que a veces sé explicar
-            y probablemente más
-            de lo que estas palabras
-            pueden alcanzar a decir.
-
-        `
-    },
-
+    /* ========================================================
+       5
+    ========================================================= */
 
     {
-        titulo:"C & A",
+        tipo: "normal",
 
-        constelacion:"C & A — DOS LETRAS, UNA HISTORIA",
+        titulo:
+            "Quiero conocerte completa",
 
-        texto:`
+        texto: `
 
-            Mira esas dos letras...
+            No quiero conocer solamente
+            tu lado bonito.
+
+            <br><br>
+
+            Quiero conocer tus sueños,
+            tus miedos, tus metas,
+            las cosas que te hacen reír
+            y también aquellas cosas
+            que te hacen sentir triste.
+
+            <br><br>
+
+            Quiero saber qué te emociona,
+            qué te hace sentir segura,
+            qué cosas quieres conseguir
+            y qué sueños tienes para tu vida.
+
+            <br><br>
+
+            Porque cada pequeño pedacito
+            de ti forma parte de la persona
+            que tanto quiero.
 
             <br><br>
 
             <strong>
-            C & A
-            </strong>
-
-            <br><br>
-
-            Podrían parecer solamente
-            dos letras para cualquier persona.
-
-            <br><br>
-
-            Pero para mí significan muchísimo más.
-
-            <br><br>
-
-            Significan dos personas
-            que se encontraron.
-
-            <br>
-
-            Dos historias que comenzaron
-            a caminar en la misma dirección.
-
-            <br>
-
-            Dos personas que comenzaron
-            a conocerse poquito a poquito.
-
-            <br><br>
-
-            Y lo bonito es que
-            no necesito que nadie más
-            entienda lo que significan.
-
-            <br><br>
-
-            Porque cuando yo veo
-            <strong>C & A</strong>...
-
-            <br><br>
-
-            solamente pienso en ti.
-
-            <br><br>
-
-            En tus ojos.
-
-            <br>
-
-            En tu sonrisa.
-
-            <br>
-
-            En tu forma de ser.
-
-            <br>
-
-            En todo lo que me haces sentir.
-
-            <br><br>
-
-            <strong>
-            C & A no son solamente iniciales.
-            Son una pequeña parte
-            de mi universo. ❤️
+                Quiero conocerte
+                en todos tus modos. ❤️
             </strong>
 
         `
     },
 
 
+    /* ========================================================
+       6
+    ========================================================= */
+
     {
-        titulo:"Nuestra constelación",
+        tipo: "normal",
 
-        constelacion:"CONSTELACIÓN DE DOS PERSONAS — JUNTAS",
+        titulo:
+            "Cuando necesites un abrazo",
 
-        texto:`
+        texto: `
 
-            Quise hacer esta constelación
-            de una manera diferente.
-
-            <br><br>
-
-            Dos personas...
-
-            <br>
-
-            Dos caminos...
-
-            <br>
-
-            Y al final,
-            una sola imagen.
+            Si algún día estás triste,
+            no tienes que fingir conmigo
+            que todo está bien.
 
             <br><br>
 
-            Una pareja abrazándose.
+            Si necesitas llorar,
+            puedes hacerlo.
 
             <br><br>
 
-            Porque hay algo que quiero
-            que recuerdes:
+            Si necesitas hablar,
+            te voy a escuchar.
 
             <br><br>
 
-            <strong>
-            nunca tienes que sentir
-            que tienes que ser perfecta conmigo.
-            </strong>
+            Y si no quieres decir
+            absolutamente nada,
+            también está bien.
 
             <br><br>
 
-            Puedes ser tú.
-
-            <br>
-
-            Puedes estar feliz.
-
-            <br>
-
-            Puedes estar cansada.
-
-            <br>
-
-            Puedes tener un día horrible.
-
-            <br>
-
-            Puedes llorar.
-
-            <br>
-
-            Puedes quedarte en silencio.
-
-            <br><br>
-
-            Y aun así...
+            Puedes simplemente acercarte
+            y decirme:
 
             <br><br>
 
             <strong>
-            yo voy a querer abrazarte.
+                "Necesito un abrazo."
             </strong>
 
             <br><br>
 
-            Porque si algún día el mundo
-            se siente demasiado pesado,
-            quiero que recuerdes
-            que puedes encontrar
-            un poquito de paz en mis brazos.
-
-            <br><br>
+            Y ahí voy a estar.
 
             🫂❤️
 
-        `
-    },
-
-
-    {
-        titulo:"15 • 08 • 2026",
-
-        constelacion:"15 • 08 • 2026 — EL DÍA QUE GUARDARÉ",
-
-        texto:`
-
-            Hay fechas que simplemente
-            pasan por el calendario.
-
             <br><br>
 
-            Y hay fechas que,
-            aunque pase muchísimo tiempo,
-            se quedan guardadas
-            en algún lugar especial.
-
-            <br><br>
-
-            Para mí...
-
-            <br><br>
-
-            <strong>
-            15 de agosto de 2026.
-            </strong>
-
-            <br><br>
-
-            Es una de esas fechas.
-
-            <br><br>
-
-            Porque ese día pasó algo
-            que hizo que mi mundo
-            se sintiera todavía más bonito.
-
-            <br><br>
-
-            Ese día pude llamarte
-            mi novia.
-
-            <br><br>
-
-            Y no sabes lo feliz
-            que me hace recordar
-            ese momento.
-
-            <br><br>
-
-            Por eso quise convertir
-            esta fecha en estrellas.
-
-            <br><br>
-
-            Para que cada vez que veas
-            <strong>15 • 08 • 2026</strong>,
-
-            <br><br>
-
-            recuerdes que no es
-            simplemente una fecha.
-
-            <br><br>
-
-            <strong>
-            Es el día que comenzó
-            una parte todavía más bonita
-            de nuestra historia. ❤️
-            </strong>
+            Porque quiero que sepas
+            que conmigo puedes ser tú,
+            sin tener que esconder
+            lo que sientes.
 
         `
     },
 
 
+    /* ========================================================
+       7
+    ========================================================= */
+
     {
-        titulo:"En todos tus modos",
+        tipo: "normal",
 
-        constelacion:"∞ — PARA QUERERTE EN TODOS TUS MODOS",
+        titulo:
+            "En todos tus modos",
 
-        texto:`
+        texto: `
 
-            No quiero solamente
-            tu versión feliz.
-
-            <br><br>
-
-            Quiero conocerte completa.
+            Te voy a querer en todos
+            tus modos.
 
             <br><br>
 
-            La niña que se ríe por cualquier cosa.
+            Cuando estés feliz.
 
             <br>
 
-            La niña que se pone seria.
+            Cuando estés cansada.
 
             <br>
 
-            La niña que se emociona.
+            Cuando tengas un día increíble.
 
             <br>
 
-            La niña que se preocupa demasiado.
+            Cuando tengas un día horrible.
 
             <br>
 
-            La niña que necesita un abrazo.
+            Cuando quieras hablar durante horas.
 
             <br>
 
-            La niña que quiere hablar durante horas.
+            Cuando solamente quieras
+            estar en silencio.
 
             <br>
 
-            Y también la niña que a veces
-            solamente quiere quedarse en silencio.
+            Cuando tengas confianza.
+
+            <br>
+
+            Cuando tengas miedo.
 
             <br><br>
 
-            Quiero estar ahí
-            para todos esos momentos.
-
-            <br><br>
-
-            Porque no quiero una versión
-            perfecta de ti.
+            Cuando te sientas hermosa
+            y también cuando tú misma
+            no puedas verla.
 
             <br><br>
 
             <strong>
-            Quiero a mi Ojitos.
-            Tal y como eres.
+
+                No quiero una versión perfecta de ti.
+
+                <br><br>
+
+                Quiero a mi Ojitos.
+
             </strong>
-
-            <br><br>
-
-            Con tus días buenos,
-            tus días malos,
-            tus inseguridades,
-            tus sueños
-            y todas esas pequeñas cosas
-            que te hacen ser tú.
-
-            <br><br>
-
-            Y si algún día dudas
-            de si sigues siendo bonita
-            para mí...
-
-            <br><br>
-
-            ven.
-
-            <br><br>
-
-            Déjame recordártelo.
 
             ❤️
 
@@ -1596,91 +1813,117 @@ const mensajes = [
     },
 
 
+    /* ========================================================
+       8
+    ========================================================= */
+
     {
-        titulo:"Si alguna vez dudas de cuánto te quiero",
+        tipo: "normal",
 
-        constelacion:"CONSTELACIÓN DEL INFINITO",
+        titulo:
+            "Si alguna vez dudas de cuánto te quiero",
 
-        texto:`
+        texto: `
 
-            Si algún día llegas a preguntarte
-            cuánto te quiero...
+            Si alguna vez llegas
+            a preguntarte cuánto te quiero...
 
             <br><br>
 
-            mira el cielo.
+            mira las estrellas.
 
             ✨
 
             <br><br>
 
-            Mira todas esas estrellas.
+            Cada una podría representar
+            una de las veces que has logrado
+            sacarme una sonrisa.
 
             <br><br>
 
-            Ahora imagina que cada una
-            representa una razón por la que
-            me encantas.
+            Y aun así no alcanzarían.
 
             <br><br>
 
-            Una por tus ojos.
-
-            <br>
-
-            Una por tu sonrisa.
-
-            <br>
-
-            Una por tu forma de ser.
-
-            <br>
-
-            Una por cada vez que me haces sonreír.
-
-            <br>
-
-            Una por cada momento
-            que hemos compartido.
-
-            <br>
-
-            Una por cada vez que pienso en ti.
-
-            <br><br>
-
-            Y aun así...
+            Porque hay sentimientos
+            que simplemente no caben
+            en números.
 
             <br><br>
 
             <strong>
-            el cielo se quedaría corto.
+                Te quiero más de lo que
+                pueden decir estas palabras.
             </strong>
 
             <br><br>
 
-            Porque hay cosas que no se pueden medir.
+            Más de lo que puede mostrar
+            esta página.
 
             <br><br>
 
-            Y lo que siento por ti
-            es una de ellas.
-
-            <br><br>
-
-            Te quiero demasiado,
-            Mi Ojitos.
-
-            <br><br>
-
-            Muchísimo.
-
-            <br><br>
-
-            Más de lo que probablemente
-            puedo explicarte.
+            Y probablemente más
+            de lo que yo mismo sé explicar.
 
             ❤️
+
+        `
+    },
+
+
+    /* ========================================================
+       9
+    ========================================================= */
+
+    {
+        tipo: "normal",
+
+        titulo:
+            "Para mi niña bonita",
+
+        texto: `
+
+            Mi Ojitos...
+
+            <br><br>
+
+            Si alguna vez olvidas
+            lo especial que eres,
+            quiero que vuelvas a leer esto.
+
+            <br><br>
+
+            Eres una persona hermosa.
+
+            <br><br>
+
+            Eres importante.
+
+            <br><br>
+
+            Eres valiosa.
+
+            <br><br>
+
+            Mereces sentirte querida,
+            escuchada, respetada
+            y acompañada.
+
+            <br><br>
+
+            Y quiero que nunca olvides
+            que hay alguien aquí
+            que disfruta muchísimo
+            tenerte en su vida.
+
+            <br><br>
+
+            <strong>
+                Te quiero muchísimo,
+                Mi Ojitos. ❤️
+            </strong>
 
         `
     }
@@ -1688,9 +1931,9 @@ const mensajes = [
 ];
 
 
-/* =========================================================
+/* ============================================================
    THREE.JS
-========================================================= */
+============================================================ */
 
 let escena;
 
@@ -1704,69 +1947,94 @@ let grupoConstelacion;
 
 let reloj;
 
+let mensajeActual = 0;
 
-/* =========================================================
-   CONFIGURAR UNIVERSO
-========================================================= */
+let mouseX = 0;
 
-function iniciarUniverso(){
+let mouseY = 0;
 
-    escena = new THREE.Scene();
+
+/* ============================================================
+   INICIAR UNIVERSO
+============================================================ */
+
+function iniciarUniverso() {
+
+    escena =
+        new THREE.Scene();
+
 
     escena.fog =
         new THREE.FogExp2(
             0x02010a,
-            0.0012
+            0.0011
         );
 
 
-    /* CAMARA */
+    /* ========================================================
+       CÁMARA RESPONSIVE
+    ======================================================== */
 
     camara =
         new THREE.PerspectiveCamera(
-            65,
+            60,
             window.innerWidth /
             window.innerHeight,
-            .1,
+            0.1,
             2000
         );
 
-    camara.position.z =
-        window.innerWidth < 600
-            ? 48
-            : 42;
+
+    actualizarCamara();
 
 
-    /* RENDERIZADOR */
+    /* ========================================================
+       RENDER
+    ======================================================== */
 
     renderizador =
         new THREE.WebGLRenderer({
-            antialias:true,
-            alpha:true
+
+            antialias: true,
+
+            alpha: true
+
         });
+
 
     renderizador.setPixelRatio(
         Math.min(
             window.devicePixelRatio,
-            1.7
+            1.5
         )
     );
+
 
     renderizador.setSize(
         window.innerWidth,
         window.innerHeight
     );
 
+
     contenedor.appendChild(
         renderizador.domElement
     );
 
 
+    /* ========================================================
+       ESTRELLAS
+    ======================================================== */
+
     crearEstrellas();
 
 
+    /* ========================================================
+       GRUPO CONSTELACIÓN
+    ======================================================== */
+
     grupoConstelacion =
         new THREE.Group();
+
 
     escena.add(
         grupoConstelacion
@@ -1776,6 +2044,10 @@ function iniciarUniverso(){
     reloj =
         new THREE.Clock();
 
+
+    /* ========================================================
+       EVENTOS
+    ======================================================== */
 
     window.addEventListener(
         "resize",
@@ -1793,7 +2065,7 @@ function iniciarUniverso(){
         "touchmove",
         moverCamaraTouch,
         {
-            passive:true
+            passive: true
         }
     );
 
@@ -1803,16 +2075,60 @@ function iniciarUniverso(){
 }
 
 
-/* =========================================================
-   ESTRELLAS
-========================================================= */
+/* ============================================================
+   CÁMARA RESPONSIVE
+============================================================ */
 
-function crearEstrellas(){
+function actualizarCamara() {
+
+    const ancho =
+        window.innerWidth;
+
+    const alto =
+        window.innerHeight;
+
+    const aspecto =
+        ancho / alto;
+
+
+    if (ancho <= 600) {
+
+        camara.position.z =
+            aspecto < .55
+                ? 55
+                : 48;
+
+    }
+
+    else if (ancho <= 900) {
+
+        camara.position.z =
+            45;
+
+    }
+
+    else {
+
+        camara.position.z =
+            40;
+
+    }
+
+}
+
+
+/* ============================================================
+   ESTRELLAS
+============================================================ */
+
+function crearEstrellas() {
 
     const cantidad =
         window.innerWidth < 600
-            ? 2600
-            : 5000;
+            ? 2200
+            : window.innerWidth < 1000
+                ? 3500
+                : 5000;
 
 
     const posiciones =
@@ -1827,15 +2143,15 @@ function crearEstrellas(){
         );
 
 
-    for(
-        let i=0;
-        i<cantidad;
+    for (
+        let i = 0;
+        i < cantidad;
         i++
-    ){
+    ) {
 
         const radio =
             100 +
-            Math.random()*850;
+            Math.random() * 850;
 
 
         const theta =
@@ -1845,23 +2161,29 @@ function crearEstrellas(){
 
         const phi =
             Math.acos(
-                2*Math.random()-1
+                2 * Math.random() - 1
             );
 
 
-        posiciones[i*3] =
+        posiciones[
+            i * 3
+        ] =
             radio *
             Math.sin(phi) *
             Math.cos(theta);
 
 
-        posiciones[i*3+1] =
+        posiciones[
+            i * 3 + 1
+        ] =
             radio *
             Math.sin(phi) *
             Math.sin(theta);
 
 
-        posiciones[i*3+2] =
+        posiciones[
+            i * 3 + 2
+        ] =
             radio *
             Math.cos(phi);
 
@@ -1870,27 +2192,27 @@ function crearEstrellas(){
             Math.random();
 
 
-        if(tipo<.65){
+        if (tipo < .65) {
 
-            colores[i*3]=1;
-            colores[i*3+1]=1;
-            colores[i*3+2]=1;
-
-        }
-
-        else if(tipo<.85){
-
-            colores[i*3]=1;
-            colores[i*3+1]=.65;
-            colores[i*3+2]=.9;
+            colores[i * 3] = 1;
+            colores[i * 3 + 1] = 1;
+            colores[i * 3 + 2] = 1;
 
         }
 
-        else{
+        else if (tipo < .85) {
 
-            colores[i*3]=.65;
-            colores[i*3+1]=.75;
-            colores[i*3+2]=1;
+            colores[i * 3] = 1;
+            colores[i * 3 + 1] = .65;
+            colores[i * 3 + 2] = .9;
+
+        }
+
+        else {
+
+            colores[i * 3] = .65;
+            colores[i * 3 + 1] = .75;
+            colores[i * 3 + 2] = 1;
 
         }
 
@@ -1903,6 +2225,7 @@ function crearEstrellas(){
 
     geometria.setAttribute(
         "position",
+
         new THREE.BufferAttribute(
             posiciones,
             3
@@ -1912,6 +2235,7 @@ function crearEstrellas(){
 
     geometria.setAttribute(
         "color",
+
         new THREE.BufferAttribute(
             colores,
             3
@@ -1923,17 +2247,21 @@ function crearEstrellas(){
         new THREE.PointsMaterial({
 
             size:
-                window.innerWidth<600
-                    ? .7
+                window.innerWidth < 600
+                    ? .65
                     : .9,
 
-            vertexColors:true,
+            vertexColors:
+                true,
 
-            transparent:true,
+            transparent:
+                true,
 
-            opacity:.85,
+            opacity:
+                .85,
 
-            sizeAttenuation:true
+            sizeAttenuation:
+                true
 
         });
 
@@ -1952,23 +2280,58 @@ function crearEstrellas(){
 }
 
 
-/* =========================================================
-   CREAR ESTRELLA
-========================================================= */
+/* ============================================================
+   ESCALA RESPONSIVE DE CONSTELACIÓN
+============================================================ */
 
-function agregarEstrella(x,y,z,color=0xffffff,tamano=.20){
+function escalaConstelacion() {
+
+    const ancho =
+        window.innerWidth;
+
+    if (ancho <= 360) {
+        return .58;
+    }
+
+    if (ancho <= 430) {
+        return .68;
+    }
+
+    if (ancho <= 600) {
+        return .78;
+    }
+
+    if (ancho <= 900) {
+        return .90;
+    }
+
+    return 1;
+}
+
+
+/* ============================================================
+   CREAR ESTRELLA
+============================================================ */
+
+function agregarEstrella(
+    x,
+    y,
+    z,
+    color = 0xffffff,
+    tamano = .18
+) {
 
     const geometria =
         new THREE.SphereGeometry(
             tamano,
-            16,
-            16
+            14,
+            14
         );
 
 
     const material =
         new THREE.MeshBasicMaterial({
-            color:color
+            color: color
         });
 
 
@@ -1980,7 +2343,9 @@ function agregarEstrella(x,y,z,color=0xffffff,tamano=.20){
 
 
     estrella.position.set(
-        x,y,z
+        x,
+        y,
+        z
     );
 
 
@@ -1989,16 +2354,20 @@ function agregarEstrella(x,y,z,color=0xffffff,tamano=.20){
     );
 
 
+    /* punto luminoso */
+
     const luz =
         new THREE.PointLight(
             color,
             1.4,
-            12
+            9
         );
 
 
-    luz.position.copy(
-        estrella.position
+    luz.position.set(
+        x,
+        y,
+        z
     );
 
 
@@ -2006,17 +2375,21 @@ function agregarEstrella(x,y,z,color=0xffffff,tamano=.20){
         luz
     );
 
+
+    return estrella;
 }
 
 
-/* =========================================================
-   CREAR LINEA
-========================================================= */
+/* ============================================================
+   CONECTAR DOS PUNTOS
+============================================================ */
 
-function agregarLinea(
-    x1,y1,z1,
-    x2,y2,z2
-){
+function conectar(
+    a,
+    b,
+    color = 0xff8bdc,
+    opacity = .65
+) {
 
     const geometria =
         new THREE.BufferGeometry();
@@ -2025,15 +2398,20 @@ function agregarLinea(
     const vertices =
         new Float32Array([
 
-            x1,y1,z1,
+            a[0],
+            a[1],
+            a[2],
 
-            x2,y2,z2
+            b[0],
+            b[1],
+            b[2]
 
         ]);
 
 
     geometria.setAttribute(
         "position",
+
         new THREE.BufferAttribute(
             vertices,
             3
@@ -2044,781 +2422,656 @@ function agregarLinea(
     const material =
         new THREE.LineBasicMaterial({
 
-            color:0xff8bdc,
+            color:
+                color,
 
-            transparent:true,
+            transparent:
+                true,
 
-            opacity:.58
-
+            opacity:
+                opacity
         });
 
 
-    grupoConstelacion.add(
-
+    const linea =
         new THREE.Line(
             geometria,
             material
-        )
-
-    );
-
-}
-
-
-/* =========================================================
-   CREAR FORMA DE LETRA
-========================================================= */
-
-function crearForma(puntos){
-
-    for(
-        let i=0;
-        i<puntos.length;
-        i++
-    ){
-
-        agregarEstrella(
-            puntos[i][0],
-            puntos[i][1],
-            puntos[i][2] || 0,
-            i===0
-                ? 0xff8bdc
-                : 0xffffff,
-            .22
         );
 
-    }
 
-
-    for(
-        let i=0;
-        i<puntos.length-1;
-        i++
-    ){
-
-        agregarLinea(
-
-            puntos[i][0],
-            puntos[i][1],
-            puntos[i][2] || 0,
-
-            puntos[i+1][0],
-            puntos[i+1][1],
-            puntos[i+1][2] || 0
-
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   CONSTELACIÓN C
-========================================================= */
-
-function constelacionC(){
-
-    const puntos = [
-
-        [3,5,0],
-        [0,6,0],
-        [-3,4,0],
-        [-4,0,0],
-        [-3,-4,0],
-        [0,-6,0],
-        [3,-5,0]
-
-    ];
-
-    crearForma(puntos);
-
-}
-
-
-/* =========================================================
-   CONSTELACIÓN A
-========================================================= */
-
-function constelacionA(offset=0){
-
-    const puntos = [
-
-        [-3+offset,-5,0],
-        [0+offset,5,0],
-        [3+offset,-5,0],
-
-        [-2+offset,-1,0],
-        [2+offset,-1,0]
-
-    ];
-
-
-    puntos.forEach(
-        (p,i)=>{
-
-            agregarEstrella(
-                p[0],
-                p[1],
-                p[2],
-                i===0
-                    ? 0xff8bdc
-                    : 0xffffff,
-                .22
-            );
-
-        }
-    );
-
-
-    agregarLinea(
-        -3+offset,-5,0,
-        0+offset,5,0
-    );
-
-    agregarLinea(
-        0+offset,5,0,
-        3+offset,-5,0
-    );
-
-    agregarLinea(
-        -2+offset,-1,0,
-        2+offset,-1,0
+    grupoConstelacion.add(
+        linea
     );
 
 }
 
 
-/* =========================================================
-   C & A
-========================================================= */
+/* ============================================================
+   CONSTELACIÓN C&A
+============================================================ */
 
-function constelacionCA(){
+function crearCA() {
 
     const puntosC = [
 
-        [-6,5,0],
-        [-9,6,0],
-        [-11,3,0],
-        [-12,-1,0],
-        [-11,-4,0],
-        [-8,-6,0],
-        [-6,-5,0]
+        [-7, 4, 0],
+        [-9, 2, 0],
+        [-9, -2, 0],
+        [-7, -4, 0]
 
     ];
-
-
-    crearForma(puntosC);
 
 
     const puntosA = [
 
-        [2,-5,0],
-        [5,5,0],
-        [8,-5,0],
-        [3.2,-1,0],
-        [6.8,-1,0]
+        [3, -4, 0],
+        [5, 4, 0],
+        [7, -4, 0],
+        [4, 0, 0],
+        [6, 0, 0]
 
     ];
 
 
-    puntosA.forEach(
-        (p,i)=>{
+    puntosC.forEach(
+        (p, i) => {
 
             agregarEstrella(
                 p[0],
                 p[1],
                 p[2],
-                i===0
-                    ? 0xff8bdc
-                    : 0xffffff,
-                .22
+                0xffb3e6,
+                i === 0
+                    ? .28
+                    : .20
             );
 
         }
     );
 
 
-    agregarLinea(2,-5,0,5,5,0);
-    agregarLinea(5,5,0,8,-5,0);
-    agregarLinea(3.2,-1,0,6.8,-1,0);
+    puntosA.forEach(
+        (p, i) => {
+
+            agregarEstrella(
+                p[0],
+                p[1],
+                p[2],
+                i === 0
+                    ? 0xff8bdc
+                    : 0xffffff,
+                i === 0
+                    ? .28
+                    : .20
+            );
+
+        }
+    );
+
+
+    for (
+        let i = 0;
+        i < puntosC.length - 1;
+        i++
+    ) {
+
+        conectar(
+            puntosC[i],
+            puntosC[i + 1]
+        );
+
+    }
+
+
+    conectar(
+        puntosA[0],
+        puntosA[1]
+    );
+
+    conectar(
+        puntosA[1],
+        puntosA[2]
+    );
+
+    conectar(
+        puntosA[1],
+        puntosA[3]
+    );
+
+    conectar(
+        puntosA[1],
+        puntosA[4]
+    );
 
 
     /* estrella central */
 
     agregarEstrella(
-        -1.5,
+        -1,
         0,
         0,
-        0xff9bdd,
-        .30
+        0xff75c8,
+        .25
+    );
+
+
+    conectar(
+        [-7, 4, 0],
+        [-1, 0, 0],
+        0xff75c8,
+        .35
+    );
+
+
+    conectar(
+        [-1, 0, 0],
+        [3, -4, 0],
+        0xff75c8,
+        .35
+    );
+
+
+    grupoConstelacion.scale.setScalar(
+        escalaConstelacion()
     );
 
 }
 
 
-/* =========================================================
-   PAREJA ABRAZÁNDOSE
-========================================================= */
+/* ============================================================
+   CONSTELACIÓN PAREJA ABRAZADA
+============================================================ */
 
-function constelacionPareja(){
+function crearPareja() {
 
     /*
         PERSONA IZQUIERDA
     */
 
-    const izquierda = [
+    const A = [
 
-        [-4,4,0],     // cabeza
-        [-4,2.8,0],   // cuello
-        [-4,1,0],     // pecho
-        [-4,-1,0],    // cintura
-        [-5,-4,0],    // pierna
-        [-3,-4,0],    // pierna
-
-        [-4,1,0],
-        [-6,0,0],     // brazo izquierdo
-        [-7,1.5,0],
-
-        [-4,1,0],
-        [-2.5,0,0],   // brazo abrazando
-        [-1.5,1,0]
+        [-3.8, 3.8, 0],
+        [-3.8, 1.9, 0],
+        [-3.8, -.3, 0],
+        [-5.2, -3.5, 0],
+        [-2.4, -3.5, 0]
 
     ];
-
-
-    const derecha = [
-
-        [4,4,0],
-        [4,2.8,0],
-        [4,1,0],
-        [4,-1,0],
-        [3,-4,0],
-        [5,-4,0],
-
-        [4,1,0],
-        [6,0,0],
-        [7,1.5,0],
-
-        [4,1,0],
-        [2.5,0,0],
-        [1.5,1,0]
-
-    ];
-
-
-    /* estrellas */
-
-    izquierda.forEach(
-        (p,i)=>{
-
-            agregarEstrella(
-                p[0],
-                p[1],
-                p[2],
-                i===0
-                    ? 0xff9bdd
-                    : 0xffffff,
-                i===0
-                    ? .30
-                    : .19
-            );
-
-        }
-    );
-
-
-    derecha.forEach(
-        (p,i)=>{
-
-            agregarEstrella(
-                p[0],
-                p[1],
-                p[2],
-                i===0
-                    ? 0xff9bdd
-                    : 0xffffff,
-                i===0
-                    ? .30
-                    : .19
-            );
-
-        }
-    );
-
-
-    /* líneas persona izquierda */
-
-    for(
-        let i=0;
-        i<izquierda.length-1;
-        i++
-    ){
-
-        agregarLinea(
-
-            izquierda[i][0],
-            izquierda[i][1],
-            izquierda[i][2],
-
-            izquierda[i+1][0],
-            izquierda[i+1][1],
-            izquierda[i+1][2]
-
-        );
-
-    }
-
-
-    /* líneas persona derecha */
-
-    for(
-        let i=0;
-        i<derecha.length-1;
-        i++
-    ){
-
-        agregarLinea(
-
-            derecha[i][0],
-            derecha[i][1],
-            derecha[i][2],
-
-            derecha[i+1][0],
-            derecha[i+1][1],
-            derecha[i+1][2]
-
-        );
-
-    }
 
 
     /*
-        BRAZOS QUE SE ENCUENTRAN
-        EN EL CENTRO
+        PERSONA DERECHA
     */
 
-    agregarLinea(
-        -1.5,1,0,
-        0,1.5,0
+    const B = [
+
+        [3.8, 3.8, 0],
+        [3.8, 1.9, 0],
+        [3.8, -.3, 0],
+        [2.4, -3.5, 0],
+        [5.2, -3.5, 0]
+
+    ];
+
+
+    /* CABEZAS */
+
+    agregarEstrella(
+        A[0][0],
+        A[0][1],
+        A[0][2],
+        0xffb3e6,
+        .34
     );
 
-    agregarLinea(
-        1.5,1,0,
-        0,1.5,0
+
+    agregarEstrella(
+        B[0][0],
+        B[0][1],
+        B[0][2],
+        0xffb3e6,
+        .34
     );
 
 
-    /* corazón pequeño entre ambos */
+    /* CUERPOS */
+
+    for (
+        let i = 0;
+        i < A.length - 1;
+        i++
+    ) {
+
+        agregarEstrella(
+            A[i + 1][0],
+            A[i + 1][1],
+            A[i + 1][2],
+            0xffffff,
+            .20
+        );
+
+    }
+
+
+    for (
+        let i = 0;
+        i < B.length - 1;
+        i++
+    ) {
+
+        agregarEstrella(
+            B[i + 1][0],
+            B[i + 1][1],
+            B[i + 1][2],
+            0xffffff,
+            .20
+        );
+
+    }
+
+
+    /* CUERPOS */
+
+    conectar(
+        A[0],
+        A[1]
+    );
+
+    conectar(
+        A[1],
+        A[2]
+    );
+
+    conectar(
+        A[2],
+        A[3]
+    );
+
+    conectar(
+        A[2],
+        A[4]
+    );
+
+
+    conectar(
+        B[0],
+        B[1]
+    );
+
+    conectar(
+        B[1],
+        B[2]
+    );
+
+    conectar(
+        B[2],
+        B[3]
+    );
+
+    conectar(
+        B[2],
+        B[4]
+    );
+
+
+    /* BRAZOS ABRAZÁNDOSE */
+
+    const brazoA = [
+        [-3.8, 1.8, 0],
+        [-2.0, 1.1, 0],
+        [0, 1.0, 0],
+        [2.0, 1.1, 0],
+        [3.8, 1.8, 0]
+    ];
+
+
+    for (
+        let i = 0;
+        i < brazoA.length - 1;
+        i++
+    ) {
+
+        agregarEstrella(
+            brazoA[i][0],
+            brazoA[i][1],
+            brazoA[i][2],
+            0xff8bdc,
+            .19
+        );
+
+        conectar(
+            brazoA[i],
+            brazoA[i + 1],
+            0xff8bdc,
+            .8
+        );
+
+    }
+
+
+    /* CORAZÓN ENTRE LOS DOS */
 
     agregarEstrella(
         0,
-        3.2,
+        2.8,
         0,
         0xff75c8,
         .28
     );
 
+
+    conectar(
+        [-1.2, 2.3, 0],
+        [0, 2.8, 0],
+        0xff75c8,
+        .7
+    );
+
+
+    conectar(
+        [0, 2.8, 0],
+        [1.2, 2.3, 0],
+        0xff75c8,
+        .7
+    );
+
+
+    grupoConstelacion.scale.setScalar(
+        escalaConstelacion() * .82
+    );
+
 }
 
 
-/* =========================================================
-   CONSTELACIÓN DE LA FECHA
-========================================================= */
+/* ============================================================
+   CONSTELACIÓN FECHA
+============================================================ */
 
-function constelacionFecha(){
+function crearFecha() {
 
     /*
-        15
-        08
-        2026
-
-        Se dibuja como una constelación
-        utilizando segmentos.
+       Forma inspirada en una estrella/calendario.
     */
 
-    const segmentos = {
+    const puntos = [
 
-        "0":[
-            [0,0],[1.5,0],
-            [0,2],[1.5,2],
-            [0,0],[0,2],
-            [1.5,0],[1.5,2]
+        [-5, 3, 0],
+        [-2.5, 5, 0],
+        [0, 3, 0],
+        [2.5, 5, 0],
+        [5, 3, 0],
+
+        [-4, 0, 0],
+        [-1.5, -1, 0],
+        [1.5, -1, 0],
+        [4, 0, 0],
+
+        [-3, -4, 0],
+        [0, -3, 0],
+        [3, -4, 0]
+
+    ];
+
+
+    puntos.forEach(
+        (p, i) => {
+
+            agregarEstrella(
+                p[0],
+                p[1],
+                p[2],
+                i === 5
+                    ? 0xff75c8
+                    : 0xffffff,
+                i === 5
+                    ? .30
+                    : .20
+            );
+
+        }
+    );
+
+
+    for (
+        let i = 0;
+        i < puntos.length - 1;
+        i++
+    ) {
+
+        conectar(
+            puntos[i],
+            puntos[i + 1],
+            0xff8bdc,
+            .6
+        );
+
+    }
+
+
+    /* estrella central */
+
+    agregarEstrella(
+        0,
+        1,
+        0,
+        0xff75c8,
+        .30
+    );
+
+
+    grupoConstelacion.scale.setScalar(
+        escalaConstelacion() * .85
+    );
+
+}
+
+
+/* ============================================================
+   CONSTELACIONES NORMALES
+============================================================ */
+
+function crearNormal(indice) {
+
+    const formas = [
+
+        [
+            [-5,2,0],
+            [-2,5,0],
+            [1,3,0],
+            [4,5,0],
+            [5,1,0]
         ],
 
-        "1":[
-            [0.75,0],
-            [0.75,2]
+        [
+            [-5,3,0],
+            [-2,0,0],
+            [0,4,0],
+            [2,0,0],
+            [5,3,0]
         ],
 
-        "2":[
-            [0,2],[1.5,2],
-            [1.5,2],[1.5,1],
-            [1.5,1],[0,0],
-            [0,0],[1.5,0]
+        [
+            [-5,0,0],
+            [-2,3,0],
+            [0,0,0],
+            [2,3,0],
+            [5,0,0]
         ],
 
-        "5":[
-            [1.5,2],[0,2],
-            [0,2],[0,1],
-            [0,1],[1.5,1],
-            [1.5,1],[1.5,0],
-            [1.5,0],[0,0]
+        [
+            [-4,3,0],
+            [-2,0,0],
+            [0,-3,0],
+            [2,0,0],
+            [4,3,0]
         ],
 
-        "6":[
-            [1.5,2],[0,2],
-            [0,2],[0,0],
-            [0,0],[1.5,0],
-            [1.5,0],[1.5,1],
-            [1.5,1],[0,1]
+        [
+            [-5,1,0],
+            [-3,4,0],
+            [0,2,0],
+            [3,4,0],
+            [5,1,0],
+            [0,-2,0]
+        ],
+
+        [
+            [-5,0,0],
+            [-2,4,0],
+            [0,0,0],
+            [2,4,0],
+            [5,0,0],
+            [0,-4,0]
         ]
 
-    };
+    ];
 
 
-    const texto =
-        "15 08 2026";
-
-
-    let cursorX = -9;
-
-    const separacion = 2.3;
-
-
-    for(
-        let i=0;
-        i<texto.length;
-        i++
-    ){
-
-        const caracter =
-            texto[i];
-
-
-        if(caracter===" "){
-
-            cursorX += 1.3;
-
-            continue;
-
-        }
-
-
-        const forma =
-            segmentos[caracter];
-
-
-        if(!forma) continue;
-
-
-        forma.forEach(
-            (p,index)=>{
-
-                agregarEstrella(
-
-                    cursorX + p[0],
-                    p[1]-1,
-                    0,
-
-                    index===0
-                        ? 0xff9bdd
-                        : 0xffffff,
-
-                    .18
-
-                );
-
-            }
-        );
-
-
-        for(
-            let j=0;
-            j<forma.length;
-            j+=2
-        ){
-
-            if(
-                !forma[j+1]
-            ) continue;
-
-
-            agregarLinea(
-
-                cursorX + forma[j][0],
-                forma[j][1]-1,
-                0,
-
-                cursorX + forma[j+1][0],
-                forma[j+1][1]-1,
-                0
-
-            );
-
-        }
-
-
-        cursorX += separacion;
-
-    }
-
-}
-
-
-/* =========================================================
-   INFINITO
-========================================================= */
-
-function constelacionInfinito(){
-
-    const puntos=[];
-
-
-    for(
-        let t=0;
-        t<Math.PI*2;
-        t+=.16
-    ){
-
-        const x =
-            6 *
-            Math.sin(t);
-
-
-        const y =
-            3.5 *
-            Math.sin(t) *
-            Math.cos(t);
-
-
-        puntos.push([
-            x,
-            y,
-            0
-        ]);
-
-    }
+    const puntos =
+        formas[
+            indice %
+            formas.length
+        ];
 
 
     puntos.forEach(
-        (p,i)=>{
+        (p, i) => {
 
             agregarEstrella(
                 p[0],
                 p[1],
                 p[2],
-                i===0
-                    ? 0xff9bdd
+                i === 0
+                    ? 0xff8bdc
                     : 0xffffff,
-                .18
+                i === 0
+                    ? .28
+                    : .19
             );
 
         }
     );
 
 
-    for(
-        let i=0;
-        i<puntos.length-1;
+    for (
+        let i = 0;
+        i < puntos.length - 1;
         i++
-    ){
+    ) {
 
-        agregarLinea(
-
-            puntos[i][0],
-            puntos[i][1],
-            puntos[i][2],
-
-            puntos[i+1][0],
-            puntos[i+1][1],
-            puntos[i+1][2]
-
+        conectar(
+            puntos[i],
+            puntos[i + 1],
+            0xff8bdc,
+            .55
         );
 
     }
 
 
-    agregarLinea(
-        puntos[puntos.length-1][0],
-        puntos[puntos.length-1][1],
-        0,
-
-        puntos[0][0],
-        puntos[0][1],
-        0
+    grupoConstelacion.scale.setScalar(
+        escalaConstelacion() * .85
     );
 
 }
 
 
-/* =========================================================
-   CORAZÓN
-========================================================= */
+/* ============================================================
+   CREAR CONSTELACIÓN
+============================================================ */
 
-function constelacionCorazon(){
-
-    const puntos=[];
-
-
-    for(
-        let t=0;
-        t<Math.PI*2;
-        t+=.09
-    ){
-
-        const x =
-            8 *
-            Math.pow(
-                Math.sin(t),
-                3
-            );
-
-
-        const y =
-            6*Math.cos(t)
-            -
-            2.5*Math.cos(2*t)
-            -
-            1.2*Math.cos(3*t)
-            -
-            .6*Math.cos(4*t);
-
-
-        puntos.push([
-            x,
-            y,
-            0
-        ]);
-
-    }
-
-
-    puntos.forEach(
-        (p,i)=>{
-
-            agregarEstrella(
-                p[0],
-                p[1],
-                p[2],
-                0xff9bdd,
-                .15
-            );
-
-        }
-    );
-
-
-    for(
-        let i=0;
-        i<puntos.length;
-        i++
-    ){
-
-        const siguiente =
-            (i+1)%puntos.length;
-
-
-        agregarLinea(
-
-            puntos[i][0],
-            puntos[i][1],
-            0,
-
-            puntos[siguiente][0],
-            puntos[siguiente][1],
-            0
-
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   CREAR CONSTELACIÓN SEGÚN MENSAJE
-========================================================= */
-
-function crearConstelacion(indice){
+function crearConstelacion(indice) {
 
     grupoConstelacion.clear();
 
 
-    switch(indice){
-
-        case 0:
-
-            constelacionC();
-
-            break;
+    const datos =
+        mensajes[indice];
 
 
-        case 1:
-
-            constelacionA();
-
-            break;
+    if (!datos) {
+        return;
+    }
 
 
-        case 2:
+    if (datos.tipo === "ca") {
 
-            constelacionCA();
+        crearCA();
 
-            break;
+    }
 
+    else if (
+        datos.tipo === "pareja"
+    ) {
 
-        case 3:
+        crearPareja();
 
-            constelacionPareja();
+    }
 
-            break;
+    else if (
+        datos.tipo === "fecha"
+    ) {
 
+        crearFecha();
 
-        case 4:
+    }
 
-            constelacionFecha();
+    else {
 
-            break;
-
-
-        case 5:
-
-            constelacionInfinito();
-
-            break;
-
-
-        case 6:
-
-            constelacionCorazon();
-
-            break;
+        crearNormal(
+            indice
+        );
 
     }
 
 
-    grupoConstelacion.scale.set(
-        .01,
-        .01,
+    /* posición responsive */
+
+    if (
+        window.innerWidth <= 600
+    ) {
+
+        grupoConstelacion.position.y =
+            6.0;
+
+    }
+
+    else {
+
+        grupoConstelacion.position.y =
+            4.5;
+
+    }
+
+
+    grupoConstelacion.position.x =
+        0;
+
+
+    grupoConstelacion.position.z =
+        0;
+
+
+    grupoConstelacion.scale.multiplyScalar(
         .01
     );
 
 }
 
 
-/* =========================================================
+/* ============================================================
    ANIMACIÓN
-========================================================= */
+============================================================ */
 
-function animar(){
+function animar() {
 
     requestAnimationFrame(
         animar
     );
 
 
-    if(!escena){
+    if (!escena) {
         return;
     }
 
@@ -2827,55 +3080,121 @@ function animar(){
         reloj.getElapsedTime();
 
 
-    if(estrellas){
+    /* ESTRELLAS */
+
+    if (estrellas) {
 
         estrellas.rotation.y =
-            tiempo*.008;
+            tiempo * .008;
 
         estrellas.rotation.x =
             Math.sin(
-                tiempo*.05
-            )*.03;
+                tiempo * .05
+            ) * .03;
 
     }
 
 
-    if(grupoConstelacion){
+    /* CONSTELACIÓN */
+
+    if (grupoConstelacion) {
 
         grupoConstelacion.rotation.z =
             Math.sin(
-                tiempo*.25
-            )*.025;
+                tiempo * .25
+            ) * .025;
 
 
         grupoConstelacion.rotation.y =
             Math.sin(
-                tiempo*.2
-            )*.08;
+                tiempo * .2
+            ) * .06;
 
 
-        if(
+        if (
             grupoConstelacion.scale.x < 1
-        ){
+        ) {
 
             grupoConstelacion.scale.multiplyScalar(
-                1.025
+                1.04
             );
 
-
-            if(
+            if (
                 grupoConstelacion.scale.x > 1
-            ){
+            ) {
 
-                grupoConstelacion.scale.set(
-                    1,
-                    1,
-                    1
+                /*
+                    Recuperamos la escala
+                    correcta según pantalla.
+                */
+
+                const datos =
+                    mensajes[
+                        mensajeActual
+                    ];
+
+
+                let escala =
+                    escalaConstelacion();
+
+
+                if (
+                    datos &&
+                    datos.tipo === "pareja"
+                ) {
+
+                    escala *= .82;
+
+                }
+
+                else if (
+                    datos &&
+                    (
+                        datos.tipo === "fecha"
+                    )
+                ) {
+
+                    escala *= .85;
+
+                }
+
+                else if (
+                    datos &&
+                    datos.tipo === "normal"
+                ) {
+
+                    escala *= .85;
+
+                }
+
+
+                grupoConstelacion.scale.setScalar(
+                    escala
                 );
 
             }
 
         }
+
+    }
+
+
+    /* CÁMARA SUAVE */
+
+    if (camara) {
+
+        camara.position.x +=
+            (
+                mouseX * 2 -
+                camara.position.x
+            ) * .015;
+
+
+        camara.position.y +=
+            (
+                -mouseY * 1.5 -
+                camara.position.y
+            ) * .015;
 
     }
 
@@ -2888,16 +3207,11 @@ function animar(){
 }
 
 
-/* =========================================================
-   MOVIMIENTO
-========================================================= */
+/* ============================================================
+   MOUSE
+============================================================ */
 
-let mouseX=0;
-
-let mouseY=0;
-
-
-function moverCamara(evento){
+function moverCamara(evento) {
 
     mouseX =
         evento.clientX /
@@ -2913,15 +3227,17 @@ function moverCamara(evento){
 }
 
 
-function moverCamaraTouch(evento){
+/* ============================================================
+   TOUCH
+============================================================ */
 
-    if(
+function moverCamaraTouch(evento) {
+
+    if (
         !evento.touches ||
         !evento.touches[0]
-    ){
-
+    ) {
         return;
-
     }
 
 
@@ -2939,11 +3255,16 @@ function moverCamaraTouch(evento){
 }
 
 
-/* =========================================================
+/* ============================================================
    RESIZE
-========================================================= */
+============================================================ */
 
-function ajustarPantalla(){
+function ajustarPantalla() {
+
+    if (!camara || !renderizador) {
+        return;
+    }
+
 
     camara.aspect =
         window.innerWidth /
@@ -2953,10 +3274,7 @@ function ajustarPantalla(){
     camara.updateProjectionMatrix();
 
 
-    camara.position.z =
-        window.innerWidth < 600
-            ? 48
-            : 42;
+    actualizarCamara();
 
 
     renderizador.setSize(
@@ -2964,33 +3282,42 @@ function ajustarPantalla(){
         window.innerHeight
     );
 
-}
 
+    /*
+       Si hay una constelación activa,
+       actualizar su tamaño.
+    */
 
-/* =========================================================
-   MOSTRAR MENSAJE
-========================================================= */
+    if (
+        grupoConstelacion &&
+        grupoConstelacion.children.length > 0
+    ) {
 
-let mensajeActual=0;
-
-
-function mostrarMensaje(indice){
-
-    if(
-        indice<0 ||
-        indice>=mensajes.length
-    ){
-
-        return;
+        crearConstelacion(
+            mensajeActual
+        );
 
     }
 
+}
 
-    mensajeActual=indice;
+
+/* ============================================================
+   MOSTRAR MENSAJE
+============================================================ */
+
+function mostrarMensaje(indice) {
+
+    if (
+        indice < 0 ||
+        indice >= mensajes.length
+    ) {
+        return;
+    }
 
 
-    const datos =
-        mensajes[indice];
+    mensajeActual =
+        indice;
 
 
     mensaje.classList.remove(
@@ -2998,7 +3325,11 @@ function mostrarMensaje(indice){
     );
 
 
-    setTimeout(()=>{
+    setTimeout(() => {
+
+        const datos =
+            mensajes[indice];
+
 
         tituloMensaje.textContent =
             datos.titulo;
@@ -3009,11 +3340,9 @@ function mostrarMensaje(indice){
 
 
         numeroMensaje.textContent =
-            `CONSTELACIÓN ${String(indice+1).padStart(2,"0")}`;
-
-
-        nombreConstelacion.textContent =
-            datos.constelacion;
+            `CONSTELACIÓN ${String(
+                indice + 1
+            ).padStart(2, "0")}`;
 
 
         crearConstelacion(
@@ -3028,32 +3357,33 @@ function mostrarMensaje(indice){
 
         actualizarBotones();
 
-    },400);
+
+    }, 350);
 
 }
 
 
-/* =========================================================
+/* ============================================================
    BOTONES
-========================================================= */
+============================================================ */
 
-function actualizarBotones(){
+function actualizarBotones() {
 
     botonAnterior.disabled =
-        mensajeActual===0;
+        mensajeActual === 0;
 
 
-    if(
-        mensajeActual===
-        mensajes.length-1
-    ){
+    if (
+        mensajeActual ===
+        mensajes.length - 1
+    ) {
 
         botonSiguiente.textContent =
             "Ver el final ✨";
 
     }
 
-    else{
+    else {
 
         botonSiguiente.textContent =
             "Siguiente →";
@@ -3063,13 +3393,13 @@ function actualizarBotones(){
 }
 
 
-/* =========================================================
+/* ============================================================
    ENTRAR
-========================================================= */
+============================================================ */
 
 botonEntrar.addEventListener(
     "click",
-    ()=>{
+    () => {
 
         inicio.classList.add(
             "oculto"
@@ -3081,41 +3411,100 @@ botonEntrar.addEventListener(
         );
 
 
-        document.getElementById(
-            "musica"
-        ).style.display="block";
+        botonMusica.style.display =
+            "block";
 
 
-        setTimeout(()=>{
+        /* ====================================================
+           MÚSICA
+        ==================================================== */
+
+        audioUniverso.volume =
+            .45;
+
+
+        audioUniverso
+            .play()
+            .then(() => {
+
+                botonMusica.textContent =
+                    "🔊";
+
+            })
+            .catch(() => {
+
+                botonMusica.textContent =
+                    "🎵";
+
+            });
+
+
+        setTimeout(() => {
 
             mostrarMensaje(0);
 
-        },1000);
+        }, 800);
 
     }
 );
 
 
-/* =========================================================
+/* ============================================================
+   MÚSICA
+============================================================ */
+
+botonMusica.addEventListener(
+    "click",
+    () => {
+
+        if (
+            audioUniverso.paused
+        ) {
+
+            audioUniverso
+                .play()
+                .then(() => {
+
+                    botonMusica.textContent =
+                        "🔊";
+
+                });
+
+        }
+
+        else {
+
+            audioUniverso.pause();
+
+            botonMusica.textContent =
+                "🔇";
+
+        }
+
+    }
+);
+
+
+/* ============================================================
    SIGUIENTE
-========================================================= */
+============================================================ */
 
 botonSiguiente.addEventListener(
     "click",
-    ()=>{
+    () => {
 
-        if(
-            mensajeActual<
-            mensajes.length-1
-        ){
+        if (
+            mensajeActual <
+            mensajes.length - 1
+        ) {
 
             mostrarMensaje(
-                mensajeActual+1
+                mensajeActual + 1
             );
 
         }
 
-        else{
+        else {
 
             mostrarFinal();
 
@@ -3125,20 +3514,20 @@ botonSiguiente.addEventListener(
 );
 
 
-/* =========================================================
+/* ============================================================
    ANTERIOR
-========================================================= */
+============================================================ */
 
 botonAnterior.addEventListener(
     "click",
-    ()=>{
+    () => {
 
-        if(
-            mensajeActual>0
-        ){
+        if (
+            mensajeActual > 0
+        ) {
 
             mostrarMensaje(
-                mensajeActual-1
+                mensajeActual - 1
             );
 
         }
@@ -3147,26 +3536,25 @@ botonAnterior.addEventListener(
 );
 
 
-/* =========================================================
+/* ============================================================
    FINAL
-========================================================= */
+============================================================ */
 
-function mostrarFinal(){
+function mostrarFinal() {
 
     mensaje.classList.remove(
         "visible"
     );
 
 
-    instruccion.style.opacity="0";
-
-    nombreConstelacion.style.opacity="0";
+    instruccion.style.opacity =
+        "0";
 
 
     crearCorazon();
 
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
         interfaz.classList.remove(
             "visible"
@@ -3177,51 +3565,157 @@ function mostrarFinal(){
             "visible"
         );
 
-    },2800);
+    }, 2200);
 
 }
 
 
-/* =========================================================
+/* ============================================================
+   CORAZÓN
+============================================================ */
+
+function crearCorazon() {
+
+    grupoConstelacion.clear();
+
+
+    const puntos = [];
+
+
+    for (
+        let t = 0;
+        t < Math.PI * 2;
+        t += .08
+    ) {
+
+        const x =
+            8 *
+            Math.pow(
+                Math.sin(t),
+                3
+            );
+
+
+        const y =
+            6 *
+                Math.cos(t)
+                -
+            2.5 *
+                Math.cos(2 * t)
+                -
+            1.2 *
+                Math.cos(3 * t)
+                -
+            .6 *
+                Math.cos(4 * t);
+
+
+        puntos.push([
+            x,
+            y,
+            0
+        ]);
+
+    }
+
+
+    puntos.forEach(
+        p => {
+
+            agregarEstrella(
+                p[0],
+                p[1],
+                p[2],
+                0xff9bdd,
+                .14
+            );
+
+        }
+    );
+
+
+    for (
+        let i = 0;
+        i < puntos.length;
+        i++
+    ) {
+
+        const siguiente =
+            (
+                i + 1
+            ) %
+            puntos.length;
+
+
+        conectar(
+            puntos[i],
+            puntos[siguiente],
+            0xff75c8,
+            .7
+        );
+
+    }
+
+
+    const escala =
+        window.innerWidth <= 600
+            ? .60
+            : .82;
+
+
+    grupoConstelacion.scale.setScalar(
+        escala * .01
+    );
+
+
+    grupoConstelacion.position.y =
+        window.innerWidth <= 600
+            ? 5
+            : 4;
+
+}
+
+
+/* ============================================================
    VOLVER
-========================================================= */
+============================================================ */
 
 botonVolver.addEventListener(
     "click",
-    ()=>{
+    () => {
 
         final.classList.remove(
             "visible"
         );
 
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
             interfaz.classList.add(
                 "visible"
             );
 
 
-            instruccion.style.opacity="1";
-
-            nombreConstelacion.style.opacity="1";
+            instruccion.style.opacity =
+                "1";
 
 
             mostrarMensaje(0);
 
-        },1000);
+        }, 700);
 
     }
 );
 
 
-/* =========================================================
+/* ============================================================
    INICIALIZAR
-========================================================= */
+============================================================ */
 
 iniciarUniverso();
 
 </script>
 
 </body>
+
 </html>
