@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🫂 Siempre estaré para ti</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: radial-gradient(circle at 20% 30%, rgba(255,60,60,0.12) 0%, transparent 45%),
+                        radial-gradient(circle at 80% 70%, rgba(255,200,200,0.3) 0%, transparent 50%),
+                        linear-gradient(145deg, #fff8f8, #fff0f0, #fffafa);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, 'Times New Roman', serif;
+            padding: 80px 20px 40px;
+            color: #4a1a1a;
+        }
+        .volver {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(200,50,50,0.2);
+            border-radius: 50px;
+            padding: 10px 22px;
+            color: #4a1a1a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .volver:hover { background: white; transform: scale(1.05); }
+        .container { max-width: 800px; width: 100%; text-align: center; }
+        .section-title {
+            font-size: clamp(2.6rem, 7vw, 4.5rem);
+            color: #cc2233;
+            margin-bottom: 20px;
+        }
+        .support-text {
+            font-size: 1.25rem;
+            line-height: 2.2;
+            color: #4a1a1a;
+            background: rgba(255,255,255,0.5);
+            padding: 25px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(200,50,50,0.08);
+            margin: 20px 0;
+        }
+        .highlight { color: #cc2233; font-weight: bold; font-size: 1.4rem; }
+        .cuddle-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .cuddle-btn {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(200,50,50,0.2);
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            color: #4a1a1a;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 6px 20px rgba(150,30,30,0.06);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cuddle-btn:hover {
+            transform: translateY(-4px);
+            background: white;
+            box-shadow: 0 12px 35px rgba(180,40,40,0.12);
+            border-color: #ff6b7a;
+        }
+        .cuddle-btn .emoji { font-size: 24px; }
+        .message-box {
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(200,50,50,0.1);
+            display: none;
+            animation: fadeIn 0.5s ease;
+            min-height: 100px;
+        }
+        .message-box.show { display: flex; align-items: center; justify-content: center; }
+        .message-box p { font-size: 1.3rem; line-height: 1.8; color: #4a1a1a; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 600px) {
+            .section-title { font-size: 2.5rem; }
+            .support-text { font-size: 1rem; padding: 18px 20px; }
+            .cuddle-btn { font-size: 0.95rem; padding: 10px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="volver">← Volver al inicio</a>
+
+    <div class="container">
+        <div style="font-size: 90px; margin-bottom: 10px;">🫂</div>
+        <h1 class="section-title">Siempre, en cada paso</h1>
+
+        <div class="support-text">
+            <span class="highlight">Nunca, nunca estarás sola.</span><br><br>
+            Si necesitas un abrazo, aquí estaré.<br>
+            Si necesitas una mano, aquí estaré.<br>
+            Si necesitas que te recuerde lo valiosa que eres, aquí estaré.<br><br>
+            <span class="highlight">Siempre, sin condiciones.</span>
+        </div>
+
+        <div class="cuddle-buttons">
+            <button class="cuddle-btn" onclick="showMessage('abrazo')"><span class="emoji">🤗</span> Un abrazo fuerte</button>
+            <button class="cuddle-btn" onclick="showMessage('animo')"><span class="emoji">🌟</span> Eres increíble</button>
+            <button class="cuddle-btn" onclick="showMessage('siempre')"><span class="emoji">💖</span> Siempre contigo</button>
+            <button class="cuddle-btn" onclick="showMessage('orgullo')"><span class="emoji">🏅</span> Estoy orgulloso</button>
+            <button class="cuddle-btn" onclick="showMessage('luz')"><span class="emoji">✨</span> Eres mi luz</button>
+        </div>
+
+        <div class="message-box" id="messageBox">
+            <p id="messageText"></p>
+        </div>
+    </div>
+
+    <script>
+        const messages = {
+            abrazo: "Te abrazo fuerte, de esos que duran y dicen 'estoy aquí, siempre'. 🤗",
+            animo: "Eres más fuerte de lo que imaginas. Puedes con todo, y yo estoy a tu lado. 🌟",
+            siempre: "Pase lo que pase, siempre serás mi prioridad. Siempre. 💖",
+            orgullo: "Cada día que pasa, me siento más orgulloso de ti. Eres increíble. 🏅",
+            luz: "Eres la luz que ilumina mis días. Nunca dejes de brillar. ✨"
+        };
+
+        function showMessage(type) {
+            const box = document.getElementById('messageBox');
+            const text = document.getElementById('messageText');
+            text.textContent = messages[type];
+            box.style.display = 'flex';
+            box.style.animation = 'none';
+            setTimeout(function() { box.style.animation = 'fadeIn 0.5s ease'; }, 10);
+        }
+    </script>
+</body>
+</html>
