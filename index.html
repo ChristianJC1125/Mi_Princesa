@@ -1,34 +1,23 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    >
-
-    <meta
-        name="theme-color"
-        content="#02010a"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>
-        El Universo de Mi Ojitos ❤️
+        Todas las páginas de mi princesa ❤️
     </title>
 
 
-    <!-- =====================================================
-         ESTILOS
-    ====================================================== -->
-
     <style>
 
-        /* =================================================
+        /* =====================================================
            RESET
-        ================================================== */
+        ===================================================== */
 
         * {
             margin: 0;
@@ -37,72 +26,475 @@
         }
 
 
-        html,
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
-
-            width: 100%;
-            height: 100%;
-
-            overflow: hidden;
-
-            background: #02010a;
-
-            color: white;
 
             font-family:
-                "Segoe UI",
-                Arial,
-                sans-serif;
+                Georgia,
+                "Times New Roman",
+                serif;
 
-            touch-action: none;
+            color: #fff;
 
+            min-height: 100vh;
+
+            overflow-x: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 100, 160, .15),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(170, 100, 255, .15),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #090015,
+                    #16001f,
+                    #08000f
+                );
         }
 
 
-        body {
-            overscroll-behavior: none;
-        }
+        /* =====================================================
+           ESTRELLAS
+        ===================================================== */
 
-
-        button {
-
-            font-family: inherit;
-
-            cursor: pointer;
-
-            -webkit-tap-highlight-color:
-                transparent;
-
-        }
-
-
-        /* =================================================
-           UNIVERSO
-        ================================================== */
-
-        #universe {
+        .stars {
 
             position: fixed;
 
             inset: 0;
 
-            width: 100%;
-            height: 100%;
+            pointer-events: none;
 
-            overflow: hidden;
+            z-index: 0;
+        }
+
+
+        .star {
+
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            box-shadow:
+                0 0 8px white;
+
+            animation:
+                twinkle
+                2s
+                infinite
+                ease-in-out;
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+
+                opacity: .2;
+
+                transform: scale(.6);
+
+            }
+
+            50% {
+
+                opacity: 1;
+
+                transform: scale(1.5);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CORAZONES
+        ===================================================== */
+
+        .floating-heart {
+
+            position: fixed;
+
+            bottom: -30px;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            animation:
+                floatHeart
+                linear
+                forwards;
+        }
+
+
+        @keyframes floatHeart {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+
+            }
+
+            10% {
+
+                opacity: .8;
+
+            }
+
+            100% {
+
+                transform:
+                    translateY(-110vh)
+                    translateX(100px)
+                    rotate(360deg);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           BOTÓN HAMBURGUESA
+        ===================================================== */
+
+        .menu-button {
+
+            position: fixed;
+
+            top: 22px;
+            left: 22px;
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.3);
+
+            background:
+                rgba(255,255,255,.08);
+
+            backdrop-filter:
+                blur(15px);
+
+            color: white;
+
+            cursor: pointer;
+
+            z-index: 10001;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            transition: .3s;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0,0,0,.25);
+        }
+
+
+        .menu-button:hover {
+
+            transform: scale(1.08);
+
+            background:
+                rgba(255,100,170,.2);
+
+        }
+
+
+        .menu-line {
+
+            width: 24px;
+
+            height: 2px;
+
+            background: white;
+
+            border-radius: 5px;
+
+            transition: .3s;
+
+        }
+
+
+        .menu-button.active
+        .line1 {
+
+            transform:
+                translateY(7px)
+                rotate(45deg);
+
+        }
+
+
+        .menu-button.active
+        .line2 {
+
+            opacity: 0;
+
+        }
+
+
+        .menu-button.active
+        .line3 {
+
+            transform:
+                translateY(-7px)
+                rotate(-45deg);
+
+        }
+
+
+        /* =====================================================
+           MENÚ LATERAL
+        ===================================================== */
+
+        .side-menu {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 340px;
+
+            max-width: 85%;
+
+            height: 100vh;
+
+            padding:
+                100px 25px 30px;
+
+            background:
+                linear-gradient(
+                    160deg,
+                    rgba(28,5,40,.98),
+                    rgba(10,0,20,.98)
+                );
+
+            backdrop-filter:
+                blur(20px);
+
+            border-right:
+                1px solid
+                rgba(255,255,255,.1);
+
+            z-index: 10000;
+
+            transform:
+                translateX(-100%);
+
+            transition:
+                .45s
+                cubic-bezier(.77,0,.18,1);
+
+            overflow-y: auto;
+        }
+
+
+        .side-menu.open {
+
+            transform:
+                translateX(0);
+
+        }
+
+
+        .menu-title {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .menu-title .mini-heart {
+
+            font-size: 40px;
+
+        }
+
+
+        .menu-title h2 {
+
+            font-size: 1.5rem;
+
+            color: #ffb2cd;
+
+            margin-top: 10px;
+
+        }
+
+
+        .menu-title p {
+
+            color: #c7aebe;
+
+            font-size: .85rem;
+
+            line-height: 1.6;
+
+            margin-top: 8px;
+
+        }
+
+
+        .menu-links {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+        }
+
+
+        .menu-link {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px;
+
+            border-radius: 15px;
+
+            text-decoration: none;
+
+            color: #f7dfe9;
+
+            background:
+                rgba(255,255,255,.04);
+
+            border:
+                1px solid
+                transparent;
+
+            transition: .3s;
+
+        }
+
+
+        .menu-link:hover {
+
+            background:
+                rgba(255,100,170,.12);
+
+            border-color:
+                rgba(255,150,190,.25);
+
+            transform:
+                translateX(5px);
+
+        }
+
+
+        .menu-icon {
+
+            font-size: 25px;
+
+            width: 35px;
+
+            text-align: center;
+
+        }
+
+
+        .menu-link-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+        .menu-link-title {
+
+            font-size: 1rem;
+
+            color: white;
+
+        }
+
+
+        .menu-link-description {
+
+            font-size: .72rem;
+
+            color: #c7aebe;
+
+            margin-top: 3px;
+
+        }
+
+
+        /* =====================================================
+           OVERLAY
+        ===================================================== */
+
+        .overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.5);
+
+            z-index: 9999;
 
             opacity: 0;
 
             visibility: hidden;
 
-            transition:
-                opacity 2s ease,
-                visibility 2s ease;
+            transition: .3s;
 
         }
 
 
-        #universe.active {
+        .overlay.show {
 
             opacity: 1;
 
@@ -111,39 +503,22 @@
         }
 
 
-        #three-container {
+        /* =====================================================
+           CONTENIDO
+        ===================================================== */
 
-            position: absolute;
+        main {
 
-            inset: 0;
+            position: relative;
 
-            width: 100%;
-            height: 100%;
-
-        }
-
-
-        #three-container canvas {
-
-            display: block;
-
-            width: 100%;
-            height: 100%;
+            z-index: 2;
 
         }
 
 
-        /* =================================================
-           PANTALLA DE INTRODUCCIÓN
-        ================================================== */
+        .hero {
 
-        #intro {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 1000;
+            min-height: 100vh;
 
             display: flex;
 
@@ -153,960 +528,36 @@
 
             text-align: center;
 
-            padding: 25px;
-
-            background:
-
-                radial-gradient(
-                    circle at center,
-                    rgba(100, 30, 130, 0.35),
-                    rgba(0, 0, 0, 0.96) 70%
-                );
-
-            transition:
-
-                opacity 2s ease,
-                visibility 2s ease;
+            padding: 80px 20px;
 
         }
 
 
-        #intro::before {
+        .hero-content {
 
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background-image:
-
-                radial-gradient(
-                    white 1px,
-                    transparent 1px
-                );
-
-            background-size:
-                70px 70px;
-
-            opacity: 0.18;
+            max-width: 900px;
 
             animation:
-                moveBackground 25s linear infinite;
-
+                entrance
+                1.4s
+                ease;
         }
 
 
-        #intro.hidden {
-
-            opacity: 0;
-
-            visibility: hidden;
-
-        }
-
-
-        .intro-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            width:
-                min(900px, 100%);
-
-            animation:
-                introAppear 2s ease forwards;
-
-        }
-
-
-        .intro-stars {
-
-            font-size:
-                clamp(
-                    1.5rem,
-                    4vw,
-                    2.5rem
-                );
-
-            margin-bottom:
-                25px;
-
-            letter-spacing:
-                20px;
-
-            animation:
-                floatingStars 3s ease-in-out infinite;
-
-        }
-
-
-        .small-text {
-
-            font-size:
-                clamp(
-                    0.85rem,
-                    2vw,
-                    1.15rem
-                );
-
-            color:
-                rgba(255,255,255,0.7);
-
-            margin-bottom:
-                20px;
-
-        }
-
-
-        .intro-content h1 {
-
-            font-size:
-                clamp(
-                    2rem,
-                    6vw,
-                    5rem
-                );
-
-            font-weight:
-                300;
-
-            line-height:
-                1.15;
-
-            margin-bottom:
-                25px;
-
-            text-shadow:
-
-                0 0 20px
-                rgba(255,255,255,0.3),
-
-                0 0 50px
-                rgba(255,100,200,0.2);
-
-        }
-
-
-        .name {
-
-            font-size:
-                clamp(
-                    2rem,
-                    7vw,
-                    4rem
-                );
-
-            font-weight:
-                bold;
-
-            margin-bottom:
-                40px;
-
-            background:
-
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #ff9ecf,
-                    #ffffff,
-                    #dba7ff,
-                    #ffffff
-                );
-
-            background-size:
-                300% 100%;
-
-            -webkit-background-clip:
-                text;
-
-            background-clip:
-                text;
-
-            color:
-                transparent;
-
-            animation:
-                gradientText 5s ease infinite;
-
-        }
-
-
-        #startButton {
-
-            padding:
-                16px 30px;
-
-            min-width:
-                250px;
-
-            border-radius:
-                50px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.35);
-
-            color:
-                white;
-
-            background:
-                rgba(255,255,255,0.08);
-
-            backdrop-filter:
-                blur(12px);
-
-            box-shadow:
-
-                0 0 25px
-                rgba(255,100,180,0.2);
-
-            transition:
-                0.4s ease;
-
-        }
-
-
-        #startButton:hover {
-
-            transform:
-                scale(1.08);
-
-            background:
-                rgba(255,100,180,0.2);
-
-            box-shadow:
-
-                0 0 50px
-                rgba(255,100,180,0.5);
-
-        }
-
-
-        #startButton:active {
-
-            transform:
-                scale(0.96);
-
-        }
-
-
-        /* =================================================
-           ENCABEZADO
-        ================================================== */
-
-        .top-message {
-
-            position: absolute;
-
-            top: 25px;
-
-            left: 50%;
-
-            transform:
-                translateX(-50%);
-
-            width:
-                90%;
-
-            max-width:
-                800px;
-
-            text-align:
-                center;
-
-            z-index:
-                20;
-
-            pointer-events:
-                none;
-
-        }
-
-
-        .top-message span {
-
-            display:
-                block;
-
-            font-size:
-                clamp(
-                    0.75rem,
-                    2vw,
-                    1.3rem
-                );
-
-            letter-spacing:
-                clamp(
-                    1px,
-                    0.5vw,
-                    5px
-                );
-
-            text-shadow:
-
-                0 0 15px
-                rgba(255,255,255,0.8),
-
-                0 0 35px
-                rgba(255,100,200,0.4);
-
-        }
-
-
-        .top-message p {
-
-            margin-top:
-                8px;
-
-            font-size:
-                0.8rem;
-
-            color:
-                rgba(255,255,255,0.55);
-
-        }
-
-
-        /* =================================================
-           CONTROLES
-        ================================================== */
-
-        .controls {
-
-            position:
-                absolute;
-
-            top:
-                25px;
-
-            right:
-                25px;
-
-            z-index:
-                30;
-
-            display:
-                flex;
-
-            gap:
-                10px;
-
-        }
-
-
-        .glass-button {
-
-            padding:
-                10px 15px;
-
-            border-radius:
-                30px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.2);
-
-            color:
-                white;
-
-            background:
-                rgba(10,10,30,0.45);
-
-            backdrop-filter:
-                blur(12px);
-
-            box-shadow:
-                0 5px 20px
-                rgba(0,0,0,0.2);
-
-            transition:
-                0.3s ease;
-
-        }
-
-
-        .glass-button:hover {
-
-            background:
-                rgba(255,255,255,0.15);
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        .glass-button:active {
-
-            transform:
-                scale(0.94);
-
-        }
-
-
-        /* =================================================
-           CONTADOR
-        ================================================== */
-
-        .counter {
-
-            position:
-                absolute;
-
-            bottom:
-                25px;
-
-            left:
-                25px;
-
-            z-index:
-                30;
-
-            padding:
-                10px 17px;
-
-            border-radius:
-                30px;
-
-            background:
-                rgba(10,10,30,0.5);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.15);
-
-            backdrop-filter:
-                blur(12px);
-
-            font-size:
-                0.9rem;
-
-            box-shadow:
-                0 5px 20px
-                rgba(0,0,0,0.2);
-
-        }
-
-
-        #foundMessages {
-
-            color:
-                #ff9ed2;
-
-            font-weight:
-                bold;
-
-        }
-
-
-        /* =================================================
-           INSTRUCCIÓN CENTRAL
-        ================================================== */
-
-        .center-message {
-
-            position:
-                absolute;
-
-            bottom:
-                25px;
-
-            left:
-                50%;
-
-            transform:
-                translateX(-50%);
-
-            z-index:
-                15;
-
-            text-align:
-                center;
-
-            pointer-events:
-                none;
-
-            color:
-                rgba(255,255,255,0.55);
-
-        }
-
-
-        .center-message p {
-
-            font-size:
-                0.8rem;
-
-        }
-
-
-        .center-message span {
-
-            display:
-                block;
-
-            margin-top:
-                5px;
-
-            animation:
-                pulse 2s infinite;
-
-        }
-
-
-        /* =================================================
-           MODALES
-        ================================================== */
-
-        .modal {
-
-            position:
-                fixed;
-
-            inset:
-                0;
-
-            z-index:
-                500;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            padding:
-                20px;
-
-            background:
-                rgba(0,0,10,0.72);
-
-            backdrop-filter:
-                blur(12px);
-
-            opacity:
-                0;
-
-            visibility:
-                hidden;
-
-            transition:
-                opacity 0.5s ease,
-                visibility 0.5s ease;
-
-        }
-
-
-        .modal.show {
-
-            opacity:
-                1;
-
-            visibility:
-                visible;
-
-        }
-
-
-        .modal-content {
-
-            position:
-                relative;
-
-            width:
-                min(600px, 100%);
-
-            max-height:
-                90vh;
-
-            overflow-y:
-                auto;
-
-            padding:
-                50px 40px;
-
-            text-align:
-                center;
-
-            border-radius:
-                25px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.2);
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(35,20,65,0.97),
-                    rgba(10,5,25,0.97)
-                );
-
-            box-shadow:
-
-                0 0 80px
-                rgba(180,70,180,0.35);
-
-            animation:
-                modalAppear 0.6s ease;
-
-        }
-
-
-        .close-button {
-
-            position:
-                absolute;
-
-            top:
-                12px;
-
-            right:
-                18px;
-
-            border:
-                none;
-
-            background:
-                transparent;
-
-            color:
-                white;
-
-            font-size:
-                2rem;
-
-            line-height:
-                1;
-
-            opacity:
-                0.6;
-
-            transition:
-                0.3s;
-
-        }
-
-
-        .close-button:hover {
-
-            opacity:
-                1;
-
-            transform:
-                rotate(90deg);
-
-        }
-
-
-        .modal-star {
-
-            font-size:
-                3rem;
-
-            margin-bottom:
-                20px;
-
-            animation:
-                floatingStars 2s infinite;
-
-        }
-
-
-        .modal-content h2 {
-
-            font-size:
-                clamp(
-                    1.5rem,
-                    4vw,
-                    2rem
-                );
-
-            margin-bottom:
-                25px;
-
-            color:
-                #ffd2ec;
-
-        }
-
-
-        .modal-content p {
-
-            font-size:
-                clamp(
-                    1rem,
-                    2.5vw,
-                    1.2rem
-                );
-
-            line-height:
-                1.8;
-
-            color:
-                rgba(255,255,255,0.86);
-
-        }
-
-
-        .modal-heart {
-
-            margin-top:
-                30px;
-
-            font-size:
-                2rem;
-
-            animation:
-                heartbeat 1.5s infinite;
-
-        }
-
-
-        .help-content p {
-
-            margin-top:
-                18px;
-
-        }
-
-
-        /* =================================================
-           FINAL
-        ================================================== */
-
-        #finalMessage {
-
-            position:
-                fixed;
-
-            inset:
-                0;
-
-            z-index:
-                900;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            text-align:
-                center;
-
-            padding:
-                25px;
-
-            overflow-y:
-                auto;
-
-            background:
-
-                radial-gradient(
-                    circle,
-                    rgba(100,30,100,0.65),
-                    rgba(0,0,10,0.98)
-                );
-
-            opacity:
-                0;
-
-            visibility:
-                hidden;
-
-            transition:
-                opacity 1.5s ease,
-                visibility 1.5s ease;
-
-        }
-
-
-        #finalMessage.show {
-
-            opacity:
-                1;
-
-            visibility:
-                visible;
-
-        }
-
-
-        .final-content {
-
-            width:
-                min(700px, 100%);
-
-            animation:
-                modalAppear 1s ease;
-
-        }
-
-
-        .big-heart {
-
-            font-size:
-                clamp(
-                    4rem,
-                    10vw,
-                    7rem
-                );
-
-            margin-bottom:
-                25px;
-
-            animation:
-                heartbeat 1.5s infinite;
-
-            filter:
-
-                drop-shadow(
-                    0 0 30px
-                    rgba(255,70,150,0.7)
-                );
-
-        }
-
-
-        .final-content h1 {
-
-            font-size:
-                clamp(
-                    1.8rem,
-                    5vw,
-                    4rem
-                );
-
-            line-height:
-                1.2;
-
-            margin-bottom:
-                25px;
-
-        }
-
-
-        .final-content p {
-
-            font-size:
-                clamp(
-                    0.95rem,
-                    2.5vw,
-                    1.2rem
-                );
-
-            color:
-                rgba(255,255,255,0.7);
-
-            margin-bottom:
-                15px;
-
-        }
-
-
-        .final-content h2 {
-
-            font-size:
-                clamp(
-                    1.25rem,
-                    3vw,
-                    2rem
-                );
-
-            color:
-                #ffb1dc;
-
-            line-height:
-                1.5;
-
-            margin-bottom:
-                30px;
-
-        }
-
-
-        .final-signature {
-
-            font-size:
-                1rem;
-
-            line-height:
-                1.8;
-
-            opacity:
-                0.7;
-
-            margin-bottom:
-                30px;
-
-        }
-
-
-        #closeFinal {
-
-            padding:
-                13px 24px;
-
-            border-radius:
-                30px;
-
-            color:
-                white;
-
-            background:
-                rgba(255,255,255,0.1);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.25);
-
-            transition:
-                0.3s;
-
-        }
-
-
-        #closeFinal:hover {
-
-            background:
-                rgba(255,100,180,0.2);
-
-            transform:
-                scale(1.05);
-
-        }
-
-
-        /* =================================================
-           ANIMACIONES
-        ================================================== */
-
-        @keyframes introAppear {
+        @keyframes entrance {
 
             from {
 
-                opacity:
-                    0;
+                opacity: 0;
 
                 transform:
-                    translateY(30px);
+                    translateY(40px);
 
             }
 
             to {
 
-                opacity:
-                    1;
+                opacity: 1;
 
                 transform:
                     translateY(0);
@@ -1116,49 +567,30 @@
         }
 
 
-        @keyframes floatingStars {
+        .eyebrow {
 
-            0%,
-            100% {
+            color: #f7a5c3;
 
-                transform:
-                    translateY(0);
+            text-transform: uppercase;
 
-            }
+            letter-spacing: 5px;
 
-            50% {
+            font-size: .75rem;
 
-                transform:
-                    translateY(-10px);
-
-            }
+            margin-bottom: 25px;
 
         }
 
 
-        @keyframes pulse {
+        .hero-heart {
 
-            0%,
-            100% {
+            font-size:
+                clamp(70px, 15vw, 130px);
 
-                opacity:
-                    0.3;
-
-                transform:
-                    scale(1);
-
-            }
-
-            50% {
-
-                opacity:
-                    1;
-
-                transform:
-                    scale(1.2);
-
-            }
-
+            animation:
+                heartbeat
+                1.5s
+                infinite;
         }
 
 
@@ -1167,507 +599,495 @@
             0%,
             100% {
 
-                transform:
-                    scale(1);
+                transform: scale(1);
 
             }
 
             15% {
 
-                transform:
-                    scale(1.15);
+                transform: scale(1.18);
 
             }
 
             30% {
 
-                transform:
-                    scale(1);
+                transform: scale(1);
 
             }
 
             45% {
 
-                transform:
-                    scale(1.12);
+                transform: scale(1.1);
 
             }
 
         }
 
 
-        @keyframes modalAppear {
+        .hero h1 {
 
-            from {
+            font-size:
+                clamp(2.8rem, 8vw, 6rem);
 
-                opacity:
-                    0;
+            line-height: 1;
 
-                transform:
-                    scale(0.8)
-                    translateY(30px);
+            margin: 20px 0;
 
-            }
+            background:
+                linear-gradient(
+                    90deg,
+                    #fff,
+                    #ffb1ca,
+                    #fff
+                );
+
+            background-size:
+                200% auto;
+
+            -webkit-background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+
+            animation:
+                shine
+                4s
+                linear
+                infinite;
+        }
+
+
+        @keyframes shine {
 
             to {
 
-                opacity:
-                    1;
-
-                transform:
-                    scale(1)
-                    translateY(0);
-
-            }
-
-        }
-
-
-        @keyframes gradientText {
-
-            0% {
-
                 background-position:
-                    0% 50%;
-
-            }
-
-            50% {
-
-                background-position:
-                    100% 50%;
-
-            }
-
-            100% {
-
-                background-position:
-                    0% 50%;
+                    200% center;
 
             }
 
         }
 
 
-        @keyframes moveBackground {
+        .hero-description {
 
-            from {
+            max-width: 720px;
 
-                transform:
-                    translate(0,0);
+            margin: 30px auto;
 
-            }
+            color: #d9c2cf;
 
-            to {
+            font-size: 1.15rem;
 
-                transform:
-                    translate(70px,70px);
-
-            }
+            line-height: 2;
 
         }
 
 
-        /* =================================================
-           TABLET
-        ================================================== */
+        .hero-description strong {
 
-        @media (max-width: 1024px) {
-
-            .controls {
-
-                top:
-                    20px;
-
-                right:
-                    20px;
-
-            }
-
-
-            .top-message {
-
-                top:
-                    20px;
-
-            }
+            color: #ffadc9;
 
         }
 
 
-        /* =================================================
-           CELULAR
-        ================================================== */
+        /* =====================================================
+           BOTÓN
+        ===================================================== */
 
-        @media (max-width: 700px) {
+        .main-button {
 
-            .top-message {
+            display: inline-block;
 
-                top:
-                    15px;
+            margin-top: 20px;
 
-                width:
-                    75%;
+            padding:
+                16px 30px;
 
-            }
+            border-radius: 50px;
 
+            text-decoration: none;
 
-            .top-message span {
+            color: white;
 
-                font-size:
-                    0.7rem;
+            background:
+                linear-gradient(
+                    135deg,
+                    #d84d83,
+                    #a94ed0
+                );
 
-                letter-spacing:
-                    2px;
+            box-shadow:
+                0 10px 40px
+                rgba(210,70,130,.3);
 
-                line-height:
-                    1.4;
-
-            }
-
-
-            .top-message p {
-
-                font-size:
-                    0.65rem;
-
-                margin-top:
-                    4px;
-
-            }
-
-
-            .controls {
-
-                top:
-                    auto;
-
-                right:
-                    12px;
-
-                bottom:
-                    65px;
-
-                flex-direction:
-                    column;
-
-                gap:
-                    7px;
-
-            }
-
-
-            .glass-button {
-
-                min-width:
-                    105px;
-
-                padding:
-                    9px 11px;
-
-                font-size:
-                    0.72rem;
-
-            }
-
-
-            .counter {
-
-                left:
-                    12px;
-
-                bottom:
-                    15px;
-
-                padding:
-                    8px 13px;
-
-                font-size:
-                    0.72rem;
-
-            }
-
-
-            .center-message {
-
-                display:
-                    none;
-
-            }
-
-
-            .modal {
-
-                padding:
-                    15px;
-
-            }
-
-
-            .modal-content {
-
-                width:
-                    100%;
-
-                max-width:
-                    420px;
-
-                max-height:
-                    85vh;
-
-                padding:
-                    40px 22px 28px;
-
-                border-radius:
-                    22px;
-
-            }
-
-
-            .modal-star {
-
-                font-size:
-                    2.5rem;
-
-                margin-bottom:
-                    15px;
-
-            }
-
-
-            .modal-content h2 {
-
-                font-size:
-                    1.4rem;
-
-                margin-bottom:
-                    17px;
-
-            }
-
-
-            .modal-content p {
-
-                font-size:
-                    0.98rem;
-
-                line-height:
-                    1.7;
-
-            }
-
-
-            .modal-heart {
-
-                margin-top:
-                    20px;
-
-                font-size:
-                    1.7rem;
-
-            }
-
-
-            .close-button {
-
-                top:
-                    8px;
-
-                right:
-                    12px;
-
-                font-size:
-                    1.8rem;
-
-            }
-
-
-            .help-content p {
-
-                font-size:
-                    0.92rem;
-
-                line-height:
-                    1.6;
-
-            }
-
-
-            #finalMessage {
-
-                padding:
-                    20px;
-
-            }
-
-
-            .final-content {
-
-                width:
-                    100%;
-
-                max-width:
-                    420px;
-
-            }
-
-
-            .big-heart {
-
-                font-size:
-                    4.5rem;
-
-                margin-bottom:
-                    20px;
-
-            }
-
-
-            .final-content h1 {
-
-                font-size:
-                    1.8rem;
-
-                margin-bottom:
-                    18px;
-
-            }
-
-
-            .final-content p {
-
-                font-size:
-                    0.95rem;
-
-                line-height:
-                    1.6;
-
-            }
-
-
-            .final-content h2 {
-
-                font-size:
-                    1.25rem;
-
-                margin-bottom:
-                    25px;
-
-            }
-
-
-            .final-signature {
-
-                font-size:
-                    0.9rem;
-
-                margin-bottom:
-                    25px;
-
-            }
+            transition: .3s;
 
         }
 
 
-        /* =================================================
-           CELULARES PEQUEÑOS
-        ================================================== */
+        .main-button:hover {
 
-        @media (max-width: 380px) {
+            transform:
+                translateY(-5px);
 
-            .top-message {
-
-                width:
-                    70%;
-
-            }
-
-
-            .top-message span {
-
-                font-size:
-                    0.62rem;
-
-                letter-spacing:
-                    1px;
-
-            }
-
-
-            .controls {
-
-                bottom:
-                    58px;
-
-            }
-
-
-            .glass-button {
-
-                min-width:
-                    90px;
-
-                padding:
-                    8px 9px;
-
-                font-size:
-                    0.65rem;
-
-            }
-
-
-            .counter {
-
-                font-size:
-                    0.68rem;
-
-            }
-
-
-            .modal-content {
-
-                padding:
-                    35px 18px 25px;
-
-            }
-
-
-            .modal-content h2 {
-
-                font-size:
-                    1.2rem;
-
-            }
-
-
-            .modal-content p {
-
-                font-size:
-                    0.88rem;
-
-            }
+            box-shadow:
+                0 15px 50px
+                rgba(210,70,130,.5);
 
         }
 
 
-        /* =================================================
-           PANTALLAS MUY ALTAS
-        ================================================== */
+        /* =====================================================
+           SECCIÓN PÁGINAS
+        ===================================================== */
 
-        @media (min-height: 900px) and (max-width: 700px) {
+        .pages-section {
 
-            .controls {
+            padding:
+                100px 20px;
 
-                bottom:
-                    80px;
+            max-width: 1250px;
+
+            margin: auto;
+
+        }
+
+
+        .section-title {
+
+            text-align: center;
+
+            font-size:
+                clamp(2.3rem, 6vw, 4.5rem);
+
+            color: #ffb0ca;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .section-subtitle {
+
+            text-align: center;
+
+            max-width: 700px;
+
+            margin:
+                0 auto 60px;
+
+            color: #cbb5c2;
+
+            line-height: 1.9;
+
+        }
+
+
+        /* =====================================================
+           GRID
+        ===================================================== */
+
+        .pages-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 25px;
+
+        }
+
+
+        /* =====================================================
+           TARJETAS
+        ===================================================== */
+
+        .page-card {
+
+            position: relative;
+
+            min-height: 330px;
+
+            padding: 35px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.08),
+                    rgba(255,255,255,.025)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            backdrop-filter:
+                blur(15px);
+
+            overflow: hidden;
+
+            transition:
+                .45s
+                cubic-bezier(.2,.8,.2,1);
+
+        }
+
+
+        .page-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border-radius: 50%;
+
+            top: -80px;
+            right: -80px;
+
+            background:
+                rgba(255,120,180,.12);
+
+            transition: .4s;
+
+        }
+
+
+        .page-card:hover {
+
+            transform:
+                translateY(-12px);
+
+            border-color:
+                rgba(255,160,200,.3);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.3);
+
+        }
+
+
+        .page-card:hover::before {
+
+            transform:
+                scale(2);
+
+        }
+
+
+        .card-icon {
+
+            font-size: 60px;
+
+            margin-bottom: 25px;
+
+            display: block;
+
+        }
+
+
+        .card-number {
+
+            font-size: .7rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 3px;
+
+            color: #c99dae;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .page-card h3 {
+
+            font-size: 1.5rem;
+
+            color: #ffd3e1;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .page-card p {
+
+            color: #c9b6c0;
+
+            line-height: 1.7;
+
+            font-size: .95rem;
+
+        }
+
+
+        .card-arrow {
+
+            position: absolute;
+
+            bottom: 25px;
+
+            right: 25px;
+
+            font-size: 25px;
+
+            color: #ff9fbd;
+
+            transition: .3s;
+
+        }
+
+
+        .page-card:hover
+        .card-arrow {
+
+            transform:
+                translateX(7px);
+
+        }
+
+
+        /* =====================================================
+           FRASE FINAL
+        ===================================================== */
+
+        .final-section {
+
+            min-height: 80vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding:
+                100px 20px;
+
+        }
+
+
+        .final-box {
+
+            max-width: 800px;
+
+        }
+
+
+        .final-box .heart {
+
+            font-size: 80px;
+
+            animation:
+                heartbeat
+                1.5s
+                infinite;
+
+        }
+
+
+        .final-box h2 {
+
+            font-size:
+                clamp(2.5rem, 7vw, 5rem);
+
+            color: #ffabc6;
+
+            margin: 20px 0;
+
+        }
+
+
+        .final-box p {
+
+            color: #cdb9c5;
+
+            line-height: 2;
+
+            font-size: 1.1rem;
+
+        }
+
+
+        .signature {
+
+            margin-top: 30px;
+
+            color: #f29bb8;
+
+            font-style: italic;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            color: #8f7582;
+
+            font-size: .8rem;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .menu-button {
+
+                top: 15px;
+
+                left: 15px;
 
             }
 
 
-            .counter {
+            .hero {
 
-                bottom:
-                    25px;
+                padding-top: 100px;
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 3rem;
+
+            }
+
+
+            .page-card {
+
+                min-height: 290px;
 
             }
 
@@ -1682,2347 +1102,860 @@
 
 
     <!-- =====================================================
-         INTRO
-    ====================================================== -->
+         ESTRELLAS
+    ===================================================== -->
 
-    <div id="intro">
+    <div class="stars" id="stars"></div>
 
-        <div class="intro-content">
 
-            <div class="intro-stars">
-                ✦ ✧ ✦
+    <!-- =====================================================
+         BOTÓN HAMBURGUESA
+    ===================================================== -->
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Abrir menú">
+
+        <span class="menu-line line1"></span>
+        <span class="menu-line line2"></span>
+        <span class="menu-line line3"></span>
+
+    </button>
+
+
+    <!-- =====================================================
+         MENÚ
+    ===================================================== -->
+
+    <aside
+        class="side-menu"
+        id="sideMenu">
+
+
+        <div class="menu-title">
+
+            <div class="mini-heart">
+                ❤️
             </div>
 
+            <h2>
+                Mi princesa
+            </h2>
 
-            <p class="small-text">
-                Hay millones de estrellas en el universo...
+            <p>
+                Un pequeño lugar donde guardé
+                todos los detalles que hice para ti.
             </p>
-
-
-            <h1>
-                pero yo solo necesitaba encontrar una.
-            </h1>
-
-
-            <div class="name">
-                Mi Ojitos ❤️
-            </div>
-
-
-            <button id="startButton">
-                Entrar a nuestro universo ✨
-            </button>
 
         </div>
 
+
+        <nav class="menu-links">
+
+
+            <a
+                href="index.html"
+                class="menu-link">
+
+                <span class="menu-icon">
+                    🏠
+                </span>
+
+                <span class="menu-link-text">
+
+                    <span class="menu-link-title">
+                        Inicio
+                    </span>
+
+                    <span class="menu-link-description">
+                        Todas mis páginas para ti
+                    </span>
+
+                </span>
+
+            </a>
+
+
+            <a
+                href="universo.html"
+                class="menu-link">
+
+                <span class="menu-icon">
+                    🌌
+                </span>
+
+                <span class="menu-link-text">
+
+                    <span class="menu-link-title">
+                        Nuestro universo
+                    </span>
+
+                    <span class="menu-link-description">
+                        Estrellas, constelaciones y nosotros
+                    </span>
+
+                </span>
+
+            </a>
+
+
+            <a
+                href="amor.html"
+                class="menu-link">
+
+                <span class="menu-icon">
+                    ❤️
+                </span>
+
+                <span class="menu-link-text">
+
+                    <span class="menu-link-title">
+                        Mi página de amor
+                    </span>
+
+                    <span class="menu-link-description">
+                        Todo lo que siento por ti
+                    </span>
+
+                </span>
+
+            </a>
+
+
+            <a
+                href="apoyo.html"
+                class="menu-link">
+
+                <span class="menu-icon">
+                    🫂
+                </span>
+
+                <span class="menu-link-text">
+
+                    <span class="menu-link-title">
+                        Cuando necesites apoyo
+                    </span>
+
+                    <span class="menu-link-description">
+                        Para esos días difíciles
+                    </span>
+
+                </span>
+
+            </a>
+
+
+            <a
+                href="recuerdos.html"
+                class="menu-link">
+
+                <span class="menu-icon">
+                    💭
+                </span>
+
+                <span class="menu-link-text">
+
+                    <span class="menu-link-title">
+                        Nuestros recuerdos
+                    </span>
+
+                    <span class="menu-link-description">
+                        Momentos para volver a sonreír
+                    </span>
+
+                </span>
+
+            </a>
+
+
+            <a
+                href="carta.html"
+                class="menu-link">
+
+                <span class="menu-icon">
+                    💌
+                </span>
+
+                <span class="menu-link-text">
+
+                    <span class="menu-link-title">
+                        Una carta para ti
+                    </span>
+
+                    <span class="menu-link-description">
+                        Algo que quiero que recuerdes
+                    </span>
+
+                </span>
+
+            </a>
+
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =====================================================
+         OVERLAY
+    ===================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay">
     </div>
 
 
     <!-- =====================================================
-         UNIVERSO
-    ====================================================== -->
+         CONTENIDO
+    ===================================================== -->
 
-    <main id="universe">
-
-
-        <div id="three-container"></div>
-
-
-        <!-- TITULO -->
-
-        <header class="top-message">
-
-            <span>
-                ✨ EL UNIVERSO DE MI OJITOS ✨
-            </span>
-
-            <p>
-                Toca o haz clic en las estrellas...
-            </p>
-
-        </header>
-
-
-        <!-- CONTROLES -->
-
-        <div class="controls">
-
-            <button
-                id="musicButton"
-                class="glass-button"
-            >
-                🎵 Música
-            </button>
-
-
-            <button
-                id="helpButton"
-                class="glass-button"
-            >
-                ✨ Explorar
-            </button>
-
-        </div>
-
-
-        <!-- CONTADOR -->
-
-        <div class="counter">
-
-            <span id="foundMessages">
-                0
-            </span>
-
-            /
-
-            <span id="totalMessages">
-                0
-            </span>
-
-            💌
-
-        </div>
-
-
-        <!-- INSTRUCCIÓN -->
-
-        <div class="center-message">
-
-            <p>
-                Mueve el mouse o desliza el dedo
-            </p>
-
-            <span>
-                ✦
-            </span>
-
-        </div>
+    <main>
 
 
         <!-- =================================================
-             MODAL MENSAJE
-        ================================================== -->
+             INICIO
+        ================================================= -->
 
-        <div
-            id="messageModal"
-            class="modal"
-        >
-
-            <div class="modal-content">
+        <section class="hero">
 
 
-                <button
-                    id="closeModal"
-                    class="close-button"
-                >
-                    ×
-                </button>
+            <div class="hero-content">
 
 
-                <div class="modal-star">
-                    ✨
+                <div class="eyebrow">
+
+                    Un pequeño lugar hecho para ti
+
                 </div>
 
 
-                <h2 id="modalTitle">
-                    Para ti...
-                </h2>
+                <div class="hero-heart">
 
-
-                <p id="modalText">
-                </p>
-
-
-                <div class="modal-heart">
                     ❤️
-                </div>
 
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             AYUDA
-        ================================================== -->
-
-        <div
-            id="helpModal"
-            class="modal"
-        >
-
-            <div class="modal-content help-content">
-
-
-                <button
-                    id="closeHelp"
-                    class="close-button"
-                >
-                    ×
-                </button>
-
-
-                <h2>
-                    🌌 Explora nuestro universo
-                </h2>
-
-
-                <p>
-                    🖱️ En computadora:
-                    mueve el mouse para mirar alrededor.
-                </p>
-
-
-                <p>
-                    📱 En celular:
-                    desliza el dedo para mover el universo.
-                </p>
-
-
-                <p>
-                    ⭐ Toca o haz clic sobre una estrella
-                    brillante para descubrir un mensaje.
-                </p>
-
-
-                <p>
-                    💌 Intenta descubrir todos los mensajes.
-                </p>
-
-
-                <p>
-                    ❤️ Cuando encuentres todos,
-                    algo especial aparecerá...
-                </p>
-
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             FINAL
-        ================================================== -->
-
-        <div
-            id="finalMessage"
-        >
-
-            <div class="final-content">
-
-
-                <div class="big-heart">
-                    ❤️
                 </div>
 
 
                 <h1>
-                    Encontraste todos nuestros mensajes
+
+                    Todas las páginas
+                    <br>
+
+                    de mi princesa
+
                 </h1>
 
 
-                <p>
-                    Entre todos los lugares que existen
-                    en este universo...
+                <p class="hero-description">
+
+                    Hice cada una de estas páginas pensando
+                    en ti.
+
+                    <br>
+                    <br>
+
+                    Para que puedas volver a ellas
+
+                    <strong>
+                        en los momentos que las necesites.
+                    </strong>
+
+                    <br>
+                    <br>
+
+                    Si algún día estás feliz,
+                    triste, cansada, estresada o simplemente
+                    quieres recordar cuánto te quiero...
+
+                    <br>
+
+                    <strong>
+                        aquí siempre tendrás un pequeño
+                        rincón hecho especialmente para ti.
+                    </strong>
+
                 </p>
 
 
-                <h2>
-                    mi lugar favorito siempre será contigo.
-                </h2>
+                <a
+                    href="#pages"
+                    class="main-button">
 
+                    Ver todas mis páginas ❤️
 
-                <div class="final-signature">
-
-                    Con todo mi corazón,<br>
-
-                    para ti, Mi Ojitos ❤️
-
-                </div>
-
-
-                <button
-                    id="closeFinal"
-                >
-                    Volver a explorar ✨
-                </button>
+                </a>
 
 
             </div>
 
-        </div>
+        </section>
+
+
+
+        <!-- =================================================
+             TODAS LAS PÁGINAS
+        ================================================= -->
+
+        <section
+            class="pages-section"
+            id="pages">
+
+
+            <h2 class="section-title">
+
+                Un lugar para cada momento
+
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                No importa cómo te sientas.
+
+                <br>
+
+                Espero que alguna de estas páginas
+                consiga acompañarte, hacerte sonreír
+                o simplemente recordarte lo importante
+                que eres para mí.
+
+            </p>
+
+
+            <div class="pages-grid">
+
+
+                <!-- UNIVERSO -->
+
+                <a
+                    href="universo.html"
+                    class="page-card">
+
+                    <span class="card-icon">
+                        🌌
+                    </span>
+
+                    <div class="card-number">
+                        Página 01
+                    </div>
+
+                    <h3>
+                        Nuestro universo
+                    </h3>
+
+                    <p>
+
+                        Un pequeño universo lleno de
+                        estrellas, constelaciones y
+                        detalles que representan
+                        lo especial que eres para mí.
+
+                    </p>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- AMOR -->
+
+                <a
+                    href="amor.html"
+                    class="page-card">
+
+                    <span class="card-icon">
+                        ❤️
+                    </span>
+
+                    <div class="card-number">
+                        Página 02
+                    </div>
+
+                    <h3>
+                        Todo mi amor
+                    </h3>
+
+                    <p>
+
+                        Una página para recordarte
+                        lo mucho que te quiero y todas
+                        esas cosas que hacen que seas
+                        tan especial para mí.
+
+                    </p>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- APOYO -->
+
+                <a
+                    href="apoyo.html"
+                    class="page-card">
+
+                    <span class="card-icon">
+                        🫂
+                    </span>
+
+                    <div class="card-number">
+                        Página 03
+                    </div>
+
+                    <h3>
+                        Siempre estaré
+                    </h3>
+
+                    <p>
+
+                        Para esos días en los que
+                        necesites llorar, hablar,
+                        desahogarte o simplemente
+                        sentir que alguien está contigo.
+
+                    </p>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- RECUERDOS -->
+
+                <a
+                    href="recuerdos.html"
+                    class="page-card">
+
+                    <span class="card-icon">
+                        💭
+                    </span>
+
+                    <div class="card-number">
+                        Página 04
+                    </div>
+
+                    <h3>
+                        Nuestros recuerdos
+                    </h3>
+
+                    <p>
+
+                        Un lugar para volver a esos
+                        momentos que nos hicieron
+                        reír, sonreír y disfrutar
+                        estar juntos.
+
+                    </p>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- CARTA -->
+
+                <a
+                    href="carta.html"
+                    class="page-card">
+
+                    <span class="card-icon">
+                        💌
+                    </span>
+
+                    <div class="card-number">
+                        Página 05
+                    </div>
+
+                    <h3>
+                        Una carta para ti
+                    </h3>
+
+                    <p>
+
+                        Porque hay cosas que quizá
+                        no siempre sé cómo decirte,
+                        pero sí puedo escribirlas
+                        para que puedas leerlas cuando
+                        quieras.
+
+                    </p>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- NUEVA -->
+
+                <a
+                    href="momentos.html"
+                    class="page-card">
+
+                    <span class="card-icon">
+                        🌷
+                    </span>
+
+                    <div class="card-number">
+                        Página 06
+                    </div>
+
+                    <h3>
+                        Para hacerte sonreír
+                    </h3>
+
+                    <p>
+
+                        Mensajes, pequeñas sorpresas
+                        y palabras bonitas para esos
+                        momentos en los que necesites
+                        una sonrisa.
+
+                    </p>
+
+                    <span class="card-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FRASE FINAL
+        ================================================= -->
+
+        <section class="final-section">
+
+
+            <div class="final-box">
+
+
+                <div class="heart">
+
+                    💗
+
+                </div>
+
+
+                <h2>
+
+                    Y todavía faltan
+                    muchas historias...
+
+                </h2>
+
+
+                <p>
+
+                    Quizá algún día agreguemos más páginas,
+                    más recuerdos, más fotografías,
+                    más canciones y más momentos.
+
+                    <br>
+                    <br>
+
+                    Pero si hay algo que quiero que nunca
+                    cambie es la razón por la que hice
+                    todo esto:
+
+                    <br>
+                    <br>
+
+                    <strong>
+
+                        hacerte saber lo mucho que te quiero.
+
+                    </strong>
+
+                </p>
+
+
+                <div class="signature">
+
+                    Para mi princesa,
+                    mi Ojitos ❤️
+
+                </div>
+
+
+            </div>
+
+        </section>
 
 
     </main>
 
 
     <!-- =====================================================
-         MÚSICA
-    ====================================================== -->
+         FOOTER
+    ===================================================== -->
 
-    <audio
-        id="backgroundMusic"
-        loop
-        preload="auto"
-    >
+    <footer>
 
-        <source
-            src="musica/CUCO - Lo Que Siento.mp3"
-            src="Those Eyes.mp3"
-            type="audio/mpeg"
-        >
+        Hecho con muchísimo cariño ❤️
 
-    </audio>
+        <br>
 
+        Para que siempre tengas un lugar
+        al que puedas volver.
 
-    <!-- =====================================================
-         THREE.JS
-    ====================================================== -->
+    </footer>
 
-    <script type="importmap">
-
-    {
-        "imports": {
-
-            "three":
-            "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js"
-
-        }
-    }
-
-    </script>
 
 
     <!-- =====================================================
          JAVASCRIPT
-    ====================================================== -->
+    ===================================================== -->
 
-    <script type="module">
-
-        import * as THREE from "three";
+    <script>
 
 
-        /* =================================================
-           ELEMENTOS HTML
-        ================================================== */
+        /* =====================================================
+           MENÚ
+        ===================================================== */
 
-        const container =
+        const menuButton =
             document.getElementById(
-                "three-container"
+                "menuButton"
             );
 
 
-        const universe =
+        const sideMenu =
             document.getElementById(
-                "universe"
+                "sideMenu"
             );
 
 
-        const intro =
+        const overlay =
             document.getElementById(
-                "intro"
+                "overlay"
             );
 
 
-        const startButton =
-            document.getElementById(
-                "startButton"
+        function toggleMenu() {
+
+            menuButton.classList.toggle(
+                "active"
             );
 
-
-        const musicButton =
-            document.getElementById(
-                "musicButton"
+            sideMenu.classList.toggle(
+                "open"
             );
 
-
-        const helpButton =
-            document.getElementById(
-                "helpButton"
+            overlay.classList.toggle(
+                "show"
             );
 
-
-        const helpModal =
-            document.getElementById(
-                "helpModal"
-            );
+        }
 
 
-        const closeHelp =
-            document.getElementById(
-                "closeHelp"
-            );
-
-
-        const messageModal =
-            document.getElementById(
-                "messageModal"
-            );
-
-
-        const closeModal =
-            document.getElementById(
-                "closeModal"
-            );
-
-
-        const modalTitle =
-            document.getElementById(
-                "modalTitle"
-            );
-
-
-        const modalText =
-            document.getElementById(
-                "modalText"
-            );
-
-
-        const backgroundMusic =
-            document.getElementById(
-                "backgroundMusic"
-            );
-
-
-        const foundMessagesElement =
-            document.getElementById(
-                "foundMessages"
-            );
-
-
-        const totalMessagesElement =
-            document.getElementById(
-                "totalMessages"
-            );
-
-
-        const finalMessage =
-            document.getElementById(
-                "finalMessage"
-            );
-
-
-        const closeFinal =
-            document.getElementById(
-                "closeFinal"
-            );
-
-
-        /* =================================================
-           ESCENA 3D
-        ================================================== */
-
-        const scene =
-            new THREE.Scene();
-
-
-        scene.background =
-            new THREE.Color(
-                0x02010a
-            );
-
-
-        /* =================================================
-           CÁMARA
-        ================================================== */
-
-        const camera =
-            new THREE.PerspectiveCamera(
-
-                65,
-
-                window.innerWidth /
-                window.innerHeight,
-
-                0.1,
-
-                3000
-
-            );
-
-
-        camera.position.set(
-            0,
-            0,
-            35
+        menuButton.addEventListener(
+            "click",
+            toggleMenu
         );
 
 
-        /* =================================================
-           RENDERER
-        ================================================== */
-
-        const renderer =
-            new THREE.WebGLRenderer({
-
-                antialias:
-                    true,
-
-                alpha:
-                    true
-
-            });
-
-
-        renderer.setPixelRatio(
-
-            Math.min(
-                window.devicePixelRatio,
-                2
-            )
-
+        overlay.addEventListener(
+            "click",
+            toggleMenu
         );
 
 
-        renderer.setSize(
+        /* =====================================================
+           CERRAR MENÚ AL SELECCIONAR UNA PÁGINA
+        ===================================================== */
 
-            window.innerWidth,
-            window.innerHeight
-
-        );
-
-
-        renderer.outputColorSpace =
-            THREE.SRGBColorSpace;
-
-
-        container.appendChild(
-            renderer.domElement
-        );
-
-
-        /* =================================================
-           LUCES
-        ================================================== */
-
-        const ambientLight =
-            new THREE.AmbientLight(
-
-                0xffffff,
-
-                1
-
+        const menuLinks =
+            document.querySelectorAll(
+                ".menu-link"
             );
 
 
-        scene.add(
-            ambientLight
-        );
+        menuLinks.forEach(link => {
 
+            link.addEventListener(
+                "click",
+                () => {
 
-        const pointLight =
-            new THREE.PointLight(
+                    menuButton.classList.remove(
+                        "active"
+                    );
 
-                0xff80c8,
+                    sideMenu.classList.remove(
+                        "open"
+                    );
 
-                8,
+                    overlay.classList.remove(
+                        "show"
+                    );
 
-                100
-
+                }
             );
 
-
-        pointLight.position.set(
-            0,
-            0,
-            0
-        );
+        });
 
 
-        scene.add(
-            pointLight
-        );
+        /* =====================================================
+           ESTRELLAS
+        ===================================================== */
 
-
-        /* =================================================
-           GRUPO DEL UNIVERSO
-        ================================================== */
-
-        const universeGroup =
-            new THREE.Group();
-
-
-        scene.add(
-            universeGroup
-        );
-
-
-        /* =================================================
-           ESTRELLAS DEL ESPACIO
-        ================================================== */
-
-        const isMobile =
-            window.innerWidth <= 700;
-
-
-        const starCount =
-            isMobile
-                ? 3500
-                : 7000;
-
-
-        const starGeometry =
-            new THREE.BufferGeometry();
-
-
-        const starPositions =
-            new Float32Array(
-                starCount * 3
+        const stars =
+            document.getElementById(
+                "stars"
             );
 
 
         for (
             let i = 0;
-            i < starCount;
+            i < 100;
             i++
         ) {
 
-
-            const radius =
-                200 +
-                Math.random() *
-                1000;
-
-
-            const theta =
-                Math.random() *
-                Math.PI *
-                2;
-
-
-            const phi =
-                Math.acos(
-
-                    2 *
-                    Math.random() -
-                    1
-
+            const star =
+                document.createElement(
+                    "div"
                 );
 
 
-            const x =
-                radius *
-                Math.sin(phi) *
-                Math.cos(theta);
+            star.className =
+                "star";
 
 
-            const y =
-                radius *
-                Math.sin(phi) *
-                Math.sin(theta);
+            star.style.left =
+                Math.random() * 100 + "%";
 
 
-            const z =
-                radius *
-                Math.cos(phi);
+            star.style.top =
+                Math.random() * 100 + "%";
 
 
-            starPositions[
-                i * 3
-            ] =
-                x;
+            const size =
+                Math.random() * 3 + 1;
 
 
-            starPositions[
-                i * 3 + 1
-            ] =
-                y;
+            star.style.width =
+                size + "px";
 
 
-            starPositions[
-                i * 3 + 2
-            ] =
-                z;
+            star.style.height =
+                size + "px";
+
+
+            star.style.animationDelay =
+                Math.random() * 3 + "s";
+
+
+            star.style.animationDuration =
+                1.5 +
+                Math.random() * 3 +
+                "s";
+
+
+            stars.appendChild(star);
 
         }
 
 
-        starGeometry.setAttribute(
-
-            "position",
-
-            new THREE.BufferAttribute(
-
-                starPositions,
-
-                3
-
-            )
-
-        );
-
-
-        const starMaterial =
-            new THREE.PointsMaterial({
-
-                color:
-                    0xffffff,
-
-                size:
-                    isMobile
-                        ? 0.7
-                        : 0.8,
-
-                transparent:
-                    true,
-
-                opacity:
-                    0.85,
-
-                sizeAttenuation:
-                    true
-
-            });
-
-
-        const stars =
-            new THREE.Points(
-
-                starGeometry,
-
-                starMaterial
-
-            );
-
-
-        universeGroup.add(
-            stars
-        );
-
-
-        /* =================================================
-           MENSAJES
-        ================================================== */
-
-        const messages = [
-
-
-            {
-
-                title:
-                    "Para ti ❤️",
-
-                text:
-                    "No sé en qué momento te convertiste en alguien tan importante para mí, pero hoy sé que tenerte en mi vida es uno de mis regalos favoritos."
-
-            },
-
-
-            {
-
-                title:
-                    "Cuando tengas un día difícil 🌙",
-
-                text:
-                    "Si algún día sientes que ya no puedes más, ven conmigo. No tienes que explicarme todo. Si necesitas llorar, lloramos. Si necesitas silencio, me quedo contigo. Nunca tendrás que sentir que estás sola."
-
-            },
-
-
-            {
-
-                title:
-                    "Lo que admiro de ti ✨",
-
-                text:
-                    "Admiro tu forma de ser, tu manera de seguir adelante y esa parte de ti que quizá tú no siempre ves, pero que para mí hace que seas una persona increíble."
-
-            },
-
-
-            {
-
-                title:
-                    "Un abrazo para ti 🤍",
-
-                text:
-                    "Si pudiera aparecer frente a ti cada vez que necesitaras un abrazo, créeme que lo haría. Y probablemente me quedaría abrazándote un poquito más de lo necesario."
-
-            },
-
-
-            {
-
-                title:
-                    "Quiero que recuerdes esto 🌌",
-
-                text:
-                    "No tienes que ser perfecta conmigo. Puedes ser tú, con tus días buenos, tus días malos, tus inseguridades, tus sueños y todo aquello que te hace ser quien eres."
-
-            },
-
-
-            {
-
-                title:
-                    "Mi lugar favorito 💗",
-
-                text:
-                    "Entre tantos lugares del mundo, hay uno en el que siempre quisiera estar: cerca de ti."
-
-            },
-
-
-            {
-
-                title:
-                    "Para cuando dudes de ti ⭐",
-
-                text:
-                    "Cuando tú no puedas ver todo lo que vales, déjame recordártelo. Porque hay cosas bonitas en ti que quizá todavía no alcanzas a ver."
-
-            },
-
-
-            {
-
-                title:
-                    "Una promesa 🌹",
-
-                text:
-                    "No puedo prometer que todos los días serán perfectos, pero sí puedo prometer que mientras esté contigo intentaré que nunca te falte alguien que te escuche, te cuide y te recuerde cuánto vales."
-
-            },
-
-
-            {
-
-                title:
-                    "Nuestro pequeño universo 🪐",
-
-                text:
-                    "Quizá este universo solamente exista dentro de una pantalla, pero cada palabra que puse aquí tiene un poquito de lo que siento por ti."
-
-            },
-
-
-            {
-
-                title:
-                    "Mi pensamiento favorito 💫",
-
-                text:
-                    "A veces estoy haciendo cualquier cosa y de repente apareces en mi pensamiento. Y sin darme cuenta, termino sonriendo."
-
-            },
-
-
-            {
-
-                title:
-                    "Si necesitas llorar 🤍",
-
-                text:
-                    "Nunca voy a juzgar tus lágrimas. Si algún día necesitas sacar todo lo que llevas dentro, puedes hacerlo conmigo. No tienes que esconder lo que sientes."
-
-            },
-
-
-            {
-
-                title:
-                    "Quiero conocerte más 🌙",
-
-                text:
-                    "Quiero conocer tus sueños, tus miedos, tus pequeñas costumbres, las cosas que te hacen feliz y hasta esas historias que todavía no me has contado."
-
-            },
-
-
-            {
-
-                title:
-                    "Algo que quiero construir ❤️",
-
-                text:
-                    "No quiero solamente coleccionar momentos bonitos contigo. Quiero construir recuerdos que algún día podamos mirar atrás y decir: qué bonito fue vivir todo esto juntos."
-
-            },
-
-
-            {
-
-                title:
-                    "Si alguna vez te sientes sola ✨",
-
-                text:
-                    "Mira esta estrella y recuerda que, aunque no pueda estar físicamente a tu lado en cada momento, siempre habrá alguien que quiere verte bien."
-
-            },
-
-
-            {
-
-                title:
-                    "La última estrella 💖",
-
-                text:
-                    "De todas las estrellas que existen, yo elegiría encontrarte a ti una y otra vez."
-
-            }
+        /* =====================================================
+           CORAZONES
+        ===================================================== */
+
+        const heartSymbols = [
+
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "✨"
 
         ];
 
 
-        totalMessagesElement.textContent =
-            messages.length;
-
-
-        /* =================================================
-           ESTRELLAS INTERACTIVAS
-        ================================================== */
-
-        let foundMessages =
-            0;
-
-
-        const discovered =
-            new Set();
-
-
-        const interactiveStars =
-            [];
-
-
-        messages.forEach(
-
-            (message, index) => {
-
-
-                const geometry =
-                    new THREE.SphereGeometry(
-
-                        isMobile
-                            ? 0.45
-                            : 0.35,
-
-                        20,
-
-                        20
-
-                    );
-
-
-                const material =
-                    new THREE.MeshBasicMaterial({
-
-                        color:
-                            0xffc7e8
-
-                    });
-
-
-                const star =
-                    new THREE.Mesh(
-
-                        geometry,
-
-                        material
-
-                    );
-
-
-                const radius =
-                    15 +
-                    Math.random() *
-                    30;
-
-
-                const angle =
-                    Math.random() *
-                    Math.PI *
-                    2;
-
-
-                const vertical =
-                    -15 +
-                    Math.random() *
-                    30;
-
-
-                star.position.set(
-
-                    Math.cos(angle) *
-                    radius,
-
-                    vertical,
-
-                    Math.sin(angle) *
-                    radius
-
-                );
-
-
-                star.userData = {
-
-                    index:
-                        index,
-
-                    message:
-                        message
-
-                };
-
-
-                universeGroup.add(
-                    star
-                );
-
-
-                interactiveStars.push(
-                    star
-                );
-
-
-                /* AURA */
-
-                const glowGeometry =
-                    new THREE.SphereGeometry(
-
-                        0.8,
-
-                        16,
-
-                        16
-
-                    );
-
-
-                const glowMaterial =
-                    new THREE.MeshBasicMaterial({
-
-                        color:
-                            0xff7fc4,
-
-                        transparent:
-                            true,
-
-                        opacity:
-                            0.15
-
-                    });
-
-
-                const glow =
-                    new THREE.Mesh(
-
-                        glowGeometry,
-
-                        glowMaterial
-
-                    );
-
-
-                star.add(
-                    glow
-                );
-
-            }
-
-        );
-
-
-        /* =================================================
-           PLANETAS
-        ================================================== */
-
-        function createPlanet(
-
-            radius,
-            color,
-            position
-
-        ) {
-
-
-            const geometry =
-                new THREE.SphereGeometry(
-
-                    radius,
-
-                    40,
-
-                    40
-
-                );
-
-
-            const material =
-                new THREE.MeshStandardMaterial({
-
-                    color:
-                        color,
-
-                    roughness:
-                        0.8,
-
-                    metalness:
-                        0.1
-
-                });
-
-
-            const planet =
-                new THREE.Mesh(
-
-                    geometry,
-
-                    material
-
-                );
-
-
-            planet.position.copy(
-                position
-            );
-
-
-            universeGroup.add(
-                planet
-            );
-
-
-            return planet;
-
-        }
-
-
-        const planet1 =
-            createPlanet(
-
-                isMobile
-                    ? 2.2
-                    : 3,
-
-                0x5b286f,
-
-                new THREE.Vector3(
-
-                    -18,
-                    7,
-                    -25
-
-                )
-
-            );
-
-
-        const planet2 =
-            createPlanet(
-
-                isMobile
-                    ? 1.6
-                    : 2,
-
-                0x312b78,
-
-                new THREE.Vector3(
-
-                    20,
-                    -10,
-                    -15
-
-                )
-
-            );
-
-
-        /* =================================================
-           ANILLO
-        ================================================== */
-
-        function addRing(
-
-            planet,
-            inner,
-            outer
-
-        ) {
-
-
-            const ringGeometry =
-                new THREE.RingGeometry(
-
-                    inner,
-                    outer,
-                    64
-
-                );
-
-
-            const ringMaterial =
-                new THREE.MeshBasicMaterial({
-
-                    color:
-                        0xffa8dc,
-
-                    side:
-                        THREE.DoubleSide,
-
-                    transparent:
-                        true,
-
-                    opacity:
-                        0.45
-
-                });
-
-
-            const ring =
-                new THREE.Mesh(
-
-                    ringGeometry,
-
-                    ringMaterial
-
-                );
-
-
-            ring.rotation.x =
-                Math.PI / 2.5;
-
-
-            planet.add(
-                ring
-            );
-
-        }
-
-
-        addRing(
-            planet1,
-            3.8,
-            5.2
-        );
-
-
-        /* =================================================
-           CORAZÓN 3D
-        ================================================== */
-
-        function createHeart() {
-
-
-            const shape =
-                new THREE.Shape();
-
-
-            shape.moveTo(
-                5,
-                5
-            );
-
-
-            shape.bezierCurveTo(
-
-                5,
-                5,
-
-                4,
-                0,
-
-                0,
-                0
-
-            );
-
-
-            shape.bezierCurveTo(
-
-                -6,
-                0,
-
-                -6,
-                7,
-
-                -6,
-                7
-
-            );
-
-
-            shape.bezierCurveTo(
-
-                -6,
-                11,
-
-                -2,
-                15,
-
-                5,
-                19
-
-            );
-
-
-            shape.bezierCurveTo(
-
-                12,
-                15,
-
-                16,
-                11,
-
-                16,
-                7
-
-            );
-
-
-            shape.bezierCurveTo(
-
-                16,
-                7,
-
-                16,
-                0,
-
-                10,
-                0
-
-            );
-
-
-            shape.bezierCurveTo(
-
-                6,
-                0,
-
-                5,
-                5,
-
-                5,
-                5
-
-            );
-
-
-            const geometry =
-                new THREE.ExtrudeGeometry(
-
-                    shape,
-
-                    {
-
-                        depth:
-                            2,
-
-                        bevelEnabled:
-                            true,
-
-                        bevelSegments:
-                            5,
-
-                        bevelSize:
-                            0.7,
-
-                        bevelThickness:
-                            0.7
-
-                    }
-
-                );
-
-
-            geometry.center();
-
-
-            const material =
-                new THREE.MeshStandardMaterial({
-
-                    color:
-                        0xff3d91,
-
-                    emissive:
-                        0x8f164f,
-
-                    emissiveIntensity:
-                        1.5,
-
-                    metalness:
-                        0.2,
-
-                    roughness:
-                        0.3
-
-                });
-
+        function createFloatingHeart() {
 
             const heart =
-                new THREE.Mesh(
-
-                    geometry,
-
-                    material
-
+                document.createElement(
+                    "div"
                 );
 
 
-            const heartScale =
-                isMobile
-                    ? 0.28
-                    : 0.35;
+            heart.className =
+                "floating-heart";
 
 
-            heart.scale.set(
-
-                heartScale,
-                heartScale,
-                heartScale
-
-            );
-
-
-            heart.rotation.z =
-                Math.PI;
+            heart.textContent =
+                heartSymbols[
+                    Math.floor(
+                        Math.random() *
+                        heartSymbols.length
+                    )
+                ];
 
 
-            universeGroup.add(
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+
+            heart.style.fontSize =
+                12 +
+                Math.random() * 20 +
+                "px";
+
+
+            heart.style.animationDuration =
+                6 +
+                Math.random() * 7 +
+                "s";
+
+
+            document.body.appendChild(
                 heart
             );
 
 
-            return heart;
+            setTimeout(
+                () => {
 
-        }
+                    heart.remove();
 
-
-        const heart =
-            createHeart();
-
-
-        /* =================================================
-           LUZ DEL CORAZÓN
-        ================================================== */
-
-        const heartLight =
-            new THREE.PointLight(
-
-                0xff3d91,
-
-                12,
-
-                35
-
-            );
-
-
-        heartLight.position.set(
-
-            0,
-            0,
-            2
-
-        );
-
-
-        universeGroup.add(
-            heartLight
-        );
-
-
-        /* =================================================
-           RAYCASTER
-        ================================================== */
-
-        const raycaster =
-            new THREE.Raycaster();
-
-
-        const mouse =
-            new THREE.Vector2();
-
-
-        /* =================================================
-           MOVIMIENTO
-        ================================================== */
-
-        let targetRotationX =
-            0;
-
-
-        let targetRotationY =
-            0;
-
-
-        let currentRotationX =
-            0;
-
-
-        let currentRotationY =
-            0;
-
-
-        window.addEventListener(
-
-            "mousemove",
-
-            (event) => {
-
-
-                mouse.x =
-
-                    (event.clientX /
-                    window.innerWidth)
-                    * 2 - 1;
-
-
-                mouse.y =
-
-                    -(event.clientY /
-                    window.innerHeight)
-                    * 2 + 1;
-
-
-                targetRotationY =
-                    mouse.x * 0.35;
-
-
-                targetRotationX =
-                    mouse.y * 0.2;
-
-            }
-
-        );
-
-
-        /* =================================================
-           TOQUE
-        ================================================== */
-
-        let touchStartX =
-            0;
-
-
-        let touchStartY =
-            0;
-
-
-        let lastTouchX =
-            0;
-
-
-        let lastTouchY =
-            0;
-
-
-        let touchMoved =
-            false;
-
-
-        window.addEventListener(
-
-            "touchstart",
-
-            (event) => {
-
-
-                if (
-                    event.touches.length !== 1
-                ) {
-                    return;
-                }
-
-
-                touchStartX =
-                    event.touches[0].clientX;
-
-
-                touchStartY =
-                    event.touches[0].clientY;
-
-
-                lastTouchX =
-                    touchStartX;
-
-
-                lastTouchY =
-                    touchStartY;
-
-
-                touchMoved =
-                    false;
-
-            },
-
-            {
-                passive:
-                    true
-            }
-
-        );
-
-
-        window.addEventListener(
-
-            "touchmove",
-
-            (event) => {
-
-
-                if (
-                    event.touches.length !== 1
-                ) {
-                    return;
-                }
-
-
-                const currentX =
-                    event.touches[0].clientX;
-
-
-                const currentY =
-                    event.touches[0].clientY;
-
-
-                const differenceX =
-                    currentX -
-                    lastTouchX;
-
-
-                const differenceY =
-                    currentY -
-                    lastTouchY;
-
-
-                if (
-
-                    Math.abs(
-                        currentX -
-                        touchStartX
-                    ) > 8 ||
-
-                    Math.abs(
-                        currentY -
-                        touchStartY
-                    ) > 8
-
-                ) {
-
-                    touchMoved =
-                        true;
-
-                }
-
-
-                universeGroup.rotation.y +=
-                    differenceX * 0.004;
-
-
-                universeGroup.rotation.x +=
-                    differenceY * 0.002;
-
-
-                lastTouchX =
-                    currentX;
-
-
-                lastTouchY =
-                    currentY;
-
-            },
-
-            {
-                passive:
-                    true
-            }
-
-        );
-
-
-        /* =================================================
-           FUNCIÓN PARA DETECTAR ESTRELLAS
-        ================================================== */
-
-        function checkStarClick(
-
-            clientX,
-            clientY
-
-        ) {
-
-
-            mouse.x =
-
-                (clientX /
-                window.innerWidth)
-                * 2 - 1;
-
-
-            mouse.y =
-
-                -(clientY /
-                window.innerHeight)
-                * 2 + 1;
-
-
-            raycaster.setFromCamera(
-
-                mouse,
-
-                camera
-
-            );
-
-
-            const intersections =
-                raycaster.intersectObjects(
-
-                    interactiveStars
-
-                );
-
-
-            if (
-                intersections.length === 0
-            ) {
-
-                return;
-
-            }
-
-
-            const star =
-                intersections[0].object;
-
-
-            openMessage(
-
-                star.userData.index,
-
-                star.userData.message
-
+                },
+                14000
             );
 
         }
 
 
-        /* =================================================
-           CLICK PC
-        ================================================== */
-
-        window.addEventListener(
-
-            "click",
-
-            (event) => {
-
-
-                if (
-                    touchMoved
-                ) {
-                    return;
-                }
-
-
-                checkStarClick(
-
-                    event.clientX,
-
-                    event.clientY
-
-                );
-
-            }
-
+        setInterval(
+            createFloatingHeart,
+            1000
         );
 
-
-        /* =================================================
-           TOQUE CELULAR
-        ================================================== */
-
-        window.addEventListener(
-
-            "touchend",
-
-            (event) => {
-
-
-                if (
-                    touchMoved
-                ) {
-                    return;
-                }
-
-
-                if (
-                    event.changedTouches.length !== 1
-                ) {
-                    return;
-                }
-
-
-                const touch =
-                    event.changedTouches[0];
-
-
-                checkStarClick(
-
-                    touch.clientX,
-
-                    touch.clientY
-
-                );
-
-            },
-
-            {
-                passive:
-                    true
-            }
-
-        );
-
-
-        /* =================================================
-           ABRIR MENSAJE
-        ================================================== */
-
-        function openMessage(
-
-            index,
-            message
-
-        ) {
-
-
-            modalTitle.textContent =
-                message.title;
-
-
-            modalText.textContent =
-                message.text;
-
-
-            messageModal.classList.add(
-                "show"
-            );
-
-
-            if (
-                !discovered.has(index)
-            ) {
-
-
-                discovered.add(
-                    index
-                );
-
-
-                foundMessages++;
-
-
-                foundMessagesElement.textContent =
-                    foundMessages;
-
-
-                if (
-
-                    foundMessages ===
-                    messages.length
-
-                ) {
-
-
-                    setTimeout(
-
-                        showFinalMessage,
-
-                        1500
-
-                    );
-
-                }
-
-            }
-
-        }
-
-
-        /* =================================================
-           CERRAR MENSAJE
-        ================================================== */
-
-        closeModal.addEventListener(
-
-            "click",
-
-            () => {
-
-                messageModal.classList.remove(
-                    "show"
-                );
-
-            }
-
-        );
-
-
-        messageModal.addEventListener(
-
-            "click",
-
-            (event) => {
-
-
-                if (
-                    event.target ===
-                    messageModal
-                ) {
-
-                    messageModal.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-
-        );
-
-
-        /* =================================================
-           AYUDA
-        ================================================== */
-
-        helpButton.addEventListener(
-
-            "click",
-
-            () => {
-
-                helpModal.classList.add(
-                    "show"
-                );
-
-            }
-
-        );
-
-
-        closeHelp.addEventListener(
-
-            "click",
-
-            () => {
-
-                helpModal.classList.remove(
-                    "show"
-                );
-
-            }
-
-        );
-
-
-        helpModal.addEventListener(
-
-            "click",
-
-            (event) => {
-
-
-                if (
-                    event.target ===
-                    helpModal
-                ) {
-
-                    helpModal.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-
-        );
-
-
-        /* =================================================
-           MÚSICA
-        ================================================== */
-
-        let musicPlaying =
-            false;
-
-
-        musicButton.addEventListener(
-
-            "click",
-
-            async () => {
-
-
-                try {
-
-
-                    if (
-                        !musicPlaying
-                    ) {
-
-
-                        await
-                            backgroundMusic.play();
-
-
-                        musicPlaying =
-                            true;
-
-
-                        musicButton.textContent =
-                            "⏸️ Música";
-
-
-                    }
-
-                    else {
-
-
-                        backgroundMusic.pause();
-
-
-                        musicPlaying =
-                            false;
-
-
-                        musicButton.textContent =
-                            "🎵 Música";
-
-                    }
-
-
-                }
-
-                catch (error) {
-
-
-                    console.log(
-                        "No se pudo reproducir la música.",
-                        error
-                    );
-
-                }
-
-            }
-
-        );
-
-
-        /* =================================================
-           INICIAR UNIVERSO
-        ================================================== */
-
-        startButton.addEventListener(
-
-            "click",
-
-            async () => {
-
-
-                intro.classList.add(
-                    "hidden"
-                );
-
-
-                universe.classList.add(
-                    "active"
-                );
-
-
-                try {
-
-
-                    await
-                        backgroundMusic.play();
-
-
-                    musicPlaying =
-                        true;
-
-
-                    musicButton.textContent =
-                        "⏸️ Música";
-
-
-                }
-
-                catch (error) {
-
-
-                    console.log(
-                        "El navegador requiere interacción para reproducir la música."
-                    );
-
-                }
-
-            }
-
-        );
-
-
-        /* =================================================
-           FINAL
-        ================================================== */
-
-        function showFinalMessage() {
-
-            finalMessage.classList.add(
-                "show"
-            );
-
-        }
-
-
-        closeFinal.addEventListener(
-
-            "click",
-
-            () => {
-
-                finalMessage.classList.remove(
-                    "show"
-                );
-
-            }
-
-        );
-
-
-        /* =================================================
-           ANIMACIÓN
-        ================================================== */
-
-        const clock =
-            new THREE.Clock();
-
-
-        function animate() {
-
-
-            requestAnimationFrame(
-                animate
-            );
-
-
-            const elapsed =
-                clock.getElapsedTime();
-
-
-            /* ROTACIÓN AUTOMÁTICA */
-
-            universeGroup.rotation.y +=
-                0.0008;
-
-
-            /* MOVIMIENTO SUAVE DEL MOUSE */
-
-            currentRotationX +=
-
-                (
-                    targetRotationX -
-                    currentRotationX
-                ) * 0.02;
-
-
-            currentRotationY +=
-
-                (
-                    targetRotationY -
-                    currentRotationY
-                ) * 0.02;
-
-
-            universeGroup.rotation.x +=
-                currentRotationX * 0.002;
-
-
-            universeGroup.rotation.y +=
-                currentRotationY * 0.002;
-
-
-            /* ESTRELLAS */
-
-            stars.rotation.y =
-                elapsed * 0.003;
-
-
-            stars.rotation.x =
-                Math.sin(
-                    elapsed * 0.05
-                ) * 0.05;
-
-
-            /* ESTRELLAS INTERACTIVAS */
-
-            interactiveStars.forEach(
-
-                (star, index) => {
-
-
-                    const pulse =
-
-                        1 +
-                        Math.sin(
-                            elapsed * 2 +
-                            index
-                        ) * 0.25;
-
-
-                    star.scale.set(
-
-                        pulse,
-                        pulse,
-                        pulse
-
-                    );
-
-                }
-
-            );
-
-
-            /* PLANETAS */
-
-            planet1.rotation.y +=
-                0.002;
-
-
-            planet2.rotation.y +=
-                0.0015;
-
-
-            /* CORAZÓN */
-
-            const heartbeat =
-
-                1 +
-                Math.sin(
-                    elapsed * 3
-                ) * 0.05;
-
-
-            const baseScale =
-                isMobile
-                    ? 0.28
-                    : 0.35;
-
-
-            heart.scale.set(
-
-                baseScale *
-                heartbeat,
-
-                baseScale *
-                heartbeat,
-
-                baseScale *
-                heartbeat
-
-            );
-
-
-            heart.rotation.y =
-                elapsed * 0.4;
-
-
-            /* RENDER */
-
-            renderer.render(
-
-                scene,
-
-                camera
-
-            );
-
-        }
-
-
-        animate();
-
-
-        /* =================================================
-           RESIZE
-        ================================================== */
-
-        window.addEventListener(
-
-            "resize",
-
-            () => {
-
-
-                camera.aspect =
-
-                    window.innerWidth /
-                    window.innerHeight;
-
-
-                camera.updateProjectionMatrix();
-
-
-                renderer.setSize(
-
-                    window.innerWidth,
-
-                    window.innerHeight
-
-                );
-
-
-                renderer.setPixelRatio(
-
-                    Math.min(
-                        window.devicePixelRatio,
-                        2
-                    )
-
-                );
-
-            }
-
-        );
-
-
-        /* =================================================
-           ESCAPE
-        ================================================== */
-
-        window.addEventListener(
-
-            "keydown",
-
-            (event) => {
-
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-
-                    messageModal.classList.remove(
-                        "show"
-                    );
-
-
-                    helpModal.classList.remove(
-                        "show"
-                    );
-
-
-                    finalMessage.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-
-        );
 
     </script>
 
 </body>
+
+</html>
