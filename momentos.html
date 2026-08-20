@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Nuestros Momentos ❤️</title>
+
+
+    <style>
+
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            background:
+                #0b0710;
+
+            color: #fff;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =====================================================
+           FONDO
+        ===================================================== */
+
+        .background {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -10;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 111, 168, 0.12),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(150, 90, 255, 0.10),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #08050c,
+                    #130914,
+                    #08050d
+                );
+
+        }
+
+
+        /* =====================================================
+           ESTRELLAS
+        ===================================================== */
+
+        .stars {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -5;
+
+            pointer-events: none;
+
+        }
+
+
+        .star {
+
+            position: absolute;
+
+            width: 2px;
+
+            height: 2px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            opacity: .5;
+
+            animation:
+                twinkle
+                3s
+                infinite
+                ease-in-out;
+
+        }
+
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+
+                opacity: .15;
+
+                transform: scale(.6);
+
+            }
+
+            50% {
+
+                opacity: 1;
+
+                transform: scale(1.4);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CORAZONES FLOTANTES
+        ===================================================== */
+
+        .heart {
+
+            position: fixed;
+
+            bottom: -40px;
+
+            pointer-events: none;
+
+            z-index: 2;
+
+            animation:
+                floatingHeart
+                linear
+                forwards;
+
+        }
+
+
+        @keyframes floatingHeart {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+
+            }
+
+            10% {
+
+                opacity: .8;
+
+            }
+
+            100% {
+
+                transform:
+                    translateY(-110vh)
+                    translateX(100px)
+                    rotate(360deg);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           BOTÓN DE MÚSICA
+        ===================================================== */
+
+        .music-button {
+
+            position: fixed;
+
+            right: 25px;
+
+            top: 25px;
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.25);
+
+            background:
+                rgba(255,255,255,.08);
+
+            backdrop-filter:
+                blur(15px);
+
+            color: white;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            z-index: 1000;
+
+            transition: .3s;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,.3);
+
+        }
+
+
+        .music-button:hover {
+
+            transform: scale(1.1);
+
+            background:
+                rgba(255,100,160,.18);
+
+        }
+
+
+        .music-button.playing {
+
+            animation:
+                musicPulse
+                1.5s
+                infinite;
+
+        }
+
+
+        @keyframes musicPulse {
+
+            0%,
+            100% {
+
+                box-shadow:
+                    0 0 0
+                    rgba(255,100,160,0);
+
+            }
+
+            50% {
+
+                box-shadow:
+                    0 0 30px
+                    rgba(255,100,160,.5);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           PORTADA
+        ===================================================== */
+
+        .cover {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+        }
+
+
+        .cover-content {
+
+            max-width: 850px;
+
+            animation:
+                coverEntrance
+                1.5s
+                ease;
+
+        }
+
+
+        @keyframes coverEntrance {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(40px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        .small-title {
+
+            color: #e9a4bb;
+
+            text-transform: uppercase;
+
+            letter-spacing: 6px;
+
+            font-size: .75rem;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .cover-heart {
+
+            font-size:
+                clamp(70px, 15vw, 130px);
+
+            animation:
+                heartbeat
+                1.7s
+                infinite;
+
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+
+                transform: scale(1);
+
+            }
+
+            15% {
+
+                transform: scale(1.16);
+
+            }
+
+            30% {
+
+                transform: scale(1);
+
+            }
+
+            45% {
+
+                transform: scale(1.08);
+
+            }
+
+        }
+
+
+        .cover h1 {
+
+            font-size:
+                clamp(3rem, 9vw, 7rem);
+
+            line-height: 1;
+
+            margin: 25px 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #ffb3ca,
+                    #ffffff
+                );
+
+            background-size:
+                200% auto;
+
+            -webkit-background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+
+            animation:
+                shine
+                5s
+                linear
+                infinite;
+
+        }
+
+
+        @keyframes shine {
+
+            to {
+
+                background-position:
+                    200% center;
+
+            }
+
+        }
+
+
+        .cover p {
+
+            max-width: 680px;
+
+            margin: auto;
+
+            color: #cdbac5;
+
+            line-height: 2;
+
+            font-size: 1.1rem;
+
+        }
+
+
+        .start-button {
+
+            display: inline-block;
+
+            margin-top: 40px;
+
+            padding:
+                16px 30px;
+
+            border-radius: 50px;
+
+            color: white;
+
+            text-decoration: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d64e84,
+                    #9e4ec7
+                );
+
+            box-shadow:
+                0 10px 40px
+                rgba(210,70,130,.3);
+
+            transition: .3s;
+
+        }
+
+
+        .start-button:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 15px 50px
+                rgba(210,70,130,.5);
+
+        }
+
+
+        /* =====================================================
+           CAPÍTULOS
+        ===================================================== */
+
+        .chapter {
+
+            min-height: 100vh;
+
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding:
+                120px 25px;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .chapter-content {
+
+            width: 100%;
+
+        }
+
+
+        .chapter-label {
+
+            color: #e99db8;
+
+            text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-size: .7rem;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .chapter-title {
+
+            font-size:
+                clamp(2.5rem, 6vw, 5rem);
+
+            color: #ffd1df;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .chapter-text {
+
+            color: #cbb9c2;
+
+            line-height: 2;
+
+            font-size: 1.08rem;
+
+            max-width: 700px;
+
+        }
+
+
+        .chapter-text strong {
+
+            color: #ffabc6;
+
+        }
+
+
+        /* =====================================================
+           FOTOS
+        ===================================================== */
+
+        .photo-grid {
+
+            margin-top: 60px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(220px, 1fr)
+                );
+
+            gap: 22px;
+
+        }
+
+
+        .photo {
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,.05);
+
+            border:
+                1px solid
+                rgba(255,255,255,.1);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.3);
+
+            transform:
+                rotate(
+                    calc(
+                        (var(--rotation))
+                    )
+                );
+
+            transition:
+                .5s
+                cubic-bezier(.2,.8,.2,1);
+
+        }
+
+
+        .photo:nth-child(even) {
+
+            --rotation: 1deg;
+
+        }
+
+
+        .photo:nth-child(odd) {
+
+            --rotation: -1deg;
+
+        }
+
+
+        .photo:hover {
+
+            transform:
+                rotate(0deg)
+                scale(1.04)
+                translateY(-8px);
+
+            z-index: 5;
+
+        }
+
+
+        .photo img {
+
+            width: 100%;
+
+            height: 330px;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: .5s;
+
+        }
+
+
+        .photo:hover img {
+
+            transform: scale(1.05);
+
+        }
+
+
+        .photo-caption {
+
+            padding:
+                15px;
+
+            background:
+                rgba(20,10,20,.9);
+
+            color: #e8d1db;
+
+            text-align: center;
+
+            font-style: italic;
+
+            font-size: .9rem;
+
+        }
+
+
+        /* =====================================================
+           SECCIÓN ESPECIAL
+        ===================================================== */
+
+        .special {
+
+            max-width: 950px;
+
+            margin: 80px auto;
+
+            padding:
+                70px 30px;
+
+            text-align: center;
+
+            border-radius: 35px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.08),
+                    rgba(255,255,255,.025)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            backdrop-filter:
+                blur(15px);
+
+        }
+
+
+        .special-icon {
+
+            font-size: 70px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .special h2 {
+
+            font-size:
+                clamp(2rem, 5vw, 4rem);
+
+            color: #ffb1c9;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .special p {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #ccb8c2;
+
+            line-height: 2;
+
+        }
+
+
+        /* =====================================================
+           FOTO GRANDE
+        ===================================================== */
+
+        .hero-photo {
+
+            margin-top: 60px;
+
+            position: relative;
+
+            max-width: 850px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+        }
+
+
+        .hero-photo img {
+
+            width: 100%;
+
+            max-height: 650px;
+
+            object-fit: cover;
+
+            border-radius: 30px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.5);
+
+        }
+
+
+        .hero-photo-caption {
+
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #e9cbd6;
+
+            font-style: italic;
+
+        }
+
+
+        /* =====================================================
+           CARTA FINAL
+        ===================================================== */
+
+        .letter-section {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                120px 20px;
+
+        }
+
+
+        .letter {
+
+            max-width: 800px;
+
+            padding:
+                60px 45px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,.06);
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            box-shadow:
+                0 30px 100px
+                rgba(0,0,0,.3);
+
+            backdrop-filter:
+                blur(15px);
+
+            text-align: center;
+
+        }
+
+
+        .letter h2 {
+
+            color: #ffadc7;
+
+            font-size:
+                clamp(2.5rem, 6vw, 4.5rem);
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .letter p {
+
+            color: #d0bdc7;
+
+            line-height: 2;
+
+            font-size: 1.08rem;
+
+        }
+
+
+        .signature {
+
+            margin-top: 35px;
+
+            color: #f2a1ba;
+
+            font-style: italic;
+
+            font-size: 1.2rem;
+
+        }
+
+
+        /* =====================================================
+           BOTÓN VOLVER
+        ===================================================== */
+
+        .back-button {
+
+            display: inline-block;
+
+            margin-top: 40px;
+
+            padding:
+                13px 25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.2);
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            color: #f5dce5;
+
+            transition: .3s;
+
+        }
+
+
+        .back-button:hover {
+
+            background:
+                rgba(255,255,255,.08);
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding:
+                50px 20px;
+
+            color: #806b77;
+
+            font-size: .8rem;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .music-button {
+
+                width: 52px;
+
+                height: 52px;
+
+                right: 15px;
+
+                top: 15px;
+
+            }
+
+
+            .chapter {
+
+                padding:
+                    90px 18px;
+
+            }
+
+
+            .photo img {
+
+                height: 280px;
+
+            }
+
+
+            .letter {
+
+                padding:
+                    40px 22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         FONDO
+    ===================================================== -->
+
+    <div class="background"></div>
+
+    <div
+        class="stars"
+        id="stars">
+    </div>
+
+
+    <!-- =====================================================
+         MÚSICA
+    ===================================================== -->
+
+    <button
+        class="music-button"
+        id="musicButton"
+        onclick="toggleMusic()"
+        title="Reproducir música">
+
+        ♪
+
+    </button>
+
+
+    <audio
+        id="music"
+        loop>
+
+        <source
+            src="Carin Leon - Desde Que Te Tengo.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+
+    <!-- =====================================================
+         PORTADA
+    ===================================================== -->
+
+    <section class="cover">
+
+
+        <div class="cover-content">
+
+
+            <div class="small-title">
+
+                Una historia que seguimos escribiendo
+
+            </div>
+
+
+            <div class="cover-heart">
+
+                ❤️
+
+            </div>
+
+
+            <h1>
+
+                Nuestros<br>
+                momentos
+
+            </h1>
+
+
+            <p>
+
+                Algunas fotografías duran solamente
+                unos segundos...
+
+                <br><br>
+
+                pero los recuerdos que guardamos
+                detrás de ellas pueden quedarse
+                para toda la vida.
+
+                <br><br>
+
+                Este pequeño libro es para guardar
+                algunos de esos momentos contigo.
+
+            </p>
+
+
+            <a
+                href="#capitulo1"
+                class="start-button">
+
+                Comenzar nuestra historia ❤️
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CAPÍTULO 1
+    ===================================================== -->
+
+    <section
+        class="chapter"
+        id="capitulo1">
+
+
+        <div class="chapter-content">
+
+
+            <div class="chapter-label">
+
+                Capítulo I · Ella
+
+            </div>
+
+
+            <h2 class="chapter-title">
+
+                La niña que quiero conocer cada día más
+
+            </h2>
+
+
+            <p class="chapter-text">
+
+                Hay algo que quiero que sepas...
+
+                <br><br>
+
+                No me gusta solamente tu sonrisa,
+                tus ojos o lo hermosa que eres.
+
+                <br><br>
+
+                Me gusta descubrir
+                <strong>
+                    quién eres.
+                </strong>
+
+                Tus gustos, tus sueños,
+                las cosas que te hacen feliz,
+                tus pequeñas costumbres y hasta
+                esas cosas que quizá tú consideras
+                insignificantes.
+
+                <br><br>
+
+                Porque cada pequeño detalle
+                me permite conocerte un poquito más.
+
+            </p>
+
+
+            <div class="photo-grid">
+
+
+                <div class="photo">
+
+                    <img
+                        src="mibb.jpeg"
+                        alt="Foto de ella">
+
+                    <div class="photo-caption">
+
+                        "Simplemente hermosa ❤️"
+
+                    </div>
+
+                </div>
+
+
+                <div class="photo">
+
+                    <img
+                        src="mibb2.jpeg"
+                        alt="Foto de ella">
+
+                    <div class="photo-caption">
+
+                        "Esa sonrisa que me encanta"
+
+                    </div>
+
+                </div>
+
+
+                <div class="photo">
+
+                    <img
+                        src="mibb3.jpeg"
+                        alt="Foto de ella">
+
+                    <div class="photo-caption">
+
+                        "Mi niña bonita"
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CAPÍTULO 2
+    ===================================================== -->
+
+    <section class="chapter">
+
+
+        <div class="chapter-content">
+
+
+            <div class="chapter-label">
+
+                Capítulo II · Nosotros
+
+            </div>
+
+
+            <h2 class="chapter-title">
+
+                Y entonces aparecimos nosotros
+
+            </h2>
+
+
+            <p class="chapter-text">
+
+                De todas las casualidades que pudieron
+                ocurrir, una de mis favoritas fue
+                encontrarte.
+
+                <br><br>
+
+                Poco a poco comenzamos a compartir
+                conversaciones, risas, momentos,
+                pensamientos y sentimientos.
+
+                <br><br>
+
+                Y sin darnos cuenta,
+                empezamos a construir algo que
+                para mí se volvió muy especial.
+
+                <br><br>
+
+                <strong>
+                    Me encanta estar contigo.
+                </strong>
+
+                Me encanta hablar contigo,
+                escucharte, reír contigo y simplemente
+                disfrutar esos momentos en los que
+                estamos juntos.
+
+            </p>
+
+
+            <div class="photo-grid">
+
+
+                <div class="photo">
+
+                    <img
+                        src="nosotros3.jpeg"
+                        alt="Foto de nosotros">
+
+                    <div class="photo-caption">
+
+                        "Un momento que quiero guardar"
+
+                    </div>
+
+                </div>
+
+
+                <div class="photo">
+
+                    <img
+                        src="nosotros2.jpeg"
+                        alt="Foto de nosotros">
+
+                    <div class="photo-caption">
+
+                        "Tú haces especiales mis días"
+
+                    </div>
+
+                </div>
+
+
+                <div class="photo">
+
+                    <img
+                        src="lola3.jpeg"
+                        alt="Foto de nosotros">
+
+                    <div class="photo-caption">
+
+                        "Nosotros ❤️"
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CAPÍTULO 3 - PERRITOS
+    ===================================================== -->
+
+    <section class="chapter">
+
+
+        <div class="chapter-content">
+
+
+            <div class="chapter-label">
+
+                Capítulo III · Ellos también son importantes
+
+            </div>
+
+
+            <h2 class="chapter-title">
+
+                Los pequeños que también forman parte de ti 🐶
+
+            </h2>
+
+
+            <p class="chapter-text">
+
+                Si quiero conocer tu mundo,
+                también quiero conocer todas esas
+                pequeñas cosas que hacen feliz a tu corazón.
+
+                <br><br>
+
+                Y sí...
+
+                <strong>
+                    ellos también tienen su propio
+                    espacio en este libro.
+                </strong>
+
+                🐶❤️
+
+                <br><br>
+
+                Porque ver el cariño con el que
+                cuidas a quienes quieres también
+                me deja conocer una parte muy bonita
+                de ti.
+
+            </p>
+
+
+            <div class="photo-grid">
+
+
+                <div class="photo">
+
+                    <img
+                        src="yack.jpeg"
+                        alt="Perrito">
+
+                    <div class="photo-caption">
+
+                        "Uno de tus consentidos 🐶"
+
+                    </div>
+
+                </div>
+
+
+                <div class="photo">
+
+                    <img
+                        src="lola2.jpeg"
+                        alt="Perrito">
+
+                    <div class="photo-caption">
+
+                        "También tenían que aparecer aquí ❤️"
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MOMENTO ESPECIAL
+    ===================================================== -->
+
+    <section class="chapter">
+
+
+        <div class="chapter-content">
+
+
+            <div class="special">
+
+
+                <div class="special-icon">
+
+                    ✨
+
+                </div>
+
+
+                <h2>
+
+                    Hay fotografías...
+                    y hay recuerdos.
+
+                </h2>
+
+
+                <p>
+
+                    Una fotografía puede capturar
+                    un instante.
+
+                    <br><br>
+
+                    Pero lo verdaderamente bonito
+                    es todo lo que sentimos cuando
+                    volvemos a verla.
+
+                    <br><br>
+
+                    Por eso quiero seguir creando
+                    momentos contigo.
+
+                    <br><br>
+
+                    Para que algún día podamos mirar
+                    atrás y decir:
+
+                    <br><br>
+
+                    <strong>
+
+                        "Mira todo lo que vivimos juntos."
+
+                    </strong>
+
+                </p>
+
+
+            </div>
+
+
+            <div class="hero-photo">
+
+                <img
+                    src="nosotros.jpeg"
+                    alt="Nuestro momento especial">
+
+
+                <div class="hero-photo-caption">
+
+                    "Este momento siempre tendrá
+                    un lugar especial en mi corazón."
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CAPÍTULO 4
+    ===================================================== -->
+
+    <section class="chapter">
+
+
+        <div class="chapter-content">
+
+
+            <div class="chapter-label">
+
+                Capítulo IV · Lo que viene
+
+            </div>
+
+
+            <h2 class="chapter-title">
+
+                Todavía nos faltan muchísimos recuerdos
+
+            </h2>
+
+
+            <p class="chapter-text">
+
+                Este libro todavía está incompleto.
+
+                <br><br>
+
+                Y eso es precisamente lo bonito.
+
+                <br><br>
+
+                Porque todavía nos faltan
+                fotografías que tomar,
+                lugares que conocer,
+                canciones que escuchar,
+                conversaciones interminables,
+                abrazos, risas y momentos que
+                todavía ni siquiera imaginamos.
+
+                <br><br>
+
+                Quiero que sigamos llenando estas
+                páginas poco a poco.
+
+                <br><br>
+
+                <strong>
+                    Contigo.
+                </strong>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CARTA FINAL
+    ===================================================== -->
+
+    <section class="letter-section">
+
+
+        <div class="letter">
+
+
+            <h2>
+
+                Para mi Ojitos ❤️
+
+            </h2>
+
+
+            <p>
+
+                Si algún día vuelves a esta página,
+                quiero que recuerdes algo.
+
+                <br><br>
+
+                No importa cuántas fotografías
+                tengamos guardadas.
+
+                <br><br>
+
+                Para mí, lo más bonito siempre
+                será la persona que está detrás
+                de cada una de ellas.
+
+                <br><br>
+
+                Tú.
+
+                <br><br>
+
+                Quiero seguir celebrando tus éxitos,
+                acompañarte cuando las cosas no salgan
+                como esperabas, escucharte cuando
+                necesites hablar y abrazarte cuando
+                simplemente necesites sentir que
+                alguien está ahí.
+
+                <br><br>
+
+                Quiero que puedas ser tú conmigo,
+                sin miedo a ser juzgada.
+
+                <br><br>
+
+                Y quiero seguir conociendo cada una
+                de esas partes que hacen que seas
+                la persona de la que me enamoré.
+
+                <br><br>
+
+                Este pequeño libro no termina aquí.
+
+                <br><br>
+
+                <strong>
+                    Apenas estamos escribiendo
+                    nuestras primeras páginas.
+                </strong>
+
+            </p>
+
+
+            <div class="signature">
+
+                Te quiero muchísimo,
+                mi niña bonita. ❤️
+
+            </div>
+
+
+            <a
+                href="#"
+                class="back-button">
+
+                ↑ Volver al inicio
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        Hecho con muchísimo amor ❤️
+
+        <br>
+
+        Para guardar nuestros momentos.
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           ESTRELLAS
+        ===================================================== */
+
+        const stars =
+            document.getElementById(
+                "stars"
+            );
+
+
+        for (
+            let i = 0;
+            i < 120;
+            i++
+        ) {
+
+            const star =
+                document.createElement(
+                    "div"
+                );
+
+
+            star.className =
+                "star";
+
+
+            star.style.left =
+                Math.random() * 100 + "%";
+
+
+            star.style.top =
+                Math.random() * 100 + "%";
+
+
+            const size =
+                Math.random() * 3 + 1;
+
+
+            star.style.width =
+                size + "px";
+
+
+            star.style.height =
+                size + "px";
+
+
+            star.style.animationDelay =
+                Math.random() * 4 + "s";
+
+
+            star.style.animationDuration =
+                2 +
+                Math.random() * 4 +
+                "s";
+
+
+            stars.appendChild(
+                star
+            );
+
+        }
+
+
+
+        /* =====================================================
+           CORAZONES FLOTANTES
+        ===================================================== */
+
+        const heartSymbols = [
+
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "✨"
+
+        ];
+
+
+        function createHeart() {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+
+            heart.className =
+                "heart";
+
+
+            heart.textContent =
+                heartSymbols[
+                    Math.floor(
+                        Math.random() *
+                        heartSymbols.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+
+            heart.style.fontSize =
+                12 +
+                Math.random() * 20 +
+                "px";
+
+
+            heart.style.animationDuration =
+                7 +
+                Math.random() * 7 +
+                "s";
+
+
+            document.body.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                () => {
+
+                    heart.remove();
+
+                },
+                15000
+            );
+
+        }
+
+
+        setInterval(
+            createHeart,
+            1300
+        );
+
+
+
+        /* =====================================================
+           MÚSICA
+        ===================================================== */
+
+        const music =
+            document.getElementById(
+                "music"
+            );
+
+
+        const musicButton =
+            document.getElementById(
+                "musicButton"
+            );
+
+
+        let isPlaying = false;
+
+
+        function toggleMusic() {
+
+            if (!isPlaying) {
+
+                music.play()
+                    .then(() => {
+
+                        isPlaying = true;
+
+                        musicButton.textContent =
+                            "❚❚";
+
+                        musicButton.classList.add(
+                            "playing"
+                        );
+
+                    })
+                    .catch(() => {
+
+                        alert(
+                            "No se pudo reproducir la música. Revisa que el archivo musica.mp3 esté junto a momentos.html."
+                        );
+
+                    });
+
+            } else {
+
+                music.pause();
+
+                isPlaying = false;
+
+                musicButton.textContent =
+                    "♪";
+
+                musicButton.classList.remove(
+                    "playing"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           DETECTAR CUANDO TERMINA O SE DETIENE
+        ===================================================== */
+
+        music.addEventListener(
+            "pause",
+            () => {
+
+                if (
+                    music.currentTime <
+                    music.duration
+                ) {
+
+                    isPlaying = false;
+
+                    musicButton.textContent =
+                        "♪";
+
+                    musicButton.classList.remove(
+                        "playing"
+                    );
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>
