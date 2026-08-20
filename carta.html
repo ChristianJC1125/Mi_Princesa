@@ -2,85 +2,570 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💌 Una carta para ti</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>💕 Snoopy & Amor 💕</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            background: radial-gradient(circle at 20% 30%, rgba(255,60,60,0.12) 0%, transparent 45%),
-                        radial-gradient(circle at 80% 70%, rgba(255,200,200,0.3) 0%, transparent 50%),
-                        linear-gradient(145deg, #fff8f8, #fff0f0, #fffafa);
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: Georgia, 'Times New Roman', serif;
-            padding: 80px 20px 40px;
-            color: #4a1a1a;
+            font-family: -apple-system, 'Georgia', 'Times New Roman', serif;
+            padding: 20px 16px 30px;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            /* Fondo con Snoopy */
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"><circle cx="100" cy="100" r="80" fill="%23f5f5f5" stroke="%23d0d0d0" stroke-width="2"/><ellipse cx="100" cy="85" rx="45" ry="40" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="80" cy="80" rx="10" ry="12" fill="%23000000"/><ellipse cx="120" cy="80" rx="10" ry="12" fill="%23000000"/><circle cx="80" cy="80" r="4" fill="%23ffffff"/><circle cx="120" cy="80" r="4" fill="%23ffffff"/><ellipse cx="100" cy="100" rx="15" ry="10" fill="%23000000"/><path d="M85 115 Q100 130 115 115" stroke="%23000000" stroke-width="2" fill="none"/><circle cx="100" cy="150" r="25" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="88" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="112" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="100" cy="170" rx="18" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200"><circle cx="100" cy="100" r="80" fill="%23f5f5f5" stroke="%23d0d0d0" stroke-width="2"/><ellipse cx="100" cy="85" rx="45" ry="40" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="80" cy="80" rx="10" ry="12" fill="%23000000"/><ellipse cx="120" cy="80" rx="10" ry="12" fill="%23000000"/><circle cx="80" cy="80" r="4" fill="%23ffffff"/><circle cx="120" cy="80" r="4" fill="%23ffffff"/><ellipse cx="100" cy="100" rx="15" ry="10" fill="%23000000"/><path d="M85 115 Q100 130 115 115" stroke="%23000000" stroke-width="2" fill="none"/><circle cx="100" cy="150" r="25" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1.5"/><ellipse cx="88" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="112" cy="148" rx="8" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/><ellipse cx="100" cy="170" rx="18" ry="6" fill="%23ffffff" stroke="%23d0d0d0" stroke-width="1"/></svg>');
+            background-size: 120px 120px, 160px 160px;
+            background-position: 10% 10%, 80% 90%;
+            background-repeat: repeat, repeat;
+            background-color: #fce4ec;
         }
-        .volver {
+
+        /* Capa de Snoopy adicional con corazones */
+        body::before {
+            content: "🐶 💕 🐶 💕 🐶 💕 🐶 💕 🐶 💕 🐶 💕 🐶 💕 🐶 💕";
             position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(200,50,50,0.2);
-            border-radius: 50px;
-            padding: 10px 22px;
-            color: #4a1a1a;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 3.2rem;
+            letter-spacing: 35px;
+            word-break: break-all;
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
             display: flex;
-            align-items: center;
-            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            transform: rotate(-3deg) scale(1.1);
+            color: #4a1a3a;
         }
-        .volver:hover { background: white; transform: scale(1.05); }
-        .container { max-width: 800px; width: 100%; }
-        .section-title {
-            font-size: clamp(2.6rem, 7vw, 4.5rem);
-            color: #cc2233;
-            margin-bottom: 20px;
+
+        /* Contenedor principal - estilo carta */
+        .love-letter {
+            background: rgba(255, 240, 245, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 40px 40px 30px 30px;
+            padding: 30px 24px 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 
+                0 20px 60px rgba(136, 14, 79, 0.25),
+                0 0 0 2px rgba(255, 255, 255, 0.6),
+                inset 0 2px 10px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 200, 220, 0.7);
             text-align: center;
+            position: relative;
+            z-index: 10;
+            transition: transform 0.3s ease;
         }
-        .letter {
-            padding: clamp(35px, 7vw, 75px);
-            background: rgba(255,255,255,0.88);
+
+        /* Decoración esquinas con Snoopy y corazón */
+        .love-letter::before {
+            content: "🐶";
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 2.5rem;
+            opacity: 0.2;
+            transform: rotate(-10deg);
+        }
+        .love-letter::after {
+            content: "💕";
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 2.5rem;
+            opacity: 0.2;
+            transform: rotate(15deg);
+        }
+
+        /* Título */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #6a1b4d;
+            text-shadow: 0 2px 12px rgba(255, 182, 193, 0.6);
+            margin-bottom: 6px;
+            letter-spacing: 3px;
+            font-family: -apple-system, 'Georgia', serif;
+            animation: gentlePulse 3s infinite ease-in-out;
+        }
+
+        @keyframes gentlePulse {
+            0% { transform: scale(1); text-shadow: 0 2px 12px rgba(255, 182, 193, 0.4); }
+            50% { transform: scale(1.03); text-shadow: 0 4px 25px rgba(233, 30, 99, 0.5); }
+            100% { transform: scale(1); text-shadow: 0 2px 12px rgba(255, 182, 193, 0.4); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #8e24aa;
+            background: rgba(255, 255, 255, 0.5);
+            display: inline-block;
+            padding: 6px 24px;
+            border-radius: 60px;
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            margin-bottom: 18px;
+            font-style: italic;
+            border: 1px solid rgba(233, 30, 99, 0.2);
+            box-shadow: 0 2px 10px rgba(233, 30, 99, 0.1);
+            letter-spacing: 1px;
+        }
+
+        /* Snoopy decorativo dentro de la carta */
+        .snoopy-deco {
+            font-size: 3.5rem;
+            margin: 4px 0 12px;
+            opacity: 0.5;
+            letter-spacing: 10px;
+            animation: snoopyDance 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes snoopyDance {
+            0% { transform: rotate(-3deg) scale(1); }
+            100% { transform: rotate(3deg) scale(1.05); }
+        }
+
+        /* Mensaje principal */
+        .message-box {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border-radius: 30px;
+            padding: 20px 18px;
+            margin: 14px 0;
+            border-left: 4px solid #ec407a;
+            border-right: 4px solid #ec407a;
+            box-shadow: inset 0 0 30px rgba(233, 30, 99, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .message-box p {
+            font-size: 1.6rem;
+            line-height: 1.5;
+            color: #4a1a3a;
+            font-weight: 500;
+            font-family: -apple-system, 'Georgia', serif;
+            font-style: italic;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .message-box .highlight {
+            color: #c2185b;
+            font-weight: 700;
+            font-style: normal;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            padding: 0 8px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        /* Lista de frases */
+        .phrase-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .phrase-item {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            padding: 12px 16px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            color: #4a1a3a;
+            border: 1px solid rgba(233, 30, 99, 0.15);
+            box-shadow: 0 2px 8px rgba(233, 30, 99, 0.06);
+            transition: all 0.2s;
+            font-family: -apple-system, 'Georgia', serif;
+            letter-spacing: 0.5px;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .phrase-item .emoji-big {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .phrase-item span {
+            display: inline-block;
+        }
+
+        /* Botón principal */
+        .surprise-btn {
+            margin-top: 22px;
+            background: linear-gradient(135deg, #f06292, #ec407a);
+            border: none;
+            border-radius: 80px;
+            padding: 16px 28px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(136, 14, 79, 0.4);
+            box-shadow: 0 8px 0 #880e4f, 0 12px 30px rgba(233, 30, 99, 0.3);
+            transition: all 0.08s ease;
+            width: 100%;
+            max-width: 300px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            font-family: -apple-system, 'Georgia', serif;
+            touch-action: manipulation;
+        }
+
+        .surprise-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #6a1b4d, 0 8px 25px rgba(233, 30, 99, 0.4);
+            background: linear-gradient(135deg, #ec407a, #d81b60);
+        }
+
+        /* Popup de mensaje sorpresa */
+        .popup-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.6);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 30px 28px;
+            border-radius: 60px;
+            box-shadow: 0 30px 80px rgba(136, 14, 79, 0.4), 0 0 0 3px rgba(255, 182, 193, 0.6);
+            z-index: 999;
+            text-align: center;
+            max-width: 380px;
+            width: 90%;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .popup-message.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .popup-message h2 {
+            font-size: 2.8rem;
+            color: #6a1b4d;
+            font-family: -apple-system, 'Georgia', serif;
+            margin-bottom: 10px;
+        }
+
+        .popup-message .snoopy-popup {
+            font-size: 4rem;
+            margin: 6px 0;
+        }
+
+        .popup-message p {
+            font-size: 1.5rem;
+            color: #4a1a3a;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .popup-message .close-btn {
+            margin-top: 18px;
+            background: #f48fb1;
+            border: none;
             border-radius: 40px;
-            box-shadow: 0 30px 90px rgba(150,30,30,0.06);
-            border: 1px solid rgba(200,50,50,0.08);
+            padding: 12px 30px;
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #880e4f;
+            transition: all 0.08s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            font-family: -apple-system, 'Georgia', serif;
         }
-        .letter p {
-            font-size: 1.2rem;
-            line-height: 2.2;
-            color: #4a1a1a;
-            margin-bottom: 25px;
+
+        .popup-message .close-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 #6a1b4d;
         }
-        .letter .highlight {
-            color: #cc2233;
-            font-weight: bold;
+
+        /* Corazones flotantes generados por JS */
+        .floating-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            font-size: 2.8rem;
+            transition: all 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            opacity: 0;
+            transform: scale(0) rotate(0deg);
+            -webkit-user-select: none;
+            user-select: none;
         }
-        @media (max-width: 750px) {
-            .section-title { font-size: 2.5rem; }
-            .letter p { font-size: 1rem; }
-            .letter { padding: 25px 20px; }
+
+        .floating-heart.animate {
+            opacity: 0.9;
+            transform: scale(1.4) rotate(25deg);
+        }
+
+        .floating-heart.fly {
+            opacity: 0;
+            transform: scale(2) rotate(60deg) translateY(-100px);
+        }
+
+        /* Ajustes para iPhone */
+        @media (max-width: 450px) {
+            h1 { font-size: 2.2rem; }
+            .message-box p { font-size: 1.3rem; }
+            .phrase-item { font-size: 1.1rem; padding: 10px 14px; }
+            .surprise-btn { font-size: 1.3rem; padding: 14px 20px; }
+            .popup-message h2 { font-size: 2.2rem; }
+            .popup-message p { font-size: 1.2rem; }
+            .popup-message { padding: 24px 20px; }
+            body { background-size: 80px 80px, 100px 100px; }
+            body::before { font-size: 2.2rem; letter-spacing: 20px; }
+            .snoopy-deco { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 380px) {
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1.1rem; padding: 4px 16px; }
+            .message-box p { font-size: 1.1rem; }
+            .phrase-item { font-size: 1rem; }
+        }
+
+        /* Prevenir scroll horizontal */
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Safe area para iPhone con notch */
+        @supports (padding: max(0px)) {
+            .love-letter {
+                padding-left: max(24px, env(safe-area-inset-left));
+                padding-right: max(24px, env(safe-area-inset-right));
+            }
         }
     </style>
 </head>
 <body>
-    <a href="index.html" class="volver">← Volver al inicio</a>
+    <!-- Contenedor principal -->
+    <div class="love-letter">
+        <!-- Snoopy decorativo -->
+        <div class="snoopy-deco">🐶 ❤️ 🐶</div>
 
-    <div class="container">
-        <h1 class="section-title">Si pudiera decirte todo...</h1>
-        <div class="letter">
-            <p>Me gustas de una manera que no sé explicar. No es solo tu sonrisa o tu mirada, es tu esencia, tu forma de hacer que el mundo sea más bonito.</p>
-            <p>Quiero verte cumplir cada uno de tus sueños. Quiero estar a tu lado cuando celebres tus logros y también cuando necesites un hombro en el que apoyarte.</p>
-            <p><span class="highlight">No necesito una versión perfecta de ti. Necesito a la persona real, auténtica, que eres tú.</span></p>
-            <p>Porque pase lo que pase, <span class="highlight">siempre tendrás un lugar en mi corazón</span> y alguien que cree en ti incluso cuando tú dudes.</p>
+        <h1>✨ Para ti ✨</h1>
+        <div class="subtitle">🌸 con todo mi corazón 🌸</div>
+
+        <!-- Mensaje principal -->
+        <div class="message-box">
+            <p>
+                "Eres <span class="highlight">la persona más bonita</span> que conozco, 
+                no solo por fuera, sino por dentro. Tu luz ilumina mis días."
+            </p>
+        </div>
+
+        <!-- Lista de mensajes bonitos -->
+        <div class="phrase-grid">
+            <div class="phrase-item">
+                <span class="emoji-big">💖</span> 
+                <span>Eres mi razón para sonreír cada mañana.</span>
+            </div>
+            <div class="phrase-item">
+                <span class="emoji-big">🌹</span> 
+                <span>Tu corazón es tan hermoso como tu sonrisa.</span>
+            </div>
+            <div class="phrase-item">
+                <span class="emoji-big">🌟</span> 
+                <span>Eres la estrella más brillante de mi cielo.</span>
+            </div>
+            <div class="phrase-item">
+                <span class="emoji-big">💐</span> 
+                <span>Cada día a tu lado es un regalo maravilloso.</span>
+            </div>
+            <div class="phrase-item">
+                <span class="emoji-big">🕊️</span> 
+                <span>Tu amor me da paz y felicidad infinita.</span>
+            </div>
+        </div>
+
+        <!-- Mensaje extra con Snoopy -->
+        <div class="message-box" style="margin-top: 10px; border-left-color: #ab47bc; border-right-color: #ab47bc;">
+            <p style="font-size: 1.5rem;">
+                “<span style="color: #6a1b4d; font-weight: 700;">Eres más hermosa que todas las flores del mundo</span>” 
+                <span style="display: block; font-size: 1rem; margin-top: 6px; color: #7b1fa2;">— Para ti, con amor</span>
+            </p>
+            <div style="font-size: 2.5rem; margin-top: 6px; opacity: 0.5;">🐶 💕</div>
+        </div>
+
+        <!-- Botón -->
+        <button class="surprise-btn" id="surpriseButton">💗 Toca para sentir 💗</button>
+
+        <!-- Pie -->
+        <div style="margin-top: 20px; font-size: 1rem; color: #8e24aa; opacity: 0.7; letter-spacing: 2px; font-style: italic;">
+            <span>🐶</span> siempre en mi corazón <span>💕</span>
         </div>
     </div>
+
+    <!-- Popup -->
+    <div class="popup-message" id="popupMessage">
+        <div class="snoopy-popup">🐶 💖</div>
+        <h2>💖 ¡Para ti! 💖</h2>
+        <p>
+            "Eres la persona más especial que he conocido. 
+            <br><span style="font-weight: 700; color: #c2185b;">Te quiero con todo mi corazón.</span>"
+        </p>
+        <p style="margin-top: 10px; font-size: 1.3rem; color: #6a1b4d;">
+            🌷 <span style="font-style: normal;">Siempre serás mi niña bonita</span> 🌷
+        </p>
+        <div style="font-size: 2rem; margin: 6px 0; opacity: 0.5;">🐶 ❤️ 🐶</div>
+        <button class="close-btn" id="closePopup">💕 Cerrar con amor 💕</button>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            const surpriseBtn = document.getElementById('surpriseButton');
+            const popup = document.getElementById('popupMessage');
+            const closePopupBtn = document.getElementById('closePopup');
+
+            // Mostrar popup
+            function showPopup() {
+                popup.classList.add('show');
+                if (navigator.vibrate) {
+                    navigator.vibrate(15);
+                }
+                createHearts(8);
+            }
+
+            // Ocultar popup
+            function hidePopup() {
+                popup.classList.remove('show');
+            }
+
+            // Crear corazones flotantes
+            function createHearts(count) {
+                const symbols = ['❤️', '💖', '💕', '💗', '♥️', '💘', '💝', '💖', '🐶'];
+                for (let i = 0; i < count; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                    heart.style.left = (10 + Math.random() * 80) + '%';
+                    heart.style.top = (10 + Math.random() * 60) + '%';
+                    heart.style.fontSize = (2 + Math.random() * 2.5) + 'rem';
+                    document.body.appendChild(heart);
+
+                    // Animación
+                    requestAnimationFrame(() => {
+                        heart.classList.add('animate');
+                    });
+
+                    setTimeout(() => {
+                        heart.classList.remove('animate');
+                        heart.classList.add('fly');
+                    }, 800);
+
+                    setTimeout(() => {
+                        if (heart.parentNode) heart.parentNode.removeChild(heart);
+                    }, 2000);
+                }
+            }
+
+            // Eventos
+            surpriseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPopup();
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+
+            closePopupBtn.addEventListener('click', function(e) {
+                hidePopup();
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+
+            // Cerrar popup al tocar fuera
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    hidePopup();
+                }
+            });
+
+            // Generar corazones al iniciar
+            setTimeout(() => {
+                createHearts(5);
+            }, 500);
+
+            // Cada cierto tiempo
+            setInterval(() => {
+                createHearts(3);
+            }, 7000);
+
+            // Toque en pantalla → corazón o Snoopy
+            document.addEventListener('touchstart', function(e) {
+                if (e.target.closest('#surpriseButton') || 
+                    e.target.closest('#closePopup') || 
+                    e.target.closest('.popup-message')) {
+                    return;
+                }
+                if (e.touches && e.touches.length > 0) {
+                    const touch = e.touches[0];
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    // A veces aparece Snoopy
+                    const emojis = ['💗', '❤️', '💕', '🐶', '💖'];
+                    heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.style.left = (touch.clientX - 30) + 'px';
+                    heart.style.top = (touch.clientY - 30) + 'px';
+                    heart.style.fontSize = (2.5 + Math.random() * 1.5) + 'rem';
+                    document.body.appendChild(heart);
+
+                    requestAnimationFrame(() => {
+                        heart.classList.add('animate');
+                    });
+
+                    setTimeout(() => {
+                        heart.classList.remove('animate');
+                        heart.classList.add('fly');
+                        heart.style.top = (touch.clientY - 150) + 'px';
+                    }, 800);
+
+                    setTimeout(() => {
+                        if (heart.parentNode) heart.parentNode.removeChild(heart);
+                    }, 2000);
+                }
+            }, { passive: true });
+
+        })();
+    </script>
 </body>
 </html>

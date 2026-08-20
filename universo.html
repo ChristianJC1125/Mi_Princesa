@@ -1,189 +1,1699 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestro Universo ❤️</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0a0015;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            padding: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-        #universo {
-            width: 100%;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-        .volver {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
-            padding: 12px 25px;
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .volver:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
-        .mensaje-universo {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-            background: rgba(0,0,0,0.4);
-            padding: 10px 25px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            text-align: center;
-            pointer-events: none;
-        }
-        @media (max-width: 600px) {
-            .volver { padding: 10px 18px; font-size: 0.8rem; }
-            .mensaje-universo { font-size: 0.7rem; padding: 8px 16px; bottom: 15px; }
-        }
-    </style>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Para Mi Ojitos 🌌❤️</title>
+
+<style>
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#02030b;
+    color:white;
+    font-family:Georgia, "Times New Roman", serif;
+    overflow-x:hidden;
+}
+
+section{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:80px 20px;
+}
+
+.hidden{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1.5s ease;
+}
+
+.hidden.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.space{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(111,65,255,.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255,45,145,.14),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(38,70,180,.12),
+            transparent 45%
+        ),
+        #02030b;
+
+    z-index:-10;
+}
+
+
+/* =====================================================
+   ESTRELLAS
+===================================================== */
+
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:-8;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 0 8px white;
+    animation:twinkle infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+
+/* =====================================================
+   NEBULOSA
+===================================================== */
+
+.nebula{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.15;
+    z-index:-9;
+    animation:nebulaMove 15s infinite alternate ease-in-out;
+}
+
+.nebula.one{
+    background:#703cff;
+    left:-200px;
+    top:10%;
+}
+
+.nebula.two{
+    background:#ff2d91;
+    right:-200px;
+    bottom:5%;
+    animation-delay:4s;
+}
+
+@keyframes nebulaMove{
+
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(100px,-80px) scale(1.2);
+    }
+}
+
+
+/* =====================================================
+   BOTÓN MÚSICA
+===================================================== */
+
+.music{
+    position:fixed;
+    right:20px;
+    top:20px;
+    z-index:1000;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.3);
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+
+    color:white;
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.music:hover{
+    transform:scale(1.1);
+    background:rgba(255,100,180,.2);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    text-align:center;
+}
+
+.hero-content{
+    max-width:900px;
+    animation:appear 2s ease;
+}
+
+@keyframes appear{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.tiny{
+    text-transform:uppercase;
+    letter-spacing:7px;
+    color:#b9a7ff;
+    font-size:.8rem;
+    margin-bottom:30px;
+}
+
+.hero h1{
+
+    font-size:
+        clamp(3.5rem,12vw,9rem);
+
+    line-height:.9;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d4c4ff,
+            #ff9cc8,
+            #ffffff
+        );
+
+    background-size:300%;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:gradient 7s linear infinite;
+}
+
+@keyframes gradient{
+
+    from{
+        background-position:300%;
+    }
+
+    to{
+        background-position:-300%;
+    }
+}
+
+.hero p{
+    margin-top:35px;
+    color:#d7d1e8;
+    font-size:1.2rem;
+    line-height:1.8;
+}
+
+.scroll{
+    margin-top:70px;
+    color:#77748c;
+    font-size:.9rem;
+    animation:float 2s infinite;
+}
+
+@keyframes float{
+
+    50%{
+        transform:translateY(10px);
+    }
+}
+
+
+/* =====================================================
+   ESTRELLA CENTRAL
+===================================================== */
+
+.big-star{
+    font-size:100px;
+    margin:30px;
+
+    filter:
+        drop-shadow(0 0 20px #fff)
+        drop-shadow(0 0 60px #9d70ff);
+
+    animation:pulseStar 2s infinite;
+}
+
+@keyframes pulseStar{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+
+/* =====================================================
+   CONTENEDOR
+===================================================== */
+
+.container{
+    width:100%;
+    max-width:950px;
+    text-align:center;
+}
+
+.title{
+
+    font-size:
+        clamp(2.3rem,7vw,5rem);
+
+    color:#e7dcff;
+    margin-bottom:35px;
+
+    text-shadow:
+        0 0 25px rgba(150,100,255,.35);
+}
+
+.subtitle{
+
+    max-width:750px;
+    margin:auto;
+
+    font-size:1.15rem;
+    line-height:2;
+
+    color:#c9c4d8;
+}
+
+
+/* =====================================================
+   ESTRELLAS INTERACTIVAS
+===================================================== */
+
+.star-field{
+
+    width:100%;
+    max-width:800px;
+    height:450px;
+
+    margin:40px auto;
+
+    position:relative;
+
+    border-radius:30px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(90,50,180,.12),
+            transparent 65%
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.click-star{
+
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #a879ff;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.click-star:hover{
+
+    transform:scale(2);
+
+    box-shadow:
+        0 0 20px white,
+        0 0 50px #ff78b8;
+}
+
+.message{
+
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.7);
+
+    width:min(90%,500px);
+
+    padding:40px;
+
+    border-radius:25px;
+
+    background:
+        rgba(10,8,25,.94);
+
+    border:
+        1px solid
+        rgba(255,160,210,.35);
+
+    box-shadow:
+        0 0 80px
+        rgba(180,70,180,.35);
+
+    backdrop-filter:blur(20px);
+
+    text-align:center;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.5s;
+
+    z-index:2000;
+}
+
+.message.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+.message p{
+
+    color:#f8eefa;
+
+    font-size:1.25rem;
+
+    line-height:1.8;
+}
+
+.close{
+
+    margin-top:25px;
+
+    border:none;
+
+    background:none;
+
+    color:#ff9fc8;
+
+    cursor:pointer;
+
+    font-size:1rem;
+}
+
+
+/* =====================================================
+   CONSTELACIÓN
+===================================================== */
+
+.constellation{
+
+    width:320px;
+    height:320px;
+
+    margin:60px auto;
+
+    position:relative;
+}
+
+.constellation span{
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    background:white;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #a67cff;
+
+    animation:constStar 2s infinite alternate;
+}
+
+.constellation span:nth-child(1){
+    top:10%;
+    left:45%;
+}
+
+.constellation span:nth-child(2){
+    top:30%;
+    left:20%;
+}
+
+.constellation span:nth-child(3){
+    top:50%;
+    left:55%;
+}
+
+.constellation span:nth-child(4){
+    top:70%;
+    left:30%;
+}
+
+.constellation span:nth-child(5){
+    top:85%;
+    left:70%;
+}
+
+@keyframes constStar{
+
+    from{
+        opacity:.4;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+.line{
+
+    position:absolute;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(190,150,255,.6),
+            transparent
+        );
+
+    transform-origin:left center;
+}
+
+
+/* =====================================================
+   CARTA
+===================================================== */
+
+.letter{
+
+    margin-top:50px;
+
+    padding:
+        clamp(30px,7vw,70px);
+
+    text-align:left;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.06),
+            rgba(255,100,180,.04)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.4);
+
+    backdrop-filter:blur(15px);
+}
+
+.letter p{
+
+    font-size:1.15rem;
+
+    line-height:2;
+
+    color:#eee8f4;
+
+    margin-bottom:25px;
+}
+
+.pink{
+    color:#ff9fc8;
+}
+
+
+/* =====================================================
+   LUNA
+===================================================== */
+
+.moon-area{
+
+    position:relative;
+
+    width:320px;
+    height:320px;
+
+    margin:50px auto;
+}
+
+.moon{
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #fff,
+            #d9d7e4 45%,
+            #9995ad 100%
+        );
+
+    box-shadow:
+        0 0 30px #fff,
+        0 0 100px rgba(180,170,255,.5);
+}
+
+.moon::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    background:#02030b;
+
+    left:70px;
+    top:-15px;
+}
+
+.moon-text{
+
+    position:absolute;
+
+    width:100%;
+
+    top:110%;
+
+    color:#bdb5d0;
+
+    font-size:1.1rem;
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.btn{
+
+    margin-top:40px;
+
+    padding:16px 30px;
+
+    border-radius:50px;
+
+    border:
+        1px solid
+        rgba(255,150,200,.4);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,70,140,.7),
+            rgba(130,70,255,.7)
+        );
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 30px
+        rgba(255,70,160,.2);
+
+    transition:.3s;
+}
+
+.btn:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    box-shadow:
+        0 0 50px
+        rgba(255,70,160,.5);
+}
+
+
+/* =====================================================
+   MENSAJE FINAL
+===================================================== */
+
+.final{
+
+    overflow:hidden;
+
+    text-align:center;
+}
+
+.final-star{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:white;
+
+    margin:auto;
+
+    box-shadow:
+        0 0 20px white,
+        0 0 60px #ff83bb,
+        0 0 120px #8d6aff;
+
+    animation:
+        finalStar 5s
+        forwards;
+}
+
+@keyframes finalStar{
+
+    0%{
+        transform:scale(1);
+    }
+
+    70%{
+        transform:scale(30);
+    }
+
+    100%{
+        transform:scale(100);
+        opacity:.15;
+    }
+}
+
+.final-content{
+
+    position:relative;
+    z-index:2;
+}
+
+.final h2{
+
+    font-size:
+        clamp(3rem,10vw,8rem);
+
+    color:#ffb4d2;
+
+    text-shadow:
+        0 0 30px #ff4e96,
+        0 0 80px rgba(255,60,150,.4);
+
+    animation:finalText 3s ease;
+}
+
+@keyframes finalText{
+
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.final p{
+
+    margin-top:30px;
+
+    font-size:1.2rem;
+
+    line-height:2;
+
+    color:#ddd5e5;
+}
+
+
+/* =====================================================
+   CORAZONES
+===================================================== */
+
+.hearts{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:100;
+}
+
+.heart{
+
+    position:absolute;
+
+    bottom:-30px;
+
+    animation:
+        heartFloat
+        linear forwards;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(255,80,160,.7)
+        );
+}
+
+@keyframes heartFloat{
+
+    from{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    to{
+
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:600px){
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    .star-field{
+        height:400px;
+    }
+
+    .letter p{
+        font-size:1rem;
+        line-height:1.8;
+    }
+
+    .moon{
+        width:200px;
+        height:200px;
+    }
+
+    .moon::after{
+        width:200px;
+        height:200px;
+    }
+
+}
+
+</style>
 </head>
+
+
 <body>
-    <a href="index.html" class="volver">← Volver al inicio</a>
-    <div id="universo"></div>
-    <div class="mensaje-universo">✨ Toca las estrellas brillantes ✨</div>
 
-    <script>
-        (function() {
-            const contenedor = document.getElementById('universo');
-            if (!contenedor) return;
-            if (typeof THREE === 'undefined') {
-                contenedor.innerHTML = '<div style="color:white;text-align:center;padding:40px;">Cargando universo...</div>';
-                return;
-            }
 
-            const escena = new THREE.Scene();
-            escena.background = new THREE.Color(0x0a0015);
+<!-- =====================================================
+     UNIVERSO
+===================================================== -->
 
-            const camara = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-            camara.position.set(0, 0, 25);
+<div class="space"></div>
 
-            const renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-            contenedor.appendChild(renderer.domElement);
+<div class="nebula one"></div>
+<div class="nebula two"></div>
 
-            // Estrellas de fondo
-            const starCount = 2500;
-            const geo = new THREE.BufferGeometry();
-            const pos = new Float32Array(starCount * 3);
-            for (let i = 0; i < starCount; i++) {
-                const r = 50 + Math.random() * 400;
-                const theta = Math.random() * Math.PI * 2;
-                const phi = Math.acos(2 * Math.random() - 1);
-                pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-                pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-                pos[i * 3 + 2] = r * Math.cos(phi);
-            }
-            geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-            const mat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7, transparent: true, opacity: 0.8 });
-            const stars = new THREE.Points(geo, mat);
-            escena.add(stars);
+<div class="stars" id="stars"></div>
 
-            const mensajes = [
-                { titulo: "✨ Estrella 1", texto: "Eres mi persona favorita." },
-                { titulo: "✨ Estrella 2", texto: "Siempre brillas más que el sol." },
-                { titulo: "✨ Estrella 3", texto: "Contigo el universo tiene sentido." },
-                { titulo: "✨ Estrella 4", texto: "Te quiero hasta el infinito." },
-                { titulo: "✨ Estrella 5", texto: "Eres mi hogar." }
+<div class="hearts" id="hearts"></div>
+
+
+<!-- BOTÓN DE MÚSICA -->
+
+<button class="music"
+        id="musicButton"
+        onclick="toggleMusic()">
+    ♪
+</button>
+
+<audio id="music" loop>
+    <source src="CUCO - Lo Que Siento.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- =====================================================
+     INICIO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="tiny">
+            Para la persona que hizo diferente mi universo
+        </div>
+
+        <div class="big-star">
+            ✦
+        </div>
+
+        <h1>
+            Mi Ojitos
+        </h1>
+
+        <p>
+            Entre millones de personas,
+            miles de caminos y un universo
+            prácticamente infinito...
+            qué bonito fue coincidir contigo.
+        </p>
+
+        <div class="scroll">
+            ↓ Sigue viajando ↓
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EL UNIVERSO
+===================================================== -->
+
+<section>
+
+    <div class="container hidden">
+
+        <h2 class="title">
+            ¿Sabes qué es lo más bonito?
+        </h2>
+
+        <p class="subtitle">
+
+            Que el universo es enorme.
+
+            Hay millones de estrellas,
+            millones de historias y
+            millones de personas.
+
+            <br><br>
+
+            Y entre todas esas posibilidades,
+            la vida hizo que nuestros caminos
+            se cruzaran.
+
+            <br><br>
+
+            Y sinceramente...
+
+            <span class="pink">
+                esa es una de mis casualidades favoritas.
+            </span>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ESTRELLAS INTERACTIVAS
+===================================================== -->
+
+<section>
+
+    <div class="container hidden">
+
+        <h2 class="title">
+            Hay algunas cosas que quiero que sepas
+        </h2>
+
+        <p class="subtitle">
+
+            Toca alguna de las estrellas.
+            Cada una guarda un pequeño mensaje para ti.
+
+        </p>
+
+        <div class="star-field"
+             id="starField">
+
+            <div class="click-star"
+                 style="left:15%;top:20%"
+                 data-message="Me encanta escucharte, incluso cuando hablamos de las cosas más simples. ❤️">
+            </div>
+
+            <div class="click-star"
+                 style="left:70%;top:15%"
+                 data-message="Tu sonrisa tiene una manera muy bonita de cambiar completamente mi día. ✨">
+            </div>
+
+            <div class="click-star"
+                 style="left:45%;top:40%"
+                 data-message="Me gusta conocerte poco a poco y descubrir cada pequeño detalle que te hace ser tú. 🥹">
+            </div>
+
+            <div class="click-star"
+                 style="left:80%;top:65%"
+                 data-message="Contigo he aprendido que algunos de los momentos más bonitos son los que simplemente suceden. 💗">
+            </div>
+
+            <div class="click-star"
+                 style="left:25%;top:75%"
+                 data-message="Ojalá pudiera guardar algunos momentos contigo para volver a ellos cada vez que te extrañe. 🌙">
+            </div>
+
+            <div class="click-star"
+                 style="left:55%;top:85%"
+                 data-message="No necesito que seas perfecta. Me gusta la persona que eres, tal como eres. ❤️">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MENSAJE EMERGENTE -->
+
+<div class="message"
+     id="message">
+
+    <p id="messageText"></p>
+
+    <button class="close"
+            onclick="closeMessage()">
+        Cerrar ✦
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     CONSTELACIÓN
+===================================================== -->
+
+<section>
+
+    <div class="container hidden">
+
+        <h2 class="title">
+            Nuestra pequeña constelación
+        </h2>
+
+        <p class="subtitle">
+
+            Quizá somos solamente dos personas
+            en un universo gigantesco...
+
+            <br><br>
+
+            pero me gusta pensar que algunas personas
+            están destinadas a encontrarse.
+
+        </p>
+
+        <div class="constellation">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <div class="line"
+                 style="
+                 width:110px;
+                 top:65px;
+                 left:75px;
+                 transform:rotate(25deg);
+                 ">
+            </div>
+
+            <div class="line"
+                 style="
+                 width:100px;
+                 top:150px;
+                 left:110px;
+                 transform:rotate(55deg);
+                 ">
+            </div>
+
+            <div class="line"
+                 style="
+                 width:100px;
+                 top:205px;
+                 left:90px;
+                 transform:rotate(-35deg);
+                 ">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CARTA
+===================================================== -->
+
+<section>
+
+    <div class="container hidden">
+
+        <h2 class="title">
+            Una carta para ti
+        </h2>
+
+        <div class="letter">
+
+            <p>
+                Quiero que sepas algo que quizá no siempre
+                sé cómo decirte.
+            </p>
+
+            <p>
+                Te Quiero 
+                <span class="pink">
+                    Yo solo quiero ser quien tome tu mano
+                    mientras juntos tocamos el cielo.
+                </span>
+            </p>
+
+            <p>
+                Quiero que nunca dejes de perseguir tus sueños, mi niña, que sigas descubriendo el mundo y 
+                creciendo hasta convertirte en esa mujer que siempre has soñado ser.✨
+
+               Porque si algún día me preguntas qué quiero para ti, mi respuesta siempre será la misma: 
+               quiero que seas feliz, pero también quiero tener la dicha de ser parte de esa felicidad y
+               seguir encontrándome en tus ojitos cada vez que me mires.
+
+                Y sobre todo, quiero que nunca sientas que tienes que dejar de ser tú 
+                para que yo te quiera. Porque yo quiero verte brillar, verte cumplir
+                tus sueños y ser feliz, 
+                incluso en aquellos caminos que quiero recorrer a tu lado.
+            </p>
+
+            <p>
+                No quiero un amor perfecto contigo; quiero uno real. Uno donde podamos reír hasta que
+                nos duela el estómago, abrazarnos cuando el mundo
+                pese demasiado y seguir eligiéndonos incluso en los días difíciles..
+            </p>
+
+            <p>
+                Porque entre millones de personas, mi corazón tuvo la suerte de encontrarte a ti
+                Y si pudiera pedirle un deseo a la vida, sería sencillo: que me permita seguir viendo esos 
+                ojitos que amo,mientras construimos juntos muchos recuerdos
+            </p>
+
+            <p>
+                Y si algún día me preguntan qué es la felicidad para mí, probablemente solo sonría
+                y piense en ti… en tus ojitos,en tu sonrisa y en la suerte tan 
+                bonita que tengo de poder amarte.
+            </p>
+
+            <p>
+                Quiero que tengamos días increíbles,
+                pero también quiero estar cuando las cosas
+                no salgan bien.
+            </p>
+
+            <p>
+                Quiero ser esa persona con la que puedas hablar
+                cuando tengas miedo, reír cuando estés feliz
+                y guardar silencio cuando simplemente necesites
+                compañía.
+            </p>
+
+            <p>
+                Porque al final no busco una historia perfecta.
+                Busco una historia real.
+            </p>
+
+            <p>
+                Una donde podamos decir:
+
+                <br><br>
+
+                <span class="pink">
+                    “Te sigo eligiendo.”
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LUNA
+===================================================== -->
+
+<section>
+
+    <div class="container hidden">
+
+        <h2 class="title">
+            Si algún día te sientes perdida...
+        </h2>
+
+        <p class="subtitle">
+
+            Quiero que recuerdes que incluso en las noches
+            más oscuras, siempre existe alguna pequeña luz.
+
+        </p>
+
+        <div class="moon-area">
+
+            <div class="moon"></div>
+
+            <div class="moon-text">
+
+                Y si alguna vez necesitas una,
+                espero poder ser aunque sea
+                una pequeña luz para recordarte
+                lo mucho que vales.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MOMENTO EMOCIONAL
+===================================================== -->
+
+<section>
+
+    <div class="container hidden">
+
+        <h2 class="title">
+            Y si algún día dudas...
+        </h2>
+
+        <p class="subtitle">
+
+            Duda de muchas cosas si quieres.
+
+            <br><br>
+
+            Pero nunca dudes de que mereces ser querida,
+            respetada, escuchada y valorada.
+
+            <br><br>
+
+            Nunca pienses que tienes que convertirte
+            en alguien diferente para que alguien se quede.
+
+            <br><br>
+
+Porque me enamoré de esa persona que eres, de tu forma de ser, de tu manera de querer,
+de tu sonrisa y hasta de esas pequeñas cosas que 
+quizá tú no notas, pero que para mí hacen que seas única.
+
+Nunca quisiera cambiarte; al contrario, quiero que sigas brillando siendo tú, 
+porque esa es la niña que quiero, la que admiro y la que ocupa un lugar 
+tan bonito dentro de mi corazón.
+
+        </p>
+
+        <button class="btn"
+                onclick="specialMoment()">
+
+            Hay algo más...
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MENSAJE ESPECIAL
+===================================================== -->
+
+<section id="special"
+         style="display:none;">
+
+    <div class="container">
+
+        <div class="big-star">
+            ✨
+        </div>
+
+        <h2 class="title">
+            Gracias por existir.
+        </h2>
+
+        <p class="subtitle">
+
+            Quizá no te lo diga todos los días,
+            pero me encanta que estés en mi vida.
+
+            <br><br>
+
+            Me encanta hablar contigo.
+
+            Me encanta verte sonreír.
+
+            Me encanta descubrir nuevas cosas de ti.
+
+            Me encanta simplemente estar contigo.
+
+            <br><br>
+
+            Y si pudiera pedirle algo al universo,
+            no pediría que fueras perfecta.
+
+            <br><br>
+
+            Pediría que sigas siendo tú.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<section class="final">
+
+    <div class="final-content">
+
+        <div class="final-star"></div>
+
+        <br><br><br>
+
+        <h2>
+            Te quiero,<br>
+            Mi Ojitos ❤️
+        </h2>
+
+        <p>
+
+            De todas las casualidades
+            que pudieron ocurrir en este universo...
+
+            <br><br>
+
+            <strong>
+                mi favorita fue encontrarte a ti.
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   CREAR ESTRELLAS DEL FONDO
+===================================================== */
+
+const stars =
+    document.getElementById("stars");
+
+for(let i = 0; i < 180; i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random()*100 + "%";
+
+    star.style.top =
+        Math.random()*100 + "%";
+
+    star.style.animationDuration =
+        (1 + Math.random()*4) + "s";
+
+    star.style.animationDelay =
+        Math.random()*5 + "s";
+
+    const size =
+        Math.random()*3 + 1;
+
+    star.style.width =
+        size + "px";
+
+    star.style.height =
+        size + "px";
+
+    stars.appendChild(star);
+}
+
+
+/* =====================================================
+   ESTRELLAS INTERACTIVAS
+===================================================== */
+
+const clickStars =
+    document.querySelectorAll(".click-star");
+
+const message =
+    document.getElementById("message");
+
+const messageText =
+    document.getElementById("messageText");
+
+
+clickStars.forEach(star => {
+
+    star.addEventListener("click", () => {
+
+        messageText.textContent =
+            star.dataset.message;
+
+        message.classList.add("show");
+
+        createHearts(8);
+
+    });
+
+});
+
+
+function closeMessage(){
+
+    message.classList.remove("show");
+
+}
+
+
+/* =====================================================
+   ANIMACIONES AL HACER SCROLL
+===================================================== */
+
+const hidden =
+    document.querySelectorAll(".hidden");
+
+
+function reveal(){
+
+    hidden.forEach(element => {
+
+        const position =
+            element.getBoundingClientRect().top;
+
+        if(position <
+           window.innerHeight - 100){
+
+            element.classList.add("show");
+
+        }
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    reveal
+);
+
+reveal();
+
+
+/* =====================================================
+   CORAZONES
+===================================================== */
+
+const hearts =
+    document.getElementById("hearts");
+
+
+function createHeart(amount = 1){
+
+    for(let i=0;i<amount;i++){
+
+        const heart =
+            document.createElement("div");
+
+        heart.className = "heart";
+
+        const symbols = [
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "✨"
+        ];
+
+        heart.textContent =
+            symbols[
+                Math.floor(
+                    Math.random()*symbols.length
+                )
             ];
 
-            const grupo = new THREE.Group();
-            escena.add(grupo);
-            const interactivas = [];
+        heart.style.left =
+            Math.random()*100 + "%";
 
-            mensajes.forEach(function(msg, i) {
-                const angulo = (i / mensajes.length) * Math.PI * 2;
-                const radio = 6 + Math.random() * 3;
-                const x = Math.cos(angulo) * radio;
-                const y = Math.sin(angulo * 0.8) * 3;
-                const z = Math.sin(angulo) * radio * 0.5;
-                const esfera = new THREE.Mesh(
-                    new THREE.SphereGeometry(0.5, 16, 16),
-                    new THREE.MeshBasicMaterial({ color: 0xff7fbf })
-                );
-                esfera.position.set(x, y, z);
-                esfera.userData = { mensaje: msg };
-                grupo.add(esfera);
-                interactivas.push(esfera);
+        heart.style.fontSize =
+            (12 + Math.random()*25) + "px";
 
-                const glow = new THREE.Mesh(
-                    new THREE.SphereGeometry(0.9, 8, 8),
-                    new THREE.MeshBasicMaterial({ color: 0xff7fbf, transparent: true, opacity: 0.15 })
+        heart.style.animationDuration =
+            (5 + Math.random()*6) + "s";
+
+        hearts.appendChild(heart);
+
+        setTimeout(() => {
+
+            heart.remove();
+
+        },12000);
+
+    }
+
+}
+
+
+setInterval(() => {
+
+    createHeart(1);
+
+},900);
+
+
+/* =====================================================
+   MOMENTO ESPECIAL
+===================================================== */
+
+function specialMoment(){
+
+    const special =
+        document.getElementById("special");
+
+    special.style.display = "flex";
+
+    createHearts(30);
+
+    setTimeout(() => {
+
+        special.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    },100);
+
+}
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+const music =
+    document.getElementById("music");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+let playing = false;
+
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play()
+            .then(() => {
+
+                musicButton.textContent = "♫";
+                playing = true;
+
+            })
+            .catch((error) => {
+
+                console.log("No se pudo reproducir la música:", error);
+
+                alert(
+                    "No se pudo reproducir la canción. " +
+                    "Revisa que el archivo MP3 esté en la misma carpeta que index.html."
                 );
-                glow.position.copy(esfera.position);
-                grupo.add(glow);
+
             });
 
-            const raycaster = new THREE.Raycaster();
-            const mouse = new THREE.Vector2();
+    } else {
 
-            function onClick(event) {
-                const rect = renderer.domElement.getBoundingClientRect();
-                mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-                mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-                raycaster.setFromCamera(mouse, camara);
-                const intersects = raycaster.intersectObjects(interactivas);
-                if (intersects.length > 0) {
-                    const obj = intersects[0].object;
-                    const msg = obj.userData.mensaje;
-                    alert('💫 ' + msg.titulo + '\n' + msg.texto);
-                }
-            }
+        music.pause();
 
-            renderer.domElement.addEventListener('click', onClick);
-            renderer.domElement.addEventListener('touchstart', function(e) {
-                if (e.touches.length === 1) {
-                    const touch = e.touches[0];
-                    onClick({ clientX: touch.clientX, clientY: touch.clientY });
-                }
-            }, { passive: true });
+        musicButton.textContent = "♪";
 
-            function animar() {
-                requestAnimationFrame(animar);
-                grupo.rotation.y += 0.003;
-                stars.rotation.y += 0.0003;
-                renderer.render(escena, camara);
-            }
-            animar();
+        playing = false;
+    }
+}
 
-            window.addEventListener('resize', function() {
-                const w = window.innerWidth;
-                const h = window.innerHeight;
-                camara.aspect = w / h;
-                camara.updateProjectionMatrix();
-                renderer.setSize(w, h);
-            });
-        })();
-    </script>
+/* =====================================================
+   EFECTO AL HACER CLICK EN CUALQUIER PARTE
+===================================================== */
+
+document.addEventListener("click", event => {
+
+    if(
+        event.target.classList.contains("click-star") ||
+        event.target.closest(".message") ||
+        event.target.closest("button")
+    ){
+        return;
+    }
+
+    createHearts(3);
+
+});
+
+
+message.addEventListener("click", event => {
+
+    if(event.target === message){
+
+        closeMessage();
+
+    }
+
+});
+
+</script>
+
 </body>
 </html>
