@@ -1,0 +1,2573 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Siempre volvería a enamorarme de ti ❤️</title>
+
+    <style>
+
+        /* =========================================================
+           CONFIGURACIÓN GENERAL
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            background:
+                #eee1cf;
+
+            color:
+                #49372f;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =========================================================
+           PAPEL DEL FONDO
+        ========================================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 100;
+
+            opacity: .18;
+
+            background-image:
+
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(90,60,40,.05) 4px
+                );
+
+        }
+
+
+        /* =========================================================
+           BOTÓN DE MÚSICA
+        ========================================================= */
+
+        .music-button {
+
+            position: fixed;
+
+            top: 22px;
+            right: 22px;
+
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(92,55,43,.25);
+
+            background:
+                rgba(255,249,238,.9);
+
+            color:
+                #7b403e;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 8px 25px
+                rgba(70,40,30,.15);
+
+            transition:
+                .3s ease;
+
+        }
+
+        .music-button:hover {
+
+            transform:
+                scale(1.08)
+                rotate(4deg);
+
+        }
+
+        .music-button.playing {
+
+            animation:
+                musicBeat
+                1.4s
+                infinite;
+
+        }
+
+        @keyframes musicBeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+        }
+
+
+        /* =========================================================
+           CORAZONES DE FONDO
+        ========================================================= */
+
+        .floating-heart {
+
+            position: fixed;
+
+            bottom: -30px;
+
+            z-index: 2;
+
+            pointer-events: none;
+
+            opacity: 0;
+
+            animation:
+                riseHeart
+                linear
+                forwards;
+
+        }
+
+        @keyframes riseHeart {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg)
+                    scale(.7);
+
+                opacity: 0;
+
+            }
+
+            15% {
+                opacity: .65;
+            }
+
+            100% {
+
+                transform:
+                    translateY(-110vh)
+                    rotate(25deg)
+                    scale(1.1);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           PORTADA
+        ========================================================= */
+
+        .cover {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                80px 20px;
+
+        }
+
+        .book-cover {
+
+            width: min(900px, 94%);
+
+            min-height: 650px;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 35px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    #fffaf0,
+                    #f4e7d3
+                );
+
+            border:
+                1px solid
+                rgba(94,60,43,.25);
+
+            box-shadow:
+
+                0 35px 80px
+                rgba(73,48,37,.20),
+
+                inset 0 0 0 12px
+                rgba(255,255,255,.25);
+
+            animation:
+                appear
+                1.3s
+                ease;
+
+        }
+
+        .book-cover::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 22px;
+
+            border:
+                1px solid
+                rgba(126,72,68,.25);
+
+            pointer-events: none;
+
+        }
+
+        .book-cover::after {
+
+            content: "♥";
+
+            position: absolute;
+
+            bottom: 32px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            color:
+                #9b5550;
+
+            font-size: 20px;
+
+        }
+
+        .cover-content {
+
+            max-width: 680px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+        .cover-small {
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                5px;
+
+            font-size:
+                .72rem;
+
+            color:
+                #9b7166;
+
+            margin-bottom:
+                28px;
+
+        }
+
+        .cover-heart {
+
+            font-size:
+                62px;
+
+            color:
+                #9b5550;
+
+            animation:
+                heartbeat
+                1.8s
+                infinite;
+
+        }
+
+        @keyframes heartbeat {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.13);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.08);
+            }
+
+        }
+
+        .cover h1 {
+
+            font-size:
+                clamp(3rem, 8vw, 6rem);
+
+            line-height:
+                .95;
+
+            font-weight:
+                normal;
+
+            color:
+                #633f39;
+
+            margin:
+                22px 0 30px;
+
+        }
+
+        .cover h1 span {
+
+            font-style:
+                italic;
+
+            color:
+                #9b5550;
+
+        }
+
+        .cover-description {
+
+            line-height:
+                2;
+
+            color:
+                #765e54;
+
+            font-size:
+                1.08rem;
+
+        }
+
+        .open-button {
+
+            display:
+                inline-block;
+
+            margin-top:
+                38px;
+
+            padding:
+                15px 32px;
+
+            text-decoration:
+                none;
+
+            color:
+                #fffaf2;
+
+            background:
+                #87504c;
+
+            border:
+                none;
+
+            border-radius:
+                3px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(104,60,54,.2);
+
+            transition:
+                .3s;
+
+        }
+
+        .open-button:hover {
+
+            background:
+                #6f3f3c;
+
+            transform:
+                translateY(-4px);
+
+        }
+
+
+        /* =========================================================
+           SEPARADORES
+        ========================================================= */
+
+        .divider {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                15px;
+
+            margin:
+                30px auto;
+
+            color:
+                #9b655e;
+
+        }
+
+        .divider::before,
+        .divider::after {
+
+            content: "";
+
+            height: 1px;
+
+            width: 90px;
+
+            background:
+                #c7a99a;
+
+        }
+
+
+        /* =========================================================
+           PÁGINAS
+        ========================================================= */
+
+        .page {
+
+            width:
+                min(1050px, 92%);
+
+            margin:
+                100px auto;
+
+            padding:
+                85px 75px;
+
+            position: relative;
+
+            background:
+                #fffaf0;
+
+            box-shadow:
+                0 25px 60px
+                rgba(75,50,40,.13);
+
+            border:
+                1px solid
+                rgba(105,70,55,.13);
+
+        }
+
+        .page:nth-of-type(even) {
+
+            transform:
+                rotate(.25deg);
+
+        }
+
+        .page:nth-of-type(odd) {
+
+            transform:
+                rotate(-.25deg);
+
+        }
+
+        .page::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 30px;
+            top: 25px;
+            bottom: 25px;
+
+            width: 1px;
+
+            background:
+                rgba(146,82,74,.18);
+
+        }
+
+        .page-number {
+
+            position: absolute;
+
+            right: 30px;
+            top: 25px;
+
+            font-size:
+                .75rem;
+
+            color:
+                #aa8a7e;
+
+        }
+
+        .chapter {
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                4px;
+
+            color:
+                #a06a61;
+
+            font-size:
+                .72rem;
+
+            margin-bottom:
+                15px;
+
+        }
+
+        .page h2 {
+
+            font-size:
+                clamp(2.3rem, 5vw, 4.4rem);
+
+            font-weight:
+                normal;
+
+            color:
+                #68443d;
+
+            line-height:
+                1.05;
+
+            margin-bottom:
+                30px;
+
+        }
+
+        .page h2 em {
+
+            color:
+                #9b5550;
+
+        }
+
+        .text {
+
+            max-width:
+                780px;
+
+            font-size:
+                1.08rem;
+
+            line-height:
+                2;
+
+            color:
+                #665149;
+
+        }
+
+        .text strong {
+
+            color:
+                #8e4e49;
+
+        }
+
+
+        /* =========================================================
+           FOTO TIPO POLAROID
+        ========================================================= */
+
+        .photo-layout {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                55px;
+
+            align-items:
+                center;
+
+            margin-top:
+                55px;
+
+        }
+
+        .polaroid {
+
+            background:
+                white;
+
+            padding:
+                12px 12px 45px;
+
+            box-shadow:
+                0 15px 35px
+                rgba(50,35,25,.16);
+
+            transform:
+                rotate(-3deg);
+
+            transition:
+                .4s ease;
+
+        }
+
+        .polaroid:nth-child(2) {
+
+            transform:
+                rotate(3deg);
+
+        }
+
+        .polaroid:hover {
+
+            transform:
+                rotate(0)
+                translateY(-8px);
+
+        }
+
+        .polaroid img {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            height:
+                390px;
+
+            object-fit:
+                cover;
+
+        }
+
+        .polaroid-caption {
+
+            text-align:
+                center;
+
+            padding-top:
+                15px;
+
+            font-family:
+                "Brush Script MT",
+                cursive;
+
+            font-size:
+                1.35rem;
+
+            color:
+                #70453f;
+
+        }
+
+
+        /* =========================================================
+           CARTA CENTRAL
+        ========================================================= */
+
+        .love-note {
+
+            margin:
+                60px auto 0;
+
+            max-width:
+                760px;
+
+            padding:
+                55px 50px;
+
+            background:
+                #f8eddb;
+
+            border:
+                1px solid
+                #d7bca8;
+
+            position:
+                relative;
+
+            box-shadow:
+                0 15px 35px
+                rgba(75,45,35,.08);
+
+        }
+
+        .love-note::before {
+
+            content:
+                "♡";
+
+            position:
+                absolute;
+
+            top:
+                -18px;
+
+            left:
+                50%;
+
+            transform:
+                translateX(-50%);
+
+            background:
+                #fffaf0;
+
+            padding:
+                0 15px;
+
+            color:
+                #9b5550;
+
+            font-size:
+                28px;
+
+        }
+
+        .love-note p {
+
+            font-size:
+                1.12rem;
+
+            line-height:
+                2.1;
+
+            text-align:
+                center;
+
+            color:
+                #604a42;
+
+        }
+
+
+        /* =========================================================
+           SECCIÓN "DÍAS DIFÍCILES"
+        ========================================================= */
+
+        .support-section {
+
+            text-align:
+                center;
+
+        }
+
+        .support-section h2 {
+
+            max-width:
+                750px;
+
+            margin:
+                0 auto 25px;
+
+        }
+
+        .support-buttons {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            justify-content:
+                center;
+
+            gap:
+                14px;
+
+            margin-top:
+                40px;
+
+        }
+
+        .support-button {
+
+            padding:
+                14px 20px;
+
+            border:
+                1px solid
+                #cdaea0;
+
+            background:
+                #fffaf0;
+
+            color:
+                #774b45;
+
+            font-family:
+                Georgia,
+                serif;
+
+            cursor:
+                pointer;
+
+            transition:
+                .3s;
+
+        }
+
+        .support-button:hover {
+
+            background:
+                #87504c;
+
+            color:
+                white;
+
+            transform:
+                translateY(-3px);
+
+        }
+
+        .message-box {
+
+            max-width:
+                720px;
+
+            margin:
+                35px auto 0;
+
+            min-height:
+                110px;
+
+            padding:
+                30px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                #f6ead8;
+
+            border-left:
+                3px solid
+                #9b5550;
+
+            color:
+                #644c45;
+
+            font-style:
+                italic;
+
+            line-height:
+                1.8;
+
+            opacity:
+                0;
+
+            transform:
+                translateY(10px);
+
+            transition:
+                .4s;
+
+        }
+
+        .message-box.show {
+
+            opacity:
+                1;
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        /* =========================================================
+           PÁGINA "VOLVER A ELEGIRTE"
+        ========================================================= */
+
+        .choice-page {
+
+            text-align:
+                center;
+
+        }
+
+        .choice-page h2 {
+
+            font-size:
+                clamp(2.7rem, 7vw, 5.5rem);
+
+        }
+
+        .choice-line {
+
+            font-size:
+                clamp(1.3rem, 3vw, 2rem);
+
+            color:
+                #80524a;
+
+            margin:
+                35px auto;
+
+            max-width:
+                750px;
+
+            line-height:
+                1.7;
+
+        }
+
+        .reveal-button {
+
+            padding:
+                16px 30px;
+
+            border:
+                1px solid
+                #a66c64;
+
+            background:
+                transparent;
+
+            color:
+                #87504c;
+
+            font-family:
+                Georgia,
+                serif;
+
+            cursor:
+                pointer;
+
+            transition:
+                .3s;
+
+        }
+
+        .reveal-button:hover {
+
+            background:
+                #87504c;
+
+            color:
+                white;
+
+        }
+
+        .hidden-letter {
+
+            max-height:
+                0;
+
+            overflow:
+                hidden;
+
+            opacity:
+                0;
+
+            transition:
+                1s ease;
+
+        }
+
+        .hidden-letter.open {
+
+            max-height:
+                1500px;
+
+            opacity:
+                1;
+
+            margin-top:
+                45px;
+
+        }
+
+
+        /* =========================================================
+           CARTA FINAL
+        ========================================================= */
+
+        .final-letter {
+
+            text-align:
+                center;
+
+        }
+
+        .final-letter h2 {
+
+            color:
+                #8c4f49;
+
+        }
+
+        .final-letter .letter-text {
+
+            max-width:
+                750px;
+
+            margin:
+                auto;
+
+            font-size:
+                1.15rem;
+
+            line-height:
+                2.1;
+
+            color:
+                #5f4941;
+
+        }
+
+        .signature {
+
+            margin-top:
+                45px;
+
+            font-family:
+                "Brush Script MT",
+                cursive;
+
+            font-size:
+                2rem;
+
+            color:
+                #8c4f49;
+
+        }
+
+        .final-heart {
+
+            margin-top:
+                25px;
+
+            font-size:
+                42px;
+
+            animation:
+                heartbeat
+                1.8s
+                infinite;
+
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            text-align:
+                center;
+
+            padding:
+                70px 20px;
+
+            color:
+                #92766a;
+
+            font-size:
+                .9rem;
+
+        }
+
+        footer strong {
+
+            color:
+                #87504c;
+
+        }
+
+
+        /* =========================================================
+           ANIMACIÓN DE ENTRADA
+        ========================================================= */
+
+        @keyframes appear {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(35px);
+
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 750px) {
+
+            .book-cover {
+
+                min-height:
+                    570px;
+
+                padding:
+                    45px 25px;
+
+            }
+
+            .page {
+
+                padding:
+                    65px 35px;
+
+                margin:
+                    65px auto;
+
+            }
+
+            .page::before {
+
+                left:
+                    16px;
+
+            }
+
+            .photo-layout {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    35px;
+
+            }
+
+            .polaroid img {
+
+                height:
+                    350px;
+
+            }
+
+            .love-note {
+
+                padding:
+                    40px 25px;
+
+            }
+
+            .music-button {
+
+                width:
+                    50px;
+
+                height:
+                    50px;
+
+                right:
+                    15px;
+
+                top:
+                    15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         BOTÓN DE MÚSICA
+    ========================================================= -->
+
+    <button
+        class="music-button"
+        id="musicButton"
+        onclick="toggleMusic()"
+        title="Reproducir nuestra canción">
+
+        ♪
+
+    </button>
+
+
+    <audio
+        id="music"
+        loop>
+
+        <source
+            src="Carin Leon - Desde Que Te Tengo.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+
+    <!-- =========================================================
+         PORTADA
+    ========================================================= -->
+
+    <section class="cover">
+
+        <div class="book-cover">
+
+            <div class="cover-content">
+
+                <div class="cover-small">
+
+                    Una carta que quizá nunca termine
+
+                </div>
+
+
+                <div class="cover-heart">
+
+                    ♡
+
+                </div>
+
+
+                <h1>
+
+                    Si volviera<br>
+
+                    a encontrarte...
+
+                    <br>
+
+                    <span>
+                        volvería a elegirte.
+                    </span>
+
+                </h1>
+
+
+                <p class="cover-description">
+
+                    Hay cosas que no quiero que el tiempo
+                    cambie.
+
+                    <br>
+
+                    Y una de ellas eres tú.
+
+                    <br><br>
+
+                    Así que escribí esto para que,
+                    cuando tengas un día difícil,
+                    puedas recordar cuánto significas
+                    para mí.
+
+                </p>
+
+
+                <a
+                    href="#pagina1"
+                    class="open-button">
+
+                    Abrir esta carta ❤️
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PÁGINA 1
+    ========================================================= -->
+
+    <section
+        class="page"
+        id="pagina1">
+
+        <span class="page-number">
+            01
+        </span>
+
+
+        <div class="chapter">
+
+            Capítulo I · Tú
+
+        </div>
+
+
+        <h2>
+
+            De todas las cosas bonitas
+            que pude encontrar...
+
+        </h2>
+
+
+        <p class="text">
+
+            terminaste siendo tú.
+
+            <br><br>
+
+            Y no quiero que pienses que me enamoré
+            solamente de tu sonrisa, de tus ojos
+            o de lo hermosa que eres.
+
+            <br><br>
+
+            Me enamoré de las pequeñas cosas.
+
+            <br><br>
+
+            De la forma en la que hablas,
+            de tus ocurrencias, de tus gestos,
+            de las cosas que te emocionan,
+            de tus sueños y hasta de esas pequeñas
+            cosas que quizá tú no consideras
+            importantes.
+
+            <br><br>
+
+            Porque mientras más te conozco,
+            más entiendo que
+
+            <strong>
+                lo bonito de ti nunca estuvo solamente
+                en tu apariencia.
+            </strong>
+
+            <br><br>
+
+            Está en tu corazón.
+
+        </p>
+
+
+        <div class="photo-layout">
+
+            <div class="polaroid">
+
+                <img
+                    src="mibb.jpeg"
+                    alt="Mi niña">
+
+                <div class="polaroid-caption">
+
+                    Mi niña bonita ❤️
+
+                </div>
+
+            </div>
+
+
+            <div class="polaroid">
+
+                <img
+                    src="mibb2.jpeg"
+                    alt="Ella">
+
+                <div class="polaroid-caption">
+
+                    Esa sonrisa que me encanta
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PÁGINA 2
+    ========================================================= -->
+
+    <section class="page">
+
+        <span class="page-number">
+            02
+        </span>
+
+
+        <div class="chapter">
+
+            Capítulo II · Nosotros
+
+        </div>
+
+
+        <h2>
+
+            Quizá no podamos vernos
+            como todos los días...
+
+        </h2>
+
+
+        <p class="text">
+
+            Tú tendrás tus días en la escuela,
+            tus trabajos, tus tareas, tus preocupaciones
+            y todas esas cosas nuevas que llegarán.
+
+            <br><br>
+
+            Yo tendré mis días trabajando,
+            mis responsabilidades y mis propios problemas.
+
+            <br><br>
+
+            Y probablemente habrá días en los que
+            no podamos hablar tanto.
+
+            <br><br>
+
+            Días en los que solamente podamos decirnos
+            un "buenos días" y un "descansa".
+
+            <br><br>
+
+            Pero quiero que recuerdes algo:
+
+            <br><br>
+
+            <strong>
+                Que no podamos estar juntos todo el día
+                no significa que dejes de estar presente
+                en mi corazón.
+            </strong>
+
+        </p>
+
+
+        <div class="love-note">
+
+            <p>
+
+                No quiero que midas mi amor
+                por la cantidad de mensajes
+                que podamos enviarnos.
+
+                <br><br>
+
+                Quiero que lo midas por la tranquilidad
+                de saber que, aunque esté trabajando
+                o tú estés estudiando,
+
+                <br><br>
+
+                <strong>
+                    sigo aquí.
+                </strong>
+
+                <br><br>
+
+                Pensando en ti,
+                deseándote lo mejor
+                y esperando verte otra vez.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PÁGINA 3 · APOYO
+    ========================================================= -->
+
+    <section class="page support-section">
+
+        <span class="page-number">
+            03
+        </span>
+
+
+        <div class="chapter">
+
+            Capítulo III · Para tus días difíciles
+
+        </div>
+
+
+        <h2>
+
+            Cuando estés estresada,
+            vuelve aquí.
+
+        </h2>
+
+
+        <p class="text">
+
+            Porque sé que habrá días en los que
+            la escuela te canse.
+
+            <br><br>
+
+            Días en los que sientas que no puedes más,
+            que algo salió mal o que simplemente
+            quieres olvidarte de todo.
+
+            <br><br>
+
+            Y cuando eso pase quiero que recuerdes
+            que no tienes que cambiar quién eres
+            para superar un mal día.
+
+            <br><br>
+
+            <strong>
+                Sigue siendo tú.
+            </strong>
+
+            La niña que admiro,
+            la niña que quiero,
+            la niña que estoy orgulloso de ver crecer.
+
+        </p>
+
+
+        <div class="support-buttons">
+
+            <button
+                class="support-button"
+                onclick="showMessage(0)">
+
+                Estoy estresada
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage(1)">
+
+                Tengo miedo
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage(2)">
+
+                No puedo más
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage(3)">
+
+                Necesito un abrazo
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage(4)">
+
+                Te extraño
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="message-box"
+            id="messageBox">
+
+            Presiona uno de los botones...
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PÁGINA 4
+    ========================================================= -->
+
+    <section class="page">
+
+        <span class="page-number">
+            04
+        </span>
+
+
+        <div class="chapter">
+
+            Capítulo IV · Lo que quiero para ti
+
+        </div>
+
+
+        <h2>
+
+            Nunca quiero que sientas
+            que tienes que dejar de ser tú.
+
+        </h2>
+
+
+        <p class="text">
+
+            Quiero verte cumplir tus sueños.
+
+            <br><br>
+
+            Quiero verte emocionarte cuando algo
+            te salga bien.
+
+            <br><br>
+
+            Quiero verte aprender de tus errores
+            sin sentir que tienes que ser perfecta.
+
+            <br><br>
+
+            Quiero verte crecer.
+
+            <br><br>
+
+            Y si algún día dudas de ti misma,
+            quiero recordarte todo lo que eres capaz
+            de hacer.
+
+            <br><br>
+
+            Porque yo no quiero que cambies
+            para encajar en mi vida.
+
+            <br><br>
+
+            <strong>
+                Quiero que seas completamente tú
+                y que me permitas acompañarte
+                mientras construyes la vida que sueñas.
+            </strong>
+
+        </p>
+
+
+        <div class="photo-layout">
+
+            <div class="polaroid">
+
+                <img
+                    src="nosotros3.jpeg"
+                    alt="Nosotros">
+
+                <div class="polaroid-caption">
+
+                    Uno de tantos momentos ❤️
+
+                </div>
+
+            </div>
+
+
+            <div class="polaroid">
+
+                <img
+                    src="nosotros2.jpeg"
+                    alt="Nosotros">
+
+                <div class="polaroid-caption">
+
+                    Quiero muchos más recuerdos
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PÁGINA 5 · SI TE EXTRAÑO
+    ========================================================= -->
+
+    <section class="page">
+
+        <span class="page-number">
+            05
+        </span>
+
+
+        <div class="chapter">
+
+            Capítulo V · Cuando te extrañe
+
+        </div>
+
+
+        <h2>
+
+            Habrá días en los que
+            te voy a extrañar muchísimo.
+
+        </h2>
+
+
+        <p class="text">
+
+            Y probablemente no pueda hacer nada
+            más que esperar hasta volver a verte.
+
+            <br><br>
+
+            Pero quiero que sepas que nunca voy
+            a pensar que quererte es una carga.
+
+            <br><br>
+
+            Al contrario.
+
+            <br><br>
+
+            Eres una de esas personas que hacen
+            que incluso esperar valga la pena.
+
+            <br><br>
+
+            Así que si algún día me dices:
+
+            <br><br>
+
+            <strong>
+                "Te extraño."
+            </strong>
+
+            <br><br>
+
+            probablemente mi respuesta será:
+
+            <br><br>
+
+            <strong>
+                "Yo también, mi Ojitos.
+                Muchísimo."
+            </strong>
+
+            <br><br>
+
+            Y después voy a empezar a contar
+            cuánto falta para volver a abrazarte.
+
+        </p>
+
+
+        <div class="hero-photo">
+
+            <img
+                src="nosotros4.jpeg"
+                alt="Nuestro recuerdo"
+                style="
+                    width:100%;
+                    max-height:600px;
+                    object-fit:cover;
+                    display:block;
+                ">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PÁGINA 6 · VOLVER A ENAMORARME
+    ========================================================= -->
+
+    <section class="page choice-page">
+
+        <span class="page-number">
+            06
+        </span>
+
+
+        <div class="chapter">
+
+            Capítulo VI · Mi promesa favorita
+
+        </div>
+
+
+        <h2>
+
+            Si pudiera conocerte
+            otra vez...
+
+        </h2>
+
+
+        <p class="choice-line">
+
+            ¿Sabes qué haría?
+
+        </p>
+
+
+        <button
+            class="reveal-button"
+            onclick="revealLetter()">
+
+            Quiero saberlo ❤️
+
+        </button>
+
+
+        <div
+            class="hidden-letter"
+            id="hiddenLetter">
+
+            <div class="love-note">
+
+                <p>
+
+                    Volvería a buscarte.
+
+                    <br><br>
+
+                    Volvería a querer conocer tus gustos,
+                    tus sueños, tus miedos y tus locuras.
+
+                    <br><br>
+
+                    Volvería a querer escuchar tus historias.
+
+                    <br><br>
+
+                    Volvería a querer hacerte sonreír.
+
+                    <br><br>
+
+                    Volvería a querer descubrir
+                    cada pequeño detalle de ti.
+
+                    <br><br>
+
+                    Y cuando llegara nuevamente
+                    ese momento en el que empezara
+                    a sentir algo por ti...
+
+                    <br><br>
+
+                    <strong>
+                        volvería a enamorarme.
+                    </strong>
+
+                    <br><br>
+
+                    Porque ahora que sé lo bonito
+                    que es tenerte en mi vida,
+
+                    <br><br>
+
+                    sé que te elegiría otra vez.
+
+                    <br><br>
+
+                    Sin pensarlo.
+
+                    <br><br>
+
+                    Una y otra vez.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PÁGINA 7 · CARTA FINAL
+    ========================================================= -->
+
+    <section class="page final-letter">
+
+        <span class="page-number">
+            07
+        </span>
+
+
+        <div class="chapter">
+
+            Última página · Aunque en realidad no termina aquí
+
+        </div>
+
+
+        <h2>
+
+            Para mi Ojitos ❤️
+
+        </h2>
+
+
+        <div class="letter-text">
+
+            <p>
+
+                No sé exactamente qué nos espera.
+
+                <br><br>
+
+                No sé cuántos cambios vendrán,
+                cuántos días difíciles tendremos,
+                cuántas veces vamos a extrañarnos
+                o cuántas veces la vida hará que
+                nuestros días estén llenos de cosas.
+
+                <br><br>
+
+                Pero hay algo que sí sé.
+
+                <br><br>
+
+                <strong>
+                    Yo no quiero que tengas miedo
+                    de que las cosas cambien.
+                </strong>
+
+                <br><br>
+
+                Porque hay cosas que pueden cambiar
+                sin que cambie lo que siento por ti.
+
+                <br><br>
+
+                Tu escuela puede cambiar tus horarios.
+
+                <br>
+
+                Mi trabajo puede ocupar mis días.
+
+                <br>
+
+                Podemos tener semanas complicadas.
+
+                <br>
+
+                Podemos estar cansados.
+
+                <br><br>
+
+                Pero quiero seguir siendo esa persona
+                a la que puedas acudir cuando necesites
+                apoyo.
+
+                <br><br>
+
+                Quiero seguir celebrando tus logros.
+
+                <br><br>
+
+                Quiero seguir diciéndote lo hermosa
+                que eres.
+
+                <br><br>
+
+                Quiero seguir escuchando tus historias.
+
+                <br><br>
+
+                Quiero seguir abrazándote cuando
+                tenga la oportunidad.
+
+                <br><br>
+
+                Y sobre todo...
+
+                <br><br>
+
+                <strong>
+                    quiero seguir enamorándome de ti.
+                </strong>
+
+                <br><br>
+
+                No solamente de la niña que eres hoy.
+
+                <br><br>
+
+                Sino de todas las versiones de ti
+                que todavía no conozco.
+
+                <br><br>
+
+                De la mujer en la que te convertirás.
+
+                <br><br>
+
+                De tus nuevos sueños.
+
+                <br><br>
+
+                De tus nuevas metas.
+
+                <br><br>
+
+                De cada nueva parte de ti
+                que la vida me permita conocer.
+
+                <br><br>
+
+                Porque si algún día pudiera volver
+                al principio y tuviera que elegir
+                nuevamente...
+
+                <br><br>
+
+                <strong>
+
+                    volvería a elegirte.
+
+                    <br><br>
+
+                    Volvería a encontrarte.
+
+                    <br><br>
+
+                    Volvería a conocerte.
+
+                    <br><br>
+
+                    Volvería a mirarte.
+
+                    <br><br>
+
+                    Y volvería a enamorarme de ti.
+
+                </strong>
+
+            </p>
+
+        </div>
+
+
+        <div class="signature">
+
+            Te quiero muchísimo,
+            mi niña bonita.
+
+        </div>
+
+
+        <div class="final-heart">
+
+            ❤️
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOTO FINAL
+    ========================================================= -->
+
+    <section class="page final-letter">
+
+        <div class="chapter">
+
+            Una última fotografía
+
+        </div>
+
+
+        <h2>
+
+            Y todavía nos faltan
+            muchas páginas.
+
+        </h2>
+
+
+        <div class="polaroid"
+             style="
+                max-width:650px;
+                margin:45px auto;
+                transform:rotate(-1deg);
+             ">
+
+            <img
+                src="nosotros.jpeg"
+                alt="Nosotros juntos">
+
+            <div class="polaroid-caption">
+
+                Esta historia todavía continúa...
+
+            </div>
+
+        </div>
+
+
+        <p class="text"
+           style="margin:auto; text-align:center;">
+
+            Así que no pienses que esta es la última página.
+
+            <br><br>
+
+            Solamente es la última que pude escribir
+            por ahora.
+
+            <br><br>
+
+            Las siguientes...
+
+            <br><br>
+
+            <strong>
+                quiero escribirlas contigo.
+            </strong>
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        Hecho con amor para
+
+        <br>
+
+        <strong>
+            mi Ojitos ❤️
+        </strong>
+
+        <br><br>
+
+        Una historia que todavía estamos escribiendo.
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+
+        /* =========================================================
+           MÚSICA
+        ========================================================= */
+
+        const music =
+            document.getElementById("music");
+
+        const musicButton =
+            document.getElementById("musicButton");
+
+        let isPlaying = false;
+
+
+        function toggleMusic() {
+
+            if (!isPlaying) {
+
+                music.play()
+                    .then(() => {
+
+                        isPlaying = true;
+
+                        musicButton.textContent =
+                            "❚❚";
+
+                        musicButton.classList.add(
+                            "playing"
+                        );
+
+                    })
+                    .catch(() => {
+
+                        alert(
+                            "No se pudo reproducir la música. Verifica que el archivo 'Carin Leon - Desde Que Te Tengo.mp3' esté en la misma carpeta que amor.html."
+                        );
+
+                    });
+
+            } else {
+
+                music.pause();
+
+                isPlaying = false;
+
+                musicButton.textContent =
+                    "♪";
+
+                musicButton.classList.remove(
+                    "playing"
+                );
+
+            }
+
+        }
+
+
+        music.addEventListener(
+            "ended",
+            () => {
+
+                isPlaying = false;
+
+                musicButton.textContent =
+                    "♪";
+
+                musicButton.classList.remove(
+                    "playing"
+                );
+
+            }
+        );
+
+
+
+        /* =========================================================
+           MENSAJES DE APOYO
+        ========================================================= */
+
+        const messages = [
+
+            "Respira, mi Ojitos. No tienes que resolver todo en este momento. Tómate un pequeño descanso, vuelve a respirar y recuerda que eres mucho más capaz de lo que ese momento te está haciendo sentir. ❤️",
+
+            "Si tienes miedo, quiero que recuerdes que no tienes que tener todo resuelto. Puedes avanzar poco a poco. Confío muchísimo en ti, incluso en esos momentos en los que tú misma dudas de ti.",
+
+            "Entonces descansa un poquito. No eres una máquina y no tienes que poder con todo siempre. Si hoy fue demasiado, mañana puedes volver a intentarlo. Y mientras tanto, aquí tienes a alguien que te quiere muchísimo.",
+
+            "Si pudiera estar ahí en este momento, probablemente no diría absolutamente nada. Solamente te abrazaría fuerte y dejaría que descansaras un ratito en mis brazos. Así que imagina que ese abrazo está llegando hasta ti. ❤️",
+
+            "Yo también te extraño. Pero quiero que pienses que cada día que pasa es un día menos para volver a verte. Mientras tanto, sigue con tus cosas, cumple tus sueños y recuerda que aquí hay alguien esperando volver a abrazarte."
+
+        ];
+
+
+        const messageBox =
+            document.getElementById(
+                "messageBox"
+            );
+
+
+        function showMessage(index) {
+
+            messageBox.classList.remove(
+                "show"
+            );
+
+
+            setTimeout(() => {
+
+                messageBox.textContent =
+                    messages[index];
+
+                messageBox.classList.add(
+                    "show"
+                );
+
+            }, 200);
+
+        }
+
+
+
+        /* =========================================================
+           CARTA OCULTA
+        ========================================================= */
+
+        function revealLetter() {
+
+            const letter =
+                document.getElementById(
+                    "hiddenLetter"
+                );
+
+            const button =
+                document.querySelector(
+                    ".reveal-button"
+                );
+
+
+            letter.classList.toggle(
+                "open"
+            );
+
+
+            if (
+                letter.classList.contains("open")
+            ) {
+
+                button.textContent =
+                    "❤️ Vuelve a leerlo";
+
+            } else {
+
+                button.textContent =
+                    "Quiero saberlo ❤️";
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           CORAZONES FLOTANTES
+        ========================================================= */
+
+        const heartSymbols = [
+            "♡",
+            "♥",
+            "❤",
+            "❣"
+        ];
+
+
+        function createFloatingHeart() {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+
+            heart.className =
+                "floating-heart";
+
+
+            heart.textContent =
+                heartSymbols[
+                    Math.floor(
+                        Math.random() *
+                        heartSymbols.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+
+            heart.style.fontSize =
+                15 +
+                Math.random() * 18 +
+                "px";
+
+
+            heart.style.color =
+                "#a9655e";
+
+
+            heart.style.animationDuration =
+                8 +
+                Math.random() * 6 +
+                "s";
+
+
+            document.body.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                () => {
+
+                    heart.remove();
+
+                },
+                15000
+            );
+
+        }
+
+
+        setInterval(
+            createFloatingHeart,
+            1800
+        );
+
+
+
+        /* =========================================================
+           REVELAR PÁGINAS AL HACER SCROLL
+        ========================================================= */
+
+        const pages =
+            document.querySelectorAll(
+                ".page"
+            );
+
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.style.opacity =
+                                    "1";
+
+                                entry.target.style.transform =
+                                    "translateY(0) rotate(0deg)";
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: .12
+                }
+            );
+
+
+        pages.forEach(
+            (page) => {
+
+                page.style.opacity =
+                    "0";
+
+                page.style.transform =
+                    "translateY(35px)";
+
+                page.style.transition =
+                    "opacity .9s ease, transform 1s ease";
+
+                observer.observe(
+                    page
+                );
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
