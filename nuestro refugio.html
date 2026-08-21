@@ -1,0 +1,2558 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Siempre Contigo ❤️</title>
+
+
+    <style>
+
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            background:
+                #f8eee9;
+
+            color:
+                #59433f;
+
+            overflow-x:
+                hidden;
+        }
+
+
+        /* =====================================================
+           FONDO
+        ===================================================== */
+
+        .background {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            z-index:
+                -10;
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(236,163,170,.30),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 85% 75%,
+                    rgba(220,180,160,.28),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #fff7f3,
+                    #f7e6e1,
+                    #f9eee7
+                );
+        }
+
+
+        .background::before {
+
+            content: "";
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,.7) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                28px 28px;
+
+            opacity:
+                .25;
+        }
+
+
+        /* =====================================================
+           CORAZONES FLOTANTES
+        ===================================================== */
+
+        .floating-heart {
+
+            position:
+                fixed;
+
+            bottom:
+                -50px;
+
+            z-index:
+                5;
+
+            pointer-events:
+                none;
+
+            opacity:
+                0;
+
+            animation:
+                floatHeart
+                linear
+                forwards;
+        }
+
+
+        @keyframes floatHeart {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg)
+                    scale(.7);
+
+                opacity:
+                    0;
+            }
+
+
+            15% {
+
+                opacity:
+                    .7;
+            }
+
+
+            100% {
+
+                transform:
+                    translateY(-110vh)
+                    translateX(80px)
+                    rotate(25deg)
+                    scale(1.1);
+
+                opacity:
+                    0;
+            }
+        }
+
+
+        /* =====================================================
+           BOTÓN DE MÚSICA
+        ===================================================== */
+
+        .music-button {
+
+            position:
+                fixed;
+
+            top:
+                22px;
+
+            right:
+                22px;
+
+            width:
+                58px;
+
+            height:
+                58px;
+
+            border:
+                1px solid
+                rgba(145,88,91,.3);
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(255,250,247,.9);
+
+            color:
+                #9d5c64;
+
+            font-size:
+                22px;
+
+            cursor:
+                pointer;
+
+            z-index:
+                1000;
+
+            box-shadow:
+                0 8px 25px
+                rgba(103,60,58,.15);
+
+            transition:
+                .3s ease;
+        }
+
+
+        .music-button:hover {
+
+            transform:
+                scale(1.08);
+
+            background:
+                white;
+        }
+
+
+        .music-button.playing {
+
+            animation:
+                musicPulse
+                1.6s
+                infinite;
+        }
+
+
+        @keyframes musicPulse {
+
+            0%,
+            100% {
+
+                box-shadow:
+                    0 8px 25px
+                    rgba(103,60,58,.15);
+            }
+
+            50% {
+
+                box-shadow:
+                    0 0 0 10px
+                    rgba(196,112,123,.12),
+                    0 10px 30px
+                    rgba(103,60,58,.22);
+            }
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height:
+                100vh;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                90px 20px 60px;
+        }
+
+
+        .hero-content {
+
+            max-width:
+                950px;
+
+            animation:
+                entrance
+                1.2s
+                ease;
+        }
+
+
+        @keyframes entrance {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(35px);
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .hero-small {
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                5px;
+
+            font-size:
+                .72rem;
+
+            color:
+                #a9676e;
+
+            margin-bottom:
+                22px;
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(
+                    3.2rem,
+                    10vw,
+                    7rem
+                );
+
+            line-height:
+                .95;
+
+            font-weight:
+                normal;
+
+            color:
+                #744e4d;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .hero h1 span {
+
+            color:
+                #b96872;
+        }
+
+
+        .hero-description {
+
+            max-width:
+                700px;
+
+            margin:
+                auto;
+
+            color:
+                #725b56;
+
+            line-height:
+                1.9;
+
+            font-size:
+                1.1rem;
+        }
+
+
+        .hero-heart {
+
+            margin:
+                30px 0;
+
+            font-size:
+                65px;
+
+            animation:
+                heartbeat
+                1.8s
+                infinite;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform:
+                    scale(1);
+            }
+
+            15% {
+                transform:
+                    scale(1.13);
+            }
+
+            30% {
+                transform:
+                    scale(1);
+            }
+
+            45% {
+                transform:
+                    scale(1.07);
+            }
+        }
+
+
+        .scroll-button {
+
+            display:
+                inline-block;
+
+            margin-top:
+                35px;
+
+            padding:
+                15px 28px;
+
+            color:
+                #fff;
+
+            background:
+                #a96068;
+
+            border-radius:
+                30px;
+
+            text-decoration:
+                none;
+
+            box-shadow:
+                0 10px 25px
+                rgba(130,70,75,.2);
+
+            transition:
+                .3s;
+        }
+
+
+        .scroll-button:hover {
+
+            transform:
+                translateY(-4px);
+
+            background:
+                #92545c;
+        }
+
+
+        /* =====================================================
+           FOTO PRINCIPAL
+        ===================================================== */
+
+        .photo-section {
+
+            padding:
+                70px 20px 120px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+        }
+
+
+        .memory-card {
+
+            width:
+                min(
+                    950px,
+                    94vw
+                );
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                50px;
+
+            align-items:
+                center;
+
+            padding:
+                45px;
+
+            background:
+                rgba(
+                    255,
+                    250,
+                    247,
+                    .88
+                );
+
+            border:
+                1px solid
+                rgba(
+                    153,
+                    100,
+                    96,
+                    .18
+                );
+
+            border-radius:
+                25px;
+
+            box-shadow:
+                0 20px 55px
+                rgba(
+                    100,
+                    60,
+                    55,
+                    .12
+                );
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+
+        .main-photo {
+
+            position:
+                relative;
+
+            padding:
+                12px 12px 45px;
+
+            background:
+                #fff;
+
+            box-shadow:
+                0 12px 25px
+                rgba(
+                    70,
+                    40,
+                    35,
+                    .18
+                );
+
+            transform:
+                rotate(-2deg);
+
+            transition:
+                .4s ease;
+        }
+
+
+        .main-photo:hover {
+
+            transform:
+                rotate(0)
+                scale(1.02);
+        }
+
+
+        .main-photo::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                95px;
+
+            height:
+                25px;
+
+            top:
+                -12px;
+
+            left:
+                50%;
+
+            transform:
+                translateX(-50%)
+                rotate(2deg);
+
+            background:
+                rgba(
+                    220,
+                    178,
+                    155,
+                    .7
+                );
+        }
+
+
+        .main-photo img {
+
+            width:
+                100%;
+
+            height:
+                430px;
+
+            object-fit:
+                cover;
+
+            display:
+                block;
+        }
+
+
+        .photo-caption {
+
+            position:
+                absolute;
+
+            bottom:
+                12px;
+
+            left:
+                0;
+
+            right:
+                0;
+
+            text-align:
+                center;
+
+            font-style:
+                italic;
+
+            color:
+                #745851;
+        }
+
+
+        .photo-message h2 {
+
+            font-size:
+                clamp(
+                    2rem,
+                    5vw,
+                    3.8rem
+                );
+
+            font-weight:
+                normal;
+
+            color:
+                #744e4d;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .photo-message p {
+
+            color:
+                #6d5852;
+
+            line-height:
+                2;
+
+            font-size:
+                1.05rem;
+        }
+
+
+        .photo-message strong {
+
+            color:
+                #a55c65;
+        }
+
+
+        /* =====================================================
+           MENSAJE PARA ELLA
+        ===================================================== */
+
+        .support-section {
+
+            padding:
+                100px 20px;
+        }
+
+
+        .section-title {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                55px;
+        }
+
+
+        .section-title small {
+
+            display:
+                block;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                4px;
+
+            font-size:
+                .7rem;
+
+            color:
+                #a9686e;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .section-title h2 {
+
+            font-size:
+                clamp(
+                    2.5rem,
+                    6vw,
+                    4.5rem
+                );
+
+            font-weight:
+                normal;
+
+            color:
+                #744e4d;
+        }
+
+
+        .section-title p {
+
+            max-width:
+                650px;
+
+            margin:
+                20px auto 0;
+
+            color:
+                #755e59;
+
+            line-height:
+                1.8;
+        }
+
+
+        /* =====================================================
+           CARTA
+        ===================================================== */
+
+        .support-letter {
+
+            width:
+                min(
+                    850px,
+                    94vw
+                );
+
+            margin:
+                auto;
+
+            padding:
+                65px;
+
+            background:
+                #fffaf4;
+
+            border-radius:
+                4px;
+
+            border:
+                1px solid
+                #ead7ca;
+
+            box-shadow:
+                0 18px 40px
+                rgba(
+                    90,
+                    50,
+                    45,
+                    .1
+                );
+
+            position:
+                relative;
+        }
+
+
+        .support-letter::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                20px;
+
+            border:
+                1px solid
+                rgba(
+                    166,
+                    103,
+                    103,
+                    .18
+                );
+
+            pointer-events:
+                none;
+        }
+
+
+        .support-letter h3 {
+
+            text-align:
+                center;
+
+            font-size:
+                2.5rem;
+
+            font-weight:
+                normal;
+
+            color:
+                #8b5658;
+
+            margin-bottom:
+                35px;
+        }
+
+
+        .support-letter p {
+
+            position:
+                relative;
+
+            color:
+                #695650;
+
+            font-size:
+                1.08rem;
+
+            line-height:
+                2;
+
+            text-align:
+                center;
+        }
+
+
+        .support-letter strong {
+
+            color:
+                #a65d65;
+        }
+
+
+        /* =====================================================
+           BOTONES DE APOYO
+        ===================================================== */
+
+        .buttons-section {
+
+            padding:
+                100px 20px;
+        }
+
+
+        .support-buttons {
+
+            max-width:
+                900px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+            gap:
+                20px;
+        }
+
+
+        .support-button {
+
+            border:
+                none;
+
+            padding:
+                25px 20px;
+
+            min-height:
+                120px;
+
+            border-radius:
+                18px;
+
+            background:
+                #fffaf7;
+
+            border:
+                1px solid
+                rgba(
+                    155,
+                    94,
+                    95,
+                    .15
+                );
+
+            color:
+                #704e4c;
+
+            font-family:
+                Georgia,
+                serif;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(
+                    80,
+                    45,
+                    40,
+                    .08
+                );
+
+            transition:
+                .3s ease;
+        }
+
+
+        .support-button:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 17px 30px
+                rgba(
+                    80,
+                    45,
+                    40,
+                    .14
+                );
+        }
+
+
+        .button-icon {
+
+            display:
+                block;
+
+            font-size:
+                32px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .button-title {
+
+            font-size:
+                1.05rem;
+        }
+
+
+        /* =====================================================
+           MENSAJE DINÁMICO
+        ===================================================== */
+
+        .dynamic-message {
+
+            width:
+                min(
+                    850px,
+                    94vw
+                );
+
+            min-height:
+                180px;
+
+            margin:
+                55px auto 0;
+
+            padding:
+                40px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            background:
+                #f4dfdc;
+
+            border-radius:
+                20px;
+
+            color:
+                #714e4b;
+
+            line-height:
+                1.9;
+
+            font-size:
+                1.15rem;
+
+            box-shadow:
+                inset 0 0 30px
+                rgba(
+                    150,
+                    90,
+                    90,
+                    .05
+                );
+
+            transition:
+                opacity .25s ease,
+                transform .25s ease;
+        }
+
+
+        .dynamic-message.show {
+
+            animation:
+                messageIn
+                .5s
+                ease;
+        }
+
+
+        @keyframes messageIn {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           "AUNQUE NO NOS VEAMOS"
+        ===================================================== */
+
+        .distance-section {
+
+            padding:
+                100px 20px;
+
+            text-align:
+                center;
+        }
+
+
+        .distance-card {
+
+            width:
+                min(
+                    900px,
+                    94vw
+                );
+
+            margin:
+                auto;
+
+            padding:
+                75px 45px;
+
+            border-radius:
+                30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ead3d0,
+                    #f8e8e3
+                );
+
+            box-shadow:
+                0 20px 50px
+                rgba(
+                    100,
+                    60,
+                    55,
+                    .1
+                );
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+        }
+
+
+        .distance-card::before {
+
+            content:
+                "♥";
+
+            position:
+                absolute;
+
+            top:
+                -30px;
+
+            right:
+                30px;
+
+            font-size:
+                180px;
+
+            color:
+                rgba(
+                    160,
+                    85,
+                    91,
+                    .07
+                );
+        }
+
+
+        .distance-card h2 {
+
+            position:
+                relative;
+
+            font-size:
+                clamp(
+                    2.4rem,
+                    6vw,
+                    4.5rem
+                );
+
+            font-weight:
+                normal;
+
+            color:
+                #744e4d;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        .distance-card p {
+
+            position:
+                relative;
+
+            max-width:
+                700px;
+
+            margin:
+                auto;
+
+            color:
+                #6d5652;
+
+            line-height:
+                2;
+
+            font-size:
+                1.08rem;
+        }
+
+
+        .distance-heart {
+
+            margin:
+                35px 0;
+
+            font-size:
+                45px;
+        }
+
+
+        .distance-quote {
+
+            position:
+                relative;
+
+            margin-top:
+                35px;
+
+            font-size:
+                1.25rem;
+
+            font-style:
+                italic;
+
+            color:
+                #965a60;
+        }
+
+
+        /* =====================================================
+           RECORDATORIO
+        ===================================================== */
+
+        .reminder {
+
+            padding:
+                100px 20px;
+        }
+
+
+        .reminder-box {
+
+            width:
+                min(
+                    850px,
+                    94vw
+                );
+
+            margin:
+                auto;
+
+            padding:
+                60px 40px;
+
+            text-align:
+                center;
+
+            background:
+                #fffaf7;
+
+            border:
+                1px solid
+                #ecd8d1;
+
+            box-shadow:
+                0 15px 35px
+                rgba(
+                    90,
+                    50,
+                    45,
+                    .09
+                );
+        }
+
+
+        .reminder-box h2 {
+
+            font-size:
+                clamp(
+                    2.2rem,
+                    5vw,
+                    3.8rem
+                );
+
+            font-weight:
+                normal;
+
+            color:
+                #744e4d;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        .reminder-box p {
+
+            color:
+                #6b5650;
+
+            line-height:
+                2;
+
+            max-width:
+                650px;
+
+            margin:
+                auto;
+        }
+
+
+        .reminder-signature {
+
+            margin-top:
+                35px;
+
+            color:
+                #9b5b61;
+
+            font-style:
+                italic;
+
+            font-size:
+                1.2rem;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align:
+                center;
+
+            padding:
+                70px 20px;
+
+            color:
+                #806560;
+
+            line-height:
+                2;
+        }
+
+
+        footer .footer-heart {
+
+            font-size:
+                30px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (
+            max-width: 750px
+        ) {
+
+            .music-button {
+
+                width:
+                    52px;
+
+                height:
+                    52px;
+
+                top:
+                    15px;
+
+                right:
+                    15px;
+            }
+
+
+            .hero {
+
+                padding-top:
+                    110px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(
+                        3rem,
+                        15vw,
+                        5rem
+                    );
+            }
+
+
+            .memory-card {
+
+                grid-template-columns:
+                    1fr;
+
+                padding:
+                    25px;
+
+                gap:
+                    45px;
+            }
+
+
+            .main-photo img {
+
+                height:
+                    380px;
+            }
+
+
+            .support-letter {
+
+                padding:
+                    50px 28px;
+            }
+
+
+            .support-letter::before {
+
+                inset:
+                    12px;
+            }
+
+
+            .support-buttons {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .dynamic-message {
+
+                padding:
+                    30px 22px;
+
+                font-size:
+                    1rem;
+            }
+
+
+            .distance-card {
+
+                padding:
+                    60px 25px;
+            }
+
+
+            .reminder-box {
+
+                padding:
+                    50px 25px;
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         FONDO
+    ===================================================== -->
+
+    <div class="background"></div>
+
+
+
+    <!-- =====================================================
+         MÚSICA
+    ===================================================== -->
+
+    <button
+        class="music-button"
+        id="musicButton"
+        onclick="toggleMusic()"
+        title="Nuestra canción">
+
+        ♫
+
+    </button>
+
+
+    <audio
+        id="music"
+        loop>
+
+        <source
+            src="Carin Leon - Desde Que Te Tengo.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+
+                Para esos días en los que me necesites
+
+            </div>
+
+
+            <h1>
+
+                Siempre
+                <span>contigo.</span>
+
+            </h1>
+
+
+            <div class="hero-heart">
+
+                ❤️
+
+            </div>
+
+
+            <p class="hero-description">
+
+                Sé que viene una etapa nueva para los dos.
+
+                <br><br>
+
+                Tú vas a comenzar tu camino en la escuela
+                y yo voy a estar trabajando.
+
+                Quizá ya no podamos vernos todos los días
+                como antes...
+
+                <br><br>
+
+                pero hay algo que quiero que nunca cambie:
+
+                <strong>
+                    siempre vas a tenerme a tu lado.
+                </strong>
+
+            </p>
+
+
+            <a
+                href="#foto"
+                class="scroll-button">
+
+                Sigue leyendo ❤️
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOTO DE USTEDES
+    ===================================================== -->
+
+    <section
+        class="photo-section"
+        id="foto">
+
+        <div class="memory-card">
+
+
+            <div class="main-photo">
+
+                <!--
+                    CAMBIA "nosotros.jpeg"
+                    POR LA FOTO QUE QUIERAS
+                -->
+
+                <img
+                    src="nosotros.jpeg"
+                    alt="Nosotros">
+
+                <div class="photo-caption">
+
+                    "Mi lugar favorito siempre será contigo."
+
+                </div>
+
+            </div>
+
+
+            <div class="photo-message">
+
+                <h2>
+
+                    Aunque nuestros días cambien...
+
+                </h2>
+
+
+                <p>
+
+                    Tal vez ya no podamos hablar tanto,
+                    vernos tan seguido o compartir
+                    todos los momentos que quisiéramos.
+
+                    <br><br>
+
+                    Tú tendrás tus clases,
+                    tus tareas, tus exámenes
+                    y tus propios sueños.
+
+                    <br><br>
+
+                    Yo tendré mi trabajo,
+                    mis responsabilidades
+                    y mis propios días complicados.
+
+                    <br><br>
+
+                    Pero quiero que recuerdes algo:
+
+                    <br><br>
+
+                    <strong>
+                        estar ocupado no significa
+                        dejar de querer.
+                    </strong>
+
+                    <br><br>
+
+                    Aunque algunos días solamente
+                    podamos decirnos un "¿cómo estás?",
+                    quiero que sepas que sigo aquí.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CARTA DE APOYO
+    ===================================================== -->
+
+    <section class="support-section">
+
+        <div class="section-title">
+
+            <small>
+                Para mi niña
+            </small>
+
+            <h2>
+                Cuando el día se ponga difícil
+            </h2>
+
+            <p>
+
+                Guarda estas palabras para esos momentos
+                en los que sientas que ya no puedes más.
+
+            </p>
+
+        </div>
+
+
+        <div class="support-letter">
+
+            <h3>
+
+                Respira, mi Ojitos. 🌷
+
+            </h3>
+
+
+            <p>
+
+                Si estás leyendo esto porque estás estresada,
+                cansada o simplemente tuviste un día horrible,
+                quiero que por un momento dejes todo a un lado.
+
+                <br><br>
+
+                Respira.
+
+                <br><br>
+
+                No tienes que resolver toda tu vida hoy.
+
+                <br><br>
+
+                No tienes que ser perfecta.
+
+                <br><br>
+
+                No tienes que poder con todo al mismo tiempo.
+
+                <br><br>
+
+                Y sobre todo...
+
+                <strong>
+                    nunca sientas que tienes que cambiar
+                    quién eres para poder con esta nueva etapa.
+                </strong>
+
+                <br><br>
+
+                Sigue siendo esa niña que eres.
+
+                La que ríe.
+
+                La que sueña.
+
+                La que se emociona.
+
+                La que se enoja.
+
+                La que se cansa.
+
+                La que a veces tiene miedo.
+
+                La que vuelve a intentarlo.
+
+                <br><br>
+
+                Esa es la niña que quiero.
+
+                <br><br>
+
+                Y si algún día sientes que todo se te viene
+                encima, recuerda que no tienes que cargarlo
+                todo tú sola.
+
+                <br><br>
+
+                <strong>
+                    Aquí estoy.
+                </strong>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BOTONES
+    ===================================================== -->
+
+    <section class="buttons-section">
+
+        <div class="section-title">
+
+            <small>
+                Abre uno cuando lo necesites
+            </small>
+
+            <h2>
+                Un pequeño mensaje para ti ❤️
+            </h2>
+
+        </div>
+
+
+        <div class="support-buttons">
+
+
+            <button
+                class="support-button"
+                onclick="showMessage('abrazo')">
+
+                <span class="button-icon">
+                    🫂
+                </span>
+
+                <span class="button-title">
+                    Necesito un abrazo
+                </span>
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage('estres')">
+
+                <span class="button-icon">
+                    🌷
+                </span>
+
+                <span class="button-title">
+                    Estoy estresada
+                </span>
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage('puedo')">
+
+                <span class="button-icon">
+                    ✨
+                </span>
+
+                <span class="button-title">
+                    Recuérdame que puedo
+                </span>
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage('extraño')">
+
+                <span class="button-icon">
+                    💌
+                </span>
+
+                <span class="button-title">
+                    Te extraño
+                </span>
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage('miedo')">
+
+                <span class="button-icon">
+                    🕊️
+                </span>
+
+                <span class="button-title">
+                    Tengo miedo
+                </span>
+
+            </button>
+
+
+            <button
+                class="support-button"
+                onclick="showMessage('amor')">
+
+                <span class="button-icon">
+                    ❤️
+                </span>
+
+                <span class="button-title">
+                    Recuérdame cuánto me quieres
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+        <div
+            class="dynamic-message"
+            id="dynamicMessage">
+
+            Elige uno de los mensajes de arriba,
+            mi niña. ❤️
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DISTANCIA
+    ===================================================== -->
+
+    <section class="distance-section">
+
+        <div class="distance-card">
+
+            <h2>
+
+                No estar cerca
+                no significa estar lejos.
+
+            </h2>
+
+
+            <div class="distance-heart">
+
+                ❤️
+
+            </div>
+
+
+            <p>
+
+                Quizá habrá días en los que tú estés
+                en la escuela y yo esté trabajando.
+
+                <br><br>
+
+                Quizá habrá días en los que ambos
+                estemos demasiado cansados para hablar.
+
+                <br><br>
+
+                Quizá habrá momentos en los que
+                nos vamos a extrañar muchísimo.
+
+                <br><br>
+
+                Pero quiero que aprendamos algo juntos:
+
+                <br><br>
+
+                <strong>
+                    el amor también consiste en
+                    apoyarnos mientras cada uno
+                    construye su propio futuro.
+                </strong>
+
+                <br><br>
+
+                Yo quiero verte cumplir tus sueños.
+
+                Quiero verte crecer.
+
+                Quiero verte lograr aquello por lo que
+                estás estudiando.
+
+                <br><br>
+
+                Y cuando tengas un día increíble,
+                quiero escucharte contarme todo.
+
+                <br><br>
+
+                Y cuando tengas un día horrible...
+
+                <br>
+
+                quiero ser ese lugar donde puedas
+                sentirte tranquila.
+
+            </p>
+
+
+            <div class="distance-quote">
+
+                "Tú construye tus sueños.
+                Yo voy a estar orgulloso de ti
+                mientras los construyes."
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RECORDATORIO
+    ===================================================== -->
+
+    <section class="reminder">
+
+        <div class="reminder-box">
+
+            <h2>
+
+                Nunca cambies por miedo. 🌷
+
+            </h2>
+
+
+            <p>
+
+                No quiero que la escuela,
+                el estrés, un examen,
+                una mala calificación
+                o un día difícil te hagan
+                olvidar quién eres.
+
+                <br><br>
+
+                No quiero que pienses que
+                tienes que convertirte en otra persona.
+
+                <br><br>
+
+                Quiero que sigas siendo tú.
+
+                <br><br>
+
+                Porque esa niña que conocí,
+                esa niña que me hace sonreír,
+                esa niña con sus sueños,
+                sus ocurrencias,
+                sus sentimientos
+                y esa forma tan suya de ser...
+
+                <br><br>
+
+                <strong>
+                    es la niña que quiero seguir
+                    acompañando.
+                </strong>
+
+                <br><br>
+
+                Así que ve.
+
+                Estudia.
+
+                Equivócate.
+
+                Aprende.
+
+                Ríe.
+
+                Llora si hace falta.
+
+                Descansa.
+
+                Vuelve a intentarlo.
+
+                <br><br>
+
+                Pero nunca olvides que
+                tienes a alguien que cree en ti.
+
+            </p>
+
+
+            <div class="reminder-signature">
+
+                Y ese alguien voy a ser yo. ❤️
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FINAL
+    ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-heart">
+
+                ❤️
+
+            </div>
+
+
+            <h1>
+
+                Siempre tendrás
+                <span>un lugar conmigo.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Aunque nuestros días cambien.
+
+                <br>
+
+                Aunque tengamos menos tiempo.
+
+                <br>
+
+                Aunque algunas veces nos extrañemos.
+
+                <br><br>
+
+                Quiero que nunca dudes
+                de que estoy contigo.
+
+                <br><br>
+
+                <strong>
+                    Te quiero muchísimo,
+                    mi Ojitos.
+                </strong>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <div class="footer-heart">
+            ❤️
+        </div>
+
+        Hecho para mi Ojitos.
+
+        <br>
+
+        Para que recuerdes que nunca estás sola.
+
+        <br><br>
+
+        C & A
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           MENSAJES
+        ===================================================== */
+
+        const messages = {
+
+            abrazo: [
+
+                "Ven aquí, mi Ojitos. 🫂 Si pudiera estar contigo ahora mismo, te abrazaría fuerte y dejaría que por un momento olvidaras todo lo que te está estresando. No tienes que decir nada. Solo quédate aquí conmigo un ratito. ❤️",
+
+                "Este es un abrazo a distancia. 🫂 No es igual que tenerte cerquita, pero quiero que cierres los ojos un momento y recuerdes que hay alguien que quisiera estar ahí para abrazarte hasta que vuelvas a sentirte tranquila.",
+
+                "Si hoy fue demasiado, ven conmigo. 🫂 No tienes que ser fuerte todo el tiempo. Puedes cansarte, puedes llorar y puedes descansar. Yo sigo aquí."
+            ],
+
+
+            estres: [
+
+                "Respira, mi niña. 🌷 No tienes que resolver todo en este momento. Haz una cosa a la vez. Tú puedes con esto, y si hoy no sale perfecto, tampoco pasa nada. Mañana tendrás otra oportunidad.",
+
+                "Sé que estás estresada, pero quiero que recuerdes algo: una tarea, un examen o una mala calificación jamás va a definir lo increíble que eres. ❤️",
+
+                "Pausa un poquito. Respira. Toma agua. Descansa unos minutos. Después vuelve a intentarlo. No tienes que correr, mi niña. Tu proceso también merece paciencia."
+            ],
+
+
+            puedo: [
+
+                "Sí puedes. ❤️ Aunque ahora mismo no lo sientas. Has superado días difíciles antes y también vas a superar este. Confío muchísimo en ti.",
+
+                "No necesitas saber exactamente cómo va a salir todo. Solo necesitas dar el siguiente paso. Uno. Después otro. Y cuando menos lo pienses, vas a estar donde querías llegar. ✨",
+
+                "Estoy orgulloso de ti incluso antes de que lo logres. Porque sé cuánto te esfuerzas. Sigue adelante, mi niña. Tú puedes con muchísimo más de lo que imaginas."
+            ],
+
+
+            extraño: [
+
+                "Yo también te extraño muchísimo. ❤️ Pero recuerda que extrañarnos significa que tenemos algo muy bonito que vale la pena cuidar.",
+
+                "Si hoy me extrañas, imagina que estoy ahí diciéndote: 'ven, mi Ojitos' y dándote uno de esos abrazos que duran más de lo necesario. 🫂",
+
+                "Aunque hoy no podamos estar juntos, quiero que mi cariño llegue hasta donde estés. Tú sigue con tu día y yo voy a seguir pensando en ti."
+            ],
+
+
+            miedo: [
+
+                "Está bien tener miedo, mi niña. No significa que no seas valiente. Ser valiente también significa continuar aunque tengas un poquito de miedo. 🕊️",
+
+                "No tienes que tener todo bajo control. Confía en ti poquito a poquito. Y si alguna vez sientes que no puedes, recuerda que puedes hablar conmigo.",
+
+                "No estás entrando sola a esta nueva etapa. Tú tienes tus sueños y yo tengo los míos, pero podemos seguir apoyándonos mientras los construimos. ❤️"
+            ],
+
+
+            amor: [
+
+                "Te quiero por tu sonrisa, pero también por todo lo que existe detrás de ella. Por tu forma de pensar, tus sueños, tus sentimientos y esa manera tan tuya de ser. ❤️",
+
+                "No quiero que pienses que tienes que ser perfecta conmigo. Quiero que seas tú. La niña que ríe, que se enoja, que se emociona, que tiene miedo y que vuelve a intentarlo. Esa eres tú. Y esa eres la persona que quiero.",
+
+                "Si alguna vez dudas de lo que siento, vuelve aquí. ❤️ Y recuerda: no importa qué tan ocupado esté mi día, siempre habrá un espacio en mi corazón para ti."
+            ]
+
+        };
+
+
+        /* =====================================================
+           MOSTRAR MENSAJE
+        ===================================================== */
+
+        function showMessage(type) {
+
+            const box =
+                document.getElementById(
+                    "dynamicMessage"
+                );
+
+
+            const options =
+                messages[type];
+
+
+            const randomIndex =
+                Math.floor(
+                    Math.random() *
+                    options.length
+                );
+
+
+            box.classList.remove(
+                "show"
+            );
+
+
+            setTimeout(() => {
+
+                box.innerHTML =
+                    options[randomIndex];
+
+
+                box.classList.add(
+                    "show"
+                );
+
+            }, 150);
+
+
+            createHeartBurst();
+
+        }
+
+
+
+        /* =====================================================
+           CORAZONES AL PRESIONAR BOTÓN
+        ===================================================== */
+
+        function createHeartBurst() {
+
+            const symbols = [
+                "❤️",
+                "💕",
+                "💗",
+                "🌷"
+            ];
+
+
+            for (
+                let i = 0;
+                i < 6;
+                i++
+            ) {
+
+                const heart =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                heart.className =
+                    "floating-heart";
+
+
+                heart.textContent =
+                    symbols[
+                        Math.floor(
+                            Math.random() *
+                            symbols.length
+                        )
+                    ];
+
+
+                heart.style.left =
+                    (
+                        40 +
+                        Math.random() *
+                        20
+                    ) +
+                    "%";
+
+
+                heart.style.fontSize =
+                    (
+                        14 +
+                        Math.random() *
+                        15
+                    ) +
+                    "px";
+
+
+                heart.style.animationDuration =
+                    (
+                        3 +
+                        Math.random() *
+                        2
+                    ) +
+                    "s";
+
+
+                document.body.appendChild(
+                    heart
+                );
+
+
+                setTimeout(
+                    () => {
+                        heart.remove();
+                    },
+                    6000
+                );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
+           CORAZONES AMBIENTALES
+        ===================================================== */
+
+        function createFloatingHeart() {
+
+            const heart =
+                document.createElement(
+                    "div"
+                );
+
+
+            heart.className =
+                "floating-heart";
+
+
+            const symbols = [
+                "♡",
+                "♥",
+                "💕",
+                "🌸"
+            ];
+
+
+            heart.textContent =
+                symbols[
+                    Math.floor(
+                        Math.random() *
+                        symbols.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() *
+                100 +
+                "%";
+
+
+            heart.style.fontSize =
+                (
+                    12 +
+                    Math.random() *
+                    16
+                ) +
+                "px";
+
+
+            heart.style.animationDuration =
+                (
+                    8 +
+                    Math.random() *
+                    8
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                () => {
+                    heart.remove();
+                },
+                17000
+            );
+
+        }
+
+
+        setInterval(
+            createFloatingHeart,
+            2200
+        );
+
+
+
+        /* =====================================================
+           MÚSICA
+        ===================================================== */
+
+        const music =
+            document.getElementById(
+                "music"
+            );
+
+
+        const musicButton =
+            document.getElementById(
+                "musicButton"
+            );
+
+
+        let isPlaying =
+            false;
+
+
+        function toggleMusic() {
+
+            if (!isPlaying) {
+
+                music.play()
+                    .then(() => {
+
+                        isPlaying =
+                            true;
+
+                        musicButton.textContent =
+                            "❚❚";
+
+                        musicButton.classList.add(
+                            "playing"
+                        );
+
+                    })
+                    .catch(() => {
+
+                        alert(
+                            "No se pudo reproducir la música. Revisa que el archivo \"Carin Leon - Desde Que Te Tengo.mp3\" esté junto a apoyo.html."
+                        );
+
+                    });
+
+            } else {
+
+                music.pause();
+
+                isPlaying =
+                    false;
+
+                musicButton.textContent =
+                    "♫";
+
+                musicButton.classList.remove(
+                    "playing"
+                );
+
+            }
+
+        }
+
+
+        music.addEventListener(
+            "ended",
+            () => {
+
+                isPlaying =
+                    false;
+
+                musicButton.textContent =
+                    "♫";
+
+                musicButton.classList.remove(
+                    "playing"
+                );
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
