@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para mi Ojitos ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff0f5, #ffd6e7, #ffe8ef);
+            color: #5a2638;
+            overflow-x: hidden;
+        }
+
+        /* CORAZONES */
+
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            font-size: 25px;
+            animation: subir 8s linear infinite;
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* CONTENEDOR */
+
+        .contenedor {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        /* PORTADA */
+
+        .portada {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .corazon-principal {
+            font-size: 80px;
+            animation: latido 1.5s infinite;
+        }
+
+        @keyframes latido {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            margin: 20px 0 10px;
+            color: #c2185b;
+        }
+
+        .subtitulo {
+            font-size: 22px;
+            color: #7a4055;
+        }
+
+        .linea {
+            width: 100px;
+            height: 4px;
+            background: #e91e63;
+            margin: 25px auto;
+            border-radius: 10px;
+        }
+
+        /* SECCION */
+
+        .seccion {
+            padding: 70px 10px;
+        }
+
+        .titulo-seccion {
+            font-size: 38px;
+            color: #b01850;
+            margin-bottom: 15px;
+        }
+
+        .descripcion {
+            max-width: 700px;
+            margin: auto;
+            font-size: 19px;
+            line-height: 1.8;
+        }
+
+        /* TARJETAS */
+
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 45px;
+        }
+
+        .tarjeta {
+            background: rgba(255,255,255,0.75);
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(160, 50, 90, 0.15);
+            transition: 0.4s;
+            backdrop-filter: blur(10px);
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(160, 50, 90, 0.25);
+        }
+
+        .icono {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta h3 {
+            color: #c2185b;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .tarjeta p {
+            line-height: 1.6;
+        }
+
+        /* FRASE */
+
+        .frase {
+            margin: 50px auto;
+            padding: 45px 25px;
+            max-width: 800px;
+            background: rgba(255,255,255,0.65);
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(160,50,90,0.12);
+        }
+
+        .frase p {
+            font-size: 27px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .frase span {
+            display: block;
+            margin-top: 20px;
+            color: #c2185b;
+            font-weight: bold;
+        }
+
+        /* BOTON */
+
+        .boton-container {
+            margin-top: 50px;
+        }
+
+        button {
+            border: none;
+            padding: 18px 35px;
+            font-size: 19px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #e91e63, #ad1457);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(194,24,91,0.3);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.07);
+            box-shadow: 0 15px 35px rgba(194,24,91,0.4);
+        }
+
+        /* RECONOCIMIENTO */
+
+        .reconocimiento {
+            display: none;
+            margin: 45px auto;
+            max-width: 750px;
+            padding: 50px 30px;
+            background: linear-gradient(145deg, #fff, #fff3f7);
+            border: 3px solid #e91e63;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(160,50,90,0.25);
+            animation: aparecer 1s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .reconocimiento h2 {
+            color: #c2185b;
+            font-size: 35px;
+            margin-bottom: 25px;
+        }
+
+        .reconocimiento p {
+            font-size: 20px;
+            line-height: 2;
+        }
+
+        .premio {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        .mejor-novia {
+            margin-top: 25px;
+            font-size: 28px !important;
+            color: #c2185b;
+            font-weight: bold;
+        }
+
+        .te-quiero {
+            margin-top: 20px;
+            font-size: 30px !important;
+            color: #ad1457;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: #8b5368;
+        }
+
+        @media(max-width:600px) {
+
+            .subtitulo {
+                font-size: 18px;
+            }
+
+            .titulo-seccion {
+                font-size: 30px;
+            }
+
+            .frase p {
+                font-size: 21px;
+            }
+
+            .reconocimiento {
+                padding: 35px 20px;
+            }
+
+            .reconocimiento h2 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- CORAZONES FLOTANTES -->
+
+    <div class="heart" style="left:5%; animation-delay:0s;">❤️</div>
+    <div class="heart" style="left:15%; animation-delay:2s;">💕</div>
+    <div class="heart" style="left:30%; animation-delay:4s;">💗</div>
+    <div class="heart" style="left:50%; animation-delay:1s;">❤️</div>
+    <div class="heart" style="left:70%; animation-delay:3s;">💖</div>
+    <div class="heart" style="left:85%; animation-delay:5s;">💕</div>
+
+    <main class="contenedor">
+
+        <!-- PORTADA -->
+
+        <section class="portada">
+
+            <div class="corazon-principal">
+                ❤️
+            </div>
+
+            <h1>Para mi Ojitos</h1>
+
+            <div class="linea"></div>
+
+            <p class="subtitulo">
+                Porque hay personas que merecen que les recuerden
+                lo increíbles que son...
+            </p>
+
+        </section>
+
+
+        <!-- RECONOCIMIENTO -->
+
+        <section class="seccion">
+
+            <h2 class="titulo-seccion">
+                🌷 Reconocimiento para una mujer increíble 🌷
+            </h2>
+
+            <p class="descripcion">
+
+                Hoy quiero recordarte algo que quizá algunas veces
+                olvides...
+
+                <br><br>
+
+                <strong>
+                    Eres una mujer increíble.
+                </strong>
+
+                <br><br>
+
+                Has demostrado que puedes levantarte, seguir adelante
+                y luchar incluso cuando las cosas no son fáciles.
+
+            </p>
+
+
+            <div class="tarjetas">
+
+                <div class="tarjeta">
+
+                    <div class="icono">💪</div>
+
+                    <h3>Nunca te rindes</h3>
+
+                    <p>
+                        Admiro esa fuerza que tienes para seguir adelante
+                        incluso cuando las cosas se ponen difíciles.
+                    </p>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <div class="icono">✨</div>
+
+                    <h3>Eres increíble</h3>
+
+                    <p>
+                        No necesitas ser perfecta para ser especial.
+                        Tu forma de ser es lo que te hace única.
+                    </p>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <div class="icono">🌟</div>
+
+                    <h3>Sigue brillando</h3>
+
+                    <p>
+                        Nunca permitas que un mal día te haga olvidar
+                        lo mucho que vales.
+                    </p>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <div class="icono">❤️</div>
+
+                    <h3>Eres especial</h3>
+
+                    <p>
+                        Para mí eres una persona que merece todo lo
+                        bonito que la vida pueda ofrecer.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FRASE MOTIVACIONAL -->
+
+        <section class="seccion">
+
+            <div class="frase">
+
+                <p>
+                    “No importa cuántas veces tengas que comenzar
+                    de nuevo. Lo importante es que nunca dejes de
+                    creer en ti.”
+                </p>
+
+                <span>
+                    — Para una mujer que admiro muchísimo ❤️
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTON FINAL -->
+
+        <section class="seccion">
+
+            <h2 class="titulo-seccion">
+                💌 Tengo algo especial para ti
+            </h2>
+
+            <p class="descripcion">
+
+                Porque después de todo lo que eres y todo lo que haces,
+                creo que mereces un reconocimiento muy especial.
+
+            </p>
+
+
+            <div class="boton-container">
+
+                <button onclick="mostrarReconocimiento()">
+                    💌 Abrir mi reconocimiento
+                </button>
+
+            </div>
+
+
+            <!-- RECONOCIMIENTO OCULTO -->
+
+            <div id="reconocimiento" class="reconocimiento">
+
+                <div class="premio">
+                    🏆
+                </div>
+
+                <h2>
+                    RECONOCIMIENTO ESPECIAL
+                </h2>
+
+                <p>
+
+                    🌷 Por nunca dejarte vencer.
+
+                    <br>
+
+                    💪 Por demostrar una fuerza increíble.
+
+                    <br>
+
+                    ✨ Por seguir adelante incluso cuando
+                    las cosas no son fáciles.
+
+                    <br>
+
+                    🌟 Por ser una mujer maravillosa.
+
+                    <br>
+
+                    ❤️ Por ser una persona tan especial.
+
+                </p>
+
+
+                <p class="mejor-novia">
+
+                    👑 POR SER LA MEJOR NOVIA DEL MUNDO 👑
+
+                </p>
+
+
+                <p class="te-quiero">
+
+                    TE QUIERO, MI OJITOS ❤️
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        Hecho especialmente para mi Ojitos ❤️
+
+    </footer>
+
+
+    <script>
+
+        function mostrarReconocimiento() {
+
+            const reconocimiento =
+                document.getElementById("reconocimiento");
+
+            reconocimiento.style.display = "block";
+
+            reconocimiento.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
