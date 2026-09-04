@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para mi Ojitos ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #080b1a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           ESTRELLAS
+        ========================================= */
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: brillo 3s infinite alternate;
+        }
+
+        @keyframes brillo {
+
+            from {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.8);
+            }
+
+        }
+
+
+        /* =========================================
+           CORAZONES
+        ========================================= */
+
+        .floating-heart {
+            position: fixed;
+            bottom: -40px;
+            font-size: 20px;
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+            animation: subirCorazon 10s linear infinite;
+        }
+
+        @keyframes subirCorazon {
+
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.7;
+            }
+
+            80% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(1.2);
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================
+           CONTENEDOR
+        ========================================= */
+
+        .contenido {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           PORTADA
+        ========================================= */
+
+        .inicio {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(180, 70, 130, 0.25),
+                    transparent 55%
+                );
+        }
+
+        .inicio-contenido {
+            max-width: 850px;
+        }
+
+        .luna {
+            font-size: 80px;
+            margin-bottom: 25px;
+            animation: flotar 4s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+        }
+
+        .inicio h1 {
+            font-size: clamp(45px, 9vw, 90px);
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .inicio h1 span {
+            color: #ff8fbc;
+            font-weight: 600;
+        }
+
+        .inicio p {
+            font-size: 21px;
+            line-height: 1.8;
+            color: #d9d9e7;
+            margin-bottom: 40px;
+        }
+
+
+        /* =========================================
+           BOTONES
+        ========================================= */
+
+        .btn {
+            display: inline-block;
+            padding: 17px 35px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.4s;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: rgba(255,143,188,0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,100,170,0.2);
+        }
+
+
+        /* =========================================
+           SECCIONES
+        ========================================= */
+
+        section {
+            padding: 120px 25px;
+        }
+
+        .seccion-contenido {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .etiqueta {
+            color: #ff8fbc;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .titulo {
+            font-size: clamp(35px, 6vw, 60px);
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .texto {
+            color: #c9c9d7;
+            font-size: 19px;
+            line-height: 2;
+        }
+
+
+        /* =========================================
+           CARTA
+        ========================================= */
+
+        .carta {
+            margin: 50px auto 0;
+            max-width: 750px;
+            padding: 45px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 25px;
+            text-align: left;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .carta-titulo {
+            color: #ff8fbc;
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        .carta p {
+            color: #dddde8;
+            font-size: 18px;
+            line-height: 2;
+            margin-bottom: 18px;
+        }
+
+        .firma {
+            text-align: right;
+            color: #ff8fbc !important;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+
+        /* =========================================
+           DIAS DIFICILES
+        ========================================= */
+
+        .noche {
+            background:
+                linear-gradient(
+                    rgba(5,7,20,0.6),
+                    rgba(20,10,30,0.9)
+                );
+        }
+
+        .mensaje-grande {
+            font-size: clamp(28px, 5vw, 48px);
+            line-height: 1.5;
+            margin: 35px auto;
+            max-width: 800px;
+        }
+
+        .mensaje-grande span {
+            color: #ff8fbc;
+        }
+
+
+        /* =========================================
+           TRES MOMENTOS
+        ========================================= */
+
+        .momentos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .momento {
+            padding: 35px 25px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s;
+        }
+
+        .momento:hover {
+            transform: translateY(-10px);
+            background: rgba(255,143,188,0.08);
+        }
+
+        .momento-icono {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .momento h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #ffb4d0;
+        }
+
+        .momento p {
+            color: #c9c9d7;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           PROMESA
+        ========================================= */
+
+        .promesa {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,100,170,0.15),
+                    transparent 60%
+                );
+        }
+
+        .promesa-texto {
+            max-width: 850px;
+        }
+
+        .infinito {
+            font-size: 100px;
+            color: #ff8fbc;
+            margin-bottom: 20px;
+        }
+
+        .promesa h2 {
+            font-size: clamp(38px, 7vw, 70px);
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        .promesa h2 span {
+            color: #ff8fbc;
+        }
+
+        .promesa p {
+            margin-top: 35px;
+            font-size: 19px;
+            color: #c9c9d7;
+            line-height: 2;
+        }
+
+
+        /* =========================================
+           BOTON FINAL
+        ========================================= */
+
+        .final {
+            text-align: center;
+            padding-bottom: 160px;
+        }
+
+        .btn-final {
+            margin-top: 40px;
+            font-size: 20px;
+            padding: 20px 45px;
+            background: linear-gradient(
+                135deg,
+                #b52c70,
+                #e85b98
+            );
+            border: none;
+            box-shadow: 0 15px 40px rgba(220,70,140,0.3);
+        }
+
+        .btn-final:hover {
+            transform: scale(1.08);
+        }
+
+
+        /* =========================================
+           MENSAJE FINAL
+        ========================================= */
+
+        .mensaje-final {
+            display: none;
+            max-width: 850px;
+            margin: 60px auto 0;
+            padding: 55px 35px;
+            border-radius: 30px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.10),
+                    rgba(255,255,255,0.03)
+                );
+            border: 1px solid rgba(255,143,188,0.4);
+            box-shadow: 0 20px 80px rgba(220,70,140,0.15);
+            animation: aparecer 1.5s ease;
+        }
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        .mensaje-final .corazon {
+            font-size: 70px;
+            margin-bottom: 25px;
+            animation: latido 1.5s infinite;
+        }
+
+        @keyframes latido {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+        }
+
+        .mensaje-final h2 {
+            color: #ff9fc3;
+            font-size: 35px;
+            margin-bottom: 30px;
+        }
+
+        .mensaje-final p {
+            color: #e2e2ec;
+            font-size: 19px;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        .frase-final {
+            margin-top: 35px;
+            font-size: 30px !important;
+            color: #ff8fbc !important;
+            font-weight: bold;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #77788c;
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media(max-width: 750px) {
+
+            .momentos {
+                grid-template-columns: 1fr;
+            }
+
+            .carta {
+                padding: 30px 22px;
+            }
+
+            section {
+                padding: 90px 20px;
+            }
+
+            .inicio p {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         ESTRELLAS
+    ========================================= -->
+
+    <div class="stars">
+
+        <span class="star" style="top:10%;left:15%;"></span>
+        <span class="star" style="top:20%;left:40%;"></span>
+        <span class="star" style="top:30%;left:75%;"></span>
+        <span class="star" style="top:15%;left:90%;"></span>
+        <span class="star" style="top:45%;left:10%;"></span>
+        <span class="star" style="top:55%;left:35%;"></span>
+        <span class="star" style="top:70%;left:80%;"></span>
+        <span class="star" style="top:85%;left:20%;"></span>
+        <span class="star" style="top:90%;left:65%;"></span>
+        <span class="star" style="top:65%;left:55%;"></span>
+        <span class="star" style="top:40%;left:92%;"></span>
+
+    </div>
+
+
+    <!-- =========================================
+         CORAZONES FLOTANTES
+    ========================================= -->
+
+    <div class="floating-heart" style="left:5%;animation-delay:1s;">❤️</div>
+    <div class="floating-heart" style="left:18%;animation-delay:4s;">💕</div>
+    <div class="floating-heart" style="left:35%;animation-delay:7s;">💗</div>
+    <div class="floating-heart" style="left:55%;animation-delay:2s;">❤️</div>
+    <div class="floating-heart" style="left:72%;animation-delay:6s;">💖</div>
+    <div class="floating-heart" style="left:88%;animation-delay:3s;">💕</div>
+
+
+    <div class="contenido">
+
+
+        <!-- =========================================
+             INICIO
+        ========================================= -->
+
+        <section class="inicio">
+
+            <div class="inicio-contenido">
+
+                <div class="luna">
+                    🌙
+                </div>
+
+                <h1>
+                    Para mi <span>Ojitos</span>
+                </h1>
+
+                <p>
+                    Hay algo que quiero que recuerdes
+                    siempre, sin importar el día,
+                    la hora o las circunstancias...
+                </p>
+
+                <a href="#carta" class="btn">
+                    💗 Quiero leerte
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             CARTA
+        ========================================= -->
+
+        <section id="carta">
+
+            <div class="seccion-contenido">
+
+                <div class="etiqueta">
+                    Una pequeña carta para ti
+                </div>
+
+                <h2 class="titulo">
+                    Quiero que nunca olvides esto...
+                </h2>
+
+                <div class="carta">
+
+                    <div class="carta-titulo">
+                        💌 Mi Ojitos:
+                    </div>
+
+                    <p>
+                        Quizá no siempre encuentre las palabras
+                        perfectas para decirte todo lo que siento,
+                        pero hay algo que quiero que tengas presente
+                        todos los días.
+                    </p>
+
+                    <p>
+                        Eres una persona muy importante para mí.
+                        Admiro tu forma de ser, tu manera de luchar,
+                        tus sueños, tus ocurrencias y hasta esas
+                        pequeñas cosas que probablemente tú ni siquiera
+                        notas.
+                    </p>
+
+                    <p>
+                        Y quiero que sepas que no tienes que poder
+                        con todo tú sola.
+                    </p>
+
+                    <p>
+                        Si algún día estás cansada, aquí estaré.
+                        Si algún día tienes miedo, aquí estaré.
+                        Si algún día necesitas hablar, aquí estaré.
+                    </p>
+
+                    <p>
+                        Y si algún día simplemente necesitas que
+                        alguien se quede a tu lado sin decir nada...
+                        también estaré.
+                    </p>
+
+                    <p>
+                        Porque quiero compartir contigo no solamente
+                        los momentos bonitos, sino también esos días
+                        en los que todo parece complicado.
+                    </p>
+
+                    <p class="firma">
+                        Con todo mi cariño,<br>
+                        alguien que te quiere muchísimo ❤️
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             PARA LOS DIAS DIFICILES
+        ========================================= -->
+
+        <section class="noche">
+
+            <div class="seccion-contenido">
+
+                <div class="etiqueta">
+                    Para esos días...
+                </div>
+
+                <div class="mensaje-grande">
+
+                    Si algún día sientes que
+                    <span>no puedes más</span>...
+
+                    recuerda que no tienes
+                    que atravesarlo todo sola.
+
+                </div>
+
+                <p class="texto">
+
+                    Respira.
+
+                    <br><br>
+
+                    Tómate tu tiempo.
+
+                    <br><br>
+
+                    Llora si necesitas hacerlo.
+
+                    <br><br>
+
+                    Descansa si estás cansada.
+
+                    <br><br>
+
+                    Y cuando estés lista...
+
+                    <br>
+
+                    <strong style="color:#ff8fbc;">
+                        aquí voy a estar.
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             TRES MOMENTOS
+        ========================================= -->
+
+        <section>
+
+            <div class="seccion-contenido">
+
+                <div class="etiqueta">
+                    Para cualquier momento
+                </div>
+
+                <h2 class="titulo">
+                    Quiero estar contigo
+                </h2>
+
+                <div class="momentos">
+
+                    <div class="momento">
+
+                        <div class="momento-icono">
+                            ☀️
+                        </div>
+
+                        <h3>
+                            Cuando estés feliz
+                        </h3>
+
+                        <p>
+                            Quiero ser la persona que celebre
+                            tus logros contigo y que se alegre
+                            genuinamente por cada cosa bonita
+                            que te pase.
+                        </p>
+
+                    </div>
+
+
+                    <div class="momento">
+
+                        <div class="momento-icono">
+                            🌧️
+                        </div>
+
+                        <h3>
+                            Cuando estés triste
+                        </h3>
+
+                        <p>
+                            Quiero recordarte que un mal momento
+                            no define tu vida y que siempre habrá
+                            alguien dispuesto a escucharte.
+                        </p>
+
+                    </div>
+
+
+                    <div class="momento">
+
+                        <div class="momento-icono">
+                            🌙
+                        </div>
+
+                        <h3>
+                            Cuando tengas miedo
+                        </h3>
+
+                        <p>
+                            Quiero que recuerdes que puedes tomar
+                            mi mano y que no tienes que enfrentar
+                            todo lo difícil completamente sola.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             PROMESA
+        ========================================= -->
+
+        <section class="promesa">
+
+            <div class="promesa-texto">
+
+                <div class="infinito">
+                    ∞
+                </div>
+
+                <h2>
+                    Mientras tú quieras...
+
+                    <br>
+
+                    <span>yo estaré contigo.</span>
+                </h2>
+
+                <p>
+                    No puedo prometerte que la vida siempre será
+                    fácil.
+
+                    <br>
+
+                    No puedo prometerte que nunca tendremos días
+                    complicados.
+
+                    <br>
+
+                    Pero sí puedo prometerte que nunca dejaré de
+                    intentar estar ahí para ti.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             FINAL
+        ========================================= -->
+
+        <section class="final">
+
+            <div class="seccion-contenido">
+
+                <div class="etiqueta">
+                    Una última cosa...
+                </div>
+
+                <h2 class="titulo">
+                    Antes de que te vayas ❤️
+                </h2>
+
+                <p class="texto">
+
+                    Quiero dejarte un mensaje que puedas volver
+                    a leer cada vez que lo necesites.
+
+                </p>
+
+
+                <button
+                    class="btn btn-final"
+                    onclick="mostrarMensaje()">
+
+                    ❤️ Siempre contigo
+
+                </button>
+
+
+                <!-- =================================
+                     MENSAJE FINAL
+                ================================= -->
+
+                <div
+                    id="mensajeFinal"
+                    class="mensaje-final">
+
+                    <div class="corazon">
+                        ❤️
+                    </div>
+
+                    <h2>
+                        Mi Ojitos...
+                    </h2>
+
+                    <p>
+                        Pase lo que pase, quiero estar ahí.
+                    </p>
+
+                    <p>
+                        En tus días buenos, para celebrarte.
+                    </p>
+
+                    <p>
+                        En tus días malos, para abrazarte.
+                    </p>
+
+                    <p>
+                        Cuando tengas miedo, para darte
+                        tranquilidad.
+                    </p>
+
+                    <p>
+                        Cuando dudes de ti, para recordarte
+                        lo increíble que eres.
+                    </p>
+
+                    <p>
+                        No quiero ser solamente alguien que esté
+                        contigo cuando todo está bien.
+                    </p>
+
+                    <p>
+                        Quiero ser esa persona que puedas mirar
+                        y pensar:
+                    </p>
+
+                    <p style="color:#ffb4d0;font-weight:bold;">
+                        "Aquí estoy segura. Aquí puedo contar con él."
+                    </p>
+
+                    <p>
+                        Quiero acompañarte en tus sueños,
+                        en tus metas, en tus locuras,
+                        en tus momentos felices y también
+                        en aquellos en los que necesites
+                        un poquito más de cariño.
+                    </p>
+
+                    <p>
+                        Y si algún día vuelves a sentir que
+                        estás sola, vuelve a esta página y
+                        recuerda estas palabras:
+                    </p>
+
+                    <p class="frase-final">
+                        NO ESTÁS SOLA.
+                        <br>
+                        AQUÍ ESTOY YO. ❤️
+                    </p>
+
+                    <p class="frase-final">
+                        TE QUIERO, MI OJITOS. ❤️
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            Hecho con mucho cariño para una persona muy especial ❤️
+
+        </footer>
+
+    </div>
+
+
+
+    <script>
+
+        /* =========================================
+           MOSTRAR MENSAJE FINAL
+        ========================================= */
+
+        function mostrarMensaje() {
+
+            const mensaje =
+                document.getElementById("mensajeFinal");
+
+            mensaje.style.display = "block";
+
+            mensaje.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+
+        /* =========================================
+           CREAR ESTRELLAS ALEATORIAS
+        ========================================= */
+
+        const estrellas =
+            document.querySelector(".stars");
+
+        for (let i = 0; i < 80; i++) {
+
+            const estrella =
+                document.createElement("span");
+
+            estrella.classList.add("star");
+
+            estrella.style.top =
+                Math.random() * 100 + "%";
+
+            estrella.style.left =
+                Math.random() * 100 + "%";
+
+            estrella.style.animationDelay =
+                Math.random() * 3 + "s";
+
+            estrellas.appendChild(estrella);
+
+        }
+
+    </script>
+
+</body>
+</html>
