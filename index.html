@@ -4,14 +4,11 @@
 <head>
 
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
         Todas las páginas de mi princesa ❤️
     </title>
-
 
     <style>
 
@@ -21,2237 +18,813 @@
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
+            font-family: Georgia, "Times New Roman", serif;
             color: #fff;
-
             min-height: 100vh;
-
             overflow-x: hidden;
-
             background:
-                radial-gradient(
-                    circle at 20% 20%,
-                    rgba(255, 100, 160, .15),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 80% 80%,
-                    rgba(170, 100, 255, .15),
-                    transparent 30%
-                ),
-
-                linear-gradient(
-                    135deg,
-                    #090015,
-                    #16001f,
-                    #08000f
-                );
+                radial-gradient(circle at 20% 20%, rgba(255, 100, 160, .15), transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(170, 100, 255, .15), transparent 30%),
+                linear-gradient(135deg, #090015, #16001f, #08000f);
         }
 
-
-        /* =====================================================
-           ESTRELLAS
-        ===================================================== */
-
         .stars {
-
             position: fixed;
-
             inset: 0;
-
             pointer-events: none;
-
             z-index: 0;
         }
 
-
         .star {
-
             position: absolute;
-
             width: 3px;
             height: 3px;
-
             border-radius: 50%;
-
             background: white;
-
-            box-shadow:
-                0 0 8px white;
-
-            animation:
-                twinkle
-                2s
-                infinite
-                ease-in-out;
+            box-shadow: 0 0 8px white;
+            animation: twinkle 2s infinite ease-in-out;
         }
-
 
         @keyframes twinkle {
-
-            0%,
-            100% {
-
+            0%, 100% {
                 opacity: .2;
-
                 transform: scale(.6);
-
             }
-
             50% {
-
                 opacity: 1;
-
                 transform: scale(1.5);
-
             }
-
         }
-
-
-        /* =====================================================
-           CORAZONES
-        ===================================================== */
 
         .floating-heart {
-
             position: fixed;
-
             bottom: -30px;
-
             pointer-events: none;
-
             z-index: 1;
-
-            animation:
-                floatHeart
-                linear
-                forwards;
+            animation: floatHeart linear forwards;
         }
-
 
         @keyframes floatHeart {
-
             0% {
-
-                transform:
-                    translateY(0)
-                    rotate(0deg);
-
+                transform: translateY(0) rotate(0deg);
                 opacity: 0;
-
             }
-
             10% {
-
                 opacity: .8;
-
             }
-
             100% {
-
-                transform:
-                    translateY(-110vh)
-                    translateX(100px)
-                    rotate(360deg);
-
+                transform: translateY(-110vh) translateX(100px) rotate(360deg);
                 opacity: 0;
-
             }
-
         }
-
-
-        /* =====================================================
-           BOTÓN HAMBURGUESA
-        ===================================================== */
 
         .menu-button {
-
             position: fixed;
-
             top: 22px;
             left: 22px;
-
             width: 58px;
             height: 58px;
-
             border-radius: 50%;
-
-            border:
-                1px solid
-                rgba(255,255,255,.3);
-
-            background:
-                rgba(255,255,255,.08);
-
-            backdrop-filter:
-                blur(15px);
-
+            border: 1px solid rgba(255,255,255,.3);
+            background: rgba(255,255,255,.08);
+            backdrop-filter: blur(15px);
             color: white;
-
             cursor: pointer;
-
             z-index: 10001;
-
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
-
             justify-content: center;
-
             gap: 5px;
-
             transition: .3s;
-
-            box-shadow:
-                0 10px 35px
-                rgba(0,0,0,.25);
+            box-shadow: 0 10px 35px rgba(0,0,0,.25);
         }
-
 
         .menu-button:hover {
-
             transform: scale(1.08);
-
-            background:
-                rgba(255,100,170,.2);
-
+            background: rgba(255,100,170,.2);
         }
-
 
         .menu-line {
-
             width: 24px;
-
             height: 2px;
-
             background: white;
-
             border-radius: 5px;
-
             transition: .3s;
-
         }
 
-
-        .menu-button.active
-        .line1 {
-
-            transform:
-                translateY(7px)
-                rotate(45deg);
-
+        .menu-button.active .line1 {
+            transform: translateY(7px) rotate(45deg);
         }
 
-
-        .menu-button.active
-        .line2 {
-
+        .menu-button.active .line2 {
             opacity: 0;
-
         }
 
-
-        .menu-button.active
-        .line3 {
-
-            transform:
-                translateY(-7px)
-                rotate(-45deg);
-
+        .menu-button.active .line3 {
+            transform: translateY(-7px) rotate(-45deg);
         }
-
-
-        /* =====================================================
-           MENÚ LATERAL
-        ===================================================== */
 
         .side-menu {
-
             position: fixed;
-
             top: 0;
             left: 0;
-
             width: 340px;
-
             max-width: 85%;
-
             height: 100vh;
-
-            padding:
-                100px 25px 30px;
-
-            background:
-                linear-gradient(
-                    160deg,
-                    rgba(28,5,40,.98),
-                    rgba(10,0,20,.98)
-                );
-
-            backdrop-filter:
-                blur(20px);
-
-            border-right:
-                1px solid
-                rgba(255,255,255,.1);
-
+            padding: 100px 25px 30px;
+            background: linear-gradient(160deg, rgba(28,5,40,.98), rgba(10,0,20,.98));
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255,255,255,.1);
             z-index: 10000;
-
-            transform:
-                translateX(-100%);
-
-            transition:
-                .45s
-                cubic-bezier(.77,0,.18,1);
-
+            transform: translateX(-100%);
+            transition: .45s cubic-bezier(.77,0,.18,1);
             overflow-y: auto;
         }
 
-
         .side-menu.open {
-
-            transform:
-                translateX(0);
-
+            transform: translateX(0);
         }
-
 
         .menu-title {
-
             text-align: center;
-
             margin-bottom: 35px;
-
         }
-
 
         .menu-title .mini-heart {
-
             font-size: 40px;
-
         }
-
 
         .menu-title h2 {
-
             font-size: 1.5rem;
-
             color: #ffb2cd;
-
             margin-top: 10px;
-
         }
-
 
         .menu-title p {
-
             color: #c7aebe;
-
             font-size: .85rem;
-
             line-height: 1.6;
-
             margin-top: 8px;
-
         }
-
 
         .menu-links {
-
             display: flex;
-
             flex-direction: column;
-
             gap: 10px;
-
         }
-
 
         .menu-link {
-
             display: flex;
-
             align-items: center;
-
             gap: 15px;
-
             padding: 15px;
-
             border-radius: 15px;
-
             text-decoration: none;
-
             color: #f7dfe9;
-
-            background:
-                rgba(255,255,255,.04);
-
-            border:
-                1px solid
-                transparent;
-
+            background: rgba(255,255,255,.04);
+            border: 1px solid transparent;
             transition: .3s;
-
         }
-
 
         .menu-link:hover {
-
-            background:
-                rgba(255,100,170,.12);
-
-            border-color:
-                rgba(255,150,190,.25);
-
-            transform:
-                translateX(5px);
-
+            background: rgba(255,100,170,.12);
+            border-color: rgba(255,150,190,.25);
+            transform: translateX(5px);
         }
-
 
         .menu-icon {
-
             font-size: 25px;
-
             width: 35px;
-
             text-align: center;
-
         }
-
 
         .menu-link-text {
-
             display: flex;
-
             flex-direction: column;
-
         }
-
 
         .menu-link-title {
-
             font-size: 1rem;
-
             color: white;
-
         }
-
 
         .menu-link-description {
-
             font-size: .72rem;
-
             color: #c7aebe;
-
             margin-top: 3px;
-
         }
-
-
-        /* =====================================================
-           OVERLAY
-        ===================================================== */
 
         .overlay {
-
             position: fixed;
-
             inset: 0;
-
-            background:
-                rgba(0,0,0,.5);
-
+            background: rgba(0,0,0,.5);
             z-index: 9999;
-
             opacity: 0;
-
             visibility: hidden;
-
             transition: .3s;
-
         }
-
 
         .overlay.show {
-
             opacity: 1;
-
             visibility: visible;
-
         }
-
-
-        /* =====================================================
-           CONTENIDO
-        ===================================================== */
 
         main {
-
             position: relative;
-
             z-index: 2;
-
         }
-
 
         .hero {
-
             min-height: 100vh;
-
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
             text-align: center;
-
             padding: 80px 20px;
-
         }
-
 
         .hero-content {
-
             max-width: 900px;
-
-            animation:
-                entrance
-                1.4s
-                ease;
+            animation: entrance 1.4s ease;
         }
-
 
         @keyframes entrance {
-
             from {
-
                 opacity: 0;
-
-                transform:
-                    translateY(40px);
-
+                transform: translateY(40px);
             }
-
             to {
-
                 opacity: 1;
-
-                transform:
-                    translateY(0);
-
+                transform: translateY(0);
             }
-
         }
-
 
         .eyebrow {
-
             color: #f7a5c3;
-
             text-transform: uppercase;
-
             letter-spacing: 5px;
-
             font-size: .75rem;
-
             margin-bottom: 25px;
-
         }
-
 
         .hero-heart {
-
-            font-size:
-                clamp(70px, 15vw, 130px);
-
-            animation:
-                heartbeat
-                1.5s
-                infinite;
+            font-size: clamp(70px, 15vw, 130px);
+            animation: heartbeat 1.5s infinite;
         }
-
 
         @keyframes heartbeat {
-
-            0%,
-            100% {
-
+            0%, 100% {
                 transform: scale(1);
-
             }
-
             15% {
-
                 transform: scale(1.18);
-
             }
-
             30% {
-
                 transform: scale(1);
-
             }
-
             45% {
-
                 transform: scale(1.1);
-
             }
-
         }
-
 
         .hero h1 {
-
-            font-size:
-                clamp(2.8rem, 8vw, 6rem);
-
+            font-size: clamp(2.8rem, 8vw, 6rem);
             line-height: 1;
-
             margin: 20px 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #fff,
-                    #ffb1ca,
-                    #fff
-                );
-
-            background-size:
-                200% auto;
-
-            -webkit-background-clip:
-                text;
-
-            -webkit-text-fill-color:
-                transparent;
-
-            animation:
-                shine
-                4s
-                linear
-                infinite;
+            background: linear-gradient(90deg, #fff, #ffb1ca, #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
         }
-
 
         @keyframes shine {
-
             to {
-
-                background-position:
-                    200% center;
-
+                background-position: 200% center;
             }
-
         }
-
 
         .hero-description {
-
             max-width: 720px;
-
             margin: 30px auto;
-
             color: #d9c2cf;
-
             font-size: 1.15rem;
-
             line-height: 2;
-
         }
-
 
         .hero-description strong {
-
             color: #ffadc9;
-
         }
-
-
-        /* =====================================================
-           BOTÓN
-        ===================================================== */
 
         .main-button {
-
             display: inline-block;
-
             margin-top: 20px;
-
-            padding:
-                16px 30px;
-
+            padding: 16px 30px;
             border-radius: 50px;
-
             text-decoration: none;
-
             color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #d84d83,
-                    #a94ed0
-                );
-
-            box-shadow:
-                0 10px 40px
-                rgba(210,70,130,.3);
-
+            background: linear-gradient(135deg, #d84d83, #a94ed0);
+            box-shadow: 0 10px 40px rgba(210,70,130,.3);
             transition: .3s;
-
         }
-
 
         .main-button:hover {
-
-            transform:
-                translateY(-5px);
-
-            box-shadow:
-                0 15px 50px
-                rgba(210,70,130,.5);
-
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(210,70,130,.5);
         }
-
-
-        /* =====================================================
-           SECCIÓN PÁGINAS
-        ===================================================== */
 
         .pages-section {
-
-            padding:
-                100px 20px;
-
+            padding: 100px 20px;
             max-width: 1250px;
-
             margin: auto;
-
         }
-
 
         .section-title {
-
             text-align: center;
-
-            font-size:
-                clamp(2.3rem, 6vw, 4.5rem);
-
+            font-size: clamp(2.3rem, 6vw, 4.5rem);
             color: #ffb0ca;
-
             margin-bottom: 20px;
-
         }
-
 
         .section-subtitle {
-
             text-align: center;
-
             max-width: 700px;
-
-            margin:
-                0 auto 60px;
-
+            margin: 0 auto 60px;
             color: #cbb5c2;
-
             line-height: 1.9;
-
         }
-
-
-        /* =====================================================
-           GRID
-        ===================================================== */
 
         .pages-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(250px, 1fr)
-                );
-
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
-
         }
-
-
-        /* =====================================================
-           TARJETAS
-        ===================================================== */
 
         .page-card {
-
             position: relative;
-
             min-height: 330px;
-
             padding: 35px 25px;
-
             border-radius: 30px;
-
             text-decoration: none;
-
             color: white;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.08),
-                    rgba(255,255,255,.025)
-                );
-
-            border:
-                1px solid
-                rgba(255,255,255,.1);
-
-            backdrop-filter:
-                blur(15px);
-
+            background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+            border: 1px solid rgba(255,255,255,.1);
+            backdrop-filter: blur(15px);
             overflow: hidden;
-
-            transition:
-                .45s
-                cubic-bezier(.2,.8,.2,1);
-
+            transition: .45s cubic-bezier(.2,.8,.2,1);
         }
-
 
         .page-card::before {
-
             content: "";
-
             position: absolute;
-
             width: 180px;
             height: 180px;
-
             border-radius: 50%;
-
             top: -80px;
             right: -80px;
-
-            background:
-                rgba(255,120,180,.12);
-
+            background: rgba(255,120,180,.12);
             transition: .4s;
-
         }
-
 
         .page-card:hover {
-
-            transform:
-                translateY(-12px);
-
-            border-color:
-                rgba(255,160,200,.3);
-
-            box-shadow:
-                0 25px 70px
-                rgba(0,0,0,.3);
-
+            transform: translateY(-12px);
+            border-color: rgba(255,160,200,.3);
+            box-shadow: 0 25px 70px rgba(0,0,0,.3);
         }
-
 
         .page-card:hover::before {
-
-            transform:
-                scale(2);
-
+            transform: scale(2);
         }
-
 
         .card-icon {
-
             font-size: 60px;
-
             margin-bottom: 25px;
-
             display: block;
-
         }
-
 
         .card-number {
-
             font-size: .7rem;
-
             text-transform: uppercase;
-
             letter-spacing: 3px;
-
             color: #c99dae;
-
             margin-bottom: 10px;
-
         }
-
 
         .page-card h3 {
-
             font-size: 1.5rem;
-
             color: #ffd3e1;
-
             margin-bottom: 15px;
-
         }
-
 
         .page-card p {
-
             color: #c9b6c0;
-
             line-height: 1.7;
-
             font-size: .95rem;
-
         }
 
-
         .card-arrow {
-
             position: absolute;
-
             bottom: 25px;
-
             right: 25px;
-
             font-size: 25px;
-
             color: #ff9fbd;
-
             transition: .3s;
-
         }
 
-
-        .page-card:hover
-        .card-arrow {
-
-            transform:
-                translateX(7px);
-
+        .page-card:hover .card-arrow {
+            transform: translateX(7px);
         }
-
-
-        /* =====================================================
-           FRASE FINAL
-        ===================================================== */
 
         .final-section {
-
             min-height: 80vh;
-
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
             text-align: center;
-
-            padding:
-                100px 20px;
-
+            padding: 100px 20px;
         }
-
 
         .final-box {
-
             max-width: 800px;
-
         }
-
 
         .final-box .heart {
-
             font-size: 80px;
-
-            animation:
-                heartbeat
-                1.5s
-                infinite;
-
+            animation: heartbeat 1.5s infinite;
         }
-
 
         .final-box h2 {
-
-            font-size:
-                clamp(2.5rem, 7vw, 5rem);
-
+            font-size: clamp(2.5rem, 7vw, 5rem);
             color: #ffabc6;
-
             margin: 20px 0;
-
         }
-
 
         .final-box p {
-
             color: #cdb9c5;
-
             line-height: 2;
-
             font-size: 1.1rem;
-
         }
-
 
         .signature {
-
             margin-top: 30px;
-
             color: #f29bb8;
-
             font-style: italic;
-
         }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
 
         footer {
-
             text-align: center;
-
             padding: 40px 20px;
-
             color: #8f7582;
-
             font-size: .8rem;
-
         }
 
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
         @media (max-width: 600px) {
-
             .menu-button {
-
                 top: 15px;
-
                 left: 15px;
-
             }
-
-
             .hero {
-
                 padding-top: 100px;
-
             }
-
-
             .hero h1 {
-
                 font-size: 3rem;
-
             }
-
-
             .page-card {
-
                 min-height: 290px;
-
             }
-
         }
 
     </style>
 
 </head>
 
-
 <body>
-
-
-    <!-- =====================================================
-         ESTRELLAS
-    ===================================================== -->
 
     <div class="stars" id="stars"></div>
 
-
-    <!-- =====================================================
-         BOTÓN HAMBURGUESA
-    ===================================================== -->
-
-    <button
-        class="menu-button"
-        id="menuButton"
-        aria-label="Abrir menú">
-
+    <button class="menu-button" id="menuButton" aria-label="Abrir menú">
         <span class="menu-line line1"></span>
         <span class="menu-line line2"></span>
         <span class="menu-line line3"></span>
-
     </button>
 
-
-    <!-- =====================================================
-         MENÚ
-    ===================================================== -->
-
-    <aside
-        class="side-menu"
-        id="sideMenu">
-
-
+    <aside class="side-menu" id="sideMenu">
         <div class="menu-title">
-
-            <div class="mini-heart">
-                ❤️
-            </div>
-
-            <h2>
-                Mi princesa
-            </h2>
-
-            <p>
-                Un pequeño lugar donde guardé
-                todos los detalles que hice para ti.
-            </p>
-
+            <div class="mini-heart">❤️</div>
+            <h2>Mi princesa</h2>
+            <p>Un pequeño lugar donde guardé todos los detalles que hice para ti.</p>
         </div>
 
-
         <nav class="menu-links">
-
-
-            <a
-                href="index.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    🏠
-                </span>
-
+            <a href="index.html" class="menu-link">
+                <span class="menu-icon">🏠</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Inicio
-                    </span>
-
-                    <span class="menu-link-description">
-                        Todas mis páginas para ti
-                    </span>
-
+                    <span class="menu-link-title">Inicio</span>
+                    <span class="menu-link-description">Todas mis páginas para ti</span>
                 </span>
-
             </a>
 
-
-            <a
-                href="universo.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    🌌
-                </span>
-
+            <a href="universo.html" class="menu-link">
+                <span class="menu-icon">🌌</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Nuestro universo
-                    </span>
-
-                    <span class="menu-link-description">
-                        Estrellas, constelaciones y nosotros
-                    </span>
-
+                    <span class="menu-link-title">Nuestro universo</span>
+                    <span class="menu-link-description">Estrellas, constelaciones y nosotros</span>
                 </span>
-
             </a>
 
-
-            <a
-                href="amor.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    ❤️
-                </span>
-
+            <a href="amor.html" class="menu-link">
+                <span class="menu-icon">❤️</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Mi página de amor
-                    </span>
-
-                    <span class="menu-link-description">
-                        Todo lo que siento por ti
-                    </span>
-
+                    <span class="menu-link-title">Mi página de amor</span>
+                    <span class="menu-link-description">Todo lo que siento por ti</span>
                 </span>
-
             </a>
 
-
-            <a
-                href="apoyo.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    🫂
-                </span>
-
+            <a href="apoyo.html" class="menu-link">
+                <span class="menu-icon">🫂</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Cuando necesites apoyo
-                    </span>
-
-                    <span class="menu-link-description">
-                        Para esos días difíciles
-                    </span>
-
+                    <span class="menu-link-title">Cuando necesites apoyo</span>
+                    <span class="menu-link-description">Para esos días difíciles</span>
                 </span>
-
             </a>
 
-
-            <a
-                href="recuerdos.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    💭
-                </span>
-
+            <a href="recuerdos.html" class="menu-link">
+                <span class="menu-icon">💭</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Nuestros recuerdos
-                    </span>
-
-                    <span class="menu-link-description">
-                        Momentos para volver a sonreír
-                    </span>
-
+                    <span class="menu-link-title">Nuestros recuerdos</span>
+                    <span class="menu-link-description">Momentos para volver a sonreír</span>
                 </span>
-
             </a>
 
-
-            <a
-                href="carta.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    💌
-                </span>
-
+            <a href="carta.html" class="menu-link">
+                <span class="menu-icon">💌</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Una carta para ti
-                    </span>
-
-                    <span class="menu-link-description">
-                        Algo que quiero que recuerdes
-                    </span>
-
+                    <span class="menu-link-title">Una carta para ti</span>
+                    <span class="menu-link-description">Algo que quiero que recuerdes</span>
                 </span>
-
             </a>
 
- <a
-                href="momentos.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    💭
-                </span>
-
+            <a href="momentos.html" class="menu-link">
+                <span class="menu-icon">💭</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Nuestros recuerdos
-                    </span>
-
-                    <span class="menu-link-description">
-                        Momentos para que recordemos juntos
-                    </span>
-
+                    <span class="menu-link-title">Nuestros recuerdos</span>
+                    <span class="menu-link-description">Momentos para que recordemos juntos</span>
                 </span>
-
             </a>
 
- <a
-                href="momentofeliz.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    👩🏻‍🤝‍👨🏽
-                </span>
-
+            <a href="momentofeliz.html" class="menu-link">
+                <span class="menu-icon">👩🏻‍🤝‍👨🏽</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Nuestra historia Empezo aquí
-                    </span>
-
-                    <span class="menu-link-description">
-                        15/08/2026 -- Nuestro Momento más Feliz 🥰
-                    </span>
-
+                    <span class="menu-link-title">Nuestra historia Empezo aquí</span>
+                    <span class="menu-link-description">15/08/2026 -- Nuestro Momento más Feliz 🥰</span>
                 </span>
-
             </a>
 
-
- <a
-                href="nuestro refugio.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    👩🏻‍🤝‍👨🏽
-                </span>
-
+            <a href="nuestro refugio.html" class="menu-link">
+                <span class="menu-icon">👩🏻‍🤝‍👨🏽</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        Cuando Me Necesites 
-                    </span>
-
-                    <span class="menu-link-description">
-                        Yo Siempre Estare Contigo 🥰
-                    </span>
-
+                    <span class="menu-link-title">Cuando Me Necesites</span>
+                    <span class="menu-link-description">Yo Siempre Estare Contigo 🥰</span>
                 </span>
-
             </a>
 
- <a
-                href="situvieraqueconocerte.html"
-                class="menu-link">
-
-                <span class="menu-icon">
-                    🥰
-                </span>
-
+            <a href="situvieraqueconocerte.html" class="menu-link">
+                <span class="menu-icon">🥰</span>
                 <span class="menu-link-text">
-
-                    <span class="menu-link-title">
-                        No te prometo que todos los días serán perfectos.
-                    </span>
-
-                    <span class="menu-link-description">
-                        Te prometo que incluso en los días difíciles, seguiré eligiéndote.
-                    </span>
-
+                    <span class="menu-link-title">No te prometo que todos los días serán perfectos.</span>
+                    <span class="menu-link-description">Te prometo que incluso en los días difíciles, seguiré eligiéndote.</span>
                 </span>
-
             </a>
-
-
-
-
         </nav>
-
     </aside>
 
-
-    <!-- =====================================================
-         OVERLAY
-    ===================================================== -->
-
-    <div
-        class="overlay"
-        id="overlay">
-    </div>
-
-
-    <!-- =====================================================
-         CONTENIDO
-    ===================================================== -->
+    <div class="overlay" id="overlay"></div>
 
     <main>
 
-
-        <!-- =================================================
-             INICIO
-        ================================================= -->
-
         <section class="hero">
-
-
             <div class="hero-content">
-
-
-                <div class="eyebrow">
-
-                    Un pequeño lugar hecho para ti
-
-                </div>
-
-
-                <div class="hero-heart">
-
-                    ❤️
-
-                </div>
-
-
-                <h1>
-
-                    Todas las páginas
-                    <br>
-
-                    de mi princesa
-
-                </h1>
-
-
+                <div class="eyebrow">Un pequeño lugar hecho para ti</div>
+                <div class="hero-heart">❤️</div>
+                <h1>Todas las páginas<br>de mi princesa</h1>
                 <p class="hero-description">
-
-                    Hice cada una de estas páginas pensando
-                    en ti.
-
-                    <br>
-                    <br>
-
+                    Hice cada una de estas páginas pensando en ti.
+                    <br><br>
                     Para que puedas volver a ellas
-
-                    <strong>
-                        en los momentos que las necesites.
-                    </strong>
-
-                    <br>
-                    <br>
-
-                    Si algún día estás feliz,
-                    triste, cansada, estresada o simplemente
+                    <strong>en los momentos que las necesites.</strong>
+                    <br><br>
+                    Si algún día estás feliz, triste, cansada, estresada o simplemente
                     quieres recordar cuánto te quiero...
-
                     <br>
-
-                    <strong>
-                        aquí siempre tendrás un pequeño
-                        rincón hecho especialmente para ti.
-                    </strong>
-
+                    <strong>aquí siempre tendrás un pequeño rincón hecho especialmente para ti.</strong>
                 </p>
-
-
-                <a
-                    href="#pages"
-                    class="main-button">
-
-                    Ver todas mis páginas ❤️
-
-                </a>
-
-
+                <a href="#pages" class="main-button">Ver todas mis páginas ❤️</a>
             </div>
-
         </section>
 
-
-
-        <!-- =================================================
-             TODAS LAS PÁGINAS
-        ================================================= -->
-
-        <section
-            class="pages-section"
-            id="pages">
-
-
-            <h2 class="section-title">
-
-                Un lugar para cada momento
-
-            </h2>
-
-
+        <section class="pages-section" id="pages">
+            <h2 class="section-title">Un lugar para cada momento</h2>
             <p class="section-subtitle">
-
                 No importa cómo te sientas.
-
                 <br>
-
-                Espero que alguna de estas páginas
-                consiga acompañarte, hacerte sonreír
-                o simplemente recordarte lo importante
-                que eres para mí.
-
+                Espero que alguna de estas páginas consiga acompañarte, hacerte sonreír
+                o simplemente recordarte lo importante que eres para mí.
             </p>
-
 
             <div class="pages-grid">
 
-
-                <!-- UNIVERSO -->
-
-                <a
-                    href="universo.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        🌌
-                    </span>
-
-                    <div class="card-number">
-                        Página 01
-                    </div>
-
-                    <h3>
-                        Nuestro universo
-                    </h3>
-
-                    <p>
-
-                        Un pequeño universo lleno de
-                        estrellas, constelaciones y
-                        detalles que representan
-                        lo especial que eres para mí.
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 01 -->
+                <a href="universo.html" class="page-card">
+                    <span class="card-icon">🌌</span>
+                    <div class="card-number">Página 01</div>
+                    <h3>Nuestro universo</h3>
+                    <p>Un pequeño universo lleno de estrellas, constelaciones y detalles que representan lo especial que eres para mí.</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
-
-
-                <!-- AMOR -->
-
-                <a
-                    href="amor.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        ❤️
-                    </span>
-
-                    <div class="card-number">
-                        Página 02
-                    </div>
-
-                    <h3>
-                        Todo mi amor
-                    </h3>
-
-                    <p>
-
-                        Una página para recordarte
-                        lo mucho que te quiero y todas
-                        esas cosas que hacen que seas
-                        tan especial para mí.
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 02 -->
+                <a href="amor.html" class="page-card">
+                    <span class="card-icon">❤️</span>
+                    <div class="card-number">Página 02</div>
+                    <h3>Todo mi amor</h3>
+                    <p>Una página para recordarte lo mucho que te quiero y todas esas cosas que hacen que seas tan especial para mí.</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
-
-
-                <!-- APOYO -->
-
-                <a
-                    href="apoyo.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        🫂
-                    </span>
-
-                    <div class="card-number">
-                        Página 03
-                    </div>
-
-                    <h3>
-                        Siempre estaré
-                    </h3>
-
-                    <p>
-
-                        Para esos días en los que
-                        necesites llorar, hablar,
-                        desahogarte o simplemente
-                        sentir que alguien está contigo.
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 03 -->
+                <a href="apoyo.html" class="page-card">
+                    <span class="card-icon">🫂</span>
+                    <div class="card-number">Página 03</div>
+                    <h3>Siempre estaré</h3>
+                    <p>Para esos días en los que necesites llorar, hablar, desahogarte o simplemente sentir que alguien está contigo.</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
-
-
-                <!-- RECUERDOS -->
-
-                <a
-                    href="recuerdos.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        💭
-                    </span>
-
-                    <div class="card-number">
-                        Página 04
-                    </div>
-
-                    <h3>
-                        Nuestros recuerdos
-                    </h3>
-
-                    <p>
-
-                        Un lugar para volver a esos
-                        momentos que nos hicieron
-                        reír, sonreír y disfrutar
-                        estar juntos.
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 04 -->
+                <a href="recuerdos.html" class="page-card">
+                    <span class="card-icon">💭</span>
+                    <div class="card-number">Página 04</div>
+                    <h3>Nuestros recuerdos</h3>
+                    <p>Un lugar para volver a esos momentos que nos hicieron reír, sonreír y disfrutar estar juntos.</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
-
-
-                <!-- CARTA -->
-
-                <a
-                    href="carta.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        💌
-                    </span>
-
-                    <div class="card-number">
-                        Página 05
-                    </div>
-
-                    <h3>
-                        Una carta para ti
-                    </h3>
-
-                    <p>
-
-                        Porque hay cosas que quizá
-                        no siempre sé cómo decirte,
-                        pero sí puedo escribirlas
-                        para que puedas leerlas cuando
-                        quieras.
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 05 -->
+                <a href="carta.html" class="page-card">
+                    <span class="card-icon">💌</span>
+                    <div class="card-number">Página 05</div>
+                    <h3>Una carta para ti</h3>
+                    <p>Porque hay cosas que quizá no siempre sé cómo decirte, pero sí puedo escribirlas para que puedas leerlas cuando quieras.</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
-
-
-                <!-- NUEVA -->
-
-                <a
-                    href="momentos.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        💭
-                    </span>
-
-                    <div class="card-number">
-                        Página 06
-                    </div>
-
-                    <h3>
-                        Momentos Juntos
-                    </h3>
-
-                    <p>
-
-                        Porque hay cosas que me 
-                        gustaria repetir contigo
-                        y conocerte es una de ellas..
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 06 -->
+                <a href="momentos.html" class="page-card">
+                    <span class="card-icon">💭</span>
+                    <div class="card-number">Página 06</div>
+                    <h3>Momentos Juntos</h3>
+                    <p>Porque hay cosas que me gustaria repetir contigo y conocerte es una de ellas..</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
- <!-- NUEVA -->
-
-                <a
-                    href="momentofeliz.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        👩🏻‍🤝‍👨🏽
-                    </span>
-
-                    <div class="card-number">
-                        Página 07
-                    </div>
-
-                    <h3>
-                        15/08/2026
-                    </h3>
-
-                    <p>
-
-                        Este día fue muy especial un momento 
-                        que nunca olvidare pues ese día 
-                        comenzo nuestra bonita historia
-                        juntos....
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
-                </a>
- <!-- NUEVA -->
-
-                <a
-                    href="mi ojitos.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        🌷
-                    </span>
-
-                    <div class="card-number">
-                        Página 08
-                    </div>
-
-
-
-                    <h3>
-                        Para hacerte sonreír
-                    </h3>
-
-                    <p>
-
-                        Mensajes, pequeñas sorpresas
-                        y palabras bonitas para esos
-                        momentos en los que necesites
-                        una sonrisa.
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 07 -->
+                <a href="momentofeliz.html" class="page-card">
+                    <span class="card-icon">👩🏻‍🤝‍👨🏽</span>
+                    <div class="card-number">Página 07</div>
+                    <h3>15/08/2026</h3>
+                    <p>Este día fue muy especial un momento que nunca olvidare pues ese día comenzo nuestra bonita historia juntos....</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
- <!-- NUEVA -->
-
-                <a
-                    href="nuestro refugio.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        👩🏻‍❤️‍👨🏽
-                    </span>
-
-                    <div class="card-number">
-                        Página 09
-                    </div>
-
-
-
-                    <h3>
-                        Para Cuando Me Necesites.
-                    </h3>
-
-                    <p>
-
-                        No importa cuándo, si me necesitas, estaré.
-                        Siempre estare a tu lado a lo mejor y no 
-                        fisicamente pero quiero que sientas que 
-                        siempre estare ahí.
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 08 -->
+                <a href="mi ojitos.html" class="page-card">
+                    <span class="card-icon">🌷</span>
+                    <div class="card-number">Página 08</div>
+                    <h3>Para hacerte sonreír</h3>
+                    <p>Mensajes, pequeñas sorpresas y palabras bonitas para esos momentos en los que necesites una sonrisa.</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
-<!-- NUEVA -->
-
-                <a
-                    href="situvieraqueconocerte.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        🌷
-                    </span>
-
-                    <div class="card-number">
-                        Página 10
-                    </div>
-
-
-
-                    <h3>
-                        Para Recordarte Cuanto te quiero 
-                    </h3>
-
-                    <p>
-
-                        No necesitaba besarte pues a mi ya me brillaban
-                        los ojos con tan solo verte mi niña 
-                        Siempre luchare por ti.
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 09 -->
+                <a href="nuestro refugio.html" class="page-card">
+                    <span class="card-icon">👩🏻‍❤️‍👨🏽</span>
+                    <div class="card-number">Página 09</div>
+                    <h3>Para Cuando Me Necesites.</h3>
+                    <p>No importa cuándo, si me necesitas, estaré. Siempre estare a tu lado a lo mejor y no fisicamente pero quiero que sientas que siempre estare ahí.</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
-
-<!-- NUEVA -->
-
-                <a
-                    href="reconocimiento.htl"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        🌷
-                    </span>
-
-                    <div class="card-number">
-                        Página 11
-                    </div>
-
-
-
-                    <h3>
-                        Reconocimiento A la Mejor Novia 
-                    </h3>
-
-                    <p>
-
-                        Aunque nadie te lo diga a diario 
-                        yo si reconozco tu esfuerzo y siempre
-                        estare muy orgulloso de ti.❤️
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 10 -->
+                <a href="situvieraqueconocerte.html" class="page-card">
+                    <span class="card-icon">🌷</span>
+                    <div class="card-number">Página 10</div>
+                    <h3>Para Recordarte Cuanto te quiero</h3>
+                    <p>No necesitaba besarte pues a mi ya me brillaban los ojos con tan solo verte mi niña Siempre luchare por ti.</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
-
-
-            </div>
-
-
-
-<!-- NUEVA -->
-
-                <a
-                    href="Siemprecontigo.html"
-                    class="page-card">
-
-                    <span class="card-icon">
-                        🥰
-                    </span>
-
-                    <div class="card-number">
-                        Página 12
-                    </div>
-
-
-
-                    <h3>
-                        SIEMPRE TENDRAS MI APOYO 
-                    </h3>
-
-                    <p>
-
-                        Aunque nadie te lo diga a diario 
-                        yo si reconozco tu esfuerzo y siempre
-                        estare muy orgulloso de ti.❤️
-
-                    </p>
-
-                    <span class="card-arrow">
-                        →
-                    </span>
-
+                <!-- PÁGINA 11 -->
+                <a href="reconocimiento.html" class="page-card">
+                    <span class="card-icon">🌷</span>
+                    <div class="card-number">Página 11</div>
+                    <h3>Reconocimiento A la Mejor Novia</h3>
+                    <p>Aunque nadie te lo diga a diario yo si reconozco tu esfuerzo y siempre estare muy orgulloso de ti.❤️</p>
+                    <span class="card-arrow">→</span>
                 </a>
 
+                <!-- PÁGINA 12 -->
+                <a href="Siemprecontigo.html" class="page-card">
+                    <span class="card-icon">🥰</span>
+                    <div class="card-number">Página 12</div>
+                    <h3>SIEMPRE TENDRAS MI APOYO</h3>
+                    <p>Aunque nadie te lo diga a diario yo si reconozco tu esfuerzo y siempre estare muy orgulloso de ti.❤️</p>
+                    <span class="card-arrow">→</span>
+                </a>
 
-
-            </div>
-
-
+            </div> <!-- Cierre del pages-grid -->
         </section>
-
-
-
-        <!-- =================================================
-             FRASE FINAL
-        ================================================= -->
 
         <section class="final-section">
-
-
             <div class="final-box">
-
-
-                <div class="heart">
-
-                    💗
-
-                </div>
-
-
-                <h2>
-
-                    Y todavía faltan
-                    muchas historias...
-
-                </h2>
-
-
+                <div class="heart">💗</div>
+                <h2>Y todavía faltan muchas historias...</h2>
                 <p>
-
-                    Quizá algún día agreguemos más páginas,
-                    más recuerdos, más fotografías,
-                    más canciones y más momentos.
-
-                    <br>
-                    <br>
-
-                    Pero si hay algo que quiero que nunca
-                    cambie es la razón por la que hice
-                    todo esto:
-
-                    <br>
-                    <br>
-
-                    <strong>
-
-                        hacerte saber lo mucho que te quiero.
-
-                    </strong>
-
+                    Quizá algún día agreguemos más páginas, más recuerdos, más fotografías, más canciones y más momentos.
+                    <br><br>
+                    Pero si hay algo que quiero que nunca cambie es la razón por la que hice todo esto:
+                    <br><br>
+                    <strong>hacerte saber lo mucho que te quiero.</strong>
                 </p>
-
-
-                <div class="signature">
-
-                    Para mi princesa,
-                    mi Ojitos ❤️
-
-                </div>
-
-
+                <div class="signature">Para mi princesa, mi Ojitos ❤️</div>
             </div>
-
         </section>
-
 
     </main>
 
-
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
-
     <footer>
-
         Hecho con muchísimo cariño ❤️
-
         <br>
-
-        Para que siempre tengas un lugar
-        al que puedas volver.
-
+        Para que siempre tengas un lugar al que puedas volver.
     </footer>
-
-
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ===================================================== -->
 
     <script>
 
-
-        /* =====================================================
-           MENÚ
-        ===================================================== */
-
-        const menuButton =
-            document.getElementById(
-                "menuButton"
-            );
-
-
-        const sideMenu =
-            document.getElementById(
-                "sideMenu"
-            );
-
-
-        const overlay =
-            document.getElementById(
-                "overlay"
-            );
-
+        const menuButton = document.getElementById("menuButton");
+        const sideMenu = document.getElementById("sideMenu");
+        const overlay = document.getElementById("overlay");
 
         function toggleMenu() {
-
-            menuButton.classList.toggle(
-                "active"
-            );
-
-            sideMenu.classList.toggle(
-                "open"
-            );
-
-            overlay.classList.toggle(
-                "show"
-            );
-
+            menuButton.classList.toggle("active");
+            sideMenu.classList.toggle("open");
+            overlay.classList.toggle("show");
         }
 
+        menuButton.addEventListener("click", toggleMenu);
+        overlay.addEventListener("click", toggleMenu);
 
-        menuButton.addEventListener(
-            "click",
-            toggleMenu
-        );
-
-
-        overlay.addEventListener(
-            "click",
-            toggleMenu
-        );
-
-
-        /* =====================================================
-           CERRAR MENÚ AL SELECCIONAR UNA PÁGINA
-        ===================================================== */
-
-        const menuLinks =
-            document.querySelectorAll(
-                ".menu-link"
-            );
-
-
+        const menuLinks = document.querySelectorAll(".menu-link");
         menuLinks.forEach(link => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-                    menuButton.classList.remove(
-                        "active"
-                    );
-
-                    sideMenu.classList.remove(
-                        "open"
-                    );
-
-                    overlay.classList.remove(
-                        "show"
-                    );
-
-                }
-            );
-
+            link.addEventListener("click", () => {
+                menuButton.classList.remove("active");
+                sideMenu.classList.remove("open");
+                overlay.classList.remove("show");
+            });
         });
 
-
-        /* =====================================================
-           ESTRELLAS
-        ===================================================== */
-
-        const stars =
-            document.getElementById(
-                "stars"
-            );
-
-
-        for (
-            let i = 0;
-            i < 100;
-            i++
-        ) {
-
-            const star =
-                document.createElement(
-                    "div"
-                );
-
-
-            star.className =
-                "star";
-
-
-            star.style.left =
-                Math.random() * 100 + "%";
-
-
-            star.style.top =
-                Math.random() * 100 + "%";
-
-
-            const size =
-                Math.random() * 3 + 1;
-
-
-            star.style.width =
-                size + "px";
-
-
-            star.style.height =
-                size + "px";
-
-
-            star.style.animationDelay =
-                Math.random() * 3 + "s";
-
-
-            star.style.animationDuration =
-                1.5 +
-                Math.random() * 3 +
-                "s";
-
-
+        const stars = document.getElementById("stars");
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement("div");
+            star.className = "star";
+            star.style.left = Math.random() * 100 + "%";
+            star.style.top = Math.random() * 100 + "%";
+            const size = Math.random() * 3 + 1;
+            star.style.width = size + "px";
+            star.style.height = size + "px";
+            star.style.animationDelay = Math.random() * 3 + "s";
+            star.style.animationDuration = 1.5 + Math.random() * 3 + "s";
             stars.appendChild(star);
-
         }
 
-
-        /* =====================================================
-           CORAZONES
-        ===================================================== */
-
-        const heartSymbols = [
-
-            "❤️",
-            "💕",
-            "💗",
-            "💖",
-            "✨"
-
-        ];
-
+        const heartSymbols = ["❤️", "💕", "💗", "💖", "✨"];
 
         function createFloatingHeart() {
-
-            const heart =
-                document.createElement(
-                    "div"
-                );
-
-
-            heart.className =
-                "floating-heart";
-
-
-            heart.textContent =
-                heartSymbols[
-                    Math.floor(
-                        Math.random() *
-                        heartSymbols.length
-                    )
-                ];
-
-
-            heart.style.left =
-                Math.random() * 100 + "%";
-
-
-            heart.style.fontSize =
-                12 +
-                Math.random() * 20 +
-                "px";
-
-
-            heart.style.animationDuration =
-                6 +
-                Math.random() * 7 +
-                "s";
-
-
-            document.body.appendChild(
-                heart
-            );
-
-
-            setTimeout(
-                () => {
-
-                    heart.remove();
-
-                },
-                14000
-            );
-
+            const heart = document.createElement("div");
+            heart.className = "floating-heart";
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.fontSize = 12 + Math.random() * 20 + "px";
+            heart.style.animationDuration = 6 + Math.random() * 7 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 14000);
         }
 
-
-        setInterval(
-            createFloatingHeart,
-            1000
-        );
-
+        setInterval(createFloatingHeart, 1000);
 
     </script>
 
