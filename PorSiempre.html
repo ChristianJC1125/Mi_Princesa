@@ -1,748 +1,1523 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Para Antara ❤️</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            overflow-x: hidden;
-            font-family: "Segoe UI", sans-serif;
-            background:
-                radial-gradient(circle at center, #8b0015 0%, #43000b 45%, #120003 100%);
-            color: white;
-        }
-
-        /* =========================================
-           FONDO ANIMADO
-        ========================================= */
-
-        .background {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: rgba(255, 0, 50, 0.18);
-            border-radius: 50%;
-            filter: blur(80px);
-            animation: moveGlow 8s infinite alternate ease-in-out;
-        }
-
-        .glow:nth-child(1) {
-            top: -200px;
-            left: -150px;
-        }
-
-        .glow:nth-child(2) {
-            bottom: -200px;
-            right: -150px;
-            animation-delay: 3s;
-        }
-
-        @keyframes moveGlow {
-            from {
-                transform: translate(0, 0) scale(1);
-            }
-
-            to {
-                transform: translate(100px, 80px) scale(1.3);
-            }
-        }
-
-        /* =========================================
-           CORAZONES FLOTANTES
-        ========================================= */
-
-        .heart {
-            position: fixed;
-            bottom: -50px;
-            color: #ff1744;
-            font-size: 25px;
-            animation: floatHeart linear forwards;
-            opacity: 0.8;
-            z-index: 1;
-            pointer-events: none;
-            text-shadow:
-                0 0 10px #ff1744,
-                0 0 20px #ff1744,
-                0 0 30px #ff1744;
-        }
-
-        @keyframes floatHeart {
-            0% {
-                transform: translateY(0) rotate(0deg) scale(0.7);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            50% {
-                transform: translateY(-50vh) rotate(180deg) scale(1);
-            }
-
-            100% {
-                transform: translateY(-110vh) rotate(360deg) scale(1.4);
-                opacity: 0;
-            }
-        }
-
-        /* =========================================
-           CONTENEDOR PRINCIPAL
-        ========================================= */
-
-        .container {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .card {
-            width: 100%;
-            max-width: 850px;
-            padding: 55px 45px;
-            text-align: center;
-
-            background: rgba(40, 0, 8, 0.65);
-            border: 1px solid rgba(255, 80, 110, 0.35);
-            border-radius: 30px;
-
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-
-            box-shadow:
-                0 0 40px rgba(255, 0, 50, 0.25),
-                inset 0 0 30px rgba(255, 0, 50, 0.05);
-
-            animation: cardAppear 1.5s ease;
-        }
-
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: translateY(40px) scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* =========================================
-           TITULO
-        ========================================= */
-
-        .small-title {
-            font-size: 15px;
-            letter-spacing: 5px;
-            color: #ff9aaa;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: clamp(45px, 8vw, 80px);
-            font-weight: 800;
-            letter-spacing: 3px;
-
-            background: linear-gradient(
-                90deg,
-                #fff,
-                #ff6b81,
-                #fff,
-                #ff1744
-            );
-
-            background-size: 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-
-            animation: shine 5s infinite linear;
-
-            text-shadow: 0 0 25px rgba(255, 0, 50, 0.3);
-        }
-
-        @keyframes shine {
-            0% {
-                background-position: 0%;
-            }
-
-            100% {
-                background-position: 300%;
-            }
-        }
-
-        .subtitle {
-            margin-top: 10px;
-            font-size: 22px;
-            color: #ffd9df;
-            font-style: italic;
-        }
-
-        /* =========================================
-           CORAZON CENTRAL
-        ========================================= */
-
-        .heart-container {
-            margin: 40px auto 35px;
-            width: 150px;
-            height: 150px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            position: relative;
-        }
-
-        .heart-big {
-            font-size: 105px;
-            animation: heartbeat 1.2s infinite;
-            filter:
-                drop-shadow(0 0 10px #ff1744)
-                drop-shadow(0 0 30px #ff1744)
-                drop-shadow(0 0 60px #ff1744);
-        }
-
-        @keyframes heartbeat {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            15% {
-                transform: scale(1.18);
-            }
-
-            30% {
-                transform: scale(1);
-            }
-
-            45% {
-                transform: scale(1.12);
-            }
-
-            60% {
-                transform: scale(1);
-            }
-        }
-
-        /* =========================================
-           MENSAJE
-        ========================================= */
-
-        .message {
-            font-size: 20px;
-            line-height: 1.9;
-            color: #ffecef;
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .message strong {
-            color: #ff7187;
-            font-size: 25px;
-        }
-
-        .antara {
-            margin-top: 30px;
-            font-size: 42px;
-            font-weight: bold;
-            color: white;
-
-            text-shadow:
-                0 0 10px #ff1744,
-                0 0 25px #ff1744,
-                0 0 45px #ff1744;
-
-            animation: nameGlow 2s infinite alternate;
-        }
-
-        @keyframes nameGlow {
-            from {
-                transform: scale(1);
-                text-shadow:
-                    0 0 10px #ff1744,
-                    0 0 20px #ff1744;
-            }
-
-            to {
-                transform: scale(1.05);
-                text-shadow:
-                    0 0 20px #ff1744,
-                    0 0 40px #ff1744,
-                    0 0 60px #ff1744;
-            }
-        }
-
-        /* =========================================
-           DIVISOR
-        ========================================= */
-
-        .line {
-            width: 80%;
-            height: 1px;
-            margin: 40px auto;
-
-            background: linear-gradient(
-                90deg,
-                transparent,
-                #ff1744,
-                transparent
-            );
-
-            box-shadow: 0 0 10px #ff1744;
-        }
-
-        /* =========================================
-           FRASE DESTACADA
-        ========================================= */
-
-        .quote {
-            font-size: 25px;
-            font-style: italic;
-            color: #fff;
-            line-height: 1.7;
-            padding: 0 20px;
-        }
-
-        .quote span {
-            color: #ff4561;
-            font-weight: bold;
-        }
-
-        /* =========================================
-           BOTON
-        ========================================= */
-
-        .love-button {
-            margin-top: 40px;
-            padding: 15px 35px;
-
-            border: none;
-            border-radius: 50px;
-
-            background: linear-gradient(
-                135deg,
-                #ff1744,
-                #b00020
-            );
-
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 0 15px rgba(255, 23, 68, 0.6);
-
-            transition: 0.3s;
-        }
-
-        .love-button:hover {
-            transform: scale(1.08);
-            box-shadow:
-                0 0 25px #ff1744,
-                0 0 50px rgba(255, 23, 68, 0.5);
-        }
-
-        /* =========================================
-           MENSAJE OCULTO
-        ========================================= */
-
-        .secret {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-
-            transition:
-                max-height 1s ease,
-                opacity 1s ease,
-                margin 1s ease;
-        }
-
-        .secret.show {
-            max-height: 300px;
-            opacity: 1;
-            margin-top: 30px;
-        }
-
-        .secret p {
-            font-size: 19px;
-            line-height: 1.8;
-            color: #ffd5dc;
-        }
-
-        /* =========================================
-           FOOTER
-        ========================================= */
-
-        .footer {
-            margin-top: 45px;
-            color: #ff9aaa;
-            font-size: 14px;
-            letter-spacing: 2px;
-        }
-
-        /* =========================================
-           RESPONSIVE
-        ========================================= */
-
-        @media (max-width: 600px) {
-
-            .card {
-                padding: 40px 22px;
-                border-radius: 22px;
-            }
-
-            h1 {
-                font-size: 48px;
-            }
-
-            .subtitle {
-                font-size: 18px;
-            }
-
-            .message {
-                font-size: 17px;
-            }
-
-            .antara {
-                font-size: 34px;
-            }
-
-            .quote {
-                font-size: 20px;
-            }
-
-            .heart-big {
-                font-size: 85px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para mi niña Antara ❤️</title>
+
+<style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at 50% 30%, #8b001b 0%, #43000d 38%, #120003 100%);
+    overflow-x:hidden;
+}
+
+/* =====================================================
+   FONDO
+===================================================== */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.glow{
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:rgba(255,0,50,.18);
+    filter:blur(90px);
+    animation:moverGlow 10s infinite alternate ease-in-out;
+}
+
+.glow:nth-child(1){
+    top:-200px;
+    left:-150px;
+}
+
+.glow:nth-child(2){
+    right:-150px;
+    bottom:-200px;
+    animation-delay:3s;
+}
+
+@keyframes moverGlow{
+
+    from{
+        transform:translate(0,0) scale(1);
+    }
+
+    to{
+        transform:translate(130px,90px) scale(1.3);
+    }
+}
+
+/* =====================================================
+   CORAZONES FLOTANTES
+===================================================== */
+
+.heart{
+    position:fixed;
+    bottom:-50px;
+    z-index:1;
+    pointer-events:none;
+    animation:subir linear forwards;
+    text-shadow:
+        0 0 10px #ff1744,
+        0 0 25px #ff1744,
+        0 0 40px #ff1744;
+}
+
+@keyframes subir{
+
+    0%{
+        transform:translateY(0) rotate(0deg) scale(.5);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+        transform:translateY(-50vh) rotate(180deg) scale(1);
+    }
+
+    100%{
+        transform:translateY(-115vh) rotate(360deg) scale(1.4);
+        opacity:0;
+    }
+}
+
+/* =====================================================
+   CONTENEDOR
+===================================================== */
+
+.container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+/* =====================================================
+   TARJETA PRINCIPAL
+===================================================== */
+
+.card{
+    text-align:center;
+    padding:55px 35px;
+
+    background:rgba(35,0,8,.72);
+
+    border:1px solid rgba(255,100,120,.35);
+
+    border-radius:35px;
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 0 50px rgba(255,0,50,.25),
+        inset 0 0 40px rgba(255,0,50,.04);
+
+    animation:entrada 1.5s ease;
+}
+
+@keyframes entrada{
+
+    from{
+        opacity:0;
+        transform:translateY(50px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+
+.mini{
+    letter-spacing:5px;
+    font-size:14px;
+    color:#ff9aaa;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(45px,8vw,85px);
+    font-weight:800;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #ff7890,
+        #ffffff,
+        #ff1744
+    );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:brillo 5s linear infinite;
+}
+
+@keyframes brillo{
+
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:300%;
+    }
+}
+
+.subtitle{
+    margin-top:10px;
+    font-size:22px;
+    color:#ffd9df;
+}
+
+/* =====================================================
+   CORAZÓN PRINCIPAL
+===================================================== */
+
+.main-heart{
+    margin:35px auto;
+
+    font-size:120px;
+
+    animation:
+        latido 1.2s infinite;
+
+    filter:
+        drop-shadow(0 0 10px #ff1744)
+        drop-shadow(0 0 30px #ff1744)
+        drop-shadow(0 0 60px #ff1744);
+}
+
+@keyframes latido{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    15%{
+        transform:scale(1.18);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+
+    45%{
+        transform:scale(1.12);
+    }
+
+    60%{
+        transform:scale(1);
+    }
+}
+
+/* =====================================================
+   ANTARA
+===================================================== */
+
+.antara{
+    font-size:50px;
+    font-weight:bold;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px #ff1744,
+        0 0 30px #ff1744,
+        0 0 60px #ff1744;
+
+    animation:nombre 2s infinite alternate;
+}
+
+@keyframes nombre{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.06);
+    }
+}
+
+/* =====================================================
+   MENSAJE INICIAL
+===================================================== */
+
+.intro{
+    max-width:750px;
+    margin:35px auto;
+
+    font-size:20px;
+    line-height:1.9;
+
+    color:#ffecef;
+}
+
+.intro strong{
+    color:#ff7187;
+    font-size:25px;
+}
+
+/* =====================================================
+   DIVISOR
+===================================================== */
+
+.line{
+    width:80%;
+    height:1px;
+
+    margin:40px auto;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #ff1744,
+        transparent
+    );
+
+    box-shadow:0 0 15px #ff1744;
+}
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.buttons{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(200px,1fr));
+
+    gap:15px;
+
+    max-width:800px;
+
+    margin:35px auto;
+}
+
+.btn{
+
+    padding:17px 15px;
+
+    border:none;
+
+    border-radius:50px;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        #ff1744,
+        #a90020
+    );
+
+    box-shadow:
+        0 0 15px rgba(255,23,68,.45);
+
+    transition:.3s;
+}
+
+.btn:hover{
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 0 25px #ff1744,
+        0 0 50px rgba(255,23,68,.4);
+}
+
+/* =====================================================
+   SECCIONES OCULTAS
+===================================================== */
+
+.section{
+
+    display:none;
+
+    margin:35px auto 10px;
+
+    max-width:800px;
+
+    padding:35px 25px;
+
+    background:rgba(100,0,20,.35);
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,100,120,.2);
+
+    animation:aparecer .7s ease;
+}
+
+.section.active{
+    display:block;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.section h2{
+
+    color:#ff7187;
+
+    font-size:32px;
+
+    margin-bottom:25px;
+}
+
+.section p{
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#ffecef;
+}
+
+/* =====================================================
+   7 MARAVILLAS
+===================================================== */
+
+.wonders{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(200px,1fr));
+
+    gap:15px;
+
+    margin-top:25px;
+}
+
+.wonder{
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:rgba(255,0,50,.08);
+
+    border:1px solid rgba(255,100,120,.18);
+
+    transition:.3s;
+}
+
+.wonder:hover{
+
+    transform:translateY(-7px);
+
+    background:rgba(255,0,50,.15);
+
+    box-shadow:0 0 20px rgba(255,0,50,.3);
+}
+
+.wonder span{
+
+    font-size:35px;
+
+    display:block;
+
+    margin-bottom:10px;
+}
+
+.wonder h3{
+
+    color:#ff8fa0;
+
+    margin-bottom:8px;
+}
+
+.winner{
+
+    margin-top:30px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,0,50,.25),
+            rgba(80,0,20,.4)
+        );
+
+    border:1px solid #ff1744;
+
+    box-shadow:0 0 30px rgba(255,0,50,.25);
+}
+
+.winner h3{
+
+    font-size:30px;
+
+    color:#fff;
+
+    margin-bottom:10px;
+}
+
+.winner p{
+
+    color:#ffd7dd;
+}
+
+/* =====================================================
+   RAZONES
+===================================================== */
+
+.reasons{
+
+    text-align:left;
+
+    max-width:600px;
+
+    margin:auto;
+}
+
+.reason{
+
+    padding:15px;
+
+    margin:10px 0;
+
+    background:rgba(255,255,255,.04);
+
+    border-radius:15px;
+
+    transition:.3s;
+}
+
+.reason:hover{
+
+    transform:translateX(10px);
+
+    background:rgba(255,23,68,.12);
+}
+
+/* =====================================================
+   PROMESA
+===================================================== */
+
+.promise{
+
+    font-size:24px !important;
+
+    font-style:italic;
+
+    color:#fff !important;
+
+    padding:20px;
+}
+
+/* =====================================================
+   CARTA
+===================================================== */
+
+.letter{
+
+    background:#fff;
+
+    color:#650016;
+
+    padding:35px;
+
+    border-radius:8px;
+
+    text-align:left;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+
+    position:relative;
+}
+
+.letter:before{
+
+    content:"❤️";
+
+    position:absolute;
+
+    top:-20px;
+
+    right:20px;
+
+    font-size:35px;
+}
+
+.letter p{
+
+    color:#650016;
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+/* =====================================================
+   BOTÓN FINAL
+===================================================== */
+
+.final-button{
+
+    margin-top:45px;
+
+    padding:20px 40px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        #ff1744,
+        #720014
+    );
+
+    color:white;
+
+    font-size:19px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 20px #ff1744;
+
+    animation:pulseButton 2s infinite;
+}
+
+@keyframes pulseButton{
+
+    0%,100%{
+        box-shadow:0 0 15px #ff1744;
+    }
+
+    50%{
+        box-shadow:
+            0 0 30px #ff1744,
+            0 0 60px rgba(255,23,68,.5);
+    }
+}
+
+/* =====================================================
+   MENSAJE FINAL
+===================================================== */
+
+.final-message{
+
+    display:none;
+
+    margin-top:40px;
+
+    animation:aparecer 1s ease;
+}
+
+.final-message.active{
+    display:block;
+}
+
+.final-message h2{
+
+    font-size:45px;
+
+    color:#fff;
+
+    text-shadow:
+        0 0 20px #ff1744,
+        0 0 40px #ff1744;
+}
+
+.final-message p{
+
+    margin-top:20px;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#ffd9df;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    margin-top:50px;
+
+    color:#ff9aaa;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:600px){
+
+    .card{
+        padding:40px 18px;
+    }
+
+    h1{
+        font-size:48px;
+    }
+
+    .subtitle{
+        font-size:18px;
+    }
+
+    .main-heart{
+        font-size:90px;
+    }
+
+    .antara{
+        font-size:35px;
+    }
+
+    .intro{
+        font-size:17px;
+    }
+
+    .section h2{
+        font-size:27px;
+    }
+
+    .letter{
+        padding:25px;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- =========================================
-         FONDO
-    ========================================= -->
 
-    <div class="background">
-        <div class="glow"></div>
-        <div class="glow"></div>
+<!-- =====================================================
+     FONDO
+===================================================== -->
+
+<div class="background">
+
+    <div class="glow"></div>
+
+    <div class="glow"></div>
+
+</div>
+
+
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
+
+<div class="container">
+
+<div class="card">
+
+
+<div class="mini">
+    Hecho especialmente para ti ❤️
+</div>
+
+
+<h1>
+    PARA SIEMPRE
+</h1>
+
+
+<div class="subtitle">
+    Para la mujer que hace que mi mundo sea más bonito...
+</div>
+
+
+<div class="main-heart">
+    ❤️
+</div>
+
+
+<div class="antara">
+    Antara ❤️
+</div>
+
+
+<div class="intro">
+
+    <p>
+        Si algún día dudas de lo especial que eres,
+        quiero que vuelvas a esta página.
+    </p>
+
+    <br>
+
+    <p>
+        Porque quiero que recuerdes que existe alguien
+        que mira tu sonrisa y piensa:
+    </p>
+
+    <br>
+
+    <strong>
+        "Qué suerte tengo de poder conocerte."
+    </strong>
+
+</div>
+
+
+<div class="line"></div>
+
+
+<!-- =====================================================
+     BOTONES
+===================================================== -->
+
+<div class="buttons">
+
+    <button class="btn" onclick="mostrar('wonders')">
+        🌎 Las 7 maravillas
+    </button>
+
+    <button class="btn" onclick="mostrar('reasons')">
+        ❤️ Razones para quererte
+    </button>
+
+    <button class="btn" onclick="mostrar('feelings')">
+        💗 Lo que siento por ti
+    </button>
+
+    <button class="btn" onclick="mostrar('promise')">
+        🤞 Mi promesa
+    </button>
+
+    <button class="btn" onclick="mostrar('letter')">
+        💌 Abrir mi carta
+    </button>
+
+    <button class="btn" onclick="sorpresa()">
+        ✨ Una sorpresa
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     7 MARAVILLAS
+===================================================== -->
+
+<div id="wonders" class="section">
+
+<h2>
+    🌎 Las 7 maravillas del mundo
+</h2>
+
+<p>
+    Dicen que existen siete maravillas extraordinarias
+    en nuestro mundo...
+</p>
+
+<div class="wonders">
+
+    <div class="wonder">
+        <span>🏛️</span>
+        <h3>Petra</h3>
+        <p>
+            Una obra increíble de la humanidad.
+        </p>
     </div>
 
-    <!-- =========================================
-         CONTENIDO
-    ========================================= -->
+    <div class="wonder">
+        <span>🏯</span>
+        <h3>La Gran Muralla China</h3>
+        <p>
+            Imponente y maravillosa.
+        </p>
+    </div>
 
-    <main class="container">
+    <div class="wonder">
+        <span>🗿</span>
+        <h3>El Cristo Redentor</h3>
+        <p>
+            Una imagen que inspira admiración.
+        </p>
+    </div>
 
-        <section class="card">
+    <div class="wonder">
+        <span>🏰</span>
+        <h3>Machu Picchu</h3>
+        <p>
+            Un lugar lleno de historia y belleza.
+        </p>
+    </div>
 
-            <div class="small-title">
-                Una pequeña dedicatoria ❤️
-            </div>
+    <div class="wonder">
+        <span>🏟️</span>
+        <h3>Coliseo Romano</h3>
+        <p>
+            Una maravilla que sobrevivió al tiempo.
+        </p>
+    </div>
 
-            <h1>
-                PARA SIEMPRE
-            </h1>
+    <div class="wonder">
+        <span>⛪</span>
+        <h3>Chichén Itzá</h3>
+        <p>
+            Una maravilla llena de misterio.
+        </p>
+    </div>
 
-            <div class="subtitle">
-                Para la mujer que hace especial mi mundo...
-            </div>
+    <div class="wonder">
+        <span>🏛️</span>
+        <h3>Taj Mahal</h3>
+        <p>
+            Un símbolo mundial del amor.
+        </p>
+    </div>
 
-            <!-- CORAZON -->
+</div>
 
-            <div class="heart-container">
-                <div class="heart-big">
-                    ❤️
-                </div>
-            </div>
 
-            <!-- MENSAJE -->
+<div class="winner">
 
-            <div class="message">
+    <h3>
+        ❤️ Pero yo escogería una diferente...
+    </h3>
 
-                <p>
-                    Hay personas que llegan a nuestra vida
-                    y simplemente hacen que todo se sienta
-                    un poquito más bonito.
-                </p>
+    <p>
 
-                <br>
+        Si me preguntaran cuáles son las 7 maravillas
+        del mundo, probablemente todos esperarían
+        que mencionara alguna de estas.
 
-                <p>
-                    Y entre todas las personas que existen,
-                    hay una que tiene un lugar muy especial
-                    en mi corazón.
-                </p>
+        <br><br>
 
-                <br>
+        Pero si pudiera escoger solamente una...
 
-                <strong>
-                    Esa eres tú.
-                </strong>
+        <br><br>
 
-            </div>
+        <strong>
+            TE ESCOGERÍA A TI.
+        </strong>
 
-            <div class="antara">
-                Mi niña Antara ❤️
-            </div>
+        <br><br>
 
-            <div class="line"></div>
+        Porque para mí, Antara,
+        tú eres la maravilla más hermosa
+        que existe en mi mundo.
 
-            <!-- FRASE -->
+        <br><br>
 
-            <div class="quote">
+        Y lo mejor de esa maravilla
+        es que puedo mirarte,
+        escucharte,
+        conocerte
+        y quererte cada día. ❤️
 
-                <p>
-                    "Porque si pudiera elegir una y otra vez,
-                    entre millones de personas,
-                    <span>volvería a elegirte a ti.</span>"
-                </p>
+    </p>
 
-            </div>
+</div>
 
-            <!-- BOTON -->
+</div>
 
-            <button class="love-button" onclick="showLove()">
-                💌 Tengo algo que decirte
-            </button>
 
-            <!-- MENSAJE SECRETO -->
+<!-- =====================================================
+     RAZONES
+===================================================== -->
 
-            <div class="secret" id="secret">
+<div id="reasons" class="section">
 
-                <p>
-                    Mi niña Antara...
-                    <br><br>
+<h2>
+    ❤️ Razones por las que te quiero
+</h2>
 
-                    Quiero que siempre tengas presente
-                    que eres una mujer increíble,
-                    especial y maravillosa.
+<div class="reasons">
 
-                    <br><br>
+    <div class="reason">
+        ❤️ Porque tu sonrisa puede cambiar completamente mi día.
+    </div>
 
-                    Tal vez no siempre encuentre las palabras
-                    perfectas para decirlo, pero quiero que sepas
-                    que <strong>TE QUIERO MUCHÍSIMO</strong>.
+    <div class="reason">
+        ❤️ Porque tienes una forma muy especial de ser.
+    </div>
 
-                    <br><br>
+    <div class="reason">
+        ❤️ Porque contigo los momentos simples se vuelven especiales.
+    </div>
 
-                    Y mientras la vida me lo permita,
-                    quiero estar ahí para ti,
-                    apoyarte, cuidarte, hacerte sonreír
-                    y recordarte lo mucho que vales.
+    <div class="reason">
+        ❤️ Porque eres una mujer increíble.
+    </div>
 
-                    <br><br>
+    <div class="reason">
+        ❤️ Porque me encanta verte feliz.
+    </div>
 
-                    ❤️ Siempre tú. ❤️
-                </p>
+    <div class="reason">
+        ❤️ Porque cuando pienso en ti, sonrío sin darme cuenta.
+    </div>
 
-            </div>
+    <div class="reason">
+        ❤️ Porque simplemente eres tú.
+    </div>
 
-            <div class="footer">
-                Hecho con ❤️ especialmente para Antara
-            </div>
+</div>
 
-        </section>
+</div>
 
-    </main>
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================= -->
+<!-- =====================================================
+     SENTIMIENTOS
+===================================================== -->
 
-    <script>
+<div id="feelings" class="section">
 
-        /*
-        ==========================================
-        CREAR CORAZONES AUTOMÁTICAMENTE
-        ==========================================
-        */
+<h2>
+    💗 Lo que siento por ti
+</h2>
 
-        function createHeart() {
+<p>
 
-            const heart = document.createElement("div");
+No sé si existen suficientes palabras
+para explicar todo lo que puedes hacerme sentir.
 
-            heart.classList.add("heart");
+<br><br>
 
-            const hearts = [
-                "❤️",
-                "💕",
-                "💗",
-                "💖",
-                "💓",
-                "💘"
-            ];
+Pero sí sé algo...
 
-            heart.innerHTML =
-                hearts[Math.floor(Math.random() * hearts.length)];
+<br><br>
 
-            heart.style.left =
-                Math.random() * 100 + "vw";
+Me gusta saber de ti.
+<br>
+Me gusta escucharte.
+<br>
+Me gusta verte sonreír.
+<br>
+Me gusta compartir momentos contigo.
+<br>
+Me gusta cuando estás feliz.
 
-            heart.style.fontSize =
-                (15 + Math.random() * 25) + "px";
+<br><br>
 
-            heart.style.animationDuration =
-                (5 + Math.random() * 6) + "s";
+Y sobre todo...
 
-            document.body.appendChild(heart);
+<br><br>
 
-            setTimeout(() => {
-                heart.remove();
-            }, 12000);
-        }
+<strong>
+ME GUSTAS TÚ.
+</strong>
 
-        /*
-        Crear corazones constantemente
-        */
+<br><br>
 
-        setInterval(createHeart, 450);
+No por ser perfecta,
+sino porque eres tú.
 
+Y eso para mí
+es más que suficiente. ❤️
 
-        /*
-        ==========================================
-        MENSAJE SECRETO
-        ==========================================
-        */
+</p>
 
-        function showLove() {
+</div>
 
-            const secret =
-                document.getElementById("secret");
 
-            const button =
-                document.querySelector(".love-button");
+<!-- =====================================================
+     PROMESA
+===================================================== -->
 
-            if (secret.classList.contains("show")) {
+<div id="promise" class="section">
 
-                secret.classList.remove("show");
+<h2>
+    🤞 Mi promesa para ti
+</h2>
 
-                button.innerHTML =
-                    "💌 Tengo algo que decirte";
+<p class="promise">
 
-            } else {
+"No puedo prometerte que todos los días
+serán perfectos.
 
-                secret.classList.add("show");
+Pero sí puedo prometerte
+que mientras esté a tu lado,
+intentaré hacer que tengas
+muchos motivos para sonreír."
 
-                button.innerHTML =
-                    "❤️ Para mi niña Antara";
+<br><br>
 
-                createExplosion();
+Prometo escucharte.
+<br>
+Prometo apoyarte.
+<br>
+Prometo celebrar tus logros.
+<br>
+Prometo estar cuando necesites compañía.
+<br>
+Prometo recordarte lo increíble que eres.
 
-            }
-        }
+<br><br>
 
+Y sobre todo...
 
-        /*
-        ==========================================
-        EXPLOSIÓN DE CORAZONES
-        ==========================================
-        */
+<br><br>
 
-        function createExplosion() {
+<strong>
+Prometo que nunca quiero que olvides
+lo mucho que vales. ❤️
+</strong>
 
-            for (let i = 0; i < 30; i++) {
+</p>
 
-                const heart =
-                    document.createElement("div");
+</div>
 
-                heart.innerHTML = "❤️";
 
-                heart.style.position = "fixed";
-                heart.style.left = "50%";
-                heart.style.top = "50%";
+<!-- =====================================================
+     CARTA
+===================================================== -->
 
-                heart.style.fontSize =
-                    (15 + Math.random() * 25) + "px";
+<div id="letter" class="section">
 
-                heart.style.zIndex = "999";
+<h2>
+    💌 Una carta para ti
+</h2>
 
-                heart.style.pointerEvents = "none";
+<div class="letter">
 
-                const x =
-                    (Math.random() - 0.5) * 700;
+<p>
 
-                const y =
-                    (Math.random() - 0.5) * 500;
+Mi niña Antara:
 
-                heart.animate(
-                    [
-                        {
-                            transform:
-                                "translate(-50%, -50%) scale(0)",
-                            opacity: 1
-                        },
+<br><br>
 
-                        {
-                            transform:
-                                `translate(${x}px, ${y}px) scale(1.4)`,
-                            opacity: 0
-                        }
-                    ],
-                    {
-                        duration:
-                            1200 + Math.random() * 1000,
-                        easing: "ease-out"
-                    }
-                );
+Hice esta pequeña página porque algunas veces
+las palabras que digo no alcanzan para explicar
+todo lo que quiero decirte.
 
-                document.body.appendChild(heart);
+<br><br>
 
-                setTimeout(() => {
-                    heart.remove();
-                }, 2500);
-            }
-        }
+Quiero que sepas que para mí eres alguien
+muy especial.
 
+<br><br>
 
-        /*
-        ==========================================
-        EFECTO AL CARGAR LA PÁGINA
-        ==========================================
-        */
+Cuando pienso en ti,
+pienso en una mujer maravillosa,
+en alguien que merece que le recuerden
+todos los días lo mucho que vale.
 
-        window.addEventListener("load", () => {
+<br><br>
 
-            setTimeout(() => {
+Y si alguna vez el mundo te hace sentir
+que no eres suficiente,
+quiero que recuerdes esta pequeña carta.
 
-                for (let i = 0; i < 15; i++) {
-                    setTimeout(createHeart, i * 100);
-                }
+<br><br>
 
-            }, 500);
+Porque para mí...
 
+<br><br>
+
+<strong>
+Tú eres suficiente.
+Tú eres especial.
+Tú eres maravillosa.
+Y tú eres mi niña Antara.
+</strong>
+
+<br><br>
+
+Te quiero muchísimo. ❤️
+
+<br><br>
+
+Con cariño,
+<br>
+
+<strong>
+Alguien que te quiere ver sonreír.
+</strong>
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     BOTÓN SORPRESA
+===================================================== -->
+
+<button
+    class="final-button"
+    onclick="sorpresaFinal()">
+
+    ❤️ Presiona aquí, mi niña Antara ❤️
+
+</button>
+
+
+<div id="final" class="final-message">
+
+<h2>
+    TE QUIERO MUCHO, ANTARA ❤️
+</h2>
+
+<p>
+
+Y si tuviera que elegir
+entre todas las maravillas del mundo...
+
+<br><br>
+
+No elegiría ninguna de ellas.
+
+<br><br>
+
+<strong>
+TE ELEGIRÍA A TI.
+</strong>
+
+<br><br>
+
+Porque para mí,
+tú eres la maravilla más hermosa
+que la vida pudo poner en mi camino.
+
+<br><br>
+
+🌹❤️🌹
+
+<br><br>
+
+<strong>
+HOY, MAÑANA Y SIEMPRE.
+</strong>
+
+</p>
+
+</div>
+
+
+<footer>
+
+Hecho con muchísimo cariño ❤️
+<br><br>
+Para mi niña Antara 🌹
+
+</footer>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CREAR CORAZONES
+===================================================== */
+
+function crearCorazon(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    const corazones=[
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💓",
+        "💘",
+        "💝",
+        "🌹"
+    ];
+
+    heart.innerHTML=
+        corazones[
+            Math.floor(
+                Math.random()*corazones.length
+            )
+        ];
+
+    heart.style.left=
+        Math.random()*100+"vw";
+
+    heart.style.fontSize=
+        (15+Math.random()*30)+"px";
+
+    heart.style.animationDuration=
+        (5+Math.random()*7)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },13000);
+
+}
+
+setInterval(crearCorazon,400);
+
+
+/* =====================================================
+   MOSTRAR SECCIONES
+===================================================== */
+
+function mostrar(id){
+
+    const secciones=
+        document.querySelectorAll(".section");
+
+    secciones.forEach(section=>{
+
+        section.classList.remove("active");
+
+    });
+
+    const elemento=
+        document.getElementById(id);
+
+    elemento.classList.add("active");
+
+    setTimeout(()=>{
+
+        elemento.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
         });
 
-    </script>
+    },100);
+
+}
+
+
+/* =====================================================
+   EXPLOSIÓN DE CORAZONES
+===================================================== */
+
+function explosion(){
+
+    for(let i=0;i<50;i++){
+
+        const heart=
+            document.createElement("div");
+
+        heart.innerHTML="❤️";
+
+        heart.style.position="fixed";
+
+        heart.style.left="50%";
+        heart.style.top="50%";
+
+        heart.style.zIndex="999";
+
+        heart.style.fontSize=
+            (15+Math.random()*30)+"px";
+
+        heart.style.pointerEvents="none";
+
+        const x=
+            (Math.random()-.5)*900;
+
+        const y=
+            (Math.random()-.5)*700;
+
+        heart.animate(
+
+            [
+                {
+                    transform:
+                    "translate(-50%,-50%) scale(0)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                    `translate(${x}px,${y}px) scale(1.5)`,
+                    opacity:0
+                }
+            ],
+
+            {
+                duration:
+                    1500+Math.random()*1000,
+
+                easing:"ease-out"
+            }
+
+        );
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+
+            heart.remove();
+
+        },3000);
+
+    }
+
+}
+
+
+/* =====================================================
+   SORPRESA
+===================================================== */
+
+function sorpresa(){
+
+    explosion();
+
+    const mensajes=[
+
+        "Antara, eres increíble ❤️",
+
+        "Nunca olvides lo especial que eres 🌹",
+
+        "Tu sonrisa es una de mis cosas favoritas 💗",
+
+        "Eres mi maravilla favorita 🌎❤️",
+
+        "Te quiero muchísimo, mi niña 💕",
+
+        "Siempre tendrás un lugar especial en mi corazón ❤️‍🔥"
+
+    ];
+
+    const mensaje=
+        mensajes[
+            Math.floor(
+                Math.random()*mensajes.length
+            )
+        ];
+
+    alert(mensaje);
+
+}
+
+
+/* =====================================================
+   SORPRESA FINAL
+===================================================== */
+
+function sorpresaFinal(){
+
+    const final=
+        document.getElementById("final");
+
+    final.classList.add("active");
+
+    explosion();
+
+    /* Segunda explosión */
+
+    setTimeout(()=>{
+
+        explosion();
+
+    },1000);
+
+    setTimeout(()=>{
+
+        final.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },200);
+
+}
+
+
+/* =====================================================
+   CORAZONES INICIALES
+===================================================== */
+
+window.addEventListener("load",()=>{
+
+    for(let i=0;i<20;i++){
+
+        setTimeout(
+            crearCorazon,
+            i*100
+        );
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
