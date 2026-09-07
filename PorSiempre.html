@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para Antara ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at center, #8b0015 0%, #43000b 45%, #120003 100%);
+            color: white;
+        }
+
+        /* =========================================
+           FONDO ANIMADO
+        ========================================= */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 0, 50, 0.18);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: moveGlow 8s infinite alternate ease-in-out;
+        }
+
+        .glow:nth-child(1) {
+            top: -200px;
+            left: -150px;
+        }
+
+        .glow:nth-child(2) {
+            bottom: -200px;
+            right: -150px;
+            animation-delay: 3s;
+        }
+
+        @keyframes moveGlow {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(100px, 80px) scale(1.3);
+            }
+        }
+
+        /* =========================================
+           CORAZONES FLOTANTES
+        ========================================= */
+
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            color: #ff1744;
+            font-size: 25px;
+            animation: floatHeart linear forwards;
+            opacity: 0.8;
+            z-index: 1;
+            pointer-events: none;
+            text-shadow:
+                0 0 10px #ff1744,
+                0 0 20px #ff1744,
+                0 0 30px #ff1744;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.7);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-50vh) rotate(180deg) scale(1);
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg) scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* =========================================
+           CONTENEDOR PRINCIPAL
+        ========================================= */
+
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 850px;
+            padding: 55px 45px;
+            text-align: center;
+
+            background: rgba(40, 0, 8, 0.65);
+            border: 1px solid rgba(255, 80, 110, 0.35);
+            border-radius: 30px;
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 0 40px rgba(255, 0, 50, 0.25),
+                inset 0 0 30px rgba(255, 0, 50, 0.05);
+
+            animation: cardAppear 1.5s ease;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* =========================================
+           TITULO
+        ========================================= */
+
+        .small-title {
+            font-size: 15px;
+            letter-spacing: 5px;
+            color: #ff9aaa;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            font-weight: 800;
+            letter-spacing: 3px;
+
+            background: linear-gradient(
+                90deg,
+                #fff,
+                #ff6b81,
+                #fff,
+                #ff1744
+            );
+
+            background-size: 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            animation: shine 5s infinite linear;
+
+            text-shadow: 0 0 25px rgba(255, 0, 50, 0.3);
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 300%;
+            }
+        }
+
+        .subtitle {
+            margin-top: 10px;
+            font-size: 22px;
+            color: #ffd9df;
+            font-style: italic;
+        }
+
+        /* =========================================
+           CORAZON CENTRAL
+        ========================================= */
+
+        .heart-container {
+            margin: 40px auto 35px;
+            width: 150px;
+            height: 150px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+        }
+
+        .heart-big {
+            font-size: 105px;
+            animation: heartbeat 1.2s infinite;
+            filter:
+                drop-shadow(0 0 10px #ff1744)
+                drop-shadow(0 0 30px #ff1744)
+                drop-shadow(0 0 60px #ff1744);
+        }
+
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.18);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.12);
+            }
+
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        /* =========================================
+           MENSAJE
+        ========================================= */
+
+        .message {
+            font-size: 20px;
+            line-height: 1.9;
+            color: #ffecef;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .message strong {
+            color: #ff7187;
+            font-size: 25px;
+        }
+
+        .antara {
+            margin-top: 30px;
+            font-size: 42px;
+            font-weight: bold;
+            color: white;
+
+            text-shadow:
+                0 0 10px #ff1744,
+                0 0 25px #ff1744,
+                0 0 45px #ff1744;
+
+            animation: nameGlow 2s infinite alternate;
+        }
+
+        @keyframes nameGlow {
+            from {
+                transform: scale(1);
+                text-shadow:
+                    0 0 10px #ff1744,
+                    0 0 20px #ff1744;
+            }
+
+            to {
+                transform: scale(1.05);
+                text-shadow:
+                    0 0 20px #ff1744,
+                    0 0 40px #ff1744,
+                    0 0 60px #ff1744;
+            }
+        }
+
+        /* =========================================
+           DIVISOR
+        ========================================= */
+
+        .line {
+            width: 80%;
+            height: 1px;
+            margin: 40px auto;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #ff1744,
+                transparent
+            );
+
+            box-shadow: 0 0 10px #ff1744;
+        }
+
+        /* =========================================
+           FRASE DESTACADA
+        ========================================= */
+
+        .quote {
+            font-size: 25px;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.7;
+            padding: 0 20px;
+        }
+
+        .quote span {
+            color: #ff4561;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           BOTON
+        ========================================= */
+
+        .love-button {
+            margin-top: 40px;
+            padding: 15px 35px;
+
+            border: none;
+            border-radius: 50px;
+
+            background: linear-gradient(
+                135deg,
+                #ff1744,
+                #b00020
+            );
+
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 15px rgba(255, 23, 68, 0.6);
+
+            transition: 0.3s;
+        }
+
+        .love-button:hover {
+            transform: scale(1.08);
+            box-shadow:
+                0 0 25px #ff1744,
+                0 0 50px rgba(255, 23, 68, 0.5);
+        }
+
+        /* =========================================
+           MENSAJE OCULTO
+        ========================================= */
+
+        .secret {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+
+            transition:
+                max-height 1s ease,
+                opacity 1s ease,
+                margin 1s ease;
+        }
+
+        .secret.show {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 30px;
+        }
+
+        .secret p {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #ffd5dc;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+            margin-top: 45px;
+            color: #ff9aaa;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .card {
+                padding: 40px 22px;
+                border-radius: 22px;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .message {
+                font-size: 17px;
+            }
+
+            .antara {
+                font-size: 34px;
+            }
+
+            .quote {
+                font-size: 20px;
+            }
+
+            .heart-big {
+                font-size: 85px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         FONDO
+    ========================================= -->
+
+    <div class="background">
+        <div class="glow"></div>
+        <div class="glow"></div>
+    </div>
+
+    <!-- =========================================
+         CONTENIDO
+    ========================================= -->
+
+    <main class="container">
+
+        <section class="card">
+
+            <div class="small-title">
+                Una pequeña dedicatoria ❤️
+            </div>
+
+            <h1>
+                PARA SIEMPRE
+            </h1>
+
+            <div class="subtitle">
+                Para la mujer que hace especial mi mundo...
+            </div>
+
+            <!-- CORAZON -->
+
+            <div class="heart-container">
+                <div class="heart-big">
+                    ❤️
+                </div>
+            </div>
+
+            <!-- MENSAJE -->
+
+            <div class="message">
+
+                <p>
+                    Hay personas que llegan a nuestra vida
+                    y simplemente hacen que todo se sienta
+                    un poquito más bonito.
+                </p>
+
+                <br>
+
+                <p>
+                    Y entre todas las personas que existen,
+                    hay una que tiene un lugar muy especial
+                    en mi corazón.
+                </p>
+
+                <br>
+
+                <strong>
+                    Esa eres tú.
+                </strong>
+
+            </div>
+
+            <div class="antara">
+                Mi niña Antara ❤️
+            </div>
+
+            <div class="line"></div>
+
+            <!-- FRASE -->
+
+            <div class="quote">
+
+                <p>
+                    "Porque si pudiera elegir una y otra vez,
+                    entre millones de personas,
+                    <span>volvería a elegirte a ti.</span>"
+                </p>
+
+            </div>
+
+            <!-- BOTON -->
+
+            <button class="love-button" onclick="showLove()">
+                💌 Tengo algo que decirte
+            </button>
+
+            <!-- MENSAJE SECRETO -->
+
+            <div class="secret" id="secret">
+
+                <p>
+                    Mi niña Antara...
+                    <br><br>
+
+                    Quiero que siempre tengas presente
+                    que eres una mujer increíble,
+                    especial y maravillosa.
+
+                    <br><br>
+
+                    Tal vez no siempre encuentre las palabras
+                    perfectas para decirlo, pero quiero que sepas
+                    que <strong>TE QUIERO MUCHÍSIMO</strong>.
+
+                    <br><br>
+
+                    Y mientras la vida me lo permita,
+                    quiero estar ahí para ti,
+                    apoyarte, cuidarte, hacerte sonreír
+                    y recordarte lo mucho que vales.
+
+                    <br><br>
+
+                    ❤️ Siempre tú. ❤️
+                </p>
+
+            </div>
+
+            <div class="footer">
+                Hecho con ❤️ especialmente para Antara
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        /*
+        ==========================================
+        CREAR CORAZONES AUTOMÁTICAMENTE
+        ==========================================
+        */
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.classList.add("heart");
+
+            const hearts = [
+                "❤️",
+                "💕",
+                "💗",
+                "💖",
+                "💓",
+                "💘"
+            ];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 6) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 12000);
+        }
+
+        /*
+        Crear corazones constantemente
+        */
+
+        setInterval(createHeart, 450);
+
+
+        /*
+        ==========================================
+        MENSAJE SECRETO
+        ==========================================
+        */
+
+        function showLove() {
+
+            const secret =
+                document.getElementById("secret");
+
+            const button =
+                document.querySelector(".love-button");
+
+            if (secret.classList.contains("show")) {
+
+                secret.classList.remove("show");
+
+                button.innerHTML =
+                    "💌 Tengo algo que decirte";
+
+            } else {
+
+                secret.classList.add("show");
+
+                button.innerHTML =
+                    "❤️ Para mi niña Antara";
+
+                createExplosion();
+
+            }
+        }
+
+
+        /*
+        ==========================================
+        EXPLOSIÓN DE CORAZONES
+        ==========================================
+        */
+
+        function createExplosion() {
+
+            for (let i = 0; i < 30; i++) {
+
+                const heart =
+                    document.createElement("div");
+
+                heart.innerHTML = "❤️";
+
+                heart.style.position = "fixed";
+                heart.style.left = "50%";
+                heart.style.top = "50%";
+
+                heart.style.fontSize =
+                    (15 + Math.random() * 25) + "px";
+
+                heart.style.zIndex = "999";
+
+                heart.style.pointerEvents = "none";
+
+                const x =
+                    (Math.random() - 0.5) * 700;
+
+                const y =
+                    (Math.random() - 0.5) * 500;
+
+                heart.animate(
+                    [
+                        {
+                            transform:
+                                "translate(-50%, -50%) scale(0)",
+                            opacity: 1
+                        },
+
+                        {
+                            transform:
+                                `translate(${x}px, ${y}px) scale(1.4)`,
+                            opacity: 0
+                        }
+                    ],
+                    {
+                        duration:
+                            1200 + Math.random() * 1000,
+                        easing: "ease-out"
+                    }
+                );
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2500);
+            }
+        }
+
+
+        /*
+        ==========================================
+        EFECTO AL CARGAR LA PÁGINA
+        ==========================================
+        */
+
+        window.addEventListener("load", () => {
+
+            setTimeout(() => {
+
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(createHeart, i * 100);
+                }
+
+            }, 500);
+
+        });
+
+    </script>
+
+</body>
+</html>
