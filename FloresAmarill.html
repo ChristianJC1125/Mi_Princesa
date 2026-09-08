@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Mi Niña🌻❤️</title>
+
+<style>
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
+    background:#020202;
+    color:white;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+
+/* =====================================================
+   ESCENA PRINCIPAL
+===================================================== */
+
+.scene{
+
+    position:relative;
+
+    width:100%;
+    min-height:100vh;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #241900 0%,
+            #090700 35%,
+            #020202 70%
+        );
+
+}
+
+
+/* =====================================================
+   ESTRELLAS
+===================================================== */
+
+.stars{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+.star{
+
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 5px #fff,
+        0 0 10px #ffd900;
+
+    animation:
+        twinkle 2s infinite alternate;
+
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+
+}
+
+
+/* =====================================================
+   LUNA / LUZ CENTRAL
+===================================================== */
+
+.moon{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff,
+            #fff700 15%,
+            #ffd900 30%,
+            #7b5c00 60%,
+            transparent 72%
+        );
+
+    filter:
+        blur(1px)
+        drop-shadow(0 0 30px #ffe600)
+        drop-shadow(0 0 80px #ffb700);
+
+    animation:
+        moonPulse 3s infinite alternate;
+
+}
+
+@keyframes moonPulse{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            scale(1.15);
+    }
+
+}
+
+
+/* =====================================================
+   ANILLOS DE LUZ
+===================================================== */
+
+.ring{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,220,0,.7);
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:
+        0 0 15px #ffd900,
+        inset 0 0 15px #ffd900;
+
+}
+
+.ring.one{
+
+    width:330px;
+    height:90px;
+
+    animation:
+        rotateRing 8s linear infinite;
+
+}
+
+.ring.two{
+
+    width:480px;
+    height:130px;
+
+    border-color:rgba(255,180,0,.35);
+
+    animation:
+        rotateRingReverse 12s linear infinite;
+
+}
+
+@keyframes rotateRing{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+    }
+
+}
+
+@keyframes rotateRingReverse{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg);
+    }
+
+}
+
+
+/* =====================================================
+   FLORES
+===================================================== */
+
+.flower{
+
+    position:absolute;
+
+    font-size:45px;
+
+    z-index:4;
+
+    filter:
+        drop-shadow(0 0 5px #ffcc00)
+        drop-shadow(0 0 12px #ff9900);
+
+    animation:
+        flowerFloat 5s ease-in-out infinite;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:.3s;
+
+}
+
+.flower:hover{
+
+    transform:scale(1.5);
+
+}
+
+@keyframes flowerFloat{
+
+    0%,100%{
+
+        transform:
+            translateY(0)
+            rotate(-5deg);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-25px)
+            rotate(8deg);
+
+    }
+
+}
+
+
+/* posiciones */
+
+.f1{
+    left:7%;
+    top:18%;
+    animation-delay:0s;
+}
+
+.f2{
+    left:17%;
+    top:58%;
+    animation-delay:1s;
+}
+
+.f3{
+    left:78%;
+    top:20%;
+    animation-delay:1.5s;
+}
+
+.f4{
+    right:7%;
+    top:58%;
+    animation-delay:2s;
+}
+
+.f5{
+    left:40%;
+    top:16%;
+    font-size:35px;
+    animation-delay:.5s;
+}
+
+.f6{
+    left:47%;
+    bottom:8%;
+    font-size:38px;
+    animation-delay:1.8s;
+}
+
+.f7{
+    left:27%;
+    bottom:13%;
+    font-size:35px;
+}
+
+.f8{
+    right:25%;
+    bottom:14%;
+    font-size:35px;
+}
+
+
+/* =====================================================
+   FRASES FLOTANTES
+===================================================== */
+
+.phrase{
+
+    position:absolute;
+
+    z-index:5;
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    text-shadow:
+        0 0 5px #fff,
+        0 0 12px #ffd900;
+
+    animation:
+        phraseFloat 4s ease-in-out infinite;
+
+}
+
+@keyframes phraseFloat{
+
+    0%,100%{
+        transform:translateY(0);
+        opacity:.65;
+    }
+
+    50%{
+        transform:translateY(-15px);
+        opacity:1;
+    }
+
+}
+
+.p1{
+    left:8%;
+    top:35%;
+}
+
+.p2{
+    right:8%;
+    top:35%;
+}
+
+.p3{
+    left:10%;
+    top:72%;
+}
+
+.p4{
+    right:8%;
+    top:72%;
+}
+
+.p5{
+    left:50%;
+    top:8%;
+    transform:translateX(-50%);
+}
+
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+.title{
+
+    position:absolute;
+
+    top:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:90%;
+
+    text-align:center;
+
+    z-index:10;
+
+}
+
+.title h1{
+
+    font-size:
+        clamp(32px,6vw,65px);
+
+    color:#fff;
+
+    text-shadow:
+        0 0 5px #fff,
+        0 0 15px #ffd900,
+        0 0 30px #ff9d00;
+
+    animation:
+        titleGlow 2s infinite alternate;
+
+}
+
+.title p{
+
+    margin-top:5px;
+
+    font-size:
+        clamp(14px,2vw,20px);
+
+    color:#ffe878;
+
+}
+
+@keyframes titleGlow{
+
+    from{
+        text-shadow:
+            0 0 5px #fff,
+            0 0 15px #ffd900;
+    }
+
+    to{
+        text-shadow:
+            0 0 10px #fff,
+            0 0 25px #ffd900,
+            0 0 50px #ff9d00;
+    }
+
+}
+
+
+/* =====================================================
+   TEXTO CENTRAL
+===================================================== */
+
+.centerText{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    z-index:8;
+
+    width:90%;
+
+    text-align:center;
+
+    pointer-events:none;
+
+}
+
+.centerText h2{
+
+    font-size:
+        clamp(25px,4vw,45px);
+
+    color:#fff;
+
+    text-shadow:
+        0 0 10px #ffd900,
+        0 0 25px #ffae00;
+
+}
+
+.centerText strong{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:
+        clamp(35px,7vw,70px);
+
+    color:#fff;
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 25px #ffd900,
+        0 0 50px #ff9500;
+
+    animation:
+        namePulse 2s infinite alternate;
+
+}
+
+@keyframes namePulse{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.08);
+    }
+
+}
+
+
+/* =====================================================
+   CONTENEDOR DE CÓDIGO
+===================================================== */
+
+.codeWindow{
+
+    position:absolute;
+
+    left:50%;
+    bottom:25px;
+
+    transform:translateX(-50%);
+
+    width:
+        min(600px,90%);
+
+    background:
+        rgba(3,10,20,.92);
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    z-index:20;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.8),
+        0 0 20px rgba(255,200,0,.15);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+}
+
+
+/* barra superior */
+
+.codeHeader{
+
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 14px;
+
+    background:#101923;
+
+}
+
+.dot{
+
+    width:11px;
+    height:11px;
+
+    border-radius:50%;
+
+    margin-right:6px;
+
+}
+
+.red{
+    background:#ff5f57;
+}
+
+.yellow{
+    background:#febc2e;
+}
+
+.green{
+    background:#28c840;
+}
+
+.fileName{
+
+    margin-left:auto;
+    margin-right:auto;
+
+    font-size:11px;
+
+    color:#aaa;
+
+}
+
+
+/* código */
+
+.code{
+
+    padding:20px;
+
+    text-align:left;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size:
+        clamp(11px,1.7vw,14px);
+
+    line-height:1.8;
+
+    color:#d6e2ef;
+
+}
+
+.lineCode{
+
+    opacity:0;
+
+    animation:
+        codeAppear .7s forwards;
+
+}
+
+.lineCode:nth-child(1){animation-delay:.5s;}
+.lineCode:nth-child(2){animation-delay:1s;}
+.lineCode:nth-child(3){animation-delay:1.5s;}
+.lineCode:nth-child(4){animation-delay:2s;}
+.lineCode:nth-child(5){animation-delay:2.5s;}
+.lineCode:nth-child(6){animation-delay:3s;}
+.lineCode:nth-child(7){animation-delay:3.5s;}
+.lineCode:nth-child(8){animation-delay:4s;}
+.lineCode:nth-child(9){animation-delay:4.5s;}
+
+@keyframes codeAppear{
+
+    to{
+        opacity:1;
+    }
+
+}
+
+.number{
+    color:#607080;
+    display:inline-block;
+    width:25px;
+}
+
+.keyword{
+    color:#ff7b9c;
+}
+
+.string{
+    color:#ffd966;
+}
+
+.property{
+    color:#7ec8ff;
+}
+
+.comment{
+    color:#6f8b75;
+}
+
+
+/* =====================================================
+   BOTÓN
+===================================================== */
+
+.loveButton{
+
+    position:absolute;
+
+    right:20px;
+    top:20px;
+
+    z-index:50;
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,200,0,.12);
+
+    color:#fff;
+
+    border:
+        1px solid rgba(255,220,0,.5);
+
+    cursor:pointer;
+
+    backdrop-filter:blur(5px);
+
+    box-shadow:
+        0 0 15px rgba(255,200,0,.25);
+
+    transition:.3s;
+
+}
+
+.loveButton:hover{
+
+    transform:scale(1.08);
+
+    background:
+        rgba(255,200,0,.25);
+
+}
+
+
+/* =====================================================
+   CORAZONES
+===================================================== */
+
+.heart{
+
+    position:fixed;
+
+    bottom:-50px;
+
+    z-index:30;
+
+    pointer-events:none;
+
+    animation:
+        heartUp linear forwards;
+
+    filter:
+        drop-shadow(0 0 8px #ff1744);
+
+}
+
+@keyframes heartUp{
+
+    0%{
+
+        transform:
+            translateY(0)
+            scale(.5)
+            rotate(0);
+
+        opacity:0;
+
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+            translateY(-110vh)
+            scale(1.4)
+            rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =====================================================
+   MODAL FINAL
+===================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    background:
+        rgba(0,0,0,.92);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modalBox{
+
+    width:
+        min(700px,95%);
+
+    text-align:center;
+
+    padding:50px 30px;
+
+    border-radius:25px;
+
+    background:
+        radial-gradient(
+            circle,
+            #461800,
+            #100400
+        );
+
+    border:
+        1px solid rgba(255,220,0,.4);
+
+    box-shadow:
+        0 0 50px rgba(255,180,0,.25);
+
+    animation:
+        modalAppear 1s ease;
+
+}
+
+@keyframes modalAppear{
+
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+.modalBox .bigFlower{
+
+    font-size:80px;
+
+    animation:
+        flowerSpin 4s infinite;
+
+}
+
+@keyframes flowerSpin{
+
+    0%,100%{
+        transform:rotate(-10deg) scale(1);
+    }
+
+    50%{
+        transform:rotate(10deg) scale(1.15);
+    }
+
+}
+
+.modalBox h2{
+
+    margin-top:15px;
+
+    font-size:
+        clamp(30px,6vw,55px);
+
+    color:#fff;
+
+    text-shadow:
+        0 0 20px #ffd900;
+
+}
+
+.modalBox p{
+
+    margin-top:20px;
+
+    font-size:
+        clamp(17px,3vw,23px);
+
+    line-height:1.8;
+
+    color:#ffeab0;
+
+}
+
+.close{
+
+    margin-top:30px;
+
+    padding:12px 30px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#ffd000;
+
+    color:#2d1800;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:700px){
+
+    .flower{
+        font-size:30px;
+    }
+
+    .phrase{
+        font-size:12px;
+    }
+
+    .ring.one{
+        width:280px;
+    }
+
+    .ring.two{
+        width:360px;
+    }
+
+    .codeWindow{
+        bottom:10px;
+    }
+
+    .code{
+        padding:12px;
+        line-height:1.6;
+    }
+
+    .loveButton{
+        top:auto;
+        bottom:120px;
+        right:50%;
+        transform:translateX(50%);
+    }
+
+    .loveButton:hover{
+        transform:
+            translateX(50%)
+            scale(1.05);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="scene">
+
+
+<!-- =====================================================
+     ESTRELLAS
+===================================================== -->
+
+<div class="stars" id="stars"></div>
+
+
+<!-- =====================================================
+     TÍTULO
+===================================================== -->
+
+<div class="title">
+
+    <h1>
+        🌻 Para mi niña Antara 🌻
+    </h1>
+
+    <p>
+        Una pequeña parte de todo lo que siento por ti ❤️
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     LUZ CENTRAL
+===================================================== -->
+
+<div class="moon"></div>
+
+<div class="ring one"></div>
+
+<div class="ring two"></div>
+
+
+<!-- =====================================================
+     FLORES
+===================================================== -->
+
+<div class="flower f1"
+     onclick="flowerClick(this)">
+    🌻
+</div>
+
+<div class="flower f2"
+     onclick="flowerClick(this)">
+    🌻
+</div>
+
+<div class="flower f3"
+     onclick="flowerClick(this)">
+    🌻
+</div>
+
+<div class="flower f4"
+     onclick="flowerClick(this)">
+    🌻
+</div>
+
+<div class="flower f5"
+     onclick="flowerClick(this)">
+    🌻
+</div>
+
+<div class="flower f6"
+     onclick="flowerClick(this)">
+    🌻
+</div>
+
+<div class="flower f7"
+     onclick="flowerClick(this)">
+    🌻
+</div>
+
+<div class="flower f8"
+     onclick="flowerClick(this)">
+    🌻
+</div>
+
+
+<!-- =====================================================
+     FRASES
+===================================================== -->
+
+<div class="phrase p1">
+    ✨ Eres mi luz ✨
+</div>
+
+<div class="phrase p2">
+    ❤️ Siempre tú ❤️
+</div>
+
+<div class="phrase p3">
+    🌻 Mi niña hermosa
+</div>
+
+<div class="phrase p4">
+    💛 Te quiero mucho
+</div>
+
+<div class="phrase p5">
+    ✨ Mi maravilla ✨
+</div>
+
+
+<!-- =====================================================
+     TEXTO CENTRAL
+===================================================== -->
+
+<div class="centerText">
+
+    <h2>
+        Si el mundo tuviera 7 maravillas...
+    </h2>
+
+    <strong>
+        Yo te escogería a TI ❤️
+    </strong>
+
+</div>
+
+
+<!-- =====================================================
+     VENTANA DE CÓDIGO
+===================================================== -->
+
+<div class="codeWindow">
+
+
+    <div class="codeHeader">
+
+        <div class="dot red"></div>
+
+        <div class="dot yellow"></div>
+
+        <div class="dot green"></div>
+
+        <div class="fileName">
+            mi_amor.js
+        </div>
+
+    </div>
+
+
+    <div class="code">
+
+
+        <div class="lineCode">
+
+            <span class="number">1</span>
+
+            <span class="keyword">
+                const
+            </span>
+
+            <span class="property">
+                miNiña
+            </span>
+
+            = {
+
+        </div>
+
+
+        <div class="lineCode">
+
+            <span class="number">2</span>
+
+            &nbsp;&nbsp;
+
+            <span class="property">
+                nombre:
+            </span>
+
+            <span class="string">
+                "Antara ❤️",
+            </span>
+
+        </div>
+
+
+        <div class="lineCode">
+
+            <span class="number">3</span>
+
+            &nbsp;&nbsp;
+
+            <span class="property">
+                sonrisa:
+            </span>
+
+            <span class="string">
+                "mi favorita",
+            </span>
+
+        </div>
+
+
+        <div class="lineCode">
+
+            <span class="number">4</span>
+
+            &nbsp;&nbsp;
+
+            <span class="property">
+                belleza:
+            </span>
+
+            <span class="string">
+                "infinita",
+            </span>
+
+        </div>
+
+
+        <div class="lineCode">
+
+            <span class="number">5</span>
+
+            &nbsp;&nbsp;
+
+            <span class="property">
+                lugar:
+            </span>
+
+            <span class="string">
+                "mi corazón",
+            </span>
+
+        </div>
+
+
+        <div class="lineCode">
+
+            <span class="number">6</span>
+
+            &nbsp;&nbsp;
+
+            <span class="property">
+                tiempo:
+            </span>
+
+            <span class="string">
+                "para siempre"
+
+        </div>
+
+
+        <div class="lineCode">
+
+            <span class="number">7</span>
+
+            };
+
+        </div>
+
+
+        <div class="lineCode">
+
+            <span class="number">8</span>
+
+            <span class="keyword">
+                if
+            </span>
+
+            (miNiña.nombre ===
+
+            <span class="string">
+                "Antara"
+            </span>
+
+            ){
+
+        </div>
+
+
+        <div class="lineCode">
+
+            <span class="number">9</span>
+
+            &nbsp;&nbsp;
+
+            <span class="comment">
+                // Te quiero muchísimo ❤️🌻
+
+            </span>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     BOTÓN SORPRESA
+===================================================== -->
+
+<button
+    class="loveButton"
+    onclick="openLove()">
+
+    💌 Abrir sorpresa
+
+</button>
+
+
+</div>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="modal">
+
+
+    <div class="modalBox">
+
+
+        <div class="bigFlower">
+            🌻
+        </div>
+
+
+        <h2>
+            Para mi niña Antara ❤️
+        </h2>
+
+
+        <p>
+
+            Si me preguntaran cuál de las
+            7 maravillas del mundo escogería...
+
+            <br><br>
+
+            Probablemente esperaría que dijera
+            alguna de las grandes maravillas
+            que existen.
+
+            <br><br>
+
+            Pero mi respuesta sería diferente.
+
+            <br><br>
+
+            <strong>
+                TE ESCOGERÍA A TI.
+            </strong>
+
+            <br><br>
+
+            Porque para mí,
+            tu sonrisa es más bonita que cualquier paisaje,
+            tus ojos tienen más luz que cualquier estrella
+            y tu existencia hace que mi mundo sea mucho más bonito.
+
+            <br><br>
+
+            🌻❤️
+
+            <br><br>
+
+            <strong>
+                Tú eres mi maravilla favorita.
+            </strong>
+
+            <br><br>
+
+            Te quiero muchísimo,
+            mi niña Antara.
+
+            ❤️
+
+        </p>
+
+
+        <button
+            class="close"
+            onclick="closeLove()">
+
+            🌻 Siempre tú 🌻
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CREAR ESTRELLAS
+===================================================== */
+
+const stars =
+    document.getElementById("stars");
+
+
+for(let i=0;i<180;i++){
+
+    const star=
+        document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=
+        Math.random()*100+"%";
+
+    star.style.top=
+        Math.random()*100+"%";
+
+    star.style.animationDelay=
+        Math.random()*3+"s";
+
+    star.style.animationDuration=
+        (1+Math.random()*3)+"s";
+
+    stars.appendChild(star);
+
+}
+
+
+/* =====================================================
+   CORAZONES FLOTANTES
+===================================================== */
+
+function createHeart(){
+
+    const heart=
+        document.createElement("div");
+
+    heart.className="heart";
+
+    const emojis=[
+        "❤️",
+        "💛",
+        "💕",
+        "💖",
+        "💗"
+    ];
+
+    heart.innerHTML=
+        emojis[
+            Math.floor(
+                Math.random()*emojis.length
+            )
+        ];
+
+    heart.style.left=
+        Math.random()*100+"vw";
+
+    heart.style.fontSize=
+        (15+Math.random()*30)+"px";
+
+    heart.style.animationDuration=
+        (5+Math.random()*6)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },12000);
+
+}
+
+setInterval(createHeart,500);
+
+
+/* =====================================================
+   EXPLOSIÓN DE FLORES
+===================================================== */
+
+function flowerClick(element){
+
+    element.animate(
+
+        [
+            {
+                transform:"scale(1)"
+            },
+
+            {
+                transform:"scale(2)"
+            },
+
+            {
+                transform:"scale(1)"
+            }
+
+        ],
+
+        {
+            duration:700
+        }
+
+    );
+
+    for(let i=0;i<15;i++){
+
+        const flower=
+            document.createElement("div");
+
+        flower.innerHTML="🌻";
+
+        flower.style.position="fixed";
+
+        flower.style.left=
+            element.getBoundingClientRect().left+"px";
+
+        flower.style.top=
+            element.getBoundingClientRect().top+"px";
+
+        flower.style.fontSize=
+            "25px";
+
+        flower.style.zIndex="90";
+
+        flower.style.pointerEvents="none";
+
+        const x=
+            (Math.random()-.5)*500;
+
+        const y=
+            (Math.random()-.5)*500;
+
+        flower.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(0,0) scale(.2)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        `translate(${x}px,${y}px) scale(1.2)`,
+                    opacity:0
+                }
+
+            ],
+
+            {
+                duration:
+                    1000+Math.random()*1000,
+                easing:"ease-out"
+            }
+
+        );
+
+        document.body.appendChild(flower);
+
+        setTimeout(()=>{
+
+            flower.remove();
+
+        },2200);
+
+    }
+
+}
+
+
+/* =====================================================
+   ABRIR SORPRESA
+===================================================== */
+
+function openLove(){
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+    explosionHearts();
+
+}
+
+
+/* =====================================================
+   CERRAR
+===================================================== */
+
+function closeLove(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   EXPLOSIÓN DE CORAZONES
+===================================================== */
+
+function explosionHearts(){
+
+    for(let i=0;i<70;i++){
+
+        const heart=
+            document.createElement("div");
+
+        heart.innerHTML=
+            Math.random()>.5
+            ? "❤️"
+            : "🌻";
+
+        heart.style.position="fixed";
+
+        heart.style.left="50%";
+
+        heart.style.top="50%";
+
+        heart.style.zIndex="200";
+
+        heart.style.fontSize=
+            (15+Math.random()*35)+"px";
+
+        heart.style.pointerEvents="none";
+
+        const x=
+            (Math.random()-.5)*1000;
+
+        const y=
+            (Math.random()-.5)*800;
+
+        heart.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(-50%,-50%) scale(0)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        `translate(${x}px,${y}px) scale(1.3)`,
+                    opacity:0
+                }
+
+            ],
+
+            {
+
+                duration:
+                    1200+Math.random()*1500,
+
+                easing:"ease-out"
+
+            }
+
+        );
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+
+            heart.remove();
+
+        },3000);
+
+    }
+
+}
+
+
+/* =====================================================
+   CLIC EN CUALQUIER PARTE
+===================================================== */
+
+document
+    .querySelector(".scene")
+    .addEventListener("click",(event)=>{
+
+        if(
+            event.target.classList.contains("flower") ||
+            event.target.classList.contains("loveButton")
+        ){
+            return;
+        }
+
+        const heart=
+            document.createElement("div");
+
+        heart.innerHTML="💛";
+
+        heart.style.position="fixed";
+
+        heart.style.left=
+            event.clientX+"px";
+
+        heart.style.top=
+            event.clientY+"px";
+
+        heart.style.fontSize="25px";
+
+        heart.style.zIndex="100";
+
+        heart.style.pointerEvents="none";
+
+        heart.animate(
+
+            [
+
+                {
+                    transform:"scale(.3)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        "translateY(-100px) scale(1.5)",
+                    opacity:0
+                }
+
+            ],
+
+            {
+
+                duration:1000,
+
+                easing:"ease-out"
+
+            }
+
+        );
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+
+            heart.remove();
+
+        },1200);
+
+    });
+
+
+/* =====================================================
+   CORAZONES AL CARGAR
+===================================================== */
+
+window.addEventListener("load",()=>{
+
+    for(let i=0;i<20;i++){
+
+        setTimeout(
+            createHeart,
+            i*150
+        );
+
+    }
+
+});
+
+</script>
+
+
+</body>
+</html>
