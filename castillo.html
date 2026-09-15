@@ -2,26 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1,
-               maximum-scale=1,
-               user-scalable=no,
-               viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#100817">
-
 <title>La aventura de nuestra historia ❤️</title>
-
 <style>
-
 /* =========================================================
    RESET / IPHONE
 ========================================================= */
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -29,15 +18,12 @@
     -webkit-tap-highlight-color:transparent;
     -webkit-touch-callout:none;
 }
-
-html,
-body{
+html,body{
     width:100%;
     height:100%;
     overflow:hidden;
     overscroll-behavior:none;
 }
-
 body{
     background:#08050e;
     color:white;
@@ -45,1505 +31,892 @@ body{
     user-select:none;
     -webkit-user-select:none;
 }
-
 button{
     font-family:Arial,sans-serif;
     -webkit-appearance:none;
 }
 
-
 /* =========================================================
    PANTALLA DE INICIO
 ========================================================= */
-
 #inicio{
-
     position:fixed;
     inset:0;
-
     z-index:9999;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     text-align:center;
-
-    padding:
-        max(25px, env(safe-area-inset-top))
-        max(20px, env(safe-area-inset-right))
-        max(25px, env(safe-area-inset-bottom))
-        max(20px, env(safe-area-inset-left));
-
+    padding:max(25px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(25px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
     background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(255,91,160,.20),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(120,70,180,.15),
-            transparent 30%
-        ),
-        linear-gradient(
-            145deg,
-            #08050f,
-            #1b0b25,
-            #090611
-        );
+        radial-gradient(circle at 50% 35%, rgba(255,91,160,.20), transparent 32%),
+        radial-gradient(circle at 20% 80%, rgba(120,70,180,.15), transparent 30%),
+        linear-gradient(145deg, #08050f, #1b0b25, #090611);
 }
-
 .inicio-contenido{
     width:min(92%,720px);
     animation:entrada 1.4s ease;
 }
-
 .corona-grande{
     font-size:clamp(55px,15vw,95px);
     animation:flotar 3s ease-in-out infinite;
     filter:drop-shadow(0 0 25px rgba(255,200,100,.45));
 }
-
 .titulo{
-
     margin:15px 0;
-
     font-size:clamp(36px,9vw,76px);
-
     line-height:1.05;
-
     color:#ffe0ec;
-
-    text-shadow:
-        0 0 12px rgba(255,100,170,.45),
-        0 0 35px rgba(255,50,140,.25);
+    text-shadow:0 0 12px rgba(255,100,170,.45),0 0 35px rgba(255,50,140,.25);
 }
-
 .subtitulo{
-
     max-width:600px;
-
     margin:0 auto 35px;
-
     font-size:clamp(16px,4vw,23px);
-
     line-height:1.65;
-
     color:#e9cbd9;
 }
-
 .btn-principal{
-
     border:1px solid rgba(255,210,230,.35);
-
     color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #d93682,
-            #8b3fa4
-        );
-
+    background:linear-gradient(135deg, #d93682, #8b3fa4);
     padding:17px 30px;
-
     border-radius:999px;
-
     font-size:17px;
-
     font-weight:bold;
-
-    box-shadow:
-        0 10px 35px rgba(214,54,130,.30),
-        inset 0 1px rgba(255,255,255,.2);
-
+    box-shadow:0 10px 35px rgba(214,54,130,.30), inset 0 1px rgba(255,255,255,.2);
     cursor:pointer;
-
     transition:.25s;
 }
-
 .btn-principal:active{
     transform:scale(.95);
 }
 
-
 /* =========================================================
    JUEGO
 ========================================================= */
-
 #juego{
-
     position:fixed;
     inset:0;
-
     display:none;
-
     overflow:hidden;
-
-    background:
-        linear-gradient(
-            #17102d 0%,
-            #352044 35%,
-            #173126 67%,
-            #09150f 100%
-        );
-
+    background:linear-gradient(#17102d 0%, #352044 35%, #173126 67%, #09150f 100%);
     touch-action:none;
 }
-
 
 /* =========================================================
    CIELO
 ========================================================= */
-
 .cielo{
     position:absolute;
     inset:0;
     pointer-events:none;
 }
-
 .luna{
-
     position:absolute;
-
     width:85px;
     height:85px;
-
     right:9%;
     top:8%;
-
     border-radius:50%;
-
     background:#fff5d7;
-
-    box-shadow:
-        0 0 20px #fff5d7,
-        0 0 60px rgba(255,240,180,.5);
+    box-shadow:0 0 20px #fff5d7, 0 0 60px rgba(255,240,180,.5);
 }
-
 .estrellas{
-
     position:absolute;
     inset:0;
-
     background-image:
         radial-gradient(circle,#fff 1px,transparent 2px),
         radial-gradient(circle,#ffd8e8 1px,transparent 2px),
         radial-gradient(circle,#fff 1px,transparent 2px);
-
-    background-size:
-        110px 90px,
-        170px 130px,
-        230px 180px;
-
+    background-size:110px 90px, 170px 130px, 230px 180px;
     opacity:.65;
 }
-
 
 /* =========================================================
    MAPA
 ========================================================= */
-
 #mapa{
-
     position:absolute;
-
     width:2800px;
     height:1600px;
-
     left:0;
     top:0;
-
     will-change:transform;
-
     background:
-        radial-gradient(
-            ellipse at 50% 45%,
-            rgba(72,145,77,.35),
-            transparent 45%
-        ),
-        linear-gradient(
-            #173d2b,
-            #10271d
-        );
+        radial-gradient(ellipse at 50% 45%, rgba(72,145,77,.35), transparent 45%),
+        linear-gradient(#173d2b, #10271d);
 }
-
 
 /* =========================================================
    CAMINO
 ========================================================= */
-
 .camino{
-
     position:absolute;
-
     background:#80624c;
-
     border-radius:100px;
-
     opacity:.75;
-
-    box-shadow:
-        inset 0 0 25px rgba(40,20,10,.35);
+    box-shadow:inset 0 0 25px rgba(40,20,10,.35);
 }
-
 .camino1{
-
     width:1900px;
     height:140px;
-
     left:50px;
     top:790px;
-
     transform:rotate(-6deg);
 }
-
 .camino2{
-
     width:1100px;
     height:120px;
-
     left:1100px;
     top:420px;
-
     transform:rotate(35deg);
 }
-
 
 /* =========================================================
    DECORACIÓN
 ========================================================= */
-
 .arbol{
-
     position:absolute;
-
     font-size:70px;
-
-    filter:
-        drop-shadow(0 8px 6px rgba(0,0,0,.45));
-
+    filter:drop-shadow(0 8px 6px rgba(0,0,0,.45));
     pointer-events:none;
 }
-
 .flor{
-
     position:absolute;
-
     font-size:36px;
-
-    animation:
-        balanceo 3s ease-in-out infinite;
-
+    animation:balanceo 3s ease-in-out infinite;
     pointer-events:none;
 }
-
 .piedra{
-
     position:absolute;
-
     font-size:35px;
-
     pointer-events:none;
 }
-
 
 /* =========================================================
-   PRINCESA
+   PRINCESA (MEJORADA)
 ========================================================= */
-
 #princesa{
-
     position:absolute;
-
     width:76px;
     height:108px;
-
     z-index:30;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     will-change:left,top;
-
     pointer-events:none;
 }
-
 .personaje{
     position:relative;
     width:100%;
     height:100%;
+    animation:personajeFlota 2.5s ease-in-out infinite;
 }
-
 .cabello{
-
     position:absolute;
-
-    width:52px;
-    height:54px;
-
-    left:12px;
-    top:4px;
-
-    border-radius:
-        50% 50% 45% 45%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #3d1e1c,
-            #6a3028,
-            #3b1d1b
-        );
-
+    width:54px;
+    height:58px;
+    left:11px;
+    top:2px;
+    border-radius:50% 50% 45% 45%;
+    background:linear-gradient(90deg, #3d1e1c, #6a3028, #3b1d1b);
     z-index:2;
+    box-shadow:inset 0 -4px 8px rgba(0,0,0,.3);
 }
-
 .cabeza{
-
     position:absolute;
-
-    width:40px;
-    height:40px;
-
-    left:18px;
-    top:13px;
-
+    width:42px;
+    height:42px;
+    left:17px;
+    top:12px;
     border-radius:50%;
-
-    background:#f2c29f;
-
+    background:radial-gradient(circle at 35% 35%, #ffe0c8, #f2c29f);
     z-index:3;
-
-    box-shadow:
-        inset -4px -3px rgba(0,0,0,.1);
+    box-shadow:inset -4px -3px rgba(0,0,0,.08);
 }
-
+.cabeza::before{
+    content:"";
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:#3d1e1c;
+    border-radius:50%;
+    top:16px;
+    left:9px;
+    box-shadow:12px 0 #3d1e1c;
+}
+.cabeza::after{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:5px;
+    border-bottom:2px solid #c96b7a;
+    border-radius:50%;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+}
 .corona-princesa{
-
     position:absolute;
-
-    top:-8px;
+    top:-10px;
     left:22px;
-
     z-index:6;
-
-    font-size:25px;
+    font-size:26px;
+    filter:drop-shadow(0 0 8px rgba(255,215,0,.6));
+    animation:coronaBrillo 2s ease-in-out infinite;
 }
-
 .cuerpo-princesa{
-
     position:absolute;
-
-    left:12px;
+    left:11px;
     top:50px;
-
-    width:52px;
-    height:45px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff9ec5,
-            #c33e82
-        );
-
-    clip-path:
-        polygon(
-            50% 0,
-            100% 100%,
-            0 100%
-        );
-
+    width:54px;
+    height:48px;
+    background:linear-gradient(135deg, #ff9ec5, #c33e82);
+    clip-path:polygon(50% 0, 100% 100%, 0 100%);
     z-index:2;
+    box-shadow:0 4px 12px rgba(195,62,130,.3);
 }
-
 .pies{
-
     position:absolute;
-
     top:87px;
     left:20px;
-
     font-size:24px;
-
     z-index:5;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));
 }
-
 
 /* =========================================================
    RECUERDOS
 ========================================================= */
-
 .objeto{
-
     position:absolute;
-
     z-index:20;
-
     width:80px;
     height:80px;
-
     display:flex;
-
     justify-content:center;
     align-items:center;
-
     font-size:55px;
-
     cursor:pointer;
-
-    animation:
-        objetoFlota 2.5s ease-in-out infinite;
-
-    filter:
-        drop-shadow(
-            0 0 12px rgba(255,170,220,.55)
-        );
+    animation:objetoFlota 2.5s ease-in-out infinite;
+    filter:drop-shadow(0 0 12px rgba(255,170,220,.55));
+    transition:transform .3s;
 }
-
+.objeto:active{
+    transform:scale(1.2);
+}
 .objeto::after{
-
     content:"";
-
     position:absolute;
-
     inset:4px;
-
     border-radius:50%;
-
     border:1px solid rgba(255,220,240,.18);
-
-    animation:
-        pulso 2s infinite;
+    animation:pulso 2s infinite;
 }
-
 .señal{
-
     position:absolute;
-
     top:-27px;
-
     left:50%;
-
-    transform:
-        translateX(-50%);
-
+    transform:translateX(-50%);
     white-space:nowrap;
-
     padding:5px 9px;
-
     border-radius:10px;
-
     background:rgba(5,3,10,.75);
-
     font-family:Arial,sans-serif;
-
     font-size:11px;
-
     color:#ffd9e8;
 }
-
 .objeto.visto{
     opacity:.18;
     filter:grayscale(1);
     animation:none;
 }
 
-
 /* =========================================================
-   CASTILLO
+   CASTILLO (MEJORADO)
 ========================================================= */
-
 #castillo{
-
     position:absolute;
-
     left:2200px;
     top:280px;
-
     width:440px;
     height:470px;
-
     z-index:8;
 }
-
 .castillo-texto{
-
     position:absolute;
-
     top:-48px;
-
     width:100%;
-
     text-align:center;
-
     color:#ffe0eb;
-
     font-family:Arial,sans-serif;
-
     font-weight:bold;
-
     font-size:17px;
-
-    text-shadow:
-        0 0 12px #ff5d9c;
+    text-shadow:0 0 12px #ff5d9c;
+    animation:parpadear 2s infinite;
 }
-
 .torre{
-
     position:absolute;
-
     bottom:0;
-
     width:95px;
     height:320px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #65506f,
-            #b79abb,
-            #6c5576
-        );
-
+    background:linear-gradient(90deg, #65506f, #b79abb, #6c5576);
     border-radius:8px 8px 0 0;
+    box-shadow:inset 0 0 20px rgba(0,0,0,.2);
 }
-
 .torre::before{
-
     content:"";
-
     position:absolute;
-
     top:-58px;
     left:-17px;
-
-    border-left:
-        64px solid transparent;
-
-    border-right:
-        64px solid transparent;
-
-    border-bottom:
-        68px solid #55365d;
+    border-left:64px solid transparent;
+    border-right:64px solid transparent;
+    border-bottom:68px solid #55365d;
+    filter:drop-shadow(0 -4px 6px rgba(0,0,0,.3));
 }
-
-.t1{
-    left:0;
-}
-
-.t2{
-    right:0;
-}
-
+.t1{ left:0; }
+.t2{ right:0; }
 .muro{
-
     position:absolute;
-
     bottom:0;
     left:72px;
-
     width:296px;
     height:225px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #907198,
-            #c9aecb,
-            #896992
-        );
+    background:linear-gradient(90deg, #907198, #c9aecb, #896992);
+    box-shadow:inset 0 0 30px rgba(0,0,0,.15);
 }
-
 .puerta{
-
     position:absolute;
-
     bottom:0;
     left:112px;
-
     width:72px;
     height:120px;
-
-    border-radius:
-        40px 40px 0 0;
-
-    background:#25162b;
-
-    box-shadow:
-        inset 0 0 15px rgba(0,0,0,.8);
+    border-radius:40px 40px 0 0;
+    background:radial-gradient(ellipse at 50% 30%, #3a2540, #25162b);
+    box-shadow:inset 0 0 15px rgba(0,0,0,.8), 0 0 20px rgba(255,100,170,.15);
 }
-
 .bandera{
-
     position:absolute;
-
     top:-120px;
     left:202px;
-
     font-size:65px;
+    animation:banderaOndea 2s ease-in-out infinite;
+    transform-origin:bottom left;
 }
-
 
 /* =========================================================
-   CABALLERO
+   CABALLERO (MEJORADO)
 ========================================================= */
-
 #caballero{
-
     position:absolute;
-
     left:2390px;
     top:670px;
-
     width:85px;
     height:115px;
-
     z-index:25;
-
     display:none;
-
-    animation:
-        caballeroEntrada 1.5s ease;
+    animation:caballeroEntrada 1.5s ease;
 }
-
 .cabeza-c{
-
     position:absolute;
-
     left:21px;
     top:10px;
-
     width:43px;
     height:43px;
-
     border-radius:50%;
-
-    background:#dcae8d;
+    background:radial-gradient(circle at 35% 35%, #f0c9a8, #dcae8d);
+    z-index:2;
 }
-
-.helm{
-
+.cabeza-c::before{
+    content:"";
     position:absolute;
-
+    width:5px;
+    height:5px;
+    background:#3d1e1c;
+    border-radius:50%;
+    top:14px;
+    left:12px;
+    box-shadow:10px 0 #3d1e1c;
+}
+.cabeza-c::after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:3px;
+    border-bottom:2px solid #c96b7a;
+    border-radius:50%;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+}
+.helm{
+    position:absolute;
     left:15px;
     top:3px;
-
     width:55px;
     height:35px;
-
-    border-radius:
-        25px 25px 8px 8px;
-
-    background:
-        linear-gradient(
-            #e4ebf1,
-            #687581
-        );
-
+    border-radius:25px 25px 8px 8px;
+    background:linear-gradient(#e4ebf1, #687581);
     z-index:3;
+    box-shadow:inset 0 2px 8px rgba(255,255,255,.3), 0 2px 6px rgba(0,0,0,.3);
 }
-
 .cuerpo-c{
-
     position:absolute;
-
     left:12px;
     top:52px;
-
     width:60px;
     height:57px;
-
     border-radius:10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e1e8ef,
-            #687783
-        );
+    background:linear-gradient(135deg, #e1e8ef, #687783);
+    box-shadow:inset 0 2px 8px rgba(255,255,255,.2);
 }
-
 .escudo{
-
     position:absolute;
-
     left:-10px;
     top:52px;
-
     width:43px;
     height:53px;
-
-    border-radius:
-        8px 8px 20px 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #d9e0e8,
-            #596774
-        );
-
+    border-radius:8px 8px 20px 20px;
+    background:linear-gradient(135deg, #d9e0e8, #596774);
     border:2px solid #edf2f6;
+    box-shadow:0 0 10px rgba(200,220,255,.3);
 }
-
 .espada{
-
     position:absolute;
-
     right:-32px;
     top:36px;
-
     font-size:52px;
-
     transform:rotate(-35deg);
+    filter:drop-shadow(0 0 6px rgba(200,220,255,.5));
 }
-
 
 /* =========================================================
    HUD
 ========================================================= */
-
 #hud{
-
     position:fixed;
-
-    top:
-        max(12px,env(safe-area-inset-top));
-
-    left:
-        max(12px,env(safe-area-inset-left));
-
-    right:
-        max(12px,env(safe-area-inset-right));
-
+    top:max(12px,env(safe-area-inset-top));
+    left:max(12px,env(safe-area-inset-left));
+    right:max(12px,env(safe-area-inset-right));
     z-index:100;
-
     display:flex;
-
     justify-content:space-between;
-
     pointer-events:none;
 }
-
 .hud-box{
-
-    background:
-        rgba(12,8,20,.78);
-
+    background:rgba(12,8,20,.78);
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
-
-    border:
-        1px solid rgba(255,190,220,.25);
-
+    border:1px solid rgba(255,190,220,.25);
     border-radius:16px;
-
     padding:9px 13px;
-
     font-family:Arial,sans-serif;
-
     font-size:13px;
 }
-
 .progreso{
-
     width:140px;
     height:6px;
-
     margin-top:6px;
-
     background:#39263a;
-
     border-radius:20px;
-
     overflow:hidden;
 }
-
 #barra{
-
     width:0%;
-
     height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff6fae,
-            #ffd1e3
-        );
-
+    background:linear-gradient(90deg, #ff6fae, #ffd1e3);
     transition:.5s;
 }
-
 
 /* =========================================================
    DIÁLOGO RPG
 ========================================================= */
-
 #dialogo{
-
     position:fixed;
-
     left:50%;
-
-    bottom:
-        max(18px,env(safe-area-inset-bottom));
-
-    transform:
-        translateX(-50%);
-
+    bottom:max(18px,env(safe-area-inset-bottom));
+    transform:translateX(-50%);
     width:min(92%,850px);
-
     min-height:155px;
-
     z-index:500;
-
     display:none;
-
     padding:24px 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(18,10,27,.98),
-            rgba(39,15,40,.98)
-        );
-
-    border:
-        2px solid rgba(255,170,210,.5);
-
+    background:linear-gradient(135deg, rgba(18,10,27,.98), rgba(39,15,40,.98));
+    border:2px solid rgba(255,170,210,.5);
     border-radius:22px;
-
-    box-shadow:
-        0 15px 55px rgba(0,0,0,.7),
-        0 0 35px rgba(255,60,150,.16);
-
+    box-shadow:0 15px 55px rgba(0,0,0,.7), 0 0 35px rgba(255,60,150,.16);
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
-
     overflow:hidden;
-
-    animation:
-        aparecerDialogo .35s ease;
+    animation:aparecerDialogo .35s ease;
 }
-
 #dialogo::before{
-
     content:"";
-
     position:absolute;
-
     left:0;
     top:0;
-
     width:100%;
     height:4px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #ff8fbc,
-            #ffe1ed,
-            #ff8fbc,
-            transparent
-        );
+    background:linear-gradient(90deg, transparent, #ff8fbc, #ffe1ed, #ff8fbc, transparent);
 }
-
 .dialogo-nombre{
-
     color:#ff9fc7;
-
     font-family:Arial,sans-serif;
-
     font-size:16px;
-
     font-weight:bold;
-
     margin-bottom:11px;
-
-    text-shadow:
-        0 0 10px rgba(255,100,170,.45);
+    text-shadow:0 0 10px rgba(255,100,170,.45);
 }
-
 #textoDialogo{
-
     color:#fff4f8;
-
     font-size:20px;
-
     line-height:1.65;
-
     letter-spacing:.15px;
-
     min-height:65px;
-
     overflow-wrap:break-word;
-
-    text-shadow:
-        0 1px 2px rgba(0,0,0,.8);
+    text-shadow:0 1px 2px rgba(0,0,0,.8);
 }
-
 .continuar{
-
     margin-top:13px;
-
     text-align:right;
-
     font-family:Arial,sans-serif;
-
     font-size:12px;
-
     color:#d8b8c7;
-
-    animation:
-        parpadear 1.5s infinite;
+    animation:parpadear 1.5s infinite;
 }
-
 
 /* =========================================================
-   CONTROLES IPHONE
+   CONTROLES IPHONE (CORREGIDO)
 ========================================================= */
-
 #controles{
-
     position:fixed;
-
-    left:
-        max(18px,env(safe-area-inset-left));
-
-    bottom:
-        max(22px,env(safe-area-inset-bottom));
-
+    left:max(18px,env(safe-area-inset-left));
+    bottom:max(22px,env(safe-area-inset-bottom));
     z-index:400;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(3,58px);
-
-    grid-template-rows:
-        repeat(2,58px);
-
+    grid-template-columns:repeat(3,58px);
+    grid-template-rows:repeat(2,58px);
     gap:7px;
-
     touch-action:none;
 }
-
 .control{
-
     width:58px;
     height:58px;
-
     border-radius:18px;
-
-    border:
-        1px solid rgba(255,255,255,.2);
-
-    background:
-        rgba(10,6,17,.65);
-
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(10,6,17,.65);
     color:white;
-
     font-size:22px;
-
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.3);
-
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
     touch-action:none;
+    cursor:pointer;
 }
-
 .control:active{
-
     transform:scale(.9);
-
-    background:
-        rgba(214,54,130,.65);
+    background:rgba(214,54,130,.65);
 }
-
 .up{
     grid-column:2;
+    grid-row:1;
 }
-
 .left{
     grid-column:1;
     grid-row:2;
 }
-
 .down{
     grid-column:2;
     grid-row:2;
 }
-
 .right{
     grid-column:3;
     grid-row:2;
 }
 
-
 /* =========================================================
    MENSAJE DE OBJETIVO
 ========================================================= */
-
 #objetivo{
-
     position:fixed;
-
     left:50%;
-
-    top:
-        calc(
-            max(55px,env(safe-area-inset-top))
-            + 45px
-        );
-
+    top:calc(max(55px,env(safe-area-inset-top)) + 45px);
     transform:translateX(-50%);
-
     z-index:90;
-
     width:max-content;
     max-width:90%;
-
     padding:8px 14px;
-
     border-radius:30px;
-
-    background:
-        rgba(10,6,17,.62);
-
+    background:rgba(10,6,17,.62);
     backdrop-filter:blur(8px);
-
     color:#f8dce7;
-
     font-family:Arial,sans-serif;
-
     font-size:12px;
-
     text-align:center;
-
     transition:.4s;
 }
-
 
 /* =========================================================
    FINAL
 ========================================================= */
-
 #final{
-
     position:fixed;
-
     inset:0;
-
     z-index:9998;
-
     display:none;
-
     justify-content:center;
     align-items:center;
-
     text-align:center;
-
     overflow:auto;
-
-    padding:
-        max(35px,env(safe-area-inset-top))
-        max(22px,env(safe-area-inset-right))
-        max(35px,env(safe-area-inset-bottom))
-        max(22px,env(safe-area-inset-left));
-
+    padding:max(35px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(35px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left));
     background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(255,70,145,.25),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #080511,
-            #210b20,
-            #080511
-        );
+        radial-gradient(circle at 50% 40%, rgba(255,70,145,.25), transparent 35%),
+        linear-gradient(135deg, #080511, #210b20, #080511);
 }
-
 .final-contenido{
-
     width:min(900px,100%);
-
-    animation:
-        entradaFinal 2s ease;
+    animation:entradaFinal 2s ease;
+    position:relative;
+    z-index:2;
 }
-
 .final-corazon{
-
-    font-size:
-        clamp(65px,18vw,120px);
-
-    animation:
-        latido 1.3s infinite;
-
-    filter:
-        drop-shadow(
-            0 0 25px rgba(255,50,130,.55)
-        );
+    font-size:clamp(65px,18vw,120px);
+    animation:latido 1.3s infinite;
+    filter:drop-shadow(0 0 25px rgba(255,50,130,.55));
 }
-
 .final-contenido h2{
-
-    font-size:
-        clamp(34px,8vw,72px);
-
+    font-size:clamp(34px,8vw,72px);
     line-height:1.1;
-
     color:#ffd7e6;
-
     margin:15px 0 25px;
 }
-
 .carta{
-
     max-width:780px;
-
     margin:auto;
-
-    font-size:
-        clamp(16px,3vw,22px);
-
+    font-size:clamp(16px,3vw,22px);
     line-height:1.8;
-
     color:#f5dce7;
 }
-
 .firma{
-
     margin-top:28px;
-
     font-size:23px;
-
     line-height:1.6;
-
     color:#ff9fc5;
 }
 
+/* =========================================================
+   SORPRESA FINAL (NUEVA)
+========================================================= */
+#sorpresa{
+    position:fixed;
+    inset:0;
+    z-index:10001;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:max(25px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(25px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));
+    background:radial-gradient(circle at 50% 50%, rgba(255,60,140,.35), rgba(8,5,17,.97));
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    animation:entradaFinal 1s ease;
+}
+.sorpresa-contenido{
+    max-width:700px;
+    animation:entrada 1.5s ease;
+}
+.sorpresa-emoji{
+    font-size:clamp(70px,20vw,130px);
+    animation:latido 1.5s infinite;
+    filter:drop-shadow(0 0 35px rgba(255,80,160,.7));
+    margin-bottom:20px;
+}
+.sorpresa-titulo{
+    font-size:clamp(28px,7vw,52px);
+    color:#ffd7e6;
+    margin-bottom:20px;
+    text-shadow:0 0 20px rgba(255,100,170,.5);
+}
+.sorpresa-texto{
+    font-size:clamp(17px,3.5vw,23px);
+    line-height:1.85;
+    color:#ffe8f0;
+    margin-bottom:30px;
+    text-shadow:0 1px 4px rgba(0,0,0,.6);
+}
+.sorpresa-texto strong{
+    color:#ff9fc7;
+    font-size:1.1em;
+}
+.btn-cerrar{
+    border:1px solid rgba(255,210,230,.5);
+    color:white;
+    background:linear-gradient(135deg, #ff6fae, #c33e82);
+    padding:15px 35px;
+    border-radius:999px;
+    font-size:16px;
+    font-weight:bold;
+    box-shadow:0 10px 35px rgba(255,60,140,.4);
+    cursor:pointer;
+    transition:.25s;
+    margin-top:10px;
+}
+.btn-cerrar:active{
+    transform:scale(.95);
+}
 
 /* =========================================================
    CORAZONES
 ========================================================= */
-
 .corazon-final{
-
     position:fixed;
-
     z-index:10000;
-
     font-size:25px;
-
     pointer-events:none;
-
-    animation:
-        subir 5s linear forwards;
+    animation:subir 5s linear forwards;
+    will-change:transform,opacity;
 }
-
 
 /* =========================================================
    ANIMACIONES
 ========================================================= */
-
 @keyframes entrada{
-
-    from{
-        opacity:0;
-        transform:translateY(30px) scale(.97);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
+    from{ opacity:0; transform:translateY(30px) scale(.97); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
 }
-
 @keyframes entradaFinal{
-
-    from{
-        opacity:0;
-        transform:scale(.94);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
+    from{ opacity:0; transform:scale(.94); }
+    to{ opacity:1; transform:scale(1); }
 }
-
 @keyframes flotar{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
 }
-
 @keyframes balanceo{
-
-    0%,100%{
-        transform:rotate(-5deg);
-    }
-
-    50%{
-        transform:rotate(5deg);
-    }
+    0%,100%{ transform:rotate(-5deg); }
+    50%{ transform:rotate(5deg); }
 }
-
 @keyframes objetoFlota{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-8px); }
 }
-
 @keyframes pulso{
-
-    0%,100%{
-        transform:scale(.9);
-        opacity:.3;
-    }
-
-    50%{
-        transform:scale(1.1);
-        opacity:.8;
-    }
+    0%,100%{ transform:scale(.9); opacity:.3; }
+    50%{ transform:scale(1.1); opacity:.8; }
 }
-
 @keyframes parpadear{
-
-    0%,100%{
-        opacity:.35;
-    }
-
-    50%{
-        opacity:1;
-    }
+    0%,100%{ opacity:.35; }
+    50%{ opacity:1; }
 }
-
 @keyframes latido{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.15);
-    }
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.15); }
 }
-
 @keyframes subir{
-
-    from{
-        opacity:1;
-        transform:
-            translateY(0)
-            rotate(0deg);
-    }
-
-    to{
-        opacity:0;
-        transform:
-            translateY(-110vh)
-            rotate(360deg);
-    }
+    from{ opacity:1; transform:translateY(0) rotate(0deg); }
+    to{ opacity:0; transform:translateY(-110vh) rotate(360deg); }
 }
-
 @keyframes caballeroEntrada{
-
-    from{
-        opacity:0;
-        transform:translateX(60px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
+    from{ opacity:0; transform:translateX(60px); }
+    to{ opacity:1; transform:translateX(0); }
 }
-
+@keyframes personajeFlota{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-4px); }
+}
+@keyframes coronaBrillo{
+    0%,100%{ filter:drop-shadow(0 0 8px rgba(255,215,0,.6)); }
+    50%{ filter:drop-shadow(0 0 18px rgba(255,215,0,.9)); }
+}
+@keyframes banderaOndea{
+    0%,100%{ transform:rotate(-3deg); }
+    50%{ transform:rotate(3deg); }
+}
+@keyframes aparecerDialogo{
+    from{ opacity:0; transform:translateX(-50%) translateY(20px); }
+    to{ opacity:1; transform:translateX(-50%) translateY(0); }
+}
 
 /* =========================================================
    RESPONSIVE IPHONE
 ========================================================= */
-
 @media(max-width:700px){
-
-    .luna{
-        width:60px;
-        height:60px;
+    .luna{ width:60px; height:60px; }
+    .hud-box{ font-size:11px; padding:8px 10px; }
+    .progreso{ width:100px; }
+    #textoDialogo{ font-size:17px; line-height:1.55; }
+    #dialogo{ width:94%; min-height:145px; padding:18px 19px; border-radius:18px; }
+    .dialogo-nombre{ font-size:14px; }
+    .continuar{ font-size:11px; }
+    #controles{
+        grid-template-columns:repeat(3,52px);
+        grid-template-rows:repeat(2,52px);
+        gap:6px;
     }
-
-    .hud-box{
-        font-size:11px;
-        padding:8px 10px;
-    }
-
-    .progreso{
-        width:100px;
-    }
-
-    #textoDialogo{
-        font-size:17px;
-        line-height:1.55;
-    }
-
-    #dialogo{
-        width:94%;
-        min-height:145px;
-        padding:18px 19px;
-        border-radius:18px;
-    }
-
-    .dialogo-nombre{
-        font-size:14px;
-    }
-
-    .continuar{
-        font-size:11px;
-    }
-
+    .control{ width:52px; height:52px; font-size:19px; }
 }
-
 </style>
 </head>
-
-
 <body>
-
 
 <!-- =====================================================
      INICIO
 ===================================================== -->
-
 <section id="inicio">
-
     <div class="inicio-contenido">
-
-        <div class="corona-grande">
-            👑
-        </div>
-
+        <div class="corona-grande">👑</div>
         <h1 class="titulo">
             La aventura<br>
             de nuestra historia
         </h1>
-
         <p class="subtitulo">
-
             Una pequeña aventura creada
             para la princesa que hizo
             mi mundo un poquito más bonito.
-
             <br><br>
-
             ❤️ Feliz primer mes ❤️
-
         </p>
-
-        <button
-            class="btn-principal"
-            onclick="comenzarJuego()">
-
+        <button class="btn-principal" onclick="comenzarJuego()">
             ✨ Comenzar aventura
-
         </button>
-
     </div>
-
 </section>
-
-
 
 <!-- =====================================================
      JUEGO
 ===================================================== -->
-
 <section id="juego">
-
-
     <!-- CIELO -->
-
     <div class="cielo">
-
         <div class="estrellas"></div>
-
         <div class="luna"></div>
-
     </div>
-
-
 
     <!-- HUD -->
-
     <div id="hud">
-
         <div class="hud-box">
-
             👑 Princesa
-
             <div class="progreso">
-
                 <div id="barra"></div>
-
             </div>
-
         </div>
-
-
         <div class="hud-box">
-
-            💕
-            <span id="contador">0</span>/4
-
+            💕 <span id="contador">0</span>/4
         </div>
-
     </div>
-
-
 
     <!-- OBJETIVO -->
-
     <div id="objetivo">
-
         🌸 Encuentra los recuerdos de nuestra historia
-
     </div>
 
-
-
     <!-- MAPA -->
-
     <div id="mapa">
-
-
         <!-- CAMINOS -->
-
         <div class="camino camino1"></div>
-
         <div class="camino camino2"></div>
 
-
-
         <!-- ÁRBOLES -->
-
         <div class="arbol" style="left:100px;top:180px">🌲</div>
         <div class="arbol" style="left:350px;top:300px">🌳</div>
         <div class="arbol" style="left:600px;top:150px">🌲</div>
@@ -1557,10 +930,7 @@ button{
         <div class="arbol" style="left:1500px;top:1030px">🌲</div>
         <div class="arbol" style="left:1900px;top:1100px">🌳</div>
 
-
-
         <!-- FLORES -->
-
         <div class="flor" style="left:230px;top:650px">🌻</div>
         <div class="flor" style="left:500px;top:520px">🌷</div>
         <div class="flor" style="left:760px;top:720px">🌼</div>
@@ -1569,1149 +939,510 @@ button{
         <div class="flor" style="left:1550px;top:650px">🌼</div>
         <div class="flor" style="left:1800px;top:500px">🌻</div>
 
-
-
         <!-- RECUERDO 1 -->
-
-        <div
-            class="objeto"
-            id="recuerdo1"
-            style="left:430px;top:730px"
-            onclick="mostrarRecuerdo(1)">
-
+        <div class="objeto" id="recuerdo1" style="left:430px;top:730px" onclick="mostrarRecuerdo(1)">
             🌸
-
-            <span class="señal">
-                Acércate 💕
-            </span>
-
+            <span class="señal">Acércate 💕</span>
         </div>
-
-
 
         <!-- RECUERDO 2 -->
-
-        <div
-            class="objeto"
-            id="recuerdo2"
-            style="left:850px;top:520px"
-            onclick="mostrarRecuerdo(2)">
-
+        <div class="objeto" id="recuerdo2" style="left:850px;top:520px" onclick="mostrarRecuerdo(2)">
             ⭐
-
-            <span class="señal">
-                Un deseo
-            </span>
-
+            <span class="señal">Un deseo</span>
         </div>
-
-
 
         <!-- RECUERDO 3 -->
-
-        <div
-            class="objeto"
-            id="recuerdo3"
-            style="left:1250px;top:720px"
-            onclick="mostrarRecuerdo(3)">
-
+        <div class="objeto" id="recuerdo3" style="left:1250px;top:720px" onclick="mostrarRecuerdo(3)">
             💖
-
-            <span class="señal">
-                Para ti
-            </span>
-
+            <span class="señal">Para ti</span>
         </div>
-
-
 
         <!-- RECUERDO 4 -->
-
-        <div
-            class="objeto"
-            id="recuerdo4"
-            style="left:1650px;top:450px"
-            onclick="mostrarRecuerdo(4)">
-
+        <div class="objeto" id="recuerdo4" style="left:1650px;top:450px" onclick="mostrarRecuerdo(4)">
             💌
-
-            <span class="señal">
-                Una carta
-            </span>
-
+            <span class="señal">Una carta</span>
         </div>
-
-
 
         <!-- CASTILLO -->
-
         <div id="castillo">
-
-            <div class="castillo-texto">
-                🏰 CASTILLO DEL AMOR
-            </div>
-
+            <div class="castillo-texto">🏰 CASTILLO DEL AMOR</div>
             <div class="torre t1"></div>
-
             <div class="torre t2"></div>
-
             <div class="muro"></div>
-
             <div class="puerta"></div>
-
-            <div class="bandera">
-                🚩
-            </div>
-
+            <div class="bandera">🚩</div>
         </div>
-
-
 
         <!-- CABALLERO -->
-
         <div id="caballero">
-
             <div class="helm"></div>
-
             <div class="cabeza-c"></div>
-
             <div class="cuerpo-c"></div>
-
             <div class="escudo"></div>
-
-            <div class="espada">
-                ⚔️
-            </div>
-
+            <div class="espada">⚔️</div>
         </div>
-
-
 
         <!-- PRINCESA -->
-
         <div id="princesa">
-
             <div class="personaje">
-
                 <div class="cabello"></div>
-
                 <div class="cabeza"></div>
-
-                <div class="corona-princesa">
-                    👑
-                </div>
-
+                <div class="corona-princesa">👑</div>
                 <div class="cuerpo-princesa"></div>
-
-                <div class="pies">
-                    👠
-                </div>
-
+                <div class="pies">👠</div>
             </div>
-
         </div>
-
     </div>
 
-
-
-    <!-- =================================================
-         DIÁLOGO
-    ================================================== -->
-
+    <!-- DIÁLOGO -->
     <div id="dialogo">
-
-        <div
-            class="dialogo-nombre"
-            id="nombreDialogo">
-        </div>
-
+        <div class="dialogo-nombre" id="nombreDialogo"></div>
         <div id="textoDialogo"></div>
-
-        <div class="continuar">
-            Toca el mensaje para continuar ✨
-        </div>
-
+        <div class="continuar">Toca el mensaje para continuar ✨</div>
     </div>
 
-
-
-    <!-- =================================================
-         CONTROLES
-    ================================================== -->
-
+    <!-- CONTROLES -->
     <div id="controles">
-
-        <button
-            class="control up"
-            data-dir="up">
-            ▲
-        </button>
-
-        <button
-            class="control left"
-            data-dir="left">
-            ◀
-        </button>
-
-        <button
-            class="control down"
-            data-dir="down">
-            ▼
-        </button>
-
-        <button
-            class="control right"
-            data-dir="right">
-            ▶
-        </button>
-
+        <button class="control up" data-dir="up">▲</button>
+        <button class="control left" data-dir="left">◀</button>
+        <button class="control down" data-dir="down">▼</button>
+        <button class="control right" data-dir="right">▶</button>
     </div>
-
 </section>
-
-
 
 <!-- =====================================================
      FINAL
 ===================================================== -->
-
 <section id="final">
-
     <div class="final-contenido">
-
-        <div class="final-corazon">
-            ❤️
-        </div>
-
-
-        <h2>
-            Fin del primer nivel...
-        </h2>
-
-
+        <div class="final-corazon">❤️</div>
+        <h2>Fin del primer nivel...</h2>
         <p class="carta">
-
             Mi niña Antara... 🌹
-
             <br><br>
-
             Hace un mes comenzó nuestra historia,
             y aunque pueda parecer poquito tiempo,
             para mí ha sido suficiente para darme
             cuenta de lo especial que eres.
-
             <br><br>
-
             Gracias por cada conversación,
             cada sonrisa, cada momento,
             cada detalle y por permitirme compartir
             contigo esta pequeña aventura.
-
             <br><br>
-
             Si nuestra historia fuera un videojuego,
             no quiero que esto sea el final.
-
             <br><br>
-
             Quiero seguir desbloqueando recuerdos,
             superar contigo los niveles difíciles,
             celebrar los buenos momentos
             y descubrir juntos todo lo que viene.
-
             <br><br>
-
             No quiero ser solamente el caballero
             que apareció al final de esta aventura.
-
             <br>
-
             <strong>
                 Quiero ser el caballero que camine
                 contigo durante todas las aventuras
                 que todavía nos faltan.
             </strong>
-
             <br><br>
-
             Porque esto no es el final...
-
             <br><br>
-
-            <strong>
-                ❤️ Es apenas el comienzo de nuestra historia. ❤️
-            </strong>
-
+            <strong>❤️ Es apenas el comienzo de nuestra historia. ❤️</strong>
         </p>
-
-
         <div class="firma">
-
             Con todo mi amor,
-
             <br>
-
             ⚔️ Tu caballero ❤️
-
         </div>
-
-
         <br>
-
-
-        <button
-            class="btn-principal"
-            onclick="crearCorazones()">
-
+        <button class="btn-principal" onclick="mostrarSorpresa()">
             💕 Una última sorpresa
-
         </button>
-
     </div>
-
 </section>
 
-
+<!-- =====================================================
+     SORPRESA FINAL (NUEVA)
+===================================================== -->
+<section id="sorpresa">
+    <div class="sorpresa-contenido">
+        <div class="sorpresa-emoji">🥰</div>
+        <h2 class="sorpresa-titulo">Toma mi mano...</h2>
+        <p class="sorpresa-texto">
+            <strong>Antara</strong>, mi princesa hermosa...
+            <br><br>
+            Si pudiera elegir un lugar en todo el mundo,
+            elegiría siempre a tu lado.
+            <br><br>
+            Quiero tomar tu mano y no soltarte,
+            caminar juntos sin importar el destino,
+            porque contigo hasta el camino más largo
+            se hace corto.
+            <br><br>
+            <strong>💕 Toma mi mano, princesa...</strong>
+            <br><br>
+            Y escribamos juntos el resto de nuestra historia. ❤️
+        </p>
+        <button class="btn-cerrar" onclick="cerrarSorpresa()">
+            💖 Siempre juntos 💖
+        </button>
+    </div>
+</section>
 
 <script>
-
 /* =========================================================
    VARIABLES
 ========================================================= */
-
-const mapa =
-    document.getElementById("mapa");
-
-const princesa =
-    document.getElementById("princesa");
-
-const dialogo =
-    document.getElementById("dialogo");
-
-const textoDialogo =
-    document.getElementById("textoDialogo");
-
-const nombreDialogo =
-    document.getElementById("nombreDialogo");
-
-const contador =
-    document.getElementById("contador");
-
-const barra =
-    document.getElementById("barra");
-
-const objetivo =
-    document.getElementById("objetivo");
-
+const mapa = document.getElementById("mapa");
+const princesa = document.getElementById("princesa");
+const dialogo = document.getElementById("dialogo");
+const textoDialogo = document.getElementById("textoDialogo");
+const nombreDialogo = document.getElementById("nombreDialogo");
+const contador = document.getElementById("contador");
+const barra = document.getElementById("barra");
+const objetivo = document.getElementById("objetivo");
 
 let x = 250;
-
 let y = 800;
-
 let velocidad = 7;
-
 let recuerdos = 0;
-
 let juegoActivo = false;
-
 
 /* =========================================================
    CONTROL DEL TEXTO
-   ESTO EVITA LAS LETRAS MEZCLADAS
 ========================================================= */
-
 let escrituraTimer = null;
-
 let textoActual = "";
-
 let escribiendo = false;
 
-
 /* =========================================================
-   MENSAJES
+   MENSAJES (MEJORADOS)
 ========================================================= */
-
 const mensajes = {
-
-    1:{
-        nombre:"🌸 Primer recuerdo",
-
-        texto:
-        "Hace un mes comenzó una historia que no sabía cuánto iba a significar para mí. Desde que llegaste, mis días tienen un poquito más de magia."
+    1: {
+        nombre: "🌸 Primer recuerdo",
+        texto: "Hace un mes comenzó una historia que no sabía cuánto iba a significar para mí. Desde que llegaste, mis días tienen un poquito más de magia. ✨"
     },
-
-    2:{
-        nombre:"⭐ Un deseo",
-
-        texto:
-        "Si pudiera pedir un deseo esta noche, pediría que podamos seguir escribiendo juntos muchísimas páginas de esta historia."
+    2: {
+        nombre: "⭐ Un deseo",
+        texto: "Si pudiera pedir un deseo esta noche, pediría que podamos seguir escribiendo juntos muchísimas páginas de esta historia. Porque cada momento contigo es un regalo. 🌙"
     },
-
-    3:{
-        nombre:"💖 Algo que quiero que sepas",
-
-        texto:
-        "Eres una mujer increíble. Gracias por cada sonrisa, cada conversación, cada momento y por dejarme compartir contigo este primer mes."
+    3: {
+        nombre: "💖 Algo que quiero que sepas",
+        texto: "Eres una mujer increíble. Gracias por cada sonrisa, cada conversación, cada momento y por dejarme compartir contigo este primer mes. Eres mi persona favorita. 🥰"
     },
-
-    4:{
-        nombre:"💌 Una pequeña carta",
-
-        texto:
-        "Tal vez este sea solamente nuestro primer mes, pero quiero que sea el primero de muchos. Quiero seguir conociéndote, cuidándote, haciéndote sonreír y construyendo recuerdos contigo."
+    4: {
+        nombre: "💌 Una pequeña carta",
+        texto: "Tal vez este sea solamente nuestro primer mes, pero quiero que sea el primero de muchos. Quiero seguir conociéndote, cuidándote, haciéndote sonreír y construyendo recuerdos contigo. Te quiero mucho, Antara. ❤️"
     }
-
 };
-
 
 /* =========================================================
    COMENZAR
 ========================================================= */
-
 function comenzarJuego(){
-
-    document.getElementById("inicio")
-        .style.display="none";
-
-    document.getElementById("juego")
-        .style.display="block";
-
-    juegoActivo=true;
-
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("juego").style.display = "block";
+    juegoActivo = true;
     posicionar();
-
     mostrarDialogo(
-
         "👑 Bienvenida, princesa",
-
         "Tu aventura comienza aquí... Camina por el reino y encuentra los recuerdos que preparé para ti. Cuando los encuentres todos, podrás llegar al castillo. ❤️"
-
     );
-
 }
-
 
 /* =========================================================
    DIÁLOGO
 ========================================================= */
-
-function mostrarDialogo(nombre,texto){
-
-    /* Cancelamos completamente el texto anterior */
-
+function mostrarDialogo(nombre, texto){
     if(escrituraTimer){
-
         clearTimeout(escrituraTimer);
-
-        escrituraTimer=null;
+        escrituraTimer = null;
     }
-
-
-    textoActual=texto;
-
-    escribiendo=true;
-
-    nombreDialogo.textContent=nombre;
-
-    textoDialogo.textContent="";
-
-    dialogo.style.display="block";
-
-
-    let posicion=0;
-
-
+    textoActual = texto;
+    escribiendo = true;
+    nombreDialogo.textContent = nombre;
+    textoDialogo.textContent = "";
+    dialogo.style.display = "block";
+    
+    let posicion = 0;
     function escribir(){
-
-        if(!escribiendo){
-            return;
-        }
-
-
+        if(!escribiendo) return;
         if(posicion < textoActual.length){
-
-            textoDialogo.textContent +=
-                textoActual.charAt(posicion);
-
+            textoDialogo.textContent += textoActual.charAt(posicion);
             posicion++;
-
-            escrituraTimer =
-                setTimeout(escribir,24);
-
+            escrituraTimer = setTimeout(escribir, 24);
+        } else {
+            escribiendo = false;
+            escrituraTimer = null;
         }
-
-        else{
-
-            escribiendo=false;
-
-            escrituraTimer=null;
-
-        }
-
     }
-
-
     escribir();
-
 }
-
 
 /* =========================================================
    TOCAR DIÁLOGO
 ========================================================= */
-
-dialogo.addEventListener(
-    "click",
-    function(){
-
-        /*
-         Si todavía está escribiendo,
-         el primer toque completa el texto.
-        */
-
-        if(escribiendo){
-
-            if(escrituraTimer){
-
-                clearTimeout(escrituraTimer);
-
-                escrituraTimer=null;
-            }
-
-            textoDialogo.textContent=
-                textoActual;
-
-            escribiendo=false;
-
-            return;
+dialogo.addEventListener("click", function(){
+    if(escribiendo){
+        if(escrituraTimer){
+            clearTimeout(escrituraTimer);
+            escrituraTimer = null;
         }
-
-
-        /*
-         Segundo toque:
-         cerrar diálogo.
-        */
-
-        dialogo.style.display="none";
-
+        textoDialogo.textContent = textoActual;
+        escribiendo = false;
+        return;
     }
-);
-
+    dialogo.style.display = "none";
+});
 
 /* =========================================================
    TECLADO
 ========================================================= */
-
-const teclas={};
-
-
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        teclas[e.key.toLowerCase()]=true;
-
-        if([
-            "arrowup",
-            "arrowdown",
-            "arrowleft",
-            "arrowright",
-            " "
-        ].includes(e.key.toLowerCase())){
-
-            e.preventDefault();
-
-        }
-
-    },
-    {passive:false}
-);
-
-
-document.addEventListener(
-    "keyup",
-    function(e){
-
-        teclas[e.key.toLowerCase()]=false;
-
+const teclas = {};
+document.addEventListener("keydown", function(e){
+    teclas[e.key.toLowerCase()] = true;
+    if(["arrowup","arrowdown","arrowleft","arrowright"," "].includes(e.key.toLowerCase())){
+        e.preventDefault();
     }
-);
+}, {passive:false});
 
+document.addEventListener("keyup", function(e){
+    teclas[e.key.toLowerCase()] = false;
+});
 
 /* =========================================================
-   CONTROLES IPHONE
+   CONTROLES IPHONE (CORREGIDO)
 ========================================================= */
-
-const botones =
-    document.querySelectorAll(".control");
-
-
-botones.forEach(
-    boton=>{
-
-        const direccion =
-            boton.dataset.dir;
-
-
-        function comenzarMovimiento(e){
-
-            e.preventDefault();
-
-            teclas["touch_"+direccion]=true;
-
-        }
-
-
-        function terminarMovimiento(e){
-
-            e.preventDefault();
-
-            teclas["touch_"+direccion]=false;
-
-        }
-
-
-        boton.addEventListener(
-            "touchstart",
-            comenzarMovimiento,
-            {passive:false}
-        );
-
-
-        boton.addEventListener(
-            "touchend",
-            terminarMovimiento,
-            {passive:false}
-        );
-
-
-        boton.addEventListener(
-            "touchcancel",
-            terminarMovimiento,
-            {passive:false}
-        );
-
-
-        /*
-         También funciona si se prueba
-         desde navegador de escritorio.
-        */
-
-        boton.addEventListener(
-            "mousedown",
-            ()=>{
-                teclas["touch_"+direccion]=true;
-            }
-        );
-
-
-        boton.addEventListener(
-            "mouseup",
-            ()=>{
-                teclas["touch_"+direccion]=false;
-            }
-        );
-
+const botones = document.querySelectorAll(".control");
+botones.forEach(boton => {
+    const direccion = boton.dataset.dir;
+    
+    function comenzarMovimiento(e){
+        e.preventDefault();
+        teclas["touch_" + direccion] = true;
     }
-);
-
+    
+    function terminarMovimiento(e){
+        e.preventDefault();
+        teclas["touch_" + direccion] = false;
+    }
+    
+    boton.addEventListener("touchstart", comenzarMovimiento, {passive:false});
+    boton.addEventListener("touchend", terminarMovimiento, {passive:false});
+    boton.addEventListener("touchcancel", terminarMovimiento, {passive:false});
+    boton.addEventListener("mousedown", () => { teclas["touch_" + direccion] = true; });
+    boton.addEventListener("mouseup", () => { teclas["touch_" + direccion] = false; });
+    boton.addEventListener("mouseleave", () => { teclas["touch_" + direccion] = false; });
+});
 
 /* =========================================================
    MOVIMIENTO
 ========================================================= */
-
 function actualizarMovimiento(){
-
     if(!juegoActivo){
-
-        requestAnimationFrame(
-            actualizarMovimiento
-        );
-
+        requestAnimationFrame(actualizarMovimiento);
         return;
     }
-
-
-    let dx=0;
-
-    let dy=0;
-
-
-    if(
-        teclas["arrowup"] ||
-        teclas["w"] ||
-        teclas["touch_up"]
-    ){
-
-        dy-=1;
-
+    
+    let dx = 0;
+    let dy = 0;
+    
+    if(teclas["arrowup"] || teclas["w"] || teclas["touch_up"]) dy -= 1;
+    if(teclas["arrowdown"] || teclas["s"] || teclas["touch_down"]) dy += 1;
+    if(teclas["arrowleft"] || teclas["a"] || teclas["touch_left"]) dx -= 1;
+    if(teclas["arrowright"] || teclas["d"] || teclas["touch_right"]) dx += 1;
+    
+    if(dx !== 0 && dy !== 0){
+        dx *= .707;
+        dy *= .707;
     }
-
-
-    if(
-        teclas["arrowdown"] ||
-        teclas["s"] ||
-        teclas["touch_down"]
-    ){
-
-        dy+=1;
-
-    }
-
-
-    if(
-        teclas["arrowleft"] ||
-        teclas["a"] ||
-        teclas["touch_left"]
-    ){
-
-        dx-=1;
-
-    }
-
-
-    if(
-        teclas["arrowright"] ||
-        teclas["d"] ||
-        teclas["touch_right"]
-    ){
-
-        dx+=1;
-
-    }
-
-
-    /*
-     Movimiento diagonal más suave
-    */
-
-    if(dx!==0 && dy!==0){
-
-        dx*=.707;
-
-        dy*=.707;
-
-    }
-
-
-    if(dx!==0 || dy!==0){
-
-        x += dx*velocidad;
-
-        y += dy*velocidad;
-
+    
+    if(dx !== 0 || dy !== 0){
+        x += dx * velocidad;
+        y += dy * velocidad;
         limitarPosicion();
-
         posicionar();
-
         revisarRecuerdos();
-
         revisarCastillo();
-
     }
-
-
-    requestAnimationFrame(
-        actualizarMovimiento
-    );
-
+    
+    requestAnimationFrame(actualizarMovimiento);
 }
-
 
 /* =========================================================
    LIMITAR MAPA
 ========================================================= */
-
 function limitarPosicion(){
-
-    x=Math.max(
-        70,
-        Math.min(2700,x)
-    );
-
-    y=Math.max(
-        100,
-        Math.min(1500,y)
-    );
-
+    x = Math.max(70, Math.min(2700, x));
+    y = Math.max(100, Math.min(1500, y));
 }
-
 
 /* =========================================================
    CÁMARA
 ========================================================= */
-
 function posicionar(){
-
-    princesa.style.left=x+"px";
-
-    princesa.style.top=y+"px";
-
-
-    const ancho =
-        window.innerWidth;
-
-    const alto =
-        window.innerHeight;
-
-
-    let camX =
-        x - ancho/2;
-
-    let camY =
-        y - alto/2;
-
-
-    camX=Math.max(
-        0,
-        Math.min(
-            2800-ancho,
-            camX
-        )
-    );
-
-
-    camY=Math.max(
-        0,
-        Math.min(
-            1600-alto,
-            camY
-        )
-    );
-
-
-    mapa.style.transform =
-        `translate3d(${-camX}px,${-camY}px,0)`;
-
+    princesa.style.left = x + "px";
+    princesa.style.top = y + "px";
+    
+    const ancho = window.innerWidth;
+    const alto = window.innerHeight;
+    
+    let camX = x - ancho/2;
+    let camY = y - alto/2;
+    
+    camX = Math.max(0, Math.min(2800 - ancho, camX));
+    camY = Math.max(0, Math.min(1600 - alto, camY));
+    
+    mapa.style.transform = `translate3d(${-camX}px,${-camY}px,0)`;
 }
-
 
 /* =========================================================
    RECUERDOS
 ========================================================= */
-
 function revisarRecuerdos(){
-
-    for(let i=1;i<=4;i++){
-
-        const elemento =
-            document.getElementById(
-                "recuerdo"+i
-            );
-
-
-        if(
-            elemento.dataset.visto==="true"
-        ){
-
-            continue;
-
-        }
-
-
-        const ox =
-            parseInt(
-                elemento.style.left
-            );
-
-
-        const oy =
-            parseInt(
-                elemento.style.top
-            );
-
-
-        const distancia =
-            Math.hypot(
-                x-ox,
-                y-oy
-            );
-
-
-        if(distancia<95){
-
+    for(let i = 1; i <= 4; i++){
+        const elemento = document.getElementById("recuerdo" + i);
+        if(elemento.dataset.visto === "true") continue;
+        
+        const ox = parseInt(elemento.style.left);
+        const oy = parseInt(elemento.style.top);
+        const distancia = Math.hypot(x - ox, y - oy);
+        
+        if(distancia < 95){
             mostrarRecuerdo(i);
-
         }
-
     }
-
 }
-
 
 /* =========================================================
    MOSTRAR RECUERDO
 ========================================================= */
-
 function mostrarRecuerdo(numero){
-
-    const elemento =
-        document.getElementById(
-            "recuerdo"+numero
-        );
-
-
-    if(
-        elemento.dataset.visto==="true"
-    ){
-
-        return;
-
-    }
-
-
-    elemento.dataset.visto="true";
-
+    const elemento = document.getElementById("recuerdo" + numero);
+    if(elemento.dataset.visto === "true") return;
+    
+    elemento.dataset.visto = "true";
     elemento.classList.add("visto");
-
-
     recuerdos++;
-
-
-    contador.textContent =
-        recuerdos;
-
-
-    barra.style.width =
-        (recuerdos/4*100)+"%";
-
-
-    mostrarDialogo(
-
-        mensajes[numero].nombre,
-
-        mensajes[numero].texto
-
-    );
-
-
-    if(recuerdos===1){
-
-        objetivo.textContent=
-            "⭐ Sigue explorando...";
-
+    contador.textContent = recuerdos;
+    barra.style.width = (recuerdos/4*100) + "%";
+    
+    mostrarDialogo(mensajes[numero].nombre, mensajes[numero].texto);
+    
+    if(recuerdos === 1){
+        objetivo.textContent = "⭐ Sigue explorando...";
     }
-
-
-    if(recuerdos===2){
-
-        objetivo.textContent=
-            "💖 Ya casi conoces toda la historia...";
-
+    if(recuerdos === 2){
+        objetivo.textContent = "💖 Ya casi conoces toda la historia...";
     }
-
-
-    if(recuerdos===3){
-
-        objetivo.textContent=
-            "💌 Solo queda un recuerdo...";
-
+    if(recuerdos === 3){
+        objetivo.textContent = "💌 Solo queda un recuerdo...";
     }
-
-
-    if(recuerdos===4){
-
-        objetivo.textContent=
-            "🏰 Todos los recuerdos encontrados. El castillo te espera.";
-
-        document.getElementById("caballero")
-            .style.display="block";
-
+    if(recuerdos === 4){
+        objetivo.textContent = "🏰 Todos los recuerdos encontrados. El castillo te espera.";
+        document.getElementById("caballero").style.display = "block";
     }
-
 }
-
 
 /* =========================================================
    CASTILLO
 ========================================================= */
-
-let finalIniciado=false;
-
+let finalIniciado = false;
 
 function revisarCastillo(){
-
-    if(
-        recuerdos<4 ||
-        finalIniciado
-    ){
-
-        return;
-
-    }
-
-
-    const distancia =
-        Math.hypot(
-            x-2390,
-            y-670
-        );
-
-
-    if(distancia<170){
-
-        finalIniciado=true;
-
+    if(recuerdos < 4 || finalIniciado) return;
+    
+    const distancia = Math.hypot(x - 2390, y - 670);
+    if(distancia < 170){
+        finalIniciado = true;
         iniciarCinematica();
-
     }
-
 }
-
 
 /* =========================================================
    CINEMÁTICA FINAL
 ========================================================= */
-
 function iniciarCinematica(){
-
-    juegoActivo=false;
-
-
+    juegoActivo = false;
+    
     mostrarDialogo(
-
         "⚔️ El caballero",
-
         "Por fin llegaste, princesa... He estado esperando este momento porque tengo algo que quiero decirte."
-
     );
-
-
-    setTimeout(()=>{
-
+    
+    setTimeout(() => {
         if(escribiendo){
-
             if(escrituraTimer){
-
-                clearTimeout(
-                    escrituraTimer
-                );
-
-                escrituraTimer=null;
+                clearTimeout(escrituraTimer);
+                escrituraTimer = null;
             }
-
-            textoDialogo.textContent=
-                textoActual;
-
-            escribiendo=false;
-
+            textoDialogo.textContent = textoActual;
+            escribiendo = false;
         }
-
-    },3000);
-
-
-    setTimeout(()=>{
-
-        dialogo.style.display="none";
-
-    },5500);
-
-
-    setTimeout(()=>{
-
-        document.getElementById("juego")
-            .style.display="none";
-
-        document.getElementById("final")
-            .style.display="flex";
-
+    }, 3000);
+    
+    setTimeout(() => {
+        dialogo.style.display = "none";
+    }, 5500);
+    
+    setTimeout(() => {
+        document.getElementById("juego").style.display = "none";
+        document.getElementById("final").style.display = "flex";
         crearCorazones();
-
-    },6500);
-
+    }, 6500);
 }
-
 
 /* =========================================================
-   CORAZONES
+   MOSTRAR SORPRESA (NUEVA FUNCIÓN)
 ========================================================= */
-
-function crearCorazones(){
-
-    const simbolos=[
-        "❤️",
-        "💕",
-        "💖",
-        "💗",
-        "💘",
-        "🌹",
-        "✨"
-    ];
-
-
-    for(let i=0;i<55;i++){
-
-        setTimeout(()=>{
-
-            const corazon =
-                document.createElement("div");
-
-
-            corazon.className=
-                "corazon-final";
-
-
-            corazon.textContent=
-                simbolos[
-                    Math.floor(
-                        Math.random()*
-                        simbolos.length
-                    )
-                ];
-
-
-            corazon.style.left =
-                Math.random()*100+"vw";
-
-
-            corazon.style.bottom =
-                "-40px";
-
-
-            corazon.style.animationDuration =
-                (3+
-                Math.random()*4)+"s";
-
-
-            document.body.appendChild(
-                corazon
-            );
-
-
-            setTimeout(()=>{
-
-                corazon.remove();
-
-            },7500);
-
-
-        },i*90);
-
-    }
-
+function mostrarSorpresa(){
+    document.getElementById("sorpresa").style.display = "flex";
+    crearCorazones();
 }
 
+/* =========================================================
+   CERRAR SORPRESA (NUEVA FUNCIÓN)
+========================================================= */
+function cerrarSorpresa(){
+    document.getElementById("sorpresa").style.display = "none";
+}
+
+/* =========================================================
+   CORAZONES (CORREGIDO - z-index alto)
+========================================================= */
+function crearCorazones(){
+    const simbolos = ["❤️","💕","💖","💗","💘","🌹","✨","🥰","💝"];
+    
+    for(let i = 0; i < 55; i++){
+        setTimeout(() => {
+            const corazon = document.createElement("div");
+            corazon.className = "corazon-final";
+            corazon.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
+            corazon.style.left = Math.random() * 100 + "vw";
+            corazon.style.bottom = "-40px";
+            corazon.style.zIndex = "10002"; // Asegurar que se vea sobre todo
+            corazon.style.animationDuration = (3 + Math.random() * 4) + "s";
+            document.body.appendChild(corazon);
+            
+            setTimeout(() => {
+                corazon.remove();
+            }, 7500);
+        }, i * 90);
+    }
+}
 
 /* =========================================================
    REDIMENSIONAR
 ========================================================= */
-
-window.addEventListener(
-    "resize",
-    posicionar
-);
-
+window.addEventListener("resize", posicionar);
 
 /* =========================================================
    INICIAR LOOP
 ========================================================= */
-
-requestAnimationFrame(
-    actualizarMovimiento
-);
-
+requestAnimationFrame(actualizarMovimiento);
 </script>
-
 </body>
 </html>
