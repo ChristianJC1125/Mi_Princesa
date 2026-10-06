@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mi Niña 💖</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ff6a88, #c471ed, #f64f59);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow-x: hidden;
+    color: #fff;
+    text-align: center;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Corazones flotantes */
+  .corazones {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .corazones span {
+    position: absolute;
+    bottom: -50px;
+    color: #ff3366;
+    font-size: 24px;
+    animation: flotar 8s linear infinite;
+    opacity: 0.8;
+    text-shadow: 0 0 10px #ff6699;
+  }
+  @keyframes flotar {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+
+  .contenido {
+    position: relative;
+    z-index: 2;
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #ff0066, 0 0 40px #ff3399;
+    animation: latido 1.5s infinite;
+  }
+  @keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+
+  .subtitulo {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px #fff;
+    animation: aparecer 3s ease;
+  }
+
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .carta {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    padding: 35px 25px;
+    margin: 25px 0;
+    box-shadow: 0 10px 40px rgba(255, 0, 102, 0.4);
+    animation: subir 1.2s ease;
+  }
+
+  @keyframes subir {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .carta p {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    margin-bottom: 15px;
+  }
+
+  .frase-destacada {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 15px #ff0066, 0 0 30px #ff3399;
+    margin: 30px 0;
+    animation: brillo 2.5s infinite alternate;
+  }
+  @keyframes brillo {
+    from { text-shadow: 0 0 15px #ff0066, 0 0 30px #ff3399; }
+    to { text-shadow: 0 0 30px #fff, 0 0 60px #ff66cc; }
+  }
+
+  .boton-amor {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #ff0066, #ff3399, #c471ed);
+    background-size: 200% 200%;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff3399;
+    animation: gradientBG 3s ease infinite;
+    transition: transform 0.3s;
+  }
+  .boton-amor:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 45px #fff;
+  }
+
+  .mensaje-final {
+    margin-top: 40px;
+    font-size: 2rem;
+    font-weight: bold;
+    animation: latido 1.5s infinite;
+    text-shadow: 0 0 20px #ff0066;
+  }
+
+  .emojis {
+    font-size: 2rem;
+    margin: 20px 0;
+    letter-spacing: 10px;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 2.2rem; }
+    .frase-destacada { font-size: 1.3rem; }
+    .carta p { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Corazones flotantes -->
+<div class="corazones" id="corazones"></div>
+
+<div class="contenido">
+
+  <h1>💖 Para Mi Niña 💖</h1>
+  <p class="subtitulo">Un pequeño universo hecho solo para ti ✨</p>
+
+  <div class="carta">
+    <p>Mi niña hermosa, hoy quiero recordarte algo que mi corazón grita cada día:</p>
+    <p class="frase-destacada">"Eres esa luz que llegó a iluminar toda mi oscuridad." 🌟</p>
+    <p>Antes de ti, mis días eran grises y sin rumbo. Llegaste tú, con tu sonrisa, con tu forma de mirarme, y todo cambió. Ahora hasta el silencio suena bonito cuando estás cerca.</p>
+  </div>
+
+  <div class="carta">
+    <p>💌 <strong>Te quiero demasiado.</strong></p>
+    <p>No es una frase cualquiera, es la verdad más grande que tengo guardada en el pecho. Te quiero en las mañanas cuando despierto pensando en ti, te quiero en las tardes cuando quisiera abrazarte, y te quiero en las noches cuando cierro los ojos y apareces en mis sueños.</p>
+  </div>
+
+  <div class="carta">
+    <p>🌹 Eres mi persona favorita, mi casualidad más bonita, mi destino disfrazado de coincidencia.</p>
+    <p>Contigo aprendí que el amor no se busca, se encuentra... y yo te encontré a ti, mi niña preciosa.</p>
+  </div>
+
+  <div class="emojis">💕 💖 💘 💝 💞</div>
+
+  <p class="frase-destacada">
+    "Si volviera a nacer, te volvería a elegir mil veces más." 💫
+  </p>
+
+  <div class="carta">
+    <p>Gracias por existir, por quedarte, por quererme con mis defectos y mis locuras.</p>
+    <p>Prometo cuidarte, respetarte y amarte cada día un poquito más que el anterior.</p>
+    <p style="font-size: 1.4rem; font-weight: bold; margin-top: 20px;">Te amo, mi niña. Hoy, mañana y siempre. ♾️</p>
+  </div>
+
+  <button class="boton-amor" onclick="sorpresa()">Haz clic aquí, mi amor 💗</button>
+
+  <p class="mensaje-final" id="mensajeFinal"></p>
+
+</div>
+
+<script>
+  // Corazones flotantes
+  const contenedor = document.getElementById('corazones');
+  const emojisCorazon = ['❤️','💖','💕','💗','💘','💝','💞','🌹'];
+  function crearCorazon() {
+    const c = document.createElement('span');
+    c.textContent = emojisCorazon[Math.floor(Math.random() * emojisCorazon.length)];
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.fontSize = (16 + Math.random() * 24) + 'px';
+    c.style.animationDuration = (6 + Math.random() * 6) + 's';
+    c.style.animationDelay = Math.random() * 3 + 's';
+    contenedor.appendChild(c);
+    setTimeout(() => c.remove(), 15000);
+  }
+  setInterval(crearCorazon, 350);
+  for (let i = 0; i < 15; i++) crearCorazon();
+
+  // Botón sorpresa
+  const frases = [
+    "Eres mi persona favorita en todo el universo 💫",
+    "Tu sonrisa ilumina hasta mis días más oscuros ☀️",
+    "Te quiero más de lo que las palabras alcanzan a decir 💌",
+    "Eres el sueño que nunca quiero despertar 🌙",
+    "Contigo hasta el infinito y más allá ♾️",
+    "Mi niña, eres y serás siempre mi mejor casualidad 💖"
+  ];
+  function sorpresa() {
+    const el = document.getElementById('mensajeFinal');
+    el.textContent = frases[Math.floor(Math.random() * frases.length)];
+    el.style.opacity = 0;
+    setTimeout(() => el.style.opacity = 1, 100);
+    // Lluvia extra de corazones
+    for (let i = 0; i < 30; i++) setTimeout(crearCorazon, i * 60);
+  }
+</script>
+
+</body>
+</html>
