@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#fdf1f4" />
+<title>Entrar a mi paraíso ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c94f7c;
+    --deep: #8c2c52;
+    --soft: #fdf1f4;
+    --ink: #4a2c38;
+    --cream: #fffcf8;
+    --gold: #c9a24a;
+    --shadow: 0 20px 60px rgba(140, 44, 82, .12);
+    --bg-peonias: url('https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=1920&q=80');
+    --bg-peonias-2: url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=1920&q=80');
+    --snoopy: url('https://pngimg.com/uploads/snoopy/snoopy_PNG87.png');
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: var(--soft);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.15; }
+  .script { font-family: 'Great Vibes', cursive; font-weight: 400; }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ========== PORTADA DE ENTRADA ========== */
+  #portal {
+    position: fixed; inset: 0; z-index: 9999;
+    display: grid; place-items: center; text-align: center;
+    padding: 30px;
+    background:
+      linear-gradient(135deg, rgba(253,241,244,.92), rgba(255,252,248,.88)),
+      var(--bg-peonias) center/cover no-repeat;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
+  }
+  #portal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  .portal-inner { max-width: 560px; animation: fadeUp 1.2s ease both; }
+  .portal-eyebrow {
+    display: inline-block;
+    letter-spacing: .32em; text-transform: uppercase;
+    font-size: .7rem; font-weight: 600;
+    color: var(--deep);
+    padding: 8px 20px;
+    border: 1px solid rgba(140, 44, 82, .25);
+    border-radius: 999px;
+    background: rgba(255,255,255,.6);
+    backdrop-filter: blur(8px);
+    margin-bottom: 28px;
+  }
+  .portal-inner h1 {
+    font-size: clamp(2.6rem, 8vw, 5rem);
+    color: var(--deep);
+    margin-bottom: 8px;
+  }
+  .portal-inner h1 em { font-style: italic; color: var(--rose); }
+  .portal-inner .script {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--rose);
+    margin-bottom: 24px;
+  }
+  .portal-inner p {
+    max-width: 400px; margin: 0 auto 32px;
+    font-size: 1rem; opacity: .8;
+  }
+  .portal-btn {
+    display: inline-block;
+    padding: 16px 42px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rose), var(--deep));
+    color: white;
+    font-size: .95rem; font-weight: 600;
+    letter-spacing: .06em;
+    box-shadow: 0 14px 34px rgba(201, 79, 124, .35);
+    transition: transform .3s, box-shadow .3s;
+    animation: pulseBtn 2.4s ease-in-out infinite;
+  }
+  .portal-btn:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 20px 44px rgba(201, 79, 124, .45); }
+  @keyframes pulseBtn {
+    0%, 100% { box-shadow: 0 14px 34px rgba(201, 79, 124, .35); }
+    50% { box-shadow: 0 14px 44px rgba(201, 79, 124, .55); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========== NAV FIJA ========== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px clamp(16px, 4vw, 40px);
+    background: rgba(255, 252, 248, .85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(201, 79, 124, .12);
+    transform: translateY(-100%);
+    transition: transform .5s ease;
+  }
+  .nav.visible { transform: translateY(0); }
+  .nav-logo { font-family: 'Great Vibes', cursive; font-size: 1.6rem; color: var(--deep); }
+  .nav-links { display: flex; gap: clamp(14px, 2.5vw, 28px); list-style: none; font-size: .85rem; font-weight: 500; }
+  .nav-links a { padding: 6px 2px; position: relative; transition: color .25s; }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1.5px; background: var(--rose);
+    transition: width .3s ease;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-links a:hover::after { width: 100%; }
+  @media (max-width: 780px) { .nav-links { display: none; } }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh; position: relative;
+    display: grid; place-items: center; text-align: center;
+    padding: 120px 24px 80px;
+    background:
+      linear-gradient(180deg, rgba(253,241,244,.5) 0%, rgba(255,252,248,.65) 100%),
+      var(--bg-peonias) center/cover no-repeat fixed;
+    overflow: hidden;
+  }
+  .hero-inner { position: relative; z-index: 2; max-width: 900px; }
+  .hero h1 {
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    color: var(--deep);
+    margin-bottom: 12px;
+  }
+  .hero h1 em { font-style: italic; color: var(--rose); }
+  .hero .script {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    color: var(--rose);
+    margin: 10px 0 24px;
+  }
+  .hero p {
+    max-width: 600px; margin: 0 auto 36px;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    opacity: .85;
+  }
+  .hero-scroll {
+    display: inline-block; margin-top: 40px;
+    color: var(--rose); font-size: .82rem;
+    letter-spacing: .15em; text-transform: uppercase;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+  /* ========== SECCIONES ========== */
+  section.content { padding: clamp(70px, 10vw, 120px) clamp(20px, 5vw, 40px); position: relative; }
+  .container { max-width: 1120px; margin: 0 auto; }
+  .section-head { text-align: center; margin-bottom: clamp(40px, 6vw, 70px); }
+  .section-head .kicker {
+    display: inline-block; letter-spacing: .28em; text-transform: uppercase;
+    font-size: .72rem; font-weight: 600; color: var(--rose); margin-bottom: 14px;
+  }
+  .section-head h2 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); color: var(--deep); margin-bottom: 12px; }
+  .section-head p { max-width: 600px; margin: 0 auto; font-size: 1.02rem; opacity: .8; }
+
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ========== CARTA ========== */
+  .letter-section {
+    background: linear-gradient(180deg, rgba(255,252,248,.93), rgba(253,241,244,.9)), var(--bg-peonias-2) center/cover no-repeat fixed;
+  }
+  .letter {
+    max-width: 780px; margin: 0 auto;
+    background: var(--cream);
+    padding: clamp(30px, 6vw, 60px);
+    border-radius: 4px; position: relative;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(201, 79, 124, .12);
+  }
+  .letter::before { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(201, 79, 124, .18); border-radius: 2px; pointer-events: none; }
+  .letter-saludo { font-family: 'Great Vibes', cursive; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--deep); margin-bottom: 22px; }
+  .letter p { margin-bottom: 18px; font-size: 1.02rem; line-height: 1.95; }
+  .letter-firma { margin-top: 30px; text-align: right; font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--deep); }
+
+  /* ========== GALERÍA ========== */
+  .gallery-section {
+    background: linear-gradient(180deg, rgba(253,241,244,.9), rgba(255,252,248,.9)), var(--bg-peonias) center/cover no-repeat fixed;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .gallery-item {
+    position: relative; aspect-ratio: 4 / 5;
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 12px 32px rgba(140, 44, 82, .15);
+    transition: transform .4s, box-shadow .4s;
+    background: #f8dce7;
+  }
+  .gallery-item:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 44px rgba(140, 44, 82, .25); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-item .cap {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 30px 18px 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,.5));
+    color: white; font-size: .9rem;
+    font-family: 'Great Vibes', cursive; font-size: 1.5rem;
+  }
+  .gallery-note { text-align: center; margin-top: 24px; font-size: .85rem; opacity: .7; }
+
+  /* ========== COSAS QUE AMO ========== */
+  .love-section {
+    background: linear-gradient(180deg, rgba(255,252,248,.9), rgba(253,241,244,.88)), var(--bg-peonias-2) center/cover no-repeat fixed;
+  }
+  .love-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .love-card {
+    background: rgba(255,255,255,.85);
+    border: 1px solid rgba(201, 79, 124, .15);
+    border-radius: 18px; padding: 22px 20px;
+    display: flex; align-items: flex-start; gap: 14px;
+    box-shadow: 0 8px 24px rgba(140, 44, 82, .08);
+    transition: transform .3s, box-shadow .3s;
+    backdrop-filter: blur(6px);
+  }
+  .love-card:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(140, 44, 82, .15); }
+  .love-num {
+    flex: 0 0 36px; height: 36px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--rose), var(--deep));
+    color: white; font-family: 'Great Vibes', cursive; font-size: 1.1rem;
+  }
+  .love-card p { font-size: .95rem; line-height: 1.6; }
+
+  /* ========== TIMELINE ========== */
+  .timeline-section {
+    background: linear-gradient(180deg, rgba(253,241,244,.9), rgba(255,252,248,.9)), var(--bg-peonias) center/cover no-repeat fixed;
+  }
+  .timeline { position: relative; max-width: 700px; margin: 0 auto; padding-left: 30px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(var(--rose), var(--deep));
+    opacity: .3;
+  }
+  .tl-item { position: relative; padding-bottom: 38px; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    position: absolute; left: -26px; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--rose); border: 3px solid white;
+    box-shadow: 0 0 0 3px rgba(201, 79, 124, .2);
+  }
+  .tl-date { font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: var(--rose); font-weight: 600; margin-bottom: 4px; }
+  .tl-title { font-size: 1.25rem; font-weight: 600; color: var(--deep); margin-bottom: 4px; }
+  .tl-desc { font-size: .95rem; opacity: .8; }
+
+  /* ========== CONTADOR ========== */
+  .numbers-section {
+    background: linear-gradient(180deg, rgba(255,252,248,.88), rgba(253,241,244,.88)), var(--bg-peonias-2) center/cover no-repeat fixed;
+  }
+  .numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 18px; max-width: 820px; margin: 0 auto; }
+  .number-card {
+    background: rgba(255,255,255,.85); backdrop-filter: blur(10px);
+    border: 1px solid rgba(201, 79, 124, .18);
+    padding: 28px 16px; border-radius: 18px; text-align: center;
+    box-shadow: 0 10px 30px rgba(140, 44, 82, .1);
+    transition: transform .3s;
+  }
+  .number-card:hover { transform: translateY(-6px); }
+  .number-card strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--deep); font-weight: 600; line-height: 1; }
+  .number-card span { display: block; margin-top: 6px; font-size: .72rem; text-transform: uppercase; letter-spacing: .18em; color: var(--rose); }
+
+  /* ========== SNOOPY ESPECIAL ========== */
+  .snoopy-section {
+    background: linear-gradient(180deg, rgba(253,241,244,.92), rgba(255,252,248,.92)), var(--bg-peonias) center/cover no-repeat fixed;
+    text-align: center;
+  }
+  .snoopy-wrap {
+    max-width: 900px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(20px, 5vw, 60px); flex-wrap: wrap;
+  }
+  .snoopy-img {
+    width: clamp(140px, 25vw, 220px);
+    filter: drop-shadow(0 16px 30px rgba(140, 44, 82, .2));
+    animation: floatSnoopy 4s ease-in-out infinite;
+  }
+  @keyframes floatSnoopy {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-14px) rotate(2deg); }
+  }
+  .snoopy-text { max-width: 420px; text-align: left; }
+  .snoopy-text h3 { font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--deep); margin-bottom: 12px; }
+  .snoopy-text p { font-size: 1rem; opacity: .85; line-height: 1.8; }
+  .snoopy-text .script { font-size: 1.8rem; color: var(--rose); margin-top: 16px; display: block; }
+
+  /* ========== SOBRE SORPRESA ========== */
+  .surprise-section {
+    background: linear-gradient(180deg, rgba(255,252,248,.9), rgba(253,241,244,.92)), var(--bg-peonias-2) center/cover no-repeat fixed;
+    text-align: center;
+  }
+  .envelope {
+    display: inline-block; margin: 20px auto 0; position: relative;
+    width: min(360px, 85vw); aspect-ratio: 3 / 2;
+    cursor: pointer; perspective: 1200px; transition: transform .4s;
+  }
+  .envelope:hover { transform: scale(1.03); }
+  .envelope .body {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #fbd1e0, #f7b4cc);
+    border-radius: 12px; box-shadow: 0 20px 50px rgba(140, 44, 82, .3);
+    overflow: hidden;
+  }
+  .envelope .body::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 55%;
+    background: linear-gradient(135deg, #f9c0d5, #ee96b8);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transition: transform .6s ease; transform-origin: top; z-index: 2;
+  }
+  .envelope .seal {
+    position: absolute; top: 42%; left: 50%; transform: translate(-50%, -50%);
+    width: 54px; height: 54px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), var(--deep));
+    color: white; font-size: 1.6rem; display: grid; place-items: center;
+    box-shadow: 0 6px 16px rgba(140, 44, 82, .4); z-index: 3; transition: transform .3s;
+  }
+  .envelope .hint {
+    position: absolute; bottom: -34px; left: 50%; transform: translateX(-50%);
+    font-size: .82rem; color: var(--rose); white-space: nowrap; letter-spacing: .1em;
+  }
+  .envelope.open .body::before { transform: rotateX(180deg); }
+  .envelope.open .seal { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  .envelope.open .hint { opacity: 0; }
+  .surprise-content {
+    max-width: 720px; margin: 60px auto 0;
+    background: rgba(255,255,255,.94);
+    padding: clamp(28px, 5vw, 50px); border-radius: 22px;
+    box-shadow: var(--shadow); border: 1px solid rgba(201, 79, 124, .15);
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .8s ease, transform .8s ease; display: none;
+  }
+  .surprise-content.show { opacity: 1; transform: translateY(0); display: block; }
+  .surprise-content h2 { font-size: clamp(2rem, 5vw, 3rem); color: var(--deep); margin-bottom: 18px; }
+  .surprise-content p { margin-bottom: 16px; font-size: 1.03rem; }
+  .surprise-content .script { font-size: 2.2rem; color: var(--rose); margin-top: 20px; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    padding: 50px 20px; text-align: center;
+    background: rgba(255,252,248,.95);
+    border-top: 1px solid rgba(201, 79, 124, .15);
+  }
+  footer .script { font-size: 1.8rem; color: var(--rose); display: block; margin-bottom: 6px; }
+  footer small { font-size: .78rem; opacity: .65; letter-spacing: .06em; }
+
+  /* ========== CONTROL MÚSICA FLOTANTE ========== */
+  .music-ctrl {
+    position: fixed; bottom: 20px; right: 20px; z-index: 200;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 10px 28px rgba(140, 44, 82, .25);
+    border: 1px solid rgba(201, 79, 124, .2);
+    display: none; align-items: center; justify-content: center;
+    color: var(--deep); font-size: 1.4rem;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .music-ctrl.show { display: flex; }
+  .music-ctrl:hover { transform: scale(1.08); box-shadow: 0 14px 34px rgba(140, 44, 82, .35); }
+  .music-ctrl .wave {
+    display: flex; gap: 3px; align-items: flex-end; height: 16px;
+  }
+  .music-ctrl .wave span {
+    width: 3px; background: var(--rose); border-radius: 2px;
+    animation: eq 1s ease-in-out infinite;
+  }
+  .music-ctrl .wave span:nth-child(1) { height: 8px; animation-delay: 0s; }
+  .music-ctrl .wave span:nth-child(2) { height: 14px; animation-delay: .2s; }
+  .music-ctrl .wave span:nth-child(3) { height: 10px; animation-delay: .4s; }
+  .music-ctrl .wave span:nth-child(4) { height: 6px; animation-delay: .6s; }
+  @keyframes eq { 0%,100% { transform: scaleY(.5); } 50% { transform: scaleY(1.2); } }
+
+  /* ========== PÉTALOS ========== */
+  .petal {
+    position: fixed; top: -30px; z-index: 3; pointer-events: none;
+    opacity: .75; animation: fall linear forwards;
+    filter: drop-shadow(0 2px 4px rgba(201, 79, 124, .25));
+  }
+  @keyframes fall { to { transform: translate3d(var(--drift), 110vh, 0) rotate(540deg); opacity: 0; } }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 600px) {
+    .letter::before { inset: 10px; }
+    .snoopy-text { text-align: center; }
+    .snoopy-wrap { flex-direction: column; }
+    .music-ctrl { bottom: 14px; right: 14px; width: 46px; height: 46px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PORTADA ============ -->
+<div id="portal">
+  <div class="portal-inner">
+    <span class="portal-eyebrow">♡ Una pagina creada solo para ti ♡</span>
+    <h1>Entra en mi<em>paraíso</em></h1>
+    <div class="script">Mi ojitos</div>
+    <p>Hay un lugar en el mundo donde todo es más bonito desde que llegaste. Ese lugar es contigo.</p>
+    <button class="portal-btn" id="enterBtn">Entrar a mi paraíso ♡</button>
+  </div>
+</div>
+
+<audio id="song" loop preload="none">
+  <source src="Bryan Adams - (Everything I Do) I Do It For You.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">Para ti ♡</div>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#cosas">Lo que amo</a></li>
+    <li><a href="#timeline">Nosotros</a></li>
+    <li><a href="#snoopy">Snoopy</a></li>
+    <li><a href="#sorpresa">Sorpresa</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="inicio">
+  <div class="hero-inner">
+    <h1>Mi lugar favorito <em>siempre serás tú</em></h1>
+    <div class="script">Bienvenida a mi paraíso</div>
+    <p>No sé si el universo sabía lo que hacía cuando cruzó nuestros caminos. Pero yo sí sé algo: desde que llegaste, hay una parte de mis días que sonríe simplemente por pensar en ti.</p>
+    <a href="#carta" class="hero-scroll">Desliza para descubrir más ↓</a>
+  </div>
+</header>
+
+<!-- ============ CARTA ============ -->
+<section class="content letter-section" id="carta">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">♡ Una cartita para ti ♡</span>
+      <h2>Lo que siento por ti</h2>
+      <p>Palabras que salen directo de mi corazón.</p>
+    </div>
+    <article class="letter reveal">
+      <div class="letter-saludo">Mi princesa hermosa,</div>
+      <p>Si pudieras verte por un instante a través de mis ojos, entenderías por qué me pareces tan bonita incluso en los días en los que tú no te sientes así. Para mí, tu belleza no depende de cómo te vistas ni de si puedo verte hoy; hay algo en ti que permanece precioso en cada momento.</p>
+      <p>Pero ¿sabes qué es lo que más adoro? Tu corazón, tu ternura, esa forma tan tuya de hacer que un día cualquiera se vuelva especial. No te quiero solamente por lo hermosa que eres, sino por la personita que descubro en ti.</p>
+      <p>Quiero acompañarte en tus días buenos y también en los que pesen un poquito más. Celebrar tus logros, recordarte lo capaz que eres y abrazarte cuando necesites descansar del mundo.</p>
+      <p>Gracias por existir, por dejarme acercarme a tu corazón y por regalarme la alegría de llamarte mi novia. Si hoy pudiera pedir un deseo, sería que nunca dudes de lo valiosa que eres.</p>
+      <p>Y si algún día se te olvida cuánto te amo, vuelve a esta cartita. La escribí para recordarte que hay un corazón que sonríe por ti, que piensa en ti y que se siente muy afortunado de caminar a tu ladito.</p>
+      <div class="letter-firma">Con todo mi amor, yo ♡</div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section class="content gallery-section" id="galeria">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">♡ Nuestros pedacitos de felicidad ♡</span>
+      <h2>Momentos que guardo de ti</h2>
+      <p>Cada foto es un instante que se volvió especial solo por tenerte dentro.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="midoncella.jpeg" alt="Recuerdo 1" onerror="this.src='https://placehold.co/800x1000/ffe2ec/b34c75?text=Foto+1';" />
+        <div class="cap">Mi recuerdo favorito</div>
+      </div>
+      <div class="gallery-item">
+        <img src="miluz.jpeg" alt="Recuerdo 2" onerror="this.src='https://placehold.co/800x1000/fff0e8/b34c75?text=Foto+2';" />
+        <div class="cap">Tu sonrisa, mi paz</div>
+      </div>
+      <div class="gallery-item">
+        <img src="minovia.jpeg" alt="Recuerdo 3" onerror="this.src='https://placehold.co/800x1000/f8dce8/b34c75?text=Foto+3';" />
+        <div class="cap">Y los que nos faltan</div>
+      </div>
+      <div class="gallery-item">
+        <img src="mi ojitos.html" alt="Recuerdo 4" onerror="this.src='https://placehold.co/800x1000/fde8f0/b34c75?text=Foto+4';" />
+        <div class="cap">Mi lugar contigo</div>
+      </div>
+      <div class="gallery-item">
+        <img src="miojitos.jpeg" alt="Recuerdo 4" onerror="this.src='https://placehold.co/800x1000/fde8f0/b34c75?text=Foto+4';" />
+        <div class="cap">Mi lugar favorito</div>
+      </div>
+    </div>
+    <p class="gallery-note">♡ Agrega todas las fotos que quieras: solo cambia los nombres por tus imágenes. ♡</p>
+  </div>
+</section>
+
+<!-- ============ COSAS QUE AMO ============ -->
+<section class="content love-section" id="cosas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">♡ 10 cositas que amo de ti ♡</span>
+      <h2>Y podría seguir escribiendo</h2>
+      <p>Hasta el infinito y más allá.</p>
+    </div>
+    <div class="love-grid reveal">
+      <div class="love-card"><div class="love-num">1</div><p>Tu sonrisa cuando estás nerviosa y no puedes esconderla.</p></div>
+      <div class="love-card"><div class="love-num">2</div><p>La forma en que dices mi nombre, como si fuera algo bonito.</p></div>
+      <div class="love-card"><div class="love-num">3</div><p>Lo preciosa que te ves recién despertada, sin intentarlo.</p></div>
+      <div class="love-card"><div class="love-num">4</div><p>Tu risa cuando algo te da vergüenza; es mi sonido favorito.</p></div>
+      <div class="love-card"><div class="love-num">5</div><p>Lo mucho que te preocupas por los demás.</p></div>
+      <div class="love-card"><div class="love-num">6</div><p>Tu carita cuando te chuleo y te pones roja.</p></div>
+      <div class="love-card"><div class="love-num">7</div><p>La paz tan bonita que me das con solo estar.</p></div>
+      <div class="love-card"><div class="love-num">8</div><p>Lo inteligente y fuerte que eres.</p></div>
+      <div class="love-card"><div class="love-num">9</div><p>Tu forma de quererme, tan tuya, tan sincera.</p></div>
+      <div class="love-card"><div class="love-num">10</div><p>Que seas tú, mi ojitos hermosa, mi persona favorita ♡</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="content timeline-section" id="timeline">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">♡ Nuestra historia ♡</span>
+      <h2>Los momentos que nos trajeron aquí</h2>
+      <p>Un pequeño recorrido por lo que hemos vivido.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">El día que te conocí</div>
+        <div class="tl-title">Todo comenzó</div>
+        <div class="tl-desc">Sin saberlo, ese día cambió mi mundo para siempre.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">15 · 08 · 2025</div>
+        <div class="tl-title">El día que te pedí ser mi novia</div>
+        <div class="tl-desc">La mejor decisión que he tomado en mi vida.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Cada día desde entonces</div>
+        <div class="tl-title">Coleccionando momentos</div>
+        <div class="tl-desc">Risas, abrazos, aprendizajes y mucho amor.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">El futuro</div>
+        <div class="tl-title">Todo lo que nos falta</div>
+        <div class="tl-desc">Quiero seguir escribiendo esta historia contigo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTADOR ============ -->
+<section class="content numbers-section" id="numeros">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">♡ Nuestro amor en números ♡</span>
+      <h2>Llevamos juntos...</h2>
+      <p>Desde ese día que cambió todo, cada segundo ha valido la pena.</p>
+    </div>
+    <div class="numbers reveal">
+      <div class="number-card"><strong id="dias">0</strong><span>Días</span></div>
+      <div class="number-card"><strong id="horas">0</strong><span>Horas</span></div>
+      <div class="number-card"><strong id="min">0</strong><span>Minutos</span></div>
+      <div class="number-card"><strong id="seg">0</strong><span>Segundos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SNOOPY ESPECIAL ============ -->
+<section class="content snoopy-section" id="snoopy">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">♡ Un detalle especial ♡</span>
+      <h2>Porque Snoopy también tiene su lugar</h2>
+    </div>
+    <div class="snoopy-wrap reveal">
+      <img src="https://pngimg.com/uploads/snoopy/snoopy_PNG87.png" alt="Snoopy" class="snoopy-img" onerror="this.style.display='none';" />
+      <div class="snoopy-text">
+        <h3>Así como Snoopy quiere a Woodstock...</h3>
+        <p>Hay amores que se demuestran en los pequeños detalles: una mirada, un abrazo, un mensaje a la hora menos pensada. Snoopy lo sabe, y yo también lo aprendí contigo.</p>
+        <span class="script">Tú y yo, como Snoopy y Woodstock ♡</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE SORPRESA ============ -->
+<section class="content surprise-section" id="sorpresa">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">♡ Una última cosita ♡</span>
+      <h2>Ábreme, mi niña</h2>
+      <p>Toca el sobre. Hay algo guardado para ti.</p>
+    </div>
+    <div class="envelope reveal" id="envelope">
+      <div class="body"></div>
+      <div class="seal">♡</div>
+      <span class="hint">Tócame para abrir</span>
+    </div>
+    <div class="surprise-content" id="surpriseContent">
+      <h2>Te volvería a elegir</h2>
+      <p>Entre millones de rostros, miles de caminos y todas las casualidades posibles, mi corazón volvería a buscarte a ti. No porque nuestra historia tenga que ser perfecta, sino porque quiero que sea nuestra: con risas, aprendizajes, abrazos, paciencia y mucho amor.</p>
+      <p>Quiero seguir coleccionando días contigo, seguir chuleándote aunque no te vea, seguir recordándote lo hermosa que eres y hacerte sentir querida incluso desde lejos.</p>
+      <p>Y si algún día el mundo te pesa, recuerda que tienes a alguien que se queda contigo en los días bonitos y en los otros también.</p>
+      <div class="script">Tú, mi niña. Hoy y en cada nuevo comienzo. ♡</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="script">Tú haces bonito mi mundo ♡</span>
+  <small>Hecho con mucho amor, pensando en ti.</small>
+</footer>
+
+<!-- ============ CONTROL MÚSICA ============ -->
+<button class="music-ctrl" id="musicCtrl" aria-label="Controlar música">
+  <div class="wave"><span></span><span></span><span></span><span></span></div>
+</button>
+
+<script>
+  /* ====== ENTRAR AL PARAÍSO ====== */
+  const portal = document.getElementById('portal');
+  const enterBtn = document.getElementById('enterBtn');
+  const song = document.getElementById('song');
+  const nav = document.getElementById('nav');
+  const musicCtrl = document.getElementById('musicCtrl');
+
+  enterBtn.addEventListener('click', async () => {
+    portal.classList.add('hidden');
+    setTimeout(() => { nav.classList.add('visible'); }, 600);
+    musicCtrl.classList.add('show');
+    try {
+      await song.play();
+      musicCtrl.querySelector('.wave').style.display = 'flex';
+    } catch (e) {
+      musicCtrl.querySelector('.wave').style.display = 'none';
+      musicCtrl.innerHTML = '♪';
+    }
+    makePetals(24);
+    document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  musicCtrl.addEventListener('click', async () => {
+    if (song.paused) {
+      try { await song.play(); musicCtrl.querySelector('.wave').style.display = 'flex'; } catch(e) {}
+    } else {
+      song.pause();
+      musicCtrl.querySelector('.wave').style.display = 'none';
+    }
+  });
+
+  /* ====== CONTADOR ====== */
+  // ⚠️ Cambia esta fecha por tu aniversario real
+  const fechaInicio = new Date('2025-08-15T00:00:00');
+  function actualizarContador() {
+    const diff = new Date() - fechaInicio;
+    if (diff < 0) {
+      document.getElementById('dias').textContent = '♡';
+      document.getElementById('horas').textContent = '♡';
+      document.getElementById('min').textContent = '♡';
+      document.getElementById('seg').textContent = '♡';
+      return;
+    }
+    const seg = Math.floor(diff / 1000);
+    document.getElementById('dias').textContent = Math.floor(seg / 86400);
+    document.getElementById('horas').textContent = String(Math.floor((seg % 86400) / 3600)).padStart(2, '0');
+    document.getElementById('min').textContent = String(Math.floor((seg % 3600) / 60)).padStart(2, '0');
+    document.getElementById('seg').textContent = String(seg % 60).padStart(2, '0');
+  }
+  setInterval(actualizarContador, 1000);
+  actualizarContador();
+
+  /* ====== SOBRE ====== */
+  const envelope = document.getElementById('envelope');
+  const surpriseContent = document.getElementById('surpriseContent');
+  envelope.addEventListener('click', () => {
+    envelope.classList.add('open');
+    makePetals(40);
+    setTimeout(() => {
+      surpriseContent.classList.add('show');
+      surpriseContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 500);
+  });
+
+  /* ====== REVEAL ON SCROLL ====== */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ====== PÉTALOS ====== */
+  function makePetals(count) {
+    const symbols = ['🌸', '🌷', '✿', '❀', '♡'];
+    for (let i = 0; i < count; i++) {
+      const petal = document.createElement('span');
+      petal.className = 'petal';
+      petal.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.fontSize = (12 + Math.random() * 20) + 'px';
+      petal.style.setProperty('--drift', (Math.random() * 200 - 100) + 'px');
+      petal.style.animationDuration = (6 + Math.random() * 6) + 's';
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 13000);
+    }
+  }
+</script>
+</body>
+</html>
