@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#05020d" />
+<meta name="format-detection" content="telephone=no" />
 <title>Para mi princesa — Bajo las constelaciones 🌌</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,9 +43,7 @@
     min-height: 100vh;
   }
 
-  /* =====================================================
-     FONDO GALAXIA HD (imagen + estrellas animadas)
-  ===================================================== */
+  /* FONDO GALAXIA HD */
   .galaxy-bg {
     position: fixed;
     inset: 0;
@@ -56,7 +55,6 @@
       url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1920&q=90') center/cover no-repeat fixed,
       linear-gradient(180deg, #05020d 0%, #0d0620 50%, #150a30 100%);
   }
-  /* Estrellas animadas encima */
   .stars-layer {
     position: fixed;
     inset: 0;
@@ -78,7 +76,6 @@
     0% { opacity: .5; }
     100% { opacity: 1; }
   }
-  /* Estrellas fugaces */
   .shooting-star {
     position: fixed;
     top: 20%;
@@ -94,27 +91,13 @@
     animation: shoot 8s linear infinite;
     opacity: 0;
   }
-  .shooting-star:nth-child(2) {
-    top: 50%;
-    animation-delay: 3s;
-    animation-duration: 10s;
-  }
-  .shooting-star:nth-child(3) {
-    top: 75%;
-    animation-delay: 6s;
-    animation-duration: 12s;
-  }
+  .shooting-star:nth-child(2) { top: 50%; animation-delay: 3s; animation-duration: 10s; }
+  .shooting-star:nth-child(3) { top: 75%; animation-delay: 6s; animation-duration: 12s; }
   @keyframes shoot {
-    0% {
-      transform: translateX(0) translateY(0);
-      opacity: 0;
-    }
+    0% { transform: translateX(0) translateY(0); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
-    100% {
-      transform: translateX(calc(100vw + 200px)) translateY(200px);
-      opacity: 0;
-    }
+    100% { transform: translateX(calc(100vw + 200px)) translateY(200px); opacity: 0; }
   }
 
   h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.2; }
@@ -123,9 +106,7 @@
   button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
   a { color: inherit; text-decoration: none; }
 
-  /* =====================================================
-     PORTADA — Sobre de vidrio con neón
-  ===================================================== */
+  /* PORTADA */
   #portal {
     position: fixed; inset: 0; z-index: 9999;
     display: grid; place-items: center; text-align: center;
@@ -141,20 +122,14 @@
   }
   #portal::before {
     content: '✦';
-    position: absolute;
-    top: 32px; left: 32px;
-    font-size: 2rem;
-    color: var(--neon-gold);
-    opacity: .6;
+    position: absolute; top: 32px; left: 32px;
+    font-size: 2rem; color: var(--neon-gold); opacity: .6;
     animation: twinkle 2s ease-in-out infinite alternate;
   }
   #portal::after {
     content: '✦';
-    position: absolute;
-    bottom: 32px; right: 32px;
-    font-size: 2rem;
-    color: var(--neon-pink);
-    opacity: .6;
+    position: absolute; bottom: 32px; right: 32px;
+    font-size: 2rem; color: var(--neon-pink); opacity: .6;
     animation: twinkle 2.5s ease-in-out infinite alternate;
   }
   #portal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -196,22 +171,13 @@
     opacity: .85;
   }
   .portal-inner .intro-text {
-    max-width: 480px;
-    margin: 0 auto 44px;
-    font-size: 1.05rem;
-    color: var(--text);
-    opacity: .85;
-    line-height: 1.85;
-    font-style: italic;
+    max-width: 480px; margin: 0 auto 44px;
+    font-size: 1.05rem; color: var(--text);
+    opacity: .85; line-height: 1.85; font-style: italic;
   }
-
-  /* Sobre de vidrio templado */
   .envelope-wrapper {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    perspective: 1500px;
-    margin-bottom: 28px;
+    display: inline-block; position: relative;
+    cursor: pointer; perspective: 1500px; margin-bottom: 28px;
   }
   .envelope-glass {
     position: relative;
@@ -238,35 +204,28 @@
       0 0 130px rgba(180, 77, 255, .35),
       inset 0 1px 0 rgba(255, 255, 255, .25);
   }
-  /* Brillo de vidrio */
   .envelope-glass::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .12) 50%, transparent 70%);
     pointer-events: none;
   }
-  /* Solapa (triángulo superior) */
   .envelope-glass::after {
     content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
+    position: absolute; top: 0; left: 0; right: 0;
     height: 55%;
     background: linear-gradient(135deg, rgba(255, 77, 166, .2), rgba(180, 77, 255, .15));
     clip-path: polygon(0 0, 100% 0, 50% 100%);
     border-bottom: 1px solid rgba(255, 255, 255, .15);
     pointer-events: none;
   }
-  /* Sello neón */
   .env-seal {
     position: absolute;
-    top: 42%; left: 50%;
-    transform: translate(-50%, -50%);
+    top: 42%; left: 50%; transform: translate(-50%, -50%);
     width: 72px; height: 72px;
     border-radius: 50%;
     background: linear-gradient(135deg, #ff4da6, #b44dff);
-    color: white;
-    font-size: 1.8rem;
+    color: white; font-size: 1.8rem;
     display: grid; place-items: center;
     box-shadow:
       0 0 20px rgba(255, 77, 166, .8),
@@ -277,26 +236,17 @@
     animation: sealPulse 2.4s ease-in-out infinite;
   }
   @keyframes sealPulse {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(255, 77, 166, .8), 0 0 40px rgba(255, 77, 166, .5), 0 0 60px rgba(180, 77, 255, .4), inset 0 0 15px rgba(255, 255, 255, .3);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(255, 77, 166, 1), 0 0 60px rgba(255, 77, 166, .7), 0 0 90px rgba(180, 77, 255, .6), inset 0 0 20px rgba(255, 255, 255, .4);
-    }
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 166, .8), 0 0 40px rgba(255, 77, 166, .5), 0 0 60px rgba(180, 77, 255, .4), inset 0 0 15px rgba(255, 255, 255, .3); }
+    50% { box-shadow: 0 0 30px rgba(255, 77, 166, 1), 0 0 60px rgba(255, 77, 166, .7), 0 0 90px rgba(180, 77, 255, .6), inset 0 0 20px rgba(255, 255, 255, .4); }
   }
   .env-hint {
-    display: block;
-    margin-top: 32px;
-    font-size: .78rem;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--neon-gold);
-    opacity: .9;
-    text-shadow: 0 0 15px rgba(255, 217, 102, .5);
+    display: block; margin-top: 32px;
+    font-size: .78rem; letter-spacing: .3em;
+    text-transform: uppercase; color: var(--neon-gold);
+    opacity: .9; text-shadow: 0 0 15px rgba(255, 217, 102, .5);
   }
   .env-hint .arrow {
-    display: inline-block;
-    margin-left: 8px;
+    display: inline-block; margin-left: 8px;
     animation: bob 2s ease-in-out infinite;
   }
   @keyframes bob {
@@ -308,9 +258,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* =====================================================
-     NAV
-  ===================================================== */
+  /* NAV */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -334,26 +282,20 @@
     filter: drop-shadow(0 0 15px rgba(255, 77, 166, .6));
   }
   .nav-links {
-    display: flex;
-    gap: clamp(12px, 2vw, 26px);
+    display: flex; gap: clamp(10px, 1.8vw, 22px);
     list-style: none;
     font-family: 'Cormorant Garamond', serif;
-    font-size: .82rem;
-    font-weight: 500;
-    letter-spacing: .15em;
-    text-transform: uppercase;
+    font-size: .8rem; font-weight: 500;
+    letter-spacing: .15em; text-transform: uppercase;
   }
   .nav-links a {
-    padding: 6px 2px;
-    position: relative;
-    color: var(--text);
-    opacity: .8;
+    padding: 6px 2px; position: relative;
+    color: var(--text); opacity: .8;
     transition: color .3s, opacity .3s, text-shadow .3s;
   }
   .nav-links a::after {
     content: '';
-    position: absolute;
-    left: 50%; bottom: 0;
+    position: absolute; left: 50%; bottom: 0;
     transform: translateX(-50%);
     width: 0; height: 1px;
     background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
@@ -361,23 +303,20 @@
     transition: width .35s ease;
   }
   .nav-links a:hover {
-    color: var(--neon-gold);
-    opacity: 1;
+    color: var(--neon-gold); opacity: 1;
     text-shadow: 0 0 10px rgba(255, 217, 102, .6);
   }
   .nav-links a:hover::after { width: 100%; }
-  @media (max-width: 880px) { .nav-links { display: none; } }
+  @media (max-width: 980px) { .nav-links { display: none; } }
 
+  /* HERO */
   .hero {
     min-height: 100vh;
     min-height: 100svh;
     position: relative;
-    display: grid;
-    place-items: center;
-    text-align: center;
+    display: grid; place-items: center; text-align: center;
     padding: 140px 24px 100px;
-    overflow: hidden;
-    z-index: 1;
+    overflow: hidden; z-index: 1;
   }
   .hero-inner { position: relative; z-index: 2; max-width: 920px; }
   .hero-eyebrow {
@@ -414,25 +353,17 @@
     font-size: clamp(1.2rem, 3vw, 1.7rem);
     color: var(--text);
     letter-spacing: .12em;
-    margin-bottom: 30px;
-    opacity: .9;
+    margin-bottom: 30px; opacity: .9;
   }
   .hero p {
-    max-width: 640px;
-    margin: 0 auto 44px;
+    max-width: 640px; margin: 0 auto 44px;
     font-size: clamp(1rem, 2.2vw, 1.15rem);
-    color: var(--text-soft);
-    line-height: 1.95;
-    font-style: italic;
+    color: var(--text-soft); line-height: 1.95; font-style: italic;
   }
   .hero-scroll {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--neon-gold);
-    font-size: .78rem;
-    letter-spacing: .25em;
-    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--neon-gold); font-size: .78rem;
+    letter-spacing: .25em; text-transform: uppercase;
     padding: 12px 24px;
     border: 1px solid rgba(255, 217, 102, .5);
     border-radius: 999px;
@@ -451,13 +382,10 @@
     animation: bob 2s ease-in-out infinite;
   }
 
-  /* =====================================================
-     SECCIONES GENERALES
-  ===================================================== */
+  /* SECCIONES */
   section.content {
     padding: clamp(80px, 12vw, 140px) clamp(20px, 5vw, 40px);
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
   }
   .container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
   .section-head {
@@ -475,12 +403,9 @@
   }
   .section-head .kicker {
     display: inline-block;
-    letter-spacing: .35em;
-    text-transform: uppercase;
-    font-size: .68rem;
-    font-weight: 500;
-    color: var(--neon-pink);
-    margin-bottom: 16px;
+    letter-spacing: .35em; text-transform: uppercase;
+    font-size: .68rem; font-weight: 500;
+    color: var(--neon-pink); margin-bottom: 16px;
     text-shadow: 0 0 15px rgba(255, 77, 166, .6);
   }
   .section-head h2 {
@@ -490,29 +415,22 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 16px;
-    font-weight: 500;
+    margin-bottom: 16px; font-weight: 500;
     filter: drop-shadow(0 0 25px rgba(255, 77, 166, .4));
   }
   .section-head p {
-    max-width: 620px;
-    margin: 0 auto;
-    font-size: 1.05rem;
-    color: var(--text-soft);
-    font-style: italic;
-    line-height: 1.8;
+    max-width: 620px; margin: 0 auto;
+    font-size: 1.05rem; color: var(--text-soft);
+    font-style: italic; line-height: 1.8;
   }
 
   .reveal {
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 0; transform: translateY(50px);
     transition: opacity 1s ease, transform 1s ease;
   }
   .reveal.in { opacity: 1; transform: translateY(0); }
 
-  /* =====================================================
-     VIDRIO TEMPLADO base + NEÓN animado
-  ===================================================== */
+  /* VIDRIO + NEÓN */
   .glass-card {
     position: relative;
     background: var(--glass-bg);
@@ -525,7 +443,6 @@
       inset 0 1px 0 rgba(255, 255, 255, .15);
     overflow: hidden;
   }
-  /* Brillo interior de vidrio */
   .glass-card::before {
     content: '';
     position: absolute;
@@ -535,21 +452,12 @@
     pointer-events: none;
     border-radius: 20px 20px 0 0;
   }
-  /* Borde neón animado con pseudo-elemento */
   .glass-card::after {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     border-radius: 20px;
     padding: 2px;
-    background: linear-gradient(
-      135deg,
-      var(--neon-pink),
-      var(--neon-purple),
-      var(--neon-cyan),
-      var(--neon-gold),
-      var(--neon-pink)
-    );
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan), var(--neon-gold), var(--neon-pink));
     background-size: 400% 400%;
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -568,15 +476,9 @@
     100% { background-position: 400% 50%; }
   }
 
-  /* =====================================================
-     CARTA PRINCIPAL
-  ===================================================== */
-  .letter-section {
-    position: relative;
-  }
+  /* CARTA */
   .letter-paper {
-    max-width: 820px;
-    margin: 0 auto;
+    max-width: 820px; margin: 0 auto;
     padding: clamp(36px, 7vw, 80px) clamp(28px, 6vw, 70px);
     position: relative;
   }
@@ -595,16 +497,13 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 28px;
-    text-align: center;
+    margin-bottom: 28px; text-align: center;
     filter: drop-shadow(0 0 20px rgba(255, 77, 166, .5));
   }
   .letter-paper p {
     margin-bottom: 22px;
-    font-size: 1.08rem;
-    line-height: 2;
-    color: var(--text);
-    text-align: justify;
+    font-size: 1.08rem; line-height: 2;
+    color: var(--text); text-align: justify;
     opacity: .95;
   }
   .letter-paper p:first-of-type::first-letter {
@@ -620,11 +519,9 @@
     font-weight: 600;
   }
   .letter-firma {
-    margin-top: 36px;
-    text-align: right;
+    margin-top: 36px; text-align: right;
     font-family: 'Great Vibes', cursive;
-    font-size: 2.4rem;
-    color: var(--neon-rose);
+    font-size: 2.4rem; color: var(--neon-rose);
     text-shadow: 0 0 20px rgba(255, 123, 176, .6);
   }
   .letter-ornament-bottom {
@@ -636,15 +533,12 @@
     text-shadow: 0 0 15px rgba(255, 217, 102, .6);
   }
 
-  /* =====================================================
-     PROMESAS
-  ===================================================== */
+  /* PROMESAS */
   .promises-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 1000px; margin: 0 auto;
   }
   .promise-card {
     padding: 40px 30px 34px;
@@ -670,23 +564,99 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 14px;
-    font-weight: 500;
+    margin-bottom: 14px; font-weight: 500;
   }
   .promise-card p {
-    font-size: 1rem;
-    line-height: 1.85;
-    color: var(--text);
-    opacity: .9;
-    font-style: italic;
+    font-size: 1rem; line-height: 1.85;
+    color: var(--text); opacity: .9; font-style: italic;
   }
 
-  /* =====================================================
-     RAZONES
-  ===================================================== */
+  /* TIMELINE */
+  .timeline-wrap {
+    max-width: 800px; margin: 0 auto;
+    position: relative;
+    padding-left: 40px;
+  }
+  .timeline-wrap::before {
+    content: '';
+    position: absolute;
+    left: 12px; top: 10px; bottom: 10px;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--neon-pink) 10%, var(--neon-purple) 50%, var(--neon-gold) 90%, transparent);
+    box-shadow: 0 0 15px rgba(255, 77, 166, .6);
+  }
+  .tl-item {
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    position: absolute;
+    left: -34px; top: 8px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--neon-gold), var(--neon-pink));
+    border: 2px solid var(--space-2);
+    box-shadow:
+      0 0 0 4px rgba(255, 77, 166, .25),
+      0 0 20px rgba(255, 77, 166, .8);
+  }
+  .tl-date {
+    font-size: .72rem; letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--neon-gold); font-weight: 500;
+    margin-bottom: 6px;
+    text-shadow: 0 0 12px rgba(255, 217, 102, .4);
+  }
+  .tl-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, #ffd966, #ff4da6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px; font-weight: 600;
+  }
+  .tl-desc {
+    font-size: 1rem; color: var(--text-soft);
+    line-height: 1.8; font-style: italic;
+  }
+
+  /* 10 COSAS */
+  .love-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1000px; margin: 0 auto;
+  }
+  .love-card {
+    padding: 28px 24px;
+    display: flex; align-items: flex-start; gap: 16px;
+    transition: transform .35s, box-shadow .35s;
+  }
+  .love-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .5), 0 0 40px rgba(180, 77, 255, .25);
+  }
+  .love-num {
+    flex: 0 0 42px; height: 42px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--neon-gold), var(--neon-pink));
+    color: #1a1408;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 600;
+    box-shadow: 0 0 20px rgba(255, 77, 166, .5);
+  }
+  .love-card p {
+    font-size: .98rem;
+    line-height: 1.7;
+    color: var(--text); opacity: .92;
+  }
+
+  /* RAZONES */
   .reasons-list {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px; margin: 0 auto;
     counter-reset: reason;
   }
   .reason-item {
@@ -707,8 +677,7 @@
   }
   .reason-item::after {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     border-radius: 16px;
     padding: 1.5px;
     background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
@@ -727,13 +696,10 @@
   }
   .reason-item::before {
     content: counter(reason, decimal-leading-zero);
-    position: absolute;
-    left: 26px;
-    top: 50%;
+    position: absolute; left: 26px; top: 50%;
     transform: translateY(-50%);
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 2rem; font-weight: 600;
     background: linear-gradient(135deg, #ffd966, #ff4da6);
     -webkit-background-clip: text;
     background-clip: text;
@@ -743,15 +709,12 @@
   }
   .reason-item:hover {
     transform: translateX(8px);
-    box-shadow:
-      0 20px 50px rgba(0, 0, 0, .5),
-      0 0 40px rgba(255, 77, 166, .3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .5), 0 0 40px rgba(255, 77, 166, .3);
   }
   .reason-item p {
     font-size: 1.05rem;
     line-height: 1.75;
-    color: var(--text);
-    opacity: .92;
+    color: var(--text); opacity: .92;
   }
   .reason-item p strong {
     background: linear-gradient(135deg, #ffd966, #ff4da6);
@@ -761,15 +724,12 @@
     font-weight: 600;
   }
 
-  /* =====================================================
-     FUTURO
-  ===================================================== */
+  /* FUTURO */
   .future-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 1000px; margin: 0 auto;
   }
   .future-card {
     padding: 34px 28px;
@@ -778,9 +738,7 @@
   }
   .future-card:hover {
     transform: translateY(-8px);
-    box-shadow:
-      0 25px 60px rgba(0, 0, 0, .5),
-      0 0 45px rgba(180, 77, 255, .3);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .5), 0 0 45px rgba(180, 77, 255, .3);
   }
   .future-icon {
     font-size: 2rem;
@@ -795,26 +753,63 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 12px;
-    font-weight: 500;
+    margin-bottom: 12px; font-weight: 500;
   }
   .future-card p {
     font-size: .98rem;
     line-height: 1.8;
-    color: var(--text);
-    opacity: .88;
-    font-style: italic;
+    color: var(--text); opacity: .88; font-style: italic;
   }
 
-  /* =====================================================
-     CARTA FINAL
-  ===================================================== */
-  .final-section {
-    text-align: center;
+  /* CARTA ABIERTA */
+  .open-letter {
+    max-width: 850px; margin: 0 auto;
+    padding: clamp(36px, 7vw, 80px) clamp(28px, 6vw, 70px);
   }
+  .open-letter .letter-ornament {
+    text-align: center;
+    color: var(--neon-gold);
+    font-size: 1.1rem;
+    letter-spacing: .6em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 217, 102, .6);
+  }
+  .open-letter h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    background: linear-gradient(135deg, #ffd966, #ff4da6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px; text-align: center;
+    filter: drop-shadow(0 0 20px rgba(255, 77, 166, .5));
+  }
+  .open-letter p {
+    margin-bottom: 20px;
+    font-size: 1.08rem; line-height: 2;
+    color: var(--text); text-align: justify;
+    opacity: .95;
+  }
+  .open-letter p:first-of-type::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; float: left;
+    line-height: .85; padding: 8px 14px 0 0;
+    background: linear-gradient(135deg, #ffd966, #ff4da6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+  .open-letter .firma {
+    margin-top: 36px; text-align: right;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem; color: var(--neon-rose);
+    text-shadow: 0 0 20px rgba(255, 123, 176, .6);
+  }
+
+  /* CARTA FINAL */
   .final-paper {
-    max-width: 760px;
-    margin: 0 auto;
+    max-width: 760px; margin: 0 auto;
     padding: clamp(40px, 7vw, 80px) clamp(30px, 6vw, 70px);
     position: relative;
   }
@@ -823,6 +818,7 @@
     font-size: 1.1rem;
     letter-spacing: .6em;
     margin-bottom: 24px;
+    text-align: center;
     text-shadow: 0 0 15px rgba(255, 217, 102, .6);
   }
   .final-paper h2 {
@@ -833,6 +829,7 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 24px;
+    text-align: center;
     line-height: 1.1;
     filter: drop-shadow(0 0 25px rgba(255, 77, 166, .5));
   }
@@ -853,16 +850,13 @@
   .final-signature {
     margin-top: 40px;
     font-family: 'Great Vibes', cursive;
-    font-size: 2.4rem;
-    color: var(--neon-rose);
+    font-size: 2.4rem; color: var(--neon-rose);
     text-align: center;
     text-shadow: 0 0 25px rgba(255, 123, 176, .7);
   }
   .final-heart {
-    display: block;
-    margin: 24px auto 0;
-    font-size: 2rem;
-    color: var(--neon-pink);
+    display: block; margin: 24px auto 0;
+    font-size: 2rem; color: var(--neon-pink);
     filter: drop-shadow(0 0 20px rgba(255, 77, 166, .8));
     animation: heartbeat 1.6s ease-in-out infinite;
   }
@@ -873,9 +867,91 @@
     45% { transform: scale(1.1); }
   }
 
-  /* =====================================================
-     FOOTER
-  ===================================================== */
+  /* CARTA DESPLEGABLE */
+  .reveal-letter-wrap {
+    max-width: 800px; margin: 0 auto;
+  }
+  .reveal-letter-btn {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
+    margin: 0 auto;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    box-shadow:
+      0 15px 40px rgba(255, 77, 166, .4),
+      0 0 40px rgba(255, 77, 166, .25);
+    transition: transform .3s, box-shadow .3s;
+    width: 100%;
+    cursor: pointer;
+  }
+  .reveal-letter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 20px 50px rgba(255, 77, 166, .55),
+      0 0 60px rgba(255, 77, 166, .35);
+  }
+  .reveal-letter-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease;
+  }
+  .reveal-letter-content.open {
+    max-height: 3000px;
+  }
+  .reveal-letter-inner {
+    margin-top: 30px;
+    padding: clamp(28px, 5vw, 50px);
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1.5px solid rgba(255, 255, 255, .18);
+    position: relative;
+    overflow: hidden;
+  }
+  .reveal-letter-inner::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--neon-gold), var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+    background-size: 400% 400%;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: neonRotate 6s linear infinite;
+  }
+  .reveal-letter-inner p {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--text);
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  .reveal-letter-inner .firma {
+    text-align: right;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: var(--neon-rose);
+    margin-top: 20px;
+    text-shadow: 0 0 20px rgba(255, 123, 176, .6);
+  }
+
+  /* FOOTER */
   footer {
     padding: 60px 20px;
     text-align: center;
@@ -884,8 +960,7 @@
     -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid rgba(255, 77, 166, .3);
     box-shadow: 0 0 40px rgba(255, 77, 166, .15);
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
   }
   footer .footer-ornament {
     color: var(--neon-gold);
@@ -900,8 +975,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: block;
-    margin-bottom: 12px;
+    display: block; margin-bottom: 12px;
     filter: drop-shadow(0 0 20px rgba(255, 77, 166, .5));
   }
   footer small {
@@ -912,9 +986,7 @@
     font-style: italic;
   }
 
-  /* =====================================================
-     MÚSICA
-  ===================================================== */
+  /* MÚSICA */
   .music-ctrl {
     position: fixed;
     bottom: 22px; right: 22px;
@@ -937,14 +1009,11 @@
   .music-ctrl.show { display: flex; }
   .music-ctrl:hover {
     transform: scale(1.1);
-    box-shadow:
-      0 20px 50px rgba(0, 0, 0, .6),
-      0 0 50px rgba(255, 77, 166, .6);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .6), 0 0 50px rgba(255, 77, 166, .6);
   }
   .music-ctrl .wave {
     display: flex; gap: 3px;
-    align-items: flex-end;
-    height: 18px;
+    align-items: flex-end; height: 18px;
   }
   .music-ctrl .wave span {
     width: 3px;
@@ -964,13 +1033,11 @@
     .music-ctrl .wave span:nth-child(4) { animation-delay: .6s; }
   }
   @keyframes eq {
-    0%,100% { transform: scaleY(.5); }
+    0%, 100% { transform: scaleY(.5); }
     50% { transform: scaleY(1.2); }
   }
 
-  /* =====================================================
-     PÉTALOS / CORAZONES
-  ===================================================== */
+  /* PÉTALOS */
   .petal {
     position: fixed;
     top: -30px;
@@ -988,29 +1055,31 @@
     }
   }
 
-  /* =====================================================
-     RESPONSIVE
-  ===================================================== */
+  /* FIX iPhone: flechas de carrusel */
+  .carousel-container {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+  .carousel-track {
+    touch-action: pan-y;
+  }
+  .carousel-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero-scroll { animation: none !important; }
     html { scroll-behavior: auto; }
-    .petal {
-      animation-duration: 14s !important;
-      opacity: .7;
-    }
-    .reveal {
-      transition: opacity .6s ease, transform .6s ease;
-      transform: translateY(30px);
-    }
-    .galaxy-bg {
-      background-attachment: scroll;
-    }
+    .petal { animation-duration: 14s !important; opacity: .7; }
+    .reveal { transition: opacity .6s ease, transform .6s ease; transform: translateY(30px); }
+    .galaxy-bg { background-attachment: scroll; }
   }
   @media (max-width: 600px) {
-    .music-ctrl {
-      bottom: 16px; right: 16px;
-      width: 50px; height: 50px;
-    }
+    .music-ctrl { bottom: 16px; right: 16px; width: 50px; height: 50px; }
     .nav { padding: 10px 18px; }
     .nav-logo { font-size: 1.4rem; }
     .env-seal { width: 58px; height: 58px; font-size: 1.5rem; }
@@ -1027,14 +1096,13 @@
 </head>
 <body>
 
-<!-- Fondo galaxia -->
 <div class="galaxy-bg"></div>
 <div class="stars-layer"></div>
 <div class="shooting-star"></div>
 <div class="shooting-star"></div>
 <div class="shooting-star"></div>
 
-<!-- ============ PORTADA ============ -->
+<!-- PORTADA -->
 <div id="portal">
   <div class="portal-inner">
     <span class="portal-eyebrow">✦ Bajo las constelaciones ✦</span>
@@ -1053,14 +1121,17 @@
 </div>
 
 <audio id="song" loop preload="none">
-  <source src="Ed Sheeran - photograph sub español.mp3" type="audio/mpeg" />
+  <source src="Coldplay - Yellow (Official Video).mp3" type="audio/mpeg" />
 </audio>
 
+<!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-logo">Para ti ❤</div>
   <ul class="nav-links">
     <li><a href="#inicio">Inicio</a></li>
     <li><a href="#carta">Carta</a></li>
+    <li><a href="#timeline">Historia</a></li>
+    <li><a href="#cosas">10 cosas</a></li>
     <li><a href="#promesas">Promesas</a></li>
     <li><a href="#razones">Razones</a></li>
     <li><a href="#futuro">Futuro</a></li>
@@ -1068,7 +1139,7 @@
   </ul>
 </nav>
 
-<!-- ============ HERO ============ -->
+<!-- HERO -->
 <header class="hero" id="inicio">
   <div class="hero-inner">
     <span class="hero-eyebrow">✦ Un universo para ti ✦</span>
@@ -1079,7 +1150,7 @@
   </div>
 </header>
 
-<!-- ============ CARTA ============ -->
+<!-- CARTA PRINCIPAL -->
 <section class="content letter-section" id="carta">
   <div class="container">
     <div class="section-head reveal">
@@ -1092,8 +1163,8 @@
       <div class="letter-saludo">Mi princesa hermosa,</div>
       <p>Si pudieras verte por un instante a través de mis ojos, entenderías por qué me pareces tan bonita incluso en los días en los que tú no te sientes así. Hay algo en ti que permanece precioso en cada momento, como esas constelaciones que no dejan de brillar aunque el mundo se apague.</p>
       <p>Pero ¿sabes qué es lo que más adoro? Tu corazón, tu ternura, esa forma tan tuya de hacer que un día cualquiera se vuelva especial. No te quiero solamente por lo hermosa que eres, sino por la personita que descubro en ti.</p>
-      <p>Quiero acompañarte en tus días buenos y también en los que pesen un poquito más. Celebrar tus logros, recordarte lo capaz que eres y abrazarte cuando necesites descansar del mundo.</p>
-      <p>Gracias por existir, por dejarme acercarme a tu corazón y por regalarme la alegría de llamarte mi novia. Si hoy pudiera pedir un deseo, sería que nunca dudes de lo valiosa que eres.</p>
+      <p>Quiero acompañarte en tus días buenos y también en los que pesen un poquito más. Celebrar tus logros, recordarte lo capaz que eres y abrazarte cuando necesites descansar del mundo. Porque no quiero solo los días bonitos contigo: quiero estar presente en todos tus modos.</p>
+      <p>Gracias por existir, por dejarme acercarme a tu corazón y por regalarme la alegría de llamarte mi novia. Si hoy pudiera pedir un deseo, sería que nunca dudes de lo valiosa que eres, que nunca olvides lo mucho que vales.</p>
       <p>Y si algún día se te olvida cuánto te amo, vuelve a esta cartita. La escribí para recordarte que hay un corazón que sonríe por ti, que piensa en ti y que se siente muy afortunado de caminar a tu ladito.</p>
       <div class="letter-firma">Con todo mi amor, yo ❤</div>
       <div class="letter-ornament-bottom">✦ ❦ ✦</div>
@@ -1101,8 +1172,68 @@
   </div>
 </section>
 
-<!-- ============ PROMESAS ============ -->
-<section class="content promises-section" id="promesas">
+<!-- TIMELINE -->
+<section class="content" id="timeline">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">✦ Nuestra historia ✦</span>
+      <h2>Los momentos que nos trajeron aquí</h2>
+      <p>Un pequeño recorrido por todo lo que hemos vivido juntos.</p>
+    </div>
+    <div class="timeline-wrap reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">El día que te conocí</div>
+        <div class="tl-title">Todo comenzó</div>
+        <div class="tl-desc">Sin saberlo, ese día cambió mi mundo para siempre. Llegaste sin hacer ruido y desde entonces todo se siente más bonito.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">15 · 08 · 2025</div>
+        <div class="tl-title">El día que te pedí ser mi novia</div>
+        <div class="tl-desc">La mejor decisión que he tomado en mi vida. Ese "sí" tuyo se quedó grabado en mi corazón para siempre.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Cada día desde entonces</div>
+        <div class="tl-title">Coleccionando momentos</div>
+        <div class="tl-desc">Risas, abrazos, aprendizajes, discusiones tontas y reconciliaciones bonitas. Todo contigo vale la pena.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">El futuro</div>
+        <div class="tl-title">Todo lo que nos falta</div>
+        <div class="tl-desc">Quiero seguir escribiendo esta historia contigo. Cada capítulo nuevo, cada página en blanco, quiero llenarla a tu lado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 COSAS -->
+<section class="content" id="cosas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">✦ 10 cositas que amo de ti ✦</span>
+      <h2>Y podría seguir escribiendo</h2>
+      <p>Hasta el infinito y más allá.</p>
+    </div>
+    <div class="love-grid reveal">
+      <div class="love-card glass-card"><div class="love-num">1</div><p>Tu sonrisa cuando estás nerviosa y no puedes esconderla.</p></div>
+      <div class="love-card glass-card"><div class="love-num">2</div><p>La forma en que dices mi nombre, como si fuera algo bonito.</p></div>
+      <div class="love-card glass-card"><div class="love-num">3</div><p>Lo preciosa que te ves recién despertada, sin intentarlo.</p></div>
+      <div class="love-card glass-card"><div class="love-num">4</div><p>Tu risa cuando algo te da vergüenza; es mi sonido favorito.</p></div>
+      <div class="love-card glass-card"><div class="love-num">5</div><p>Lo mucho que te preocupas por los demás, incluso cuando tú necesitas cuidado.</p></div>
+      <div class="love-card glass-card"><div class="love-num">6</div><p>Tu carita cuando te chuleo y te pones roja; me derrites.</p></div>
+      <div class="love-card glass-card"><div class="love-num">7</div><p>La paz tan bonita que me das con solo estar, sin decir nada.</p></div>
+      <div class="love-card glass-card"><div class="love-num">8</div><p>Lo inteligente y fuerte que eres, aunque a veces no lo veas.</p></div>
+      <div class="love-card glass-card"><div class="love-num">9</div><p>Tu forma de quererme, tan tuya, tan sincera, tan bonita.</p></div>
+      <div class="love-card glass-card"><div class="love-num">10</div><p>Que seas tú, mi princesa, mi persona favorita en el universo ❤</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMESAS -->
+<section class="content" id="promesas">
   <div class="container">
     <div class="section-head reveal">
       <span class="kicker">✦ Promesas ✦</span>
@@ -1110,49 +1241,42 @@
       <p>Cosas que quiero cumplirte, mi amor, todos los días.</p>
     </div>
     <div class="promises-grid reveal">
-
       <div class="promise-card glass-card">
         <div class="promise-icon">🌹</div>
         <h3>Elegirte siempre</h3>
         <p>Prometo elegirte cada día, incluso en los días grises, incluso cuando estemos lejos. Porque elegirte es la decisión más bonita que tomo cada mañana.</p>
       </div>
-
       <div class="promise-card glass-card">
         <div class="promise-icon">🫂</div>
         <h3>Abrazarte fuerte</h3>
         <p>Prometo ser tu refugio cuando el mundo pese. Estar, escuchar, sostener. Y si algún día solo necesitas silencio, también estaré ahí.</p>
       </div>
-
       <div class="promise-card glass-card">
         <div class="promise-icon">✨</div>
         <h3>Hacerte reír</h3>
         <p>Prometo sacarte una sonrisa incluso cuando no tengas ganas. Porque tu risa es mi sonido favorito y quiero escucharla toda la vida.</p>
       </div>
-
       <div class="promise-card glass-card">
         <div class="promise-icon">🌙</div>
         <h3>Ser tu lugar seguro</h3>
         <p>Prometo ser ese lugar donde puedas ser tú sin miedo, sin máscaras, sin filtros. Ese lugar donde siempre puedes volver.</p>
       </div>
-
       <div class="promise-card glass-card">
         <div class="promise-icon">💫</div>
         <h3>Crecer contigo</h3>
         <p>Prometo crecer a tu lado, aprender de ti, apoyar tus sueños y celebrar cada uno de tus logros como si fueran míos.</p>
       </div>
-
       <div class="promise-card glass-card">
         <div class="promise-icon">❤️</div>
         <h3>Amarte bonito</h3>
         <p>Prometo amarte bonito. Con paciencia, con respeto, con ternura. No perfecto, pero siempre con el corazón entero.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============ RAZONES ============ -->
-<section class="content reasons-section" id="razones">
+<!-- RAZONES -->
+<section class="content" id="razones">
   <div class="container">
     <div class="section-head reveal">
       <span class="kicker">✦ Razones ✦</span>
@@ -1160,53 +1284,22 @@
       <p>Y podría escribir mil más, pero aquí van algunas.</p>
     </div>
     <div class="reasons-list reveal">
-
-      <div class="reason-item">
-        <p>Porque <strong>tu sonrisa</strong> ilumina cualquier lugar donde estés. Es imposible no sonreír cuando tú sonríes.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque tienes un <strong>corazón enorme</strong>, de esos que se preocupan por todos y que dan sin esperar nada a cambio.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque <strong>contigo hasta lo simple se vuelve especial</strong>. Una tarde sin plan se convierte en un recuerdo bonito.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque me haces <strong>mejor persona</strong>. Contigo aprendo a querer bonito, a tener paciencia, a crecer.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque <strong>tu risa es mi sonido favorito</strong>. Y haría lo que fuera por escucharla todos los días.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque <strong>me eliges</strong> cada día, con mis virtudes y mis defectos. Y eso es lo más bonito que alguien me ha dado.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque <strong>eres mi lugar favorito</strong>. No importa dónde estemos, si estás tú, todo se siente como hogar.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque <strong>me haces creer en el amor bonito</strong>. En ese que se queda, que cuida, que construye. En ese que eres tú.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque simplemente <strong>eres tú</strong>. Con tu forma de ser, tu ternura, tus locuras. Y no te cambiaría por nada en el mundo.</p>
-      </div>
-
-      <div class="reason-item">
-        <p>Porque <strong>te amo</strong>, sin más. Sin condiciones, sin excusas. Te amo porque sí, porque eres tú, y eso es suficiente.</p>
-      </div>
-
+      <div class="reason-item"><p>Porque <strong>tu sonrisa</strong> ilumina cualquier lugar donde estés. Es imposible no sonreír cuando tú sonríes.</p></div>
+      <div class="reason-item"><p>Porque tienes un <strong>corazón enorme</strong>, de esos que se preocupan por todos y que dan sin esperar nada a cambio.</p></div>
+      <div class="reason-item"><p>Porque <strong>contigo hasta lo simple se vuelve especial</strong>. Una tarde sin plan se convierte en un recuerdo bonito.</p></div>
+      <div class="reason-item"><p>Porque me haces <strong>mejor persona</strong>. Contigo aprendo a querer bonito, a tener paciencia, a crecer.</p></div>
+      <div class="reason-item"><p>Porque <strong>tu risa es mi sonido favorito</strong>. Y haría lo que fuera por escucharla todos los días.</p></div>
+      <div class="reason-item"><p>Porque <strong>me eliges</strong> cada día, con mis virtudes y mis defectos. Y eso es lo más bonito que alguien me ha dado.</p></div>
+      <div class="reason-item"><p>Porque <strong>eres mi lugar favorito</strong>. No importa dónde estemos, si estás tú, todo se siente como hogar.</p></div>
+      <div class="reason-item"><p>Porque <strong>me haces creer en el amor bonito</strong>. En ese que se queda, que cuida, que construye. En ese que eres tú.</p></div>
+      <div class="reason-item"><p>Porque simplemente <strong>eres tú</strong>. Con tu forma de ser, tu ternura, tus locuras. Y no te cambiaría por nada en el mundo.</p></div>
+      <div class="reason-item"><p>Porque <strong>te amo</strong>, sin más. Sin condiciones, sin excusas. Te amo porque sí, porque eres tú, y eso es suficiente.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ FUTURO ============ -->
-<section class="content future-section" id="futuro">
+<!-- FUTURO -->
+<section class="content" id="futuro">
   <div class="container">
     <div class="section-head reveal">
       <span class="kicker">✦ Nuestro futuro ✦</span>
@@ -1214,49 +1307,95 @@
       <p>Todo lo que quiero vivir a tu lado, mi amor.</p>
     </div>
     <div class="future-grid reveal">
-
       <div class="future-card glass-card">
         <div class="future-icon">✈️</div>
         <h3>Viajar contigo</h3>
         <p>Conocer el mundo tomados de la mano. Ver atardeceres en lugares nuevos, perderme contigo, crear recuerdos que duren toda la vida.</p>
       </div>
-
       <div class="future-card glass-card">
         <div class="future-icon">🏡</div>
         <h3>Un hogar juntos</h3>
         <p>Un lugar bonito donde despertar a tu lado, cocinar juntos, ver películas abrazados, discutir por tonterías y amarnos siempre.</p>
       </div>
-
       <div class="future-card glass-card">
         <div class="future-icon">🌅</div>
         <h3>Muchos amaneceres</h3>
         <p>Despertar contigo y pensar "qué suerte tengo". Repetirlo cada mañana, hasta que los años nos vuelvan viejitos.</p>
       </div>
-
       <div class="future-card glass-card">
         <div class="future-icon">🐾</div>
         <h3>Una familia con patitas</h3>
         <p>Tener nuestras mascotas, que nos llenen la casa de pelos y de amor. Ser esa pareja que se derrite por sus perritos.</p>
       </div>
-
       <div class="future-card glass-card">
         <div class="future-icon">💍</div>
         <h3>Un "sí" para siempre</h3>
         <p>Ese día en el que te mire a los ojos y te pregunte si quieres seguir siendo mía para siempre. Y que me digas que sí.</p>
       </div>
-
       <div class="future-card glass-card">
         <div class="future-icon">🌟</div>
         <h3>Envejecer contigo</h3>
         <p>Llegar a viejitos juntos, mirando atrás y darnos cuenta de que toda una vida a tu lado fue el mejor regalo que me dio la vida.</p>
       </div>
-
+      <div class="future-card glass-card">
+        <div class="future-icon">🎂</div>
+        <h3>Cada cumpleaños</h3>
+        <p>Celebrar cada año que pase contigo, cada vela que soples, cada deseo que pidas. Porque quiero estar en todos tus cumpleaños.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CARTA FINAL ============ -->
-<section class="content final-section" id="final">
+<!-- CARTA ABIERTA -->
+<section class="content" id="carta-abierta">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">✦ Carta abierta ✦</span>
+      <h2>Lo que nunca te he dicho</h2>
+      <p>Cosas que a veces no digo en voz alta pero siento.</p>
+    </div>
+    <article class="open-letter glass-card reveal">
+      <div class="letter-ornament">✦ ❦ ✦</div>
+      <h2>Algunas cosas más...</h2>
+      <p>Hay cosas que a veces no digo en voz alta pero que siento muy dentro. Como que cada vez que veo una foto tuya, me quedo mirándola más tiempo del que debería. O que cuando me mandas un mensaje, mi corazón hace un pequeño salto antes de que yo pueda controlarlo.</p>
+      <p>También hay noches en las que me quedo pensando en ti, en lo mucho que me gustaría estar abrazándote en ese momento, en lo bonito que sería despertar a tu lado. Y aunque la distancia a veces pese, saber que existes hace que todo valga la pena.</p>
+      <p>Gracias por cada "te amo", por cada "buenos días", por cada mensaje a la hora menos pensada. Gracias por los días en los que me haces reír sin querer, por las veces que me pongo nervioso cuando te veo, por los celos tontos que me dan cuando alguien te mira bonito. Todo eso es parte de lo mucho que te quiero.</p>
+      <p>Y si algún día me ves raro, si algún día me quedo callado, si algún día me ves distinto, no te preocupes. Es solo que a veces no sé cómo explicar lo mucho que significas para mí. Pero quiero que sepas que siempre, siempre estás en mis pensamientos.</p>
+      <div class="firma">Te amo hoy más que ayer y menos que mañana ❤</div>
+      <div class="letter-ornament" style="margin-top: 30px;">✦ ❦ ✦</div>
+    </article>
+  </div>
+</section>
+
+<!-- CARTA DESPLEGABLE -->
+<section class="content" id="carta-secreta">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">✦ Una última cosita ✦</span>
+      <h2>Hay algo más para ti...</h2>
+      <p>Pero tienes que abrirlo para descubrirlo. Toca el botón.</p>
+    </div>
+    <div class="reveal-letter-wrap reveal">
+      <button class="reveal-letter-btn" id="revealLetterBtn">
+        <span>Ábreme, mi niña ❤</span>
+      </button>
+      <div class="reveal-letter-content" id="revealLetterContent">
+        <div class="reveal-letter-inner">
+          <p>Mi princesa:</p>
+          <p>Si estás leyendo esto, es porque abriste el botón. Y eso significa que llegaste hasta el final. Gracias. Gracias por tomarte el tiempo de leer cada carta, cada promesa, cada razón, cada palabra. Gracias por quererme bonito.</p>
+          <p>Hay algo que quiero que sepas y que a veces no digo: cada día a tu lado es un regalo que no merezco. No sé qué hice para tenerte, no sé qué hice para que me eligieras, pero doy gracias al universo todos los días por haberte cruzado en mi camino.</p>
+          <p>Si algún día dudas, si algún día sientes que no vales, si algún día el mundo te pesa, vuelve a esta página. Vuelve a esta carta. Vuelve a leer cada cosa bonita que te escribí. Porque todas y cada una de ellas son verdad. Y todas y cada una de ellas son para ti.</p>
+          <p>No sé qué nos depare el futuro. No sé cuántos días nos queden. Pero sí sé que mientras estés conmigo, quiero hacerte feliz. Quiero que te sientas querida, valorada, elegida. Quiero que sepas que eres mi persona favorita, mi lugar seguro, mi princesa.</p>
+          <p>Te amo, mi niña. Te amo con todo mi corazón, con toda mi alma, con todo lo que soy. Y si alguna vez se me olvida decírtelo, vuelve a leer esta página. Porque aquí está escrito, para siempre, cuánto te amo.</p>
+          <div class="firma">Siempre tuyo ❤</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA FINAL -->
+<section class="content" id="final">
   <div class="container">
     <div class="section-head reveal">
       <span class="kicker">✦ Una última cosa ✦</span>
@@ -1282,7 +1421,7 @@
   <small>Hecho con mucho amor, pensando en ti.</small>
 </footer>
 
-<!-- ============ MÚSICA ============ -->
+<!-- MÚSICA -->
 <button class="music-ctrl" id="musicCtrl" aria-label="Controlar música">
   <div class="wave"><span></span><span></span><span></span><span></span></div>
 </button>
@@ -1333,6 +1472,20 @@
     } else {
       song.pause();
       musicCtrl.querySelector('.wave').style.display = 'none';
+    }
+  });
+
+  // Carta desplegable
+  const revealLetterBtn = document.getElementById('revealLetterBtn');
+  const revealLetterContent = document.getElementById('revealLetterContent');
+  revealLetterBtn.addEventListener('click', () => {
+    const isOpen = revealLetterContent.classList.toggle('open');
+    revealLetterBtn.querySelector('span').textContent = isOpen ? 'Cerrar la carta ❤' : 'Ábreme, mi niña ❤';
+    if (isOpen) {
+      makePetals(15);
+      setTimeout(() => {
+        revealLetterContent.scrollIntoView({ behavior: isMobile ? 'auto' : 'smooth', block: 'start' });
+      }, 400);
     }
   });
 
