@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un Viaje Por Nuestro Universo ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rojo: #C9184A;
+    --rojo-oscuro: #7A0C22;
+    --rojo-suave: #E85D75;
+    --dorado: #D4AF37;
+    --crema: #FFF5F5;
+    --espacio: #05010A;
+    --espacio-2: #0D0418;
+    --nebulosa: #2A0A1E;
+    --estrella: #FFF8E7;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--espacio);
+    color: var(--crema);
+    overflow-x: hidden;
+    line-height: 1.8;
+  }
+
+  /* ===== FONDO ESTRELLADO FIJO ===== */
+  .cielo {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(201,24,74,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(42,10,30,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 50%, #0D0418 0%, #05010A 100%);
+    pointer-events: none;
+  }
+
+  .estrellas {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .estrella {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: titilar linear infinite;
+  }
+
+  @keyframes titilar {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50%      { opacity: 1;   transform: scale(1.2); }
+  }
+
+  /* ===== CONTENIDO ===== */
+  .contenido {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .hero .etiqueta {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--dorado);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 40px rgba(201,24,74,0.4);
+  }
+
+  .hero h1 span {
+    color: var(--rojo-suave);
+    font-style: italic;
+  }
+
+  .hero .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: #e8d5dc;
+    opacity: 0.85;
+    max-width: 600px;
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+
+  /* ===== CONTADOR ===== */
+  .contador {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .contador .bloque {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,24,74,0.3);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    min-width: 75px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(201,24,74,0.1);
+  }
+
+  .contador .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--rojo-suave);
+    font-weight: 700;
+    display: block;
+  }
+
+  .contador .label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #b8a0aa;
+  }
+
+  /* ===== BOTÓN ===== */
+  .btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 40px rgba(201,24,74,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(212,175,55,0.3);
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 60px rgba(201,24,74,0.8);
+  }
+
+  /* ===== INDICADOR SCROLL ===== */
+  .scroll-indicador {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--dorado);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    animation: flotarIndicador 2s ease-in-out infinite;
+  }
+
+  @keyframes flotarIndicador {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+    50%      { transform: translateX(-50%) translateY(-8px); opacity: 1; }
+  }
+
+  /* ===== SECCIONES ===== */
+  section {
+    padding: 6rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .seccion-etiqueta {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: var(--dorado);
+    text-align: center;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  .titulo-seccion {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    line-height: 1.15;
+    text-shadow: 0 0 30px rgba(201,24,74,0.3);
+  }
+
+  .subtitulo-seccion {
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    font-style: italic;
+    color: #c9b3bc;
+    margin-bottom: 3.5rem;
+    font-size: 1.1rem;
+  }
+
+  /* ===== LÍNEA CÓSMICA ===== */
+  .linea-cosmos {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--dorado), transparent);
+    margin: 0 auto 1.5rem;
+  }
+
+  /* ===== TIMELINE VIAJE ESTELAR ===== */
+  .viaje {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .viaje::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--rojo), var(--dorado), var(--rojo), transparent);
+    box-shadow: 0 0 15px rgba(201,24,74,0.6);
+  }
+
+  .parada {
+    position: relative;
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.9s ease;
+  }
+
+  .parada.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .parada::before {
+    content: '✦';
+    position: absolute;
+    left: -2.35rem;
+    top: 0.2rem;
+    color: var(--dorado);
+    font-size: 1.1rem;
+    background: var(--espacio);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(212,175,55,0.6);
+  }
+
+  .parada .coordenada {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--dorado);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .parada h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.7rem;
+    font-style: italic;
+  }
+
+  .parada p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: #d8c8ce;
+    line-height: 1.8;
+  }
+
+  /* ===== GALAXIA DE RAZONES ===== */
+  .galaxia {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .estrella-razon {
+    background: linear-gradient(135deg, rgba(201,24,74,0.12), rgba(42,10,30,0.4));
+    border: 1px solid rgba(201,24,74,0.25);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .estrella-razon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .estrella-razon:hover {
+    transform: translateY(-8px);
+    border-color: var(--dorado);
+    box-shadow: 0 0 40px rgba(201,24,74,0.4);
+  }
+
+  .estrella-razon:hover::before { opacity: 1; }
+
+  .estrella-razon .simbolo {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .estrella-razon h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--dorado);
+    margin-bottom: 0.6rem;
+    font-size: 1.15rem;
+  }
+
+  .estrella-razon p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: #d8c8ce;
+    font-style: italic;
+  }
+
+  /* ===== CONSTELACIÓN DE CARTAS ===== */
+  .carta-cosmos {
+    background: linear-gradient(135deg, rgba(13,4,24,0.9), rgba(42,10,30,0.7));
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 0 60px rgba(201,24,74,0.05);
+  }
+
+  .carta-cosmos::before {
+    content: '❀';
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 3rem;
+    color: var(--rojo-suave);
+    opacity: 0.15;
+  }
+
+  .carta-cosmos::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    box-shadow: inset 0 0 0 1px rgba(212,175,55,0.15);
+    pointer-events: none;
+  }
+
+  .carta-cosmos .titulo-carta {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--dorado);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  .carta-cosmos p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: #e8dde2;
+    margin-bottom: 1.2rem;
+    line-height: 1.9;
+  }
+
+  .carta-cosmos p strong {
+    color: var(--rojo-suave);
+    font-weight: 600;
+  }
+
+  .carta-cosmos .firma {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--rojo-suave);
+    margin-top: 1.5rem;
+    text-align: right;
+  }
+
+  /* ===== CARTA ESPECIAL DESTACADA ===== */
+  .carta-destacada {
+    background: linear-gradient(135deg, rgba(201,24,74,0.15), rgba(122,12,34,0.25));
+    border: 1px solid var(--rojo-suave);
+    box-shadow: 0 0 60px rgba(201,24,74,0.3), inset 0 0 60px rgba(201,24,74,0.1);
+  }
+
+  /* ===== POEMA ===== */
+  .poema {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    line-height: 2;
+    color: #e8dde2;
+    font-style: italic;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-top: 1px solid rgba(212,175,55,0.3);
+    border-bottom: 1px solid rgba(212,175,55,0.3);
+  }
+
+  .poema .verso-rojo {
+    color: var(--rojo-suave);
+    font-weight: 600;
+  }
+
+  /* ===== SORPRESA FINAL ===== */
+  .sorpresa-cosmos {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: radial-gradient(circle at 50% 50%, rgba(201,24,74,0.2) 0%, transparent 70%);
+    border-radius: 30px;
+    margin: 3rem auto;
+    max-width: 800px;
+    position: relative;
+    border: 1px solid rgba(212,175,55,0.2);
+  }
+
+  .sorpresa-cosmos h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 40px rgba(201,24,74,0.6);
+  }
+
+  .sorpresa-cosmos p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #c9b3bc;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  .revelado {
+    display: none;
+    margin-top: 2.5rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    line-height: 1.7;
+    color: var(--dorado);
+    animation: aparecer 1.5s ease;
+  }
+
+  .revelado.activo { display: block; }
+
+  @keyframes aparecer {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ===== LLUVIA DE ESTRELLAS Y CORAZONES ===== */
+  .particula {
+    position: fixed;
+    top: -50px;
+    z-index: 999;
+    pointer-events: none;
+    animation: caerParticula linear forwards;
+  }
+
+  @keyframes caerParticula {
+    0%   { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    border-top: 1px solid rgba(201,24,74,0.2);
+    margin-top: 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  footer .frase-final {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #c9b3bc;
+    margin-bottom: 1.5rem;
+  }
+
+  footer .creditos {
+    font-size: 0.8rem;
+    color: #7a6570;
+    letter-spacing: 0.1em;
+  }
+
+  footer .corazon { color: var(--rojo-suave); }
+
+  /* ===== SNOOPY ASTRONAUTA ===== */
+  .snoopy {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.3s;
+    animation: flotar 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(201,24,74,0.6));
+  }
+
+  .snoopy:hover { transform: scale(1.15) rotate(-8deg); }
+
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50%      { transform: translateY(-15px) rotate(2deg); }
+  }
+
+  .mensaje-secreto {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
+    color: #fff;
+    padding: 1rem 1.3rem;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    max-width: 240px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    z-index: 21;
+    border: 1px solid var(--dorado);
+    box-shadow: 0 0 40px rgba(201,24,74,0.6);
+  }
+
+  .mensaje-secreto.activo {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* ===== BOTÓN MÚSICA ===== */
+  .btn-musica {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
+    color: #fff;
+    border: 1px solid var(--dorado);
+    cursor: pointer;
+    font-size: 1.4rem;
+    z-index: 20;
+    box-shadow: 0 0 30px rgba(201,24,74,0.5);
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-musica:hover { transform: scale(1.1); }
+
+  /* ===== REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== ESTRELLA FUGAZ ===== */
+  .estrella-fugaz {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 3px rgba(255,255,255,0.9), 0 0 30px 8px rgba(201,24,74,0.5);
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  /* ===== COHETE SCROLL ===== */
+  .cohete {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    z-index: 15;
+    opacity: 0.6;
+    transition: bottom 0.3s ease;
+    pointer-events: none;
+    filter: drop-shadow(0 0 10px rgba(201,24,74,0.8));
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== FONDO ===== -->
+<div class="cielo"></div>
+<div class="estrellas" id="estrellas"></div>
+<div class="estrella-fugaz" id="fugaz"></div>
+<div class="cohete" id="cohete">🚀</div>
+
+<!-- ===== BOTÓN MÚSICA ===== -->
+<button class="btn-musica" id="btnMusica" title="Nuestra canción">🎵</button>
+
+<!-- ===== SNOOPY ===== -->
+<div class="mensaje-secreto" id="mensajeSnoopy">"He viajado por toda la galaxia y no encontré nada tan brillante como tú."</div>
+<img class="snoopy" id="snoopy" src="snoopyastro.jpg" alt="Snoopy astronauta">
+
+<!-- ===== CONTENIDO ===== -->
+<div class="contenido">
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="etiqueta">Bitácora de vuelo · Misión 3 meses</div>
+  <h1>Un viaje por<br><span>nuestro universo</span></h1>
+  <p class="sub">Hay historias que no caben en el tiempo, y la nuestra es una de ellas. Bienvenida a nuestro cosmos.</p>
+
+  <div class="contador" id="contador">
+    <div class="bloque"><span class="num" id="dias">0</span><span class="label">Días</span></div>
+    <div class="bloque"><span class="num" id="horas">0</span><span class="label">Horas</span></div>
+    <div class="bloque"><span class="num" id="min">0</span><span class="label">Min</span></div>
+    <div class="bloque"><span class="num" id="seg">0</span><span class="label">Seg</span></div>
+  </div>
+
+  <a href="#despegue" class="btn">Iniciar el viaje ✦</a>
+
+  <div class="scroll-indicador">Desliza para despegar</div>
+</section>
+
+<!-- ===== DESPEGUE / TIMELINE ===== -->
+<section id="despegue">
+  <div class="linea-cosmos"></div>
+  <div class="seccion-etiqueta">Fase 01 · El despegue</div>
+  <h2 class="titulo-seccion reveal">El día que el universo<br>nos cruzó</h2>
+  <p class="subtitulo-seccion reveal">Cada historia tiene un origen. Esta es la nuestra.</p>
+
+  <div class="viaje">
+    <div class="parada">
+      <div class="coordenada">Coordenada 01 · El primer encuentro</div>
+      <h3>Cuando el universo dijo "es ella"</h3>
+      <p>No hubo explosión de estrellas ni temblor de planetas. Solo un instante, una mirada, y una certeza silenciosa que se instaló en mi pecho: algo grande acababa de empezar. No lo sabía todavía, pero ese día el universo me estaba regalando lo que más iba a cuidar.</p>
+    </div>
+    <div class="parada">
+      <div class="coordenada">Coordenada 02 · La primera conversación</div>
+      <h3>Horas que se sintieron segundos</h3>
+      <p>Hablamos hasta que las palabras se quedaron sin horas. Y cuando por fin dijimos "hasta mañana", me di cuenta de que ya te extrañaba. Ahí entendí que no era casualidad: eras esa persona que llega y sin hacer ruido, lo cambia todo.</p>
+    </div>
+    <div class="parada">
+      <div class="coordenada">Coordenada 03 · La primera cita</div>
+      <h3>Los nervios más bonitos de mi vida</h3>
+      <p>Recuerdo que revisé el espejo mil veces, que llegué temprano, que me temblaban las manos. Pero cuando te vi sonreír, todo se calmó. Como si mi alma hubiera encontrado su lugar. Esa noche supe que quería muchas más primeras veces contigo.</p>
+    </div>
+    <div class="parada">
+      <div class="coordenada">Coordenada 04 · El primer "te quiero"</div>
+      <h3>Cuando el corazón habló primero</h3>
+      <p>No lo planeé. Salió del alma, sin permiso, sin ensayo. Porque contigo las palabras se sienten antes de pensarse. Y cuando me dijiste que también, el universo entero se detuvo un segundo para escucharnos.</p>
+    </div>
+    <div class="parada">
+      <div class="coordenada">Coordenada 05 · Hoy, 3 meses después</div>
+      <h3>Y esto apenas es el comienzo</h3>
+      <p>Tres meses que se sienten como el primer capítulo de toda una vida. Gracias por cada risa, cada abrazo, cada mensaje a las 3 a.m., cada silencio compartido. Gracias por elegirme. Esto no es un destino, es el inicio de un viaje sin retorno.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALAXIA DE RAZONES ===== -->
+<section>
+  <div class="linea-cosmos"></div>
+  <div class="seccion-etiqueta">Fase 02 · La galaxia</div>
+  <h2 class="titulo-seccion reveal">Las estrellas que forman<br>mi constelación favorita</h2>
+  <p class="subtitulo-seccion reveal">Cada una es una razón. Y hay miles más que no alcanzan a brillar aquí.</p>
+
+  <div class="galaxia reveal">
+    <div class="estrella-razon">
+      <span class="simbolo">😊</span>
+      <h4>Tu sonrisa</h4>
+      <p>El amanecer que no necesita sol. Cuando la veo, hasta los días más oscuros se vuelven claros.</p>
+    </div>
+    <div class="estrella-razon">
+      <span class="simbolo">🎵</span>
+      <h4>Tu risa</h4>
+      <p>Mi banda sonora favorita. La escucharía en bucle toda la eternidad y nunca me cansaría.</p>
+    </div>
+    <div class="estrella-razon">
+      <span class="simbolo">💪</span>
+      <h4>Tu fuerza</h4>
+      <p>La forma en que enfrentas la vida me inspira. Eres la persona más valiente que conozco.</p>
+    </div>
+    <div class="estrella-razon">
+      <span class="simbolo">🤗</span>
+      <h4>Tus abrazos</h4>
+      <p>Mi lugar seguro en el universo. Donde todo se detiene y el mundo por fin tiene sentido.</p>
+    </div>
+    <div class="estrella-razon">
+      <span class="simbolo">🌸</span>
+      <h4>Tu forma de amar</h4>
+      <p>Con detalles, con paciencia, con todo. Me haces sentir la persona más afortunada del planeta.</p>
+    </div>
+    <div class="estrella-razon">
+      <span class="simbolo">✨</span>
+      <h4>Tu esencia</h4>
+      <p>Esa forma única de ser tú, sin filtros, sin máscaras. La que me enamora una y otra vez.</p>
+    </div>
+    <div class="estrella-razon">
+      <span class="simbolo">🌙</span>
+      <h4>Tu forma de mirarme</h4>
+      <p>Como si yo fuera suficiente. Como si el mundo pudiera esperar. Esa mirada es mi refugio.</p>
+    </div>
+    <div class="estrella-razon">
+      <span class="simbolo">💫</span>
+      <h4>Tu existencia</h4>
+      <p>El simple hecho de que estés en mi vida. Eso, mi amor, es el milagro más grande de todos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POEMA ===== -->
+<section>
+  <div class="linea-cosmos"></div>
+  <div class="seccion-etiqueta">Fase 03 · El silencio entre estrellas</div>
+  <h2 class="titulo-seccion reveal">Un poema para ti</h2>
+  <p class="subtitulo-seccion reveal">Porque hay cosas que solo la poesía puede decir</p>
+
+  <div class="poema reveal">
+    Si el universo tiene un orden,<br>
+    entonces <span class="verso-rojo">tú y yo estábamos escritos</span><br>
+    en la misma línea del tiempo.<br><br>
+    Si las estrellas tienen nombres,<br>
+    la más brillante lleva el tuyo.<br><br>
+    Y si el amor tiene un rostro,<br>
+    <span class="verso-rojo">tiene tus ojos, tu risa, tu voz.</span>
+  </div>
+</section>
+
+<!-- ===== CARTAS ===== -->
+<section>
+  <div class="linea-cosmos"></div>
+  <div class="seccion-etiqueta">Fase 04 · Transmisión desde el corazón</div>
+  <h2 class="titulo-seccion reveal">Cartas desde<br>el infinito</h2>
+  <p class="subtitulo-seccion reveal">Mensajes que el espacio guardó para ti</p>
+
+  <!-- CARTA 1 -->
+  <div class="carta-cosmos reveal">
+    <div class="titulo-carta">Mi amor, si algún día dudas de cuánto te quiero, lee esto:</div>
+    <p>No sé si existen los universos paralelos. Pero si existen, en cada uno de ellos te volvería a elegir. En cada uno, me volvería a enamorar de ti. En cada uno, tú serías mi persona favorita.</p>
+    <p>Porque no eres una casualidad en mi vida: eres la razón por la que todo lo demás tiene sentido. Cuando llegaste, el mundo dejó de ser un lugar grande y vacío y se volvió un espacio cálido, lleno de ti.</p>
+    <p><strong>Gracias por existir. Gracias por elegirme. Gracias por quedarte.</strong></p>
+    <div class="firma">Tuyo, en este y en todos los universos.</div>
+  </div>
+
+  <!-- CARTA 2 (DESTACADA, LA QUE LA HARÁ LLORAR) -->
+  <div class="carta-cosmos carta-destacada reveal">
+    <div class="titulo-carta">Hay algo que nunca te he dicho con estas palabras…</div>
+    <p>Antes de ti, yo pensaba que el amor era una cosa que se sentía. Ahora sé que es una cosa que se construye. Se construye con los "buenos días", con las llamadas sin motivo, con las preguntas de "¿ya comiste?", con los silencios que no incomodan, con las manos que se buscan sin pensar.</p>
+    <p>Contigo aprendí que amar no es solo querer a alguien: es querer <strong>el bienestar de esa persona por encima del propio</strong>. Y eso me pasa contigo. Cada vez que estás triste, yo estoy triste. Cada vez que ríes, el mundo entero se ilumina. Es como si nuestros corazones hubieran aprendido a latir al mismo ritmo.</p>
+    <p>No sé qué traiga el futuro. No sé cuántos planetas nos queden por explorar ni cuántas estrellas por nombrar. Pero sí sé algo con una certeza absoluta: <strong>mientras tú estés en mi órbita, todo vale la pena.</strong></p>
+    <p>Te amo hoy, te amaré mañana, y si el tiempo me da la oportunidad, te amaré todas las vidas que me queden.</p>
+    <div class="firma">Con todo mi corazón, siempre. ❤️</div>
+  </div>
+
+  <!-- CARTA 3 -->
+  <div class="carta-cosmos reveal">
+    <div class="titulo-carta">Lo que aprendí al mirar las estrellas contigo</div>
+    <p>Hay noches en las que me quedo mirando el cielo y pienso en lo pequeño que soy. Pero luego te miro a ti y entiendo: <strong>no necesito ser grande si puedo ser importante para alguien como tú.</strong></p>
+    <p>Aprendí que el amor no se mide en gestos gigantes, sino en detalles pequeños repetidos cada día. Aprendí que la persona correcta no llega para completarte, sino para acompañarte mientras te completas.</p>
+    <p>Y esa persona correcta eres tú. No lo digo porque te amo: lo digo porque es la verdad.</p>
+    <div class="firma">Gracias por enseñarme a amar mejor.</div>
+  </div>
+
+  <!-- CARTA 4 -->
+  <div class="carta-cosmos reveal">
+    <div class="titulo-carta">Para cuando me leas en un día difícil:</div>
+    <p>Si hoy es uno de esos días en los que sientes que todo pesa, quiero que sepas esto: <strong>no tienes que poder con todo tú sola.</strong> Estoy aquí. Para cargar contigo, para escucharte, para abrazarte hasta que el mundo se sienta más ligero.</p>
+    <p>No necesito que seas perfecta. Necesito que seas tú. Con tus días buenos y tus días no tan buenos. Con tus dudas y tus certezas. Porque cada parte de ti me importa, incluso las que tú no siempre quieres mostrar.</p>
+    <p>Estoy contigo. Hoy, mañana, y en todos los días difíciles que vengan. Eso no es una promesa vacía: es una decisión que tomo cada día.</p>
+    <div class="firma">Siempre tuyo. ❤️</div>
+  </div>
+
+  <!-- CARTA 5 -->
+  <div class="carta-cosmos reveal">
+    <div class="titulo-carta">El futuro que me imagino contigo</div>
+    <p>Me imagino despertando contigo. Me imagino peleándonos por la cobija y riéndonos después. Me imagino cocinando juntos un domingo cualquiera, oyendo esa canción que nos recuerda cómo empezó todo.</p>
+    <p>Me imagino viajando, discutiendo por el mapa, perdidos en una ciudad nueva, tomados de la mano. Me imagino cumpliendo años, uno tras otro, y en cada uno eligiéndote otra vez.</p>
+    <p>No te prometo que siempre será fácil. Te prometo que siempre valdrá la pena. <strong>Porque todo contigo, hasta lo difícil, se vuelve bonito.</strong></p>
+    <div class="firma">Con la mirada puesta en todo lo que viene.</div>
+  </div>
+</section>
+
+<!-- ===== SORPRESA FINAL ===== -->
+<section>
+  <div class="sorpresa-cosmos reveal">
+    <h2>La última escala del viaje</h2>
+    <p>Antes de terminar, tengo un último mensaje escondido en las estrellas.</p>
+    <button class="btn" id="btnSorpresa">Abrir la última estrella ✦</button>
+    <div class="revelado" id="revelado">
+      Si esta página pudiera hablar,<br>
+      te diría lo que ya sabes:<br>
+      <strong>eres el amor de mi vida.</strong><br><br>
+      Gracias por estos 3 meses.<br>
+      Por los que vienen.<br>
+      Por todos.<br><br>
+      Te amo. ❤️
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p class="frase-final">"De todos los universos posibles, en este me tocó contigo. Y qué suerte la mía."</p>
+  <p class="creditos">Hecho con <span class="corazon">❤️</span> por tu novio, para la mujer más brillante de esta galaxia.</p>
+  <p class="creditos" style="margin-top: 0.5rem; opacity: 0.5;">3 meses · 0 dudas · ∞ ganas de más 🚀</p>
+</footer>
+
+</div>
+
+<!-- ===== AUDIO ===== -->
+<audio id="audio" loop>
+  <source src="Eres Tú - Matisse, Reik - (Letra).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // ===== ESTRELLAS DE FONDO =====
+  const estrellasCont = document.getElementById('estrellas');
+  for (let i = 0; i < 150; i++) {
+    const e = document.createElement('div');
+    e.className = 'estrella';
+    const tam = Math.random() * 2 + 0.5;
+    e.style.width = tam + 'px';
+    e.style.height = tam + 'px';
+    e.style.left = Math.random() * 100 + 'vw';
+    e.style.top = Math.random() * 100 + 'vh';
+    e.style.animationDuration = (2 + Math.random() * 4) + 's';
+    e.style.animationDelay = Math.random() * 3 + 's';
+    if (Math.random() > 0.85) {
+      e.style.background = '#E85D75';
+      e.style.boxShadow = '0 0 6px #E85D75';
+    }
+    estrellasCont.appendChild(e);
+  }
+
+  // ===== CONTADOR =====
+  // ⚠️ CAMBIA ESTA FECHA por la fecha en que empezaron
+  const inicio = new Date(2025, 7, 17, 0, 0, 0);
+  function actualizar() {
+    const ahora = new Date();
+    const diff = ahora - inicio;
+    const seg = Math.floor(diff / 1000);
+    const min = Math.floor(seg / 60);
+    const horas = Math.floor(min / 60);
+    const dias = Math.floor(horas / 24);
+    document.getElementById('dias').textContent  = dias;
+    document.getElementById('horas').textContent = horas % 24;
+    document.getElementById('min').textContent   = min % 60;
+    document.getElementById('seg').textContent   = seg % 60;
+  }
+  actualizar();
+  setInterval(actualizar, 1000);
+
+  // ===== REVEAL =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .parada').forEach(el => observer.observe(el));
+
+  // ===== BOTÓN SORPRESA =====
+  document.getElementById('btnSorpresa').addEventListener('click', () => {
+    document.getElementById('revelado').classList.add('activo');
+    const particulas = ['❤️','💕','✨','⭐','🌟','💖','❀','🌸','✦'];
+    for (let i = 0; i < 50; i++) {
+      setTimeout(() => {
+        const p = document.createElement('div');
+        p.className = 'particula';
+        p.textContent = particulas[Math.floor(Math.random() * particulas.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.fontSize = (1 + Math.random() * 1.8) + 'rem';
+        p.style.animationDuration = (2.5 + Math.random() * 2.5) + 's';
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 6000);
+      }, i * 60);
+    }
+  });
+
+  // ===== MÚSICA =====
+  const audio = document.getElementById('audio');
+  const btnMusica = document.getElementById('btnMusica');
+  btnMusica.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.volume = 0.3;
+      audio.play();
+      btnMusica.textContent = '⏸️';
+    } else {
+      audio.pause();
+      btnMusica.textContent = '🎵';
+    }
+  });
+
+  // ===== SNOOPY =====
+  let clicsSnoopy = 0;
+  document.getElementById('snoopy').addEventListener('click', () => {
+    clicsSnoopy++;
+    if (clicsSnoopy === 3) {
+      const msg = document.getElementById('mensajeSnoopy');
+      msg.classList.add('activo');
+      setTimeout(() => msg.classList.remove('activo'), 5000);
+      clicsSnoopy = 0;
+    }
+  });
+
+  // ===== ESTRELLA FUGAZ =====
+  function crearFugaz() {
+    const f = document.getElementById('fugaz');
+    f.style.transition = 'none';
+    f.style.opacity = '0';
+    f.style.top = (Math.random() * 40) + 'vh';
+    f.style.left = (Math.random() * 70) + 'vw';
+    f.style.transform = 'translate(0,0)';
+    setTimeout(() => {
+      f.style.transition = 'all 1.2s ease-out';
+      f.style.opacity = '1';
+      f.style.transform = 'translate(300px, 150px)';
+    }, 50);
+    setTimeout(() => {
+      f.style.opacity = '0';
+    }, 1200);
+  }
+  setInterval(crearFugaz, 6000);
+  setTimeout(crearFugaz, 2000);
+
+  // ===== COHETE QUE SUBE CON EL SCROLL =====
+  const cohete = document.getElementById('cohete');
+  window.addEventListener('scroll', () => {
+    const total = document.body.scrollHeight - window.innerHeight;
+    const progreso = window.scrollY / total;
+    cohete.style.bottom = (20 + progreso * (window.innerHeight - 80)) + 'px';
+  });
+</script>
+</body>
+</html>
