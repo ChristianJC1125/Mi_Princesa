@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestros 3 Meses ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rojo: #C9184A;
+    --rojo-oscuro: #7A0C22;
+    --rojo-suave: #E85D75;
+    --dorado: #D4AF37;
+    --crema: #FFF5F5;
+    --crema-2: #FFEAEF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--crema);
+    color: var(--rojo-oscuro);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background: radial-gradient(circle at 50% 30%, #fff 0%, var(--crema) 60%, #ffe0e6 100%);
+    padding: 2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    color: var(--rojo);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero .sub {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--rojo-oscuro);
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== CONTADOR ===== */
+  .contador {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .contador .bloque {
+    background: #fff;
+    border: 1px solid #f3c6cf;
+    border-radius: 16px;
+    padding: 1rem 1.3rem;
+    min-width: 80px;
+    box-shadow: 0 8px 24px rgba(201, 24, 74, 0.08);
+  }
+
+  .contador .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--rojo);
+    font-weight: 700;
+    display: block;
+  }
+
+  .contador .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.6;
+  }
+
+  /* ===== BOTÓN ===== */
+  .btn {
+    display: inline-block;
+    background: var(--rojo);
+    color: #fff;
+    padding: 1rem 2.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    box-shadow: 0 10px 30px rgba(201, 24, 74, 0.35);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(201, 24, 74, 0.45);
+  }
+
+  /* ===== PÉTALOS ===== */
+  .petalo {
+    position: fixed;
+    top: -40px;
+    pointer-events: none;
+    z-index: 10;
+    animation: caer linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes caer {
+    0%   { transform: translateY(-40px) rotate(0deg); }
+    100% { transform: translateY(105vh) rotate(360deg); }
+  }
+
+  /* ===== SNOOPY ===== */
+  .snoopy {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.3s;
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  .snoopy:hover { transform: scale(1.1) rotate(-5deg); }
+
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  .mensaje-secreto {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: var(--rojo);
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    max-width: 220px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s;
+    pointer-events: none;
+    z-index: 21;
+  }
+
+  .mensaje-secreto.activo {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== SECCIONES GENERALES ===== */
+  section {
+    padding: 5rem 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .titulo-seccion {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--rojo);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitulo-seccion {
+    text-align: center;
+    opacity: 0.7;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+
+  .divisor {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--rojo);
+    opacity: 0.5;
+    margin: 1rem 0;
+    letter-spacing: 0.5em;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--rojo-suave), var(--rojo));
+    border-radius: 2px;
+  }
+
+  .hito {
+    position: relative;
+    margin-bottom: 2.5rem;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(201, 24, 74, 0.08);
+    border-left: 4px solid var(--rojo);
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s ease;
+  }
+
+  .hito.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .hito::before {
+    content: '❀';
+    position: absolute;
+    left: -2.55rem;
+    top: 1.3rem;
+    color: var(--rojo);
+    font-size: 1.2rem;
+    background: var(--crema);
+    border-radius: 50%;
+  }
+
+  .hito .fecha {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--rojo);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .hito h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--rojo-oscuro);
+    margin-bottom: 0.5rem;
+  }
+
+  .hito p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  /* ===== GALERÍA ===== */
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .galeria .foto {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #ffe0e6, #ffc2d1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rojo);
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(201, 24, 74, 0.1);
+    transition: transform 0.3s;
+  }
+
+  .galeria .foto:hover { transform: scale(1.03); }
+
+  .galeria .foto .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(122,12,34,0.85), transparent);
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .galeria .foto:hover .overlay { opacity: 1; }
+
+  /* ===== CARDS RAZONES ===== */
+  .razones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .razon {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(201, 24, 74, 0.08);
+    border: 1px solid #f3c6cf;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .razon:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(201, 24, 74, 0.18);
+  }
+
+  .razon .icono {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .razon h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--rojo);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .razon p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  /* ===== CARTAS ===== */
+  .carta {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 12px 40px rgba(201, 24, 74, 0.12);
+    border: 1px solid #f3c6cf;
+    position: relative;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+
+  .carta::before {
+    content: '❀';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 4rem;
+    color: var(--rojo);
+    opacity: 0.08;
+  }
+
+  .carta .firma {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--rojo);
+    margin-top: 1.5rem;
+    text-align: right;
+  }
+
+  .carta p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+
+  .carta .titulo-carta {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--rojo);
+    margin-bottom: 1rem;
+  }
+
+  /* ===== CARTA DESTACADA (la que la hará llorar) ===== */
+  .carta-especial {
+    background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+    border: 2px solid var(--rojo-suave);
+    position: relative;
+  }
+
+  .carta-especial::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.3);
+    pointer-events: none;
+  }
+
+  /* ===== SECCIÓN SORPRESA ===== */
+  .sorpresa {
+    text-align: center;
+    background: linear-gradient(135deg, var(--rojo-oscuro), var(--rojo));
+    border-radius: 24px;
+    padding: 4rem 2rem;
+    color: #fff;
+    margin: 2rem auto;
+    max-width: 800px;
+  }
+
+  .sorpresa h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin-bottom: 1rem;
+  }
+
+  .sorpresa p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .btn-sorpresa {
+    background: #fff;
+    color: var(--rojo);
+  }
+
+  .btn-sorpresa:hover {
+    background: #ffe0e6;
+  }
+
+  /* ===== MENSAJE OCULTO SORPRESA ===== */
+  .revelado {
+    display: none;
+    margin-top: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    animation: aparecer 1s ease;
+  }
+
+  .revelado.activo { display: block; }
+
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== CORAZONES LLUVIA ===== */
+  .corazon-lluvia {
+    position: fixed;
+    top: -50px;
+    font-size: 2rem;
+    z-index: 999;
+    pointer-events: none;
+    animation: caerCorazon linear forwards;
+  }
+
+  @keyframes caerCorazon {
+    0%   { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: var(--rojo-oscuro);
+    color: #fff;
+    font-size: 0.9rem;
+  }
+
+  footer .corazon { color: var(--rojo-suave); }
+
+  /* ===== BOTÓN MÚSICA ===== */
+  .btn-musica {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: var(--rojo);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    z-index: 20;
+    box-shadow: 0 8px 24px rgba(201, 24, 74, 0.4);
+    transition: transform 0.3s;
+  }
+
+  .btn-musica:hover { transform: scale(1.1); }
+
+  /* ===== ANIMACIÓN REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== BOTÓN MÚSICA ===== -->
+<button class="btn-musica" id="btnMusica" title="Reproducir nuestra canción">🎵</button>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>3 Meses Contigo</h1>
+  <p class="sub">Y cada día me enamoro un poquito más de ti</p>
+
+  <div class="contador" id="contador">
+    <div class="bloque"><span class="num" id="dias">0</span><span class="label">Días</span></div>
+    <div class="bloque"><span class="num" id="horas">0</span><span class="label">Horas</span></div>
+    <div class="bloque"><span class="num" id="min">0</span><span class="label">Min</span></div>
+    <div class="bloque"><span class="num" id="seg">0</span><span class="label">Seg</span></div>
+  </div>
+
+  <a href="#historia" class="btn">Entra a nuestra historia ↓</a>
+
+  <div class="divisor">❀ ❀ ❀</div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section id="historia">
+  <h2 class="titulo-seccion reveal">Nuestra Historia</h2>
+  <p class="subtitulo-seccion reveal">Los momentos que me han hecho el hombre más feliz</p>
+
+  <div class="timeline">
+    <div class="hito">
+      <div class="fecha">El día que todo empezó</div>
+      <h3>La primera vez que te vi</h3>
+      <p>No sabía que ese día iba a cambiar mi vida para siempre. Bastó una mirada tuya para que mi corazón entendiera que algo grande estaba por venir.</p>
+    </div>
+    <div class="hito">
+      <div class="fecha">Nuestra primera conversación</div>
+      <h3>Horas que se sintieron minutos</h3>
+      <p>Hablamos tanto que se nos olvidó el tiempo. Ahí supe que contigo todo era diferente, que tu risa se iba a volver mi sonido favorito.</p>
+    </div>
+    <div class="hito">
+      <div class="fecha">Nuestra primera cita</div>
+      <h3>Los nervios más bonitos</h3>
+      <p>Estaba más nervioso que nunca, pero cuando te vi sonreír todo se calmó. Ese día entendí que quería muchas más primeras citas contigo.</p>
+    </div>
+    <div class="hito">
+      <div class="fecha">El primer "te quiero"</div>
+      <h3>Cuando el corazón habló</h3>
+      <p>No lo planeé, salió solo. Porque contigo las palabras se sienten antes de pensarse. Y tú me respondiste con una sonrisa que guardo en el alma.</p>
+    </div>
+    <div class="hito">
+      <div class="fecha">Hoy, 3 meses después</div>
+      <h3>Solo el comienzo</h3>
+      <p>Tres meses que se sienten como el inicio de toda una vida. Gracias por cada risa, cada abrazo, cada momento. Esto apenas comienza.</p>
+    </div>
+  </div>
+
+  <div class="divisor">❀ ❀ ❀</div>
+</section>
+
+<!-- ===== GALERÍA ===== -->
+<section>
+  <h2 class="titulo-seccion reveal">Nuestros Recuerdos</h2>
+  <p class="subtitulo-seccion reveal">Cada foto, un pedacito de nuestra historia</p>
+
+  <div class="galeria reveal">
+    <div class="foto">📸<div class="overlay">El día que todo empezó</div></div>
+    <div class="foto">📸<div class="overlay">Tu risa, mi debilidad</div></div>
+    <div class="foto">📸<div class="overlay">Nuestra primera cita</div></div>
+    <div class="foto">📸<div class="overlay">Ese abrazo inolvidable</div></div>
+    <div class="foto">📸<div class="overlay">Nuestro lugar favorito</div></div>
+    <div class="foto">📸<div class="overlay">Contigo todo es mejor</div></div>
+  </div>
+
+  <div class="divisor">❀ ❀ ❀</div>
+</section>
+
+<!-- ===== RAZONES ===== -->
+<section>
+  <h2 class="titulo-seccion reveal">Cosas que amo de ti</h2>
+  <p class="subtitulo-seccion reveal">Y podría seguir escribiendo mil más</p>
+
+  <div class="razones reveal">
+    <div class="razon">
+      <div class="icono">😊</div>
+      <h4>Tu sonrisa</h4>
+      <p>Es la cosa más bonita que he visto. Ilumina mis días más grises.</p>
+    </div>
+    <div class="razon">
+      <div class="icono">🎵</div>
+      <h4>Tu risa</h4>
+      <p>Mi canción favorita. La escucharía en bucle toda la vida.</p>
+    </div>
+    <div class="razon">
+      <div class="icono">💪</div>
+      <h4>Tu fuerza</h4>
+      <p>La forma en que enfrentas todo me inspira a ser mejor cada día.</p>
+    </div>
+    <div class="razon">
+      <div class="icono">🤗</div>
+      <h4>Tus abrazos</h4>
+      <p>Mi lugar seguro. Donde todo se siente bien y el mundo se detiene.</p>
+    </div>
+    <div class="razon">
+      <div class="icono">🌸</div>
+      <h4>Tu forma de amar</h4>
+      <p>Con detalles, con paciencia, con todo tu corazón. Me haces sentir especial.</p>
+    </div>
+    <div class="razon">
+      <div class="icono">✨</div>
+      <h4>Tu esencia</h4>
+      <p>Esa forma única de ser tú que me enamora una y otra vez.</p>
+    </div>
+  </div>
+
+  <div class="divisor">❀ ❀ ❀</div>
+</section>
+
+<!-- ===== CARTAS ===== -->
+<section>
+  <h2 class="titulo-seccion reveal">Cartas para ti</h2>
+  <p class="subtitulo-seccion reveal">Porque hay cosas que merecen escribirse</p>
+
+  <div class="carta reveal">
+    <div class="titulo-carta">Mi amor,</div>
+    <p>Hoy cumplimos 3 meses y no sé cómo explicar todo lo que siento. Cuando llegaste a mi vida, no sabía que un corazón podía sentirse tan lleno. Contigo aprendí que el amor no es solo palabras bonitas, es también cada gesto, cada detalle, cada momento en el que estás.</p>
+    <p>Gracias por elegirme cada día. Gracias por tu paciencia, por tu cariño, por tu forma tan bonita de quererme. Gracias por ser tú, sin filtros, sin máscaras, con esa autenticidad que me enamora más cada día.</p>
+    <p>Estos 3 meses son solo el inicio de todo lo que viene. Y quiero vivirlo contigo, paso a paso, sin prisa pero sin pausa.</p>
+    <div class="firma">Con todo mi amor ❤️</div>
+  </div>
+
+  <div class="carta carta-especial reveal">
+    <div class="titulo-carta">Carta para cuando leas esto</div>
+    <p>Si estás leyendo esto, es porque quería que supieras algo que a veces no digo lo suficiente: <strong>eres mi persona favorita en el mundo.</strong></p>
+    <p>No eres solo mi novia. Eres mi mejor amiga, mi refugio, mi razón para sonreír cuando nada más me hace sonreír. Eres esa persona con la que quiero compartir cada logro, cada tristeza, cada madrugada hablando de todo y de nada.</p>
+    <p>Hay días en los que me quedo pensando en lo afortunado que soy. De todas las personas en el mundo, tú me elegiste a mí. Y eso, mi amor, es el regalo más grande que he recibido.</p>
+    <p>No sé qué nos depare el futuro, pero sí sé algo: <strong>mientras estés a mi lado, todo vale la pena.</strong> Cada día a tu lado es un regalo que no pienso desperdiciar.</p>
+    <p>Te amo. Hoy, mañana y siempre. ❤️</p>
+    <div class="firma">Tuyo, siempre.</div>
+  </div>
+
+  <div class="carta reveal">
+    <div class="titulo-carta">Lo que aprendí contigo</div>
+    <p>Antes pensaba que el amor era algo complicado. Pero llegaste tú y todo se volvió simple: me gustas, me haces bien, y no quiero estar sin ti.</p>
+    <p>Aprendí que amar es cuidar, es estar, es escuchar. Aprendí que un "buenos días" puede cambiar el día entero. Aprendí que con la persona correcta, todo encaja.</p>
+    <p>Y esa persona correcta eres tú.</p>
+    <div class="firma">Gracias por enseñarme a amar mejor ❤️</div>
+  </div>
+
+  <div class="divisor">❀ ❀ ❀</div>
+</section>
+
+<!-- ===== SORPRESA FINAL ===== -->
+<section>
+  <div class="sorpresa reveal">
+    <h2>Tengo algo para ti 🎁</h2>
+    <p>Presiona el botón y deja que el corazón hable.</p>
+    <button class="btn btn-sorpresa" id="btnSorpresa">Presiona aquí 💌</button>
+    <div class="revelado" id="revelado">
+      Eres la mejor casualidad de mi vida.<br>
+      Y si tuviera que volver a elegir,<br>
+      te volvería a elegir a ti, mil veces.<br><br>
+      Te amo. ❤️
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>Hecho con <span class="corazon">❤️</span> por tu novio, para la mujer más increíble del mundo.</p>
+  <p style="opacity:0.6; margin-top:0.5rem; font-size:0.8rem;">3 meses, 0 dudas, infinitas ganas de más.</p>
+  <p style="opacity:0.5; margin-top:0.8rem; font-size:0.75rem;">🐶 Snoopy aprueba este amor ❀</p>
+</footer>
+
+<!-- ===== SNOOPY ===== -->
+<div class="mensaje-secreto" id="mensaje">🐶 Snoopy dice: "Eres la persona más especial que conozco. ¡Te amo!"</div>
+<img class="snoopy" id="snoopy" src="https://upload.wikimedia.org/wikipedia/en/0/0d/Snoopy_character.png" alt="Snoopy">
+
+<!-- ===== AUDIO (reemplaza el src por tu canción) ===== -->
+<audio id="audio" loop>
+  <source src="Carla Morrison — Compartir [Letra].mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // ===== CONTADOR EN VIVO =====
+  // ⚠️ CAMBIA ESTA FECHA por la fecha en que empezaron
+  const inicio = new Date(2025, 7, 17, 0, 0, 0);
+
+  function actualizar() {
+    const ahora = new Date();
+    const diff = ahora - inicio;
+    const seg = Math.floor(diff / 1000);
+    const min = Math.floor(seg / 60);
+    const horas = Math.floor(min / 60);
+    const dias = Math.floor(horas / 24);
+    document.getElementById('dias').textContent  = dias;
+    document.getElementById('horas').textContent = horas % 24;
+    document.getElementById('min').textContent   = min % 60;
+    document.getElementById('seg').textContent   = seg % 60;
+  }
+  actualizar();
+  setInterval(actualizar, 1000);
+
+  // ===== PÉTALOS DE PEONÍA =====
+  const coloresPetalo = ['#C9184A', '#E85D75', '#FF8FA3', '#B3122E', '#F4A6B8'];
+  function crearPetalo() {
+    const p = document.createElement('div');
+    p.className = 'petalo';
+    const tam = 12 + Math.random() * 18;
+    p.style.width = tam + 'px';
+    p.style.height = tam + 'px';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.background = coloresPetalo[Math.floor(Math.random() * coloresPetalo.length)];
+    p.style.borderRadius = '50% 0 50% 50%';
+    p.style.animationDuration = (6 + Math.random() * 6) + 's';
+    p.style.animationDelay = Math.random() * 2 + 's';
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 14000);
+  }
+  setInterval(crearPetalo, 500);
+  for (let i = 0; i < 12; i++) setTimeout(crearPetalo, i * 200);
+
+  // ===== EASTER EGG SNOOPY =====
+  let clicsSnoopy = 0;
+  document.getElementById('snoopy').addEventListener('click', () => {
+    clicsSnoopy++;
+    const msg = document.getElementById('mensaje');
+    if (clicsSnoopy === 3) {
+      msg.classList.add('activo');
+      setTimeout(() => msg.classList.remove('activo'), 5000);
+      clicsSnoopy = 0;
+    }
+  });
+
+  // ===== REVEAL AL SCROLL =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .hito').forEach(el => observer.observe(el));
+
+  // ===== BOTÓN SORPRESA =====
+  document.getElementById('btnSorpresa').addEventListener('click', () => {
+    document.getElementById('revelado').classList.add('activo');
+    // lluvia de corazones
+    const corazones = ['❤️','💕','💖','💗','🌸','❀'];
+    for (let i = 0; i < 40; i++) {
+      setTimeout(() => {
+        const c = document.createElement('div');
+        c.className = 'corazon-lluvia';
+        c.textContent = corazones[Math.floor(Math.random() * corazones.length)];
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+        c.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+      }, i * 60);
+    }
+  });
+
+  // ===== MÚSICA =====
+  const audio = document.getElementById('audio');
+  const btnMusica = document.getElementById('btnMusica');
+  btnMusica.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.volume = 0.3;
+      audio.play();
+      btnMusica.textContent = '⏸️';
+    } else {
+      audio.pause();
+      btnMusica.textContent = '🎵';
+    }
+  });
+</script>
+</body>
+</html>
