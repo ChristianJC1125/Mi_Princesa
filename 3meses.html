@@ -267,45 +267,90 @@
     opacity: 0.85;
   }
 
-  /* ===== GALERÍA ===== */
-  .galeria {
+  /* ===== MENSAJES ROMÁNTICOS ===== */
+  .mensajes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-top: 2rem;
   }
 
-  .galeria .foto {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #ffe0e6, #ffc2d1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .mensaje-card {
+    background: #fff;
+    border: 1px solid #f3c6cf;
+    border-radius: 18px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(201, 24, 74, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .mensaje-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(201, 24, 74, 0.15);
+  }
+
+  .mensaje-card span {
+    display: block;
+    font-size: 2.2rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .mensaje-card p {
+    font-size: 0.92rem;
+    line-height: 1.85;
+    opacity: 0.88;
+  }
+
+  .cierre-amor {
+    max-width: 720px;
+    margin: 4rem auto 1rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+    border: 1px solid #f3c6cf;
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(201, 24, 74, 0.09);
+  }
+
+  .cierre-amor h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
     color: var(--rojo);
-    font-size: 0.9rem;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(201, 24, 74, 0.1);
-    transition: transform 0.3s;
+    margin-bottom: 0.6rem;
   }
 
-  .galeria .foto:hover { transform: scale(1.03); }
-
-  .galeria .foto .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(122,12,34,0.85), transparent);
-    color: #fff;
-    display: flex;
-    align-items: flex-end;
-    padding: 1rem;
-    font-size: 0.85rem;
-    opacity: 0;
-    transition: opacity 0.3s;
+  .cierre-amor h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--rojo);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
   }
 
-  .galeria .foto:hover .overlay { opacity: 1; }
+  .cierre-amor p {
+    line-height: 1.9;
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: 800px) {
+    .mensajes-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .mensajes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mensaje-card {
+      padding: 1.5rem 1.2rem;
+    }
+
+    .cierre-amor {
+      padding: 1.7rem 1.2rem;
+    }
+  }
 
   /* ===== CARDS RAZONES ===== */
   .razones {
@@ -571,6 +616,8 @@
   <div class="divisor">❀ ❀ ❀</div>
 </section>
 
+
+<!-- ===== MENSAJES PARA MI NOVIA ===== -->
 <section class="mensajes-amor">
   <h2 class="titulo-seccion reveal">
     Lo que mi corazón quiere que sepas ❤️
@@ -581,71 +628,73 @@
     pero aun así quiero intentarlo contigo.
   </p>
 
-  <div class="galeria reveal">
-
-    <div class="foto">
-      💗
-       <img src="mi amor.jpeg" alt="Por Siempre Tú">
-      <div class="overlay">
-        No sé qué hice para coincidir contigo
-        en este mundo tan grande, pero si algo
-        tengo claro es que volvería a elegirte
-        en cada vida, en cada historia y en cada destino.
-      </div>
+  <div class="mensajes-grid reveal">
+    <div class="mensaje-card">
+      <span>💗</span>
+      <p>
+        No sé qué hice para coincidir contigo en este mundo
+        tan grande, pero volvería a elegirte en cada vida,
+        en cada historia y en cada destino.
+      </p>
     </div>
 
-    <div class="foto">
-      🌷
-      <div class="overlay">
+    <div class="mensaje-card">
+      <span>🌷</span>
+      <p>
         No quiero prometerte una vida perfecta,
-        quiero prometerte que, incluso en los días
-        difíciles, tendrás a alguien que no dejará
-        de tomarte de la mano.
-      </div>
+        quiero prometerte que incluso en los días difíciles
+        tendrás a alguien que no dejará de tomarte de la mano.
+      </p>
     </div>
 
-    <div class="foto">
-      🥺
-      <div class="overlay">
-        Ojalá pudieras mirarte con mis ojos
-        aunque fuera por un instante, para que
-        entendieras lo maravillosa que eres
-        y por qué mi corazón sonríe cuando te ve.
-      </div>
+    <div class="mensaje-card">
+      <span>🥺</span>
+      <p>
+        Ojalá pudieras mirarte con mis ojos aunque fuera
+        por un instante, para que entendieras lo maravillosa
+        que eres y por qué mi corazón sonríe cuando te ve.
+      </p>
     </div>
 
-    <div class="foto">
-      💌
-      <div class="overlay">
+    <div class="mensaje-card">
+      <span>💌</span>
+      <p>
         Si algún día dudas de lo mucho que te amo,
         recuerda que entre millones de personas,
-        mi corazón encontró en ti ese lugar
-        donde siempre quiere quedarse.
-      </div>
+        mi corazón encontró en ti ese lugar donde quiere quedarse.
+      </p>
     </div>
 
-    <div class="foto">
-      🫂
-      <div class="overlay">
-        No necesito que todos mis días sean
-        extraordinarios, me basta con saber
-        que en muchos de ellos podré abrazarte,
-        escucharte y llamarte mi niña.
-      </div>
+    <div class="mensaje-card">
+      <span>🫂</span>
+      <p>
+        No necesito que todos mis días sean extraordinarios,
+        me basta con saber que en muchos de ellos podré
+        abrazarte, escucharte y llamarte mi niña.
+      </p>
     </div>
 
-    <div class="foto">
-      ❤️
-      <div class="overlay">
-        Y si pudiera pedirle algo a la vida,
-        no sería tenerlo todo, sería tener
-        la oportunidad de seguir construyendo
+    <div class="mensaje-card">
+      <span>❤️</span>
+      <p>
+        Si pudiera pedirle algo a la vida, no sería tenerlo todo,
+        sería tener la oportunidad de seguir construyendo
         momentos contigo, una y otra vez.
-      </div>
+      </p>
     </div>
-
   </div>
-</section>
+
+  <div class="cierre-amor reveal">
+    <h3>Y si alguna vez me preguntan...</h3>
+    <h2>¿Dónde está tu lugar favorito?</h2>
+    <h2>Eres tú. ❤️</h2>
+    <p>
+      Porque no importa cuántos lugares conozca,
+      cuántos sueños cumpla o cuántos caminos recorra...
+      si al final puedo regresar a tus brazos,
+      siempre sentiré que estoy exactamente donde quiero estar.
+    </p>
+  </div>
 
   <div class="divisor">❀ ❀ ❀</div>
 </section>
