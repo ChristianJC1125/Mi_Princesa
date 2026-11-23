@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16213e">
+<title>Para ti, mi niña 💌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #ff7da8;
+  --deep-pink: #c44569;
+  --cream: #fffaf5;
+  --ink: #51414a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh;
+  padding: 24px 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  color: var(--ink);
+  font-family: 'Quicksand', sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255,125,168,.16), transparent 28%),
+    radial-gradient(circle at 85% 80%, rgba(104,153,204,.18), transparent 30%),
+    linear-gradient(135deg, #17172d 0%, #182746 52%, #102f50 100%);
+}
+button { font: inherit; }
+#hearts, #petals { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.heart-bg, .petal {
+  position: absolute;
+  bottom: -50px;
+  opacity: 0;
+  animation: floatUp linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255,125,168,.25));
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  12% { opacity: .58; }
+  85% { opacity: .4; }
+  100% { transform: translateY(-115vh) rotate(300deg); opacity: 0; }
+}
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  text-align: center;
+  color: #ffe3eb;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255,125,168,.16), transparent 35%),
+    linear-gradient(135deg, #17172d, #102f50);
+  transition: opacity .9s ease, visibility .9s ease;
+}
+#intro.hide { opacity: 0; visibility: hidden; }
+.intro-heart { font-size: clamp(3rem, 10vw, 5rem); margin-bottom: 18px; animation: heartbeat 1.6s infinite; }
+@keyframes heartbeat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.13); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
+#intro h1 {
+  max-width: 760px;
+  margin-bottom: 16px;
+  color: #ffd1dc;
+  font: 600 clamp(2rem, 6vw, 3.3rem)/1.2 'Playfair Display', serif;
+}
+#intro p { max-width: 560px; margin-bottom: 30px; color: #f8dce6; line-height: 1.8; font-size: 1rem; }
+.primary-btn, .btn-next, .btn-prev {
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s, opacity .25s;
+}
+.primary-btn, .btn-next {
+  padding: 15px 30px;
+  color: white;
+  font-weight: 700;
+  background: linear-gradient(45deg, #ff7da8, #bd426c);
+  box-shadow: 0 9px 28px rgba(196,69,105,.35);
+}
+.primary-btn:hover, .btn-next:hover, .btn-prev:hover { transform: translateY(-3px); box-shadow: 0 13px 30px rgba(196,69,105,.4); }
+#main { position: relative; z-index: 1; width: min(760px, 100%); opacity: 0; transform: translateY(12px); transition: opacity 1s ease, transform 1s ease; }
+#main.show { opacity: 1; transform: translateY(0); }
+.topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 0 4px 16px; color: #f8dce6; font-size: .85rem; letter-spacing: .04em; }
+.progress-track { height: 5px; margin: 0 4px 24px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.15); }
+.progress-fill { height: 100%; width: 20%; border-radius: inherit; background: linear-gradient(90deg, #ff7da8, #ffe0e9); transition: width .45s ease; }
+.envelope-wrap { display: flex; justify-content: center; margin: 0 0 26px; perspective: 900px; }
+.envelope {
+  position: relative;
+  width: 112px;
+  height: 78px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff7da8, #bd426c);
+  box-shadow: 0 12px 32px rgba(0,0,0,.3);
+  animation: floatEnvelope 3.2s ease-in-out infinite;
+}
+.envelope::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-left: 56px solid transparent;
+  border-right: 56px solid transparent;
+  border-top: 43px solid #ffd1dc;
+  border-radius: 8px 8px 0 0;
+}
+.envelope::after { content: '💌'; position: absolute; inset: 0; display: grid; place-items: center; font-size: 1.5rem; }
+@keyframes floatEnvelope { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-9px) rotate(1deg); } }
+.letter {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 6vw, 48px);
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fffdf9 0%, #fff3ef 100%);
+  box-shadow: 0 24px 65px rgba(0,0,0,.34), 0 0 0 1px rgba(255,209,220,.2);
+}
+.letter::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #ff7da8, #ffe0e9, #c44569, #ff7da8);
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer { to { background-position: 200% 0; } }
+.eyebrow { margin-bottom: 12px; text-align: center; color: #b66b82; font-size: .75rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.letter h2 { margin-bottom: 24px; text-align: center; color: #b83f67; font: 600 clamp(1.55rem, 4vw, 2.15rem)/1.25 'Playfair Display', serif; }
+.typed-text {
+  min-height: 180px;
+  color: #51414a;
+  white-space: pre-wrap;
+  font: italic clamp(1rem, 2.5vw, 1.12rem)/1.95 'Playfair Display', serif;
+}
+.typed-text.typing::after { content: ''; display: inline-block; height: 1.1em; margin-left: 3px; border-right: 2px solid #c44569; vertical-align: -3px; animation: blink .8s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.signature { margin-top: 24px; text-align: right; color: #b83f67; font: italic 1.15rem 'Playfair Display', serif; }
+.controls { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.btn-prev { padding: 13px 22px; color: #ffe7ee; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.09); }
+.btn-prev:disabled { opacity: .35; cursor: not-allowed; }
+.btn-next { min-width: 190px; }
+.dots { display: flex; justify-content: center; gap: 10px; margin-top: 22px; }
+.dot { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; background: rgba(255,255,255,.38); transition: transform .25s, background .25s; }
+.dot.active { transform: scale(1.35); background: #ff9fbd; box-shadow: 0 0 12px rgba(255,125,168,.65); }
+.hint { margin-top: 14px; text-align: center; color: rgba(255,235,241,.72); font-size: .78rem; }
+#ending { display: none; margin-top: 24px; padding: 24px; text-align: center; color: #ffe3eb; animation: fadeUp .8s ease both; }
+#ending h3 { margin-bottom: 12px; color: #ffd1dc; font: 600 clamp(1.5rem, 4vw, 2rem) 'Playfair Display', serif; }
+#ending p { line-height: 1.9; }
+.final-hearts { margin-top: 18px; font-size: 2rem; letter-spacing: 8px; animation: heartbeat 1.5s infinite; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 560px) {
+  body { padding: 18px 12px 28px; align-items: flex-start; }
+  #main { margin-top: 12px; }
+  .letter { border-radius: 17px; }
+  .typed-text { line-height: 1.8; }
+  .controls { gap: 9px; }
+  .btn-prev, .btn-next { padding: 13px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+<div id="petals" aria-hidden="true"></div>
+
+<section id="intro" aria-label="Mensaje de bienvenida">
+  <div class="intro-heart" aria-hidden="true">💗</div>
+  <h1>Hay algo que mi corazón quiere contarte...</h1>
+  <p>Mi niña hermosa, preparé estas palabras pensando en ti. No es un regalo que puedas tocar, pero sí algo que nació de todo lo bonito que siento por tenerte en mi vida.</p>
+  <button class="primary-btn" id="openBtn">Abrir tus cartitas 💌</button>
+</section>
+
+<main id="main">
+  <div class="topline">
+    <span>Un pedacito de mi corazón para ti</span>
+    <span id="counter">Carta 1 de 5</span>
+  </div>
+  <div class="progress-track" aria-label="Progreso de lectura"><div class="progress-fill" id="progress"></div></div>
+  <div class="envelope-wrap"><button class="envelope" id="envelope" aria-label="Volver a escribir la carta"></button></div>
+  <article class="letter" aria-live="polite">
+    <div class="eyebrow">Con todo mi amor</div>
+    <h2 id="letterTitle"></h2>
+    <div class="typed-text" id="typedText"></div>
+    <div class="signature" id="signature" style="display:none">Con amor, siempre. ❤️</div>
+  </article>
+  <div class="controls">
+    <button class="btn-prev" id="prevBtn" disabled>← Anterior</button>
+    <button class="btn-next" id="nextBtn">Siguiente cartita →</button>
+  </div>
+  <div class="dots" id="dots" aria-label="Elegir carta"></div>
+  <p class="hint">Puedes volver a leer cualquier cartita tocando los puntitos.</p>
+  <section id="ending">
+    <h3>Y si algo quiero que nunca olvides...</h3>
+    <p>Es que no tienes que ganarte mi cariño ni demostrarme nada para merecerlo. Quiero cuidarte con respeto, escucharte con paciencia y recordarte con hechos que tus sentimientos son importantes para mí. Gracias por ser parte de mi vida, mi amor. Ojalá estas palabras te abracen un poquito, incluso cuando no pueda hacerlo yo.</p>
+    <div class="final-hearts">❤️ 🥹 ❤️</div>
+  </section>
+</main>
+
+<script>
+const cartas = [
+  {
+    titulo: "Para la persona que me hace feliz ❤️",
+    texto: `Mi niña hermosa, no sé si alguna vez te has detenido a pensar lo importante que eres para mí, ni si alcanzas a imaginar todo lo bonito que provocas en mi corazón. A veces quisiera que pudieras verte a través de mis ojos, aunque fuera por un instante, para que entendieras por qué te digo tantas veces que eres hermosa, por qué me encanta admirarte y por qué, incluso en los días más normales, consigues convertirte en lo más bonito de ellos.
+
+No sé en qué momento pasaste de ser una persona que conocí a convertirte en alguien que ocupa tantos pensamientos, tantos sueños y tantos espacios de mi corazón. Lo que sí sé es que desde que llegaste, mis días tienen algo diferente. Tengo a alguien por quien sonreír al despertar, alguien a quien quiero contarle mis cosas, alguien de quien me nace saber cómo está y a quien quiero recordarle constantemente lo valiosa que es.
+
+Quiero que sepas que no eres solamente alguien que me hace feliz, eres esa personita con la que quiero compartir mi felicidad, mis logros, mis preocupaciones, mis días buenos y también esos días en los que no todo salga como esperamos.
+
+Si alguna vez dudas de lo especial que eres, recuerda que aquí tienes a alguien que agradece profundamente haberte encontrado. Y si pudiera volver a elegir, con todo lo que sé hoy, volvería a querer coincidir contigo.
+
+Gracias por existir, mi amor. No tienes idea de lo bonito que es tenerte en mi vida. ❤️‍🩹`
+  },
+  {
+    titulo: "Lo que me haces sentir 🥹",
+    texto: `Amor mío, hay sentimientos que son tan grandes que a veces las palabras se quedan pequeñas para explicarlos. Y eso me pasa contigo. Porque no se trata solamente de decirte que te amo, sino de todo lo que hay detrás de esas palabras.
+
+Me encanta tu sonrisa, tu manera de ser, tus ocurrencias, tus gestos, tus abrazos y hasta esas pequeñas cosas que quizá tú no notas, pero que para mí tienen un valor enorme. Me encanta escucharte hablar, saber de tu día, verte emocionarte por algo que te gusta y descubrir cada día una nueva razón para admirarte.
+
+Contigo he aprendido que el amor también está en los detalles más sencillos: en preguntar si ya comiste, en desearte que todo salga bien, en preocuparme por cómo te sientes, en querer abrazarte cuando estás cansada y en hacerte saber que, aunque no siempre pueda estar físicamente a tu lado, mi cariño siempre te acompaña.
+
+No quiero que pienses que tienes que estar feliz todo el tiempo para que yo te quiera. También quiero conocerte cuando estés triste, cuando tengas miedo, cuando sientas que las cosas no salen bien o cuando simplemente no tengas ganas de hablar. No tienes que ser fuerte conmigo a cada instante, mi niña. También quiero ser ese lugar donde puedas descansar el corazón.
+
+Y si algún día te preguntas qué me haces sentir, la respuesta es sencilla: me haces sentir afortunado de coincidir contigo, de poder llamarte mi novia y de tener la oportunidad de construir algo tan bonito a tu lado.
+
+Te amo por lo que eres, por lo que me haces sentir y por todo lo que todavía nos falta descubrir juntos. ❤️`
+  },
+  {
+    titulo: "Lo que quiero para nosotros 💗",
+    texto: `Mi princesita, si hay algo que deseo de todo corazón es que lo nuestro sea una historia de esas que se construyen con amor, paciencia, respeto y muchísimas ganas de seguir eligiéndose.
+
+No quiero prometerte una relación en la que nunca existan problemas, porque sé que somos dos personas diferentes, con pensamientos, sentimientos y maneras de ver las cosas. Pero sí quiero prometerte que siempre voy a tener la disposición de escucharte, de comprenderte, de reconocer cuando me equivoque y de trabajar en mí para que podamos estar mejor.
+
+Quiero estar cuando cumplas tus sueños, cuando alcances esas metas por las que tanto te esfuerzas y cuando tengas motivos para celebrar. Quiero ser de los primeros en aplaudirte y recordarte lo capaz, inteligente y maravillosa que eres. Pero también quiero estar cuando las cosas se compliquen, cuando necesites ánimos, cuando tengas un día pesado o cuando sientas que el mundo está siendo demasiado difícil contigo.
+
+Quiero que nunca tengas que preguntarte si cuentas conmigo, porque quiero demostrártelo con mis acciones. Quiero que tengas la confianza de contarme tus alegrías, tus tristezas, tus miedos y hasta esas pequeñas cosas que parecen insignificantes, porque para mí nada de lo que venga de ti es insignificante.
+
+No sé qué nos tenga preparado la vida, pero sí sé cómo quiero caminarla: de tu mano, creciendo juntos, aprendiendo de nuestros errores y encontrando miles de razones para seguir enamorándonos.
+
+No quiero que seamos perfectos, quiero que seamos reales. Que incluso en los días difíciles recordemos por qué nos elegimos y que nunca nos falten las ganas de cuidar eso tan bonito que estamos construyendo.
+
+Yo te sigo eligiendo, mi amor. Hoy, mañana y en cada oportunidad que la vida me permita hacerlo. ❤️‍🩹`
+  },
+  {
+    titulo: "Gracias por todo lo que haces por mí 🥹❤️",
+    texto: `Mi amor, esta cartita quiero dedicarla a algo que a veces siento que no te agradezco lo suficiente: todo lo que has hecho por mí y todo lo que me das, incluso en esos momentos en los que quizá ni siquiera te das cuenta.
+
+Gracias por tu paciencia, por escucharme, por hacerme un espacio en tus días y por permitirme acercarme a tu corazón. Gracias por cada palabra bonita, por cada abrazo que me ha hecho sentir en casa, por tus besitos, por tus detalles y por todas esas pequeñas muestras de cariño que guardo con muchísimo amor. Gracias por preocuparte por mí, por preguntarme cómo estoy, por motivarme y por hacerme sentir que también puedo contar contigo cuando las cosas no van tan bien.
+
+Tal vez para ti algunas de esas cosas sean sencillas, pero quiero que sepas que para mí significan muchísimo. No doy por hecho tu cariño, tu tiempo ni tu compañía. Sé que detrás de cada detalle hay una parte de ti, y quiero aprender a valorar cada una de esas partes como merecen.
+
+Gracias por confiar en mí y por dejarme conocer tus sentimientos. Gracias por compartir conmigo tus alegrías, tus preocupaciones, tus sueños y hasta esos días en los que no tienes toda la energía del mundo. No quiero que sientas que tienes que guardarte lo que te pasa para no preocuparme. Quiero escucharte, comprenderte y acompañarte, porque lo que sientes también me importa.
+
+Y quiero hacerte una promesa, mi niña: voy a cuidar tus sentimientos con todo el amor, respeto y responsabilidad que merecen. No quiero jugar con tu corazón ni hacerte sentir que quererme es algo que te va a lastimar. Quiero ser cuidadoso con mis palabras, consciente de mis acciones y capaz de reconocer cuando me equivoque. No te prometo que nunca cometeré errores, pero sí que no voy a tomar a la ligera el daño que mis errores puedan causar. Quiero aprender a amarte cada vez mejor.
+
+Quiero cuidar tus ilusiones, respetar tus tiempos, escuchar tus silencios y celebrar tus alegrías. Quiero que puedas sentirte segura de hablar conmigo, que sepas que tus emociones no son una molestia y que nunca tienes que hacerte pequeñita para que nuestra relación esté bien.
+
+Gracias por todo lo que has hecho por mí, por lo que me has enseñado sin proponértelo y por la felicidad que has traído a mi vida. Ojalá yo también pueda hacerte sentir querida, valorada, escuchada y acompañada. Porque tu corazón es importante para mí, mi amor, y quiero demostrarte todos los días que está en buenas manos.
+
+Te amo muchísimo. Gracias por elegirme y por dejarme compartir esta parte tan bonita de la vida contigo. ❤️‍🩹`
+  },
+  {
+    titulo: "Gracias por ser tú, mi amor ❤️",
+    texto: `Mi niña hermosa, quisiera terminar estas cartitas diciéndote algo que quizá te he repetido muchas veces, pero que jamás me voy a cansar de decirte: GRACIAS.
+
+Gracias por llegar a mi vida, por abrirme un espacio en tu corazón y por permitirme conocer esa personita tan maravillosa que eres. Gracias por tus abrazos, tus besitos, tus palabras, tus detalles y por cada momento que hemos compartido. Gracias por las veces que me has hecho sonreír sin darte cuenta y por esos instantes en los que, con algo tan sencillo, consigues hacerme sentir el hombre más afortunado.
+
+Gracias por elegirme también en esos días en los que no todo es perfecto. Sé que tengo cosas que mejorar, que hay momentos en los que puedo equivocarme y que todavía tengo muchísimo que aprender. Pero quiero que sepas que nunca voy a dejar de intentar ser una mejor versión de mí, no solamente por nuestra relación, sino porque quiero ser alguien que te dé tranquilidad, confianza y un amor que puedas sentir incluso en los pequeños detalles.
+
+Ojalá nunca te falten motivos para sonreír, sueños por cumplir y personas que te recuerden lo increíble que eres. Y cuando necesites recordar todo lo que vales, espero poder ser una de esas personas que te lo demuestren.
+
+Si algún día llegas a sentir que no eres suficiente, quiero que recuerdes que no tienes que hacer absolutamente nada extraordinario para merecer mi amor. No necesitas tener un día perfecto, verte de cierta manera o estar siempre de buen humor. Para mí eres especial incluso en tus días más sencillos.
+
+Me siento muy feliz de poder decir que eres mi novia. Y si pudiera pedirle algo a la vida, sería que nos regale muchísimos momentos más, más abrazos, más besitos, más aventuras, más risas y más recuerdos que algún día podamos mirar con una sonrisa.
+
+Te amo, mi princesa. Gracias por ser tú, por existir y por permitirme formar parte de tu historia. No olvides nunca que aquí tienes un corazón que te quiere muchísimo y que desea verte feliz. ❤️‍🩹💕`
+  }
+];
+
+const intro = document.getElementById('intro');
+const main = document.getElementById('main');
+const titleEl = document.getElementById('letterTitle');
+const textEl = document.getElementById('typedText');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+const dotsWrap = document.getElementById('dots');
+const counter = document.getElementById('counter');
+const progress = document.getElementById('progress');
+const signature = document.getElementById('signature');
+const ending = document.getElementById('ending');
+let actual = 0;
+let typingTimer = null;
+let currentText = '';
+let charIndex = 0;
+
+function makeFloatingDetails() {
+  const hearts = document.getElementById('hearts');
+  const petals = document.getElementById('petals');
+  const heartEmojis = ['💗','💕','🤍','💖','♡'];
+  const petalEmojis = ['🌸','✿','❀'];
+  for (let i = 0; i < 22; i++) {
+    const h = document.createElement('span');
+    h.className = 'heart-bg';
+    h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (13 + Math.random() * 18) + 'px';
+    h.style.animationDuration = (9 + Math.random() * 10) + 's';
+    h.style.animationDelay = (Math.random() * 10) + 's';
+    hearts.appendChild(h);
+  }
+  for (let i = 0; i < 9; i++) {
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.fontSize = (12 + Math.random() * 13) + 'px';
+    p.style.animationDuration = (13 + Math.random() * 12) + 's';
+    p.style.animationDelay = (Math.random() * 12) + 's';
+    petals.appendChild(p);
+  }
+}
+
+function stopTyping() {
+  if (typingTimer) clearTimeout(typingTimer);
+  typingTimer = null;
+}
+function finishTyping() {
+  stopTyping();
+  textEl.textContent = currentText;
+  textEl.classList.remove('typing');
+  signature.style.display = 'block';
+}
+function typeNext() {
+  const chunk = currentText.slice(charIndex, charIndex + 3);
+  textEl.textContent += chunk;
+  charIndex += chunk.length;
+  if (charIndex < currentText.length) {
+    typingTimer = setTimeout(typeNext, 15);
+  } else {
+    textEl.classList.remove('typing');
+    signature.style.display = 'block';
+    typingTimer = null;
+  }
+}
+function writeLetter(text) {
+  stopTyping();
+  currentText = text;
+  charIndex = 0;
+  textEl.textContent = '';
+  signature.style.display = 'none';
+  textEl.classList.add('typing');
+  typeNext();
+}
+function updateDots() {
+  [...dotsWrap.children].forEach((dot, i) => {
+    dot.classList.toggle('active', i === actual);
+    dot.setAttribute('aria-current', i === actual ? 'step' : 'false');
+  });
+}
+function goTo(index) {
+  actual = Math.max(0, Math.min(index, cartas.length - 1));
+  titleEl.textContent = cartas[actual].titulo;
+  writeLetter(cartas[actual].texto);
+  counter.textContent = `Carta ${actual + 1} de ${cartas.length}`;
+  progress.style.width = ((actual + 1) / cartas.length * 100) + '%';
+  prevBtn.disabled = actual === 0;
+  nextBtn.textContent = actual === cartas.length - 1 ? 'Terminar mis cartitas ❤️' : 'Siguiente cartita →';
+  ending.style.display = 'none';
+  updateDots();
+}
+cartas.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'dot';
+  dot.type = 'button';
+  dot.setAttribute('aria-label', `Ir a la carta ${i + 1}`);
+  dot.addEventListener('click', () => goTo(i));
+  dotsWrap.appendChild(dot);
+});
+document.getElementById('openBtn').addEventListener('click', () => {
+  intro.classList.add('hide');
+  main.classList.add('show');
+  goTo(0);
+});
+document.getElementById('envelope').addEventListener('click', () => writeLetter(cartas[actual].texto));
+prevBtn.addEventListener('click', () => goTo(actual - 1));
+nextBtn.addEventListener('click', () => {
+  if (charIndex < currentText.length) {
+    finishTyping();
+    return;
+  }
+  if (actual < cartas.length - 1) {
+    goTo(actual + 1);
+  } else {
+    ending.style.display = 'block';
+    ending.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    nextBtn.textContent = 'Vuelve a leerlas 💌';
+    nextBtn.onclick = () => {
+      ending.style.display = 'none';
+      goTo(0);
+      nextBtn.onclick = null;
+    };
+  }
+});
+makeFloatingDetails();
+</script>
+</body>
+</html>
