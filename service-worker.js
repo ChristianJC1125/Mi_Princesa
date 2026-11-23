@@ -1,4 +1,4 @@
-const CACHE_NAME = 'princesa-cache-v1';
+const CACHE_NAME = 'princesa-cache-v2'; // 👈 Cambié a v2 para forzar la actualización
 const ASSETS = [
   './',
   './index.html',
@@ -23,8 +23,9 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Estrategia: Buscar en internet primero, si falla, usar el caché
   event.respondWith(
-    caches.match(event.request).then(res => res || fetch(event.request))
+    fetch(event.request).catch(() => caches.match(event.request))
   );
 });
 
