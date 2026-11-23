@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracias por cada detalle, mi amor ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #1a0508 0%, #3d0a14 40%, #6b1220 70%, #a32238 100%);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Contenedor del océano */
+        .ocean-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 45vh;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23a32238" fill-opacity="0.4" d="M0,160L48,170.7C96,181,192,203,288,208C384,213,480,203,576,181.3C672,160,768,128,864,133.3C960,139,1056,181,1152,186.7C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: 50% 100%;
+            background-repeat: repeat-x;
+            animation: wave-animation 12s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%236b1220" fill-opacity="0.6" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: 40% 100%;
+            animation: wave-animation 8s linear infinite reverse;
+            opacity: 0.8;
+        }
+
+        @keyframes wave-animation {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Destellos en el agua */
+        .glow {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 150px;
+            background: radial-gradient(ellipse at center, rgba(255, 100, 120, 0.3) 0%, transparent 70%);
+            filter: blur(20px);
+            z-index: 2;
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* Contenido principal */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15vh 20px 50vh 20px;
+            text-align: center;
+        }
+
+        .header-section {
+            animation: fadeInDown 1.5s ease;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-heart {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 600;
+            color: #ffd1d1;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 100, 120, 0.5);
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #e0b0b8;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        /* Sección de agradecimientos */
+        .gratitude-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gratitude-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: left;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+            animation: fadeInUp 1s ease backwards;
+        }
+
+        .gratitude-card:nth-child(1) { animation-delay: 0.2s; }
+        .gratitude-card:nth-child(2) { animation-delay: 0.4s; }
+        .gratitude-card:nth-child(3) { animation-delay: 0.6s; }
+        .gratitude-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gratitude-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 30px rgba(163, 34, 56, 0.3);
+            border-color: rgba(255, 150, 170, 0.3);
+        }
+
+        .gratitude-icon {
+            font-size: 28px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .gratitude-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #ffb3c1;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .gratitude-card p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #d4bcc0;
+            font-weight: 300;
+        }
+
+        .gratitude-card strong {
+            color: #ffd1d1;
+            font-weight: 500;
+        }
+
+        /* Firma final */
+        .signature-section {
+            margin-top: 80px;
+            text-align: center;
+            animation: fadeInUp 1.5s ease 1s backwards;
+        }
+
+        .signature-section p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #e0b0b8;
+            line-height: 1.6;
+        }
+
+        .signature-section .signature-name {
+            font-size: 2.2rem;
+            color: #ffb3c1;
+            margin-top: 15px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            text-shadow: 0 0 15px rgba(255, 100, 120, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 10vh 20px 60vh 20px;
+            }
+            .gratitude-card {
+                padding: 25px 20px;
+            }
+            .gratitude-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Efecto de Océano -->
+    <div class="ocean-container">
+        <div class="glow"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="main-content">
+        
+        <div class="header-section">
+            <div class="hero-heart">❤️</div>
+            <h1>Gracias por cada detalle</h1>
+            <p class="subtitle">Un pequeño homenaje a la mejor novia del mundo</p>
+        </div>
+
+        <div class="gratitude-container">
+            
+            <div class="gratitude-card">
+                <span class="gratitude-icon">🌅</span>
+                <h3>Gracias por tu tiempo</h3>
+                <p>Gracias por regalarme tu tiempo, por escucharme incluso cuando hablo tonterías y por estar ahí en los días en los que el mundo se siente pesado. <strong>Cada minuto a tu lado es un regalo que guardo en el corazón.</strong></p>
+            </div>
+
+            <div class="gratitude-card">
+                <span class="gratitude-icon">🌊</span>
+                <h3>Gracias por tu paciencia</h3>
+                <p>Sé que no siempre soy fácil, que a veces me pierdo en mis pensamientos o que puedo ser un poco torpe. Pero ahí estás tú, con tu calma infinita, recordándome que todo está bien. <strong>Gracias por quedarte incluso cuando no era el mejor momento.</strong></p>
+            </div>
+
+            <div class="gratitude-card">
+                <span class="gratitude-icon">✨</span>
+                <h3>Gracias por ser mi refugio</h3>
+                <p>En un mundo que a veces es tan ruidoso, tú eres mi lugar seguro. Tu risa, tus abrazos y tu forma de mirarme hacen que todo lo demás desaparezca. <strong>Gracias por ser el océano donde mi corazón puede descansar.</strong></p>
+            </div>
+
+            <div class="gratitude-card">
+                <span class="gratitude-icon">💖</span>
+                <h3>Gracias por ser tú</h3>
+                <p>Gracias por tu sonrisa que ilumina mis días, por tu forma de quererme, por tus ocurrencias y por cada pequeño detalle que me demuestra que me amas. <strong>No cambiaría nada de ti, eres perfecta tal como eres.</strong></p>
+            </div>
+
+        </div>
+
+        <div class="signature-section">
+            <p>Porque el mar más bonito que he visto,<br>tiene el color de tus ojos.</p>
+            <div class="signature-name">Siempre tuyo ❤️</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
