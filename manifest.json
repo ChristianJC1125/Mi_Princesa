@@ -1,0 +1,23 @@
+{
+  "name": "Para Mi Princesa ❤️",
+  "short_name": "Mi Princesa",
+  "description": "Todas las páginas hechas con amor para ti",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#16001f",
+  "theme_color": "#d84d83",
+  "icons": [
+    {
+      "src": "icons/corazon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/corazon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

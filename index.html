@@ -5,10 +5,15 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#16001f">
 
     <title>
         Todas las páginas de mi princesa ❤️
     </title>
+
+    <!-- NUEVO: manifest para PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/corazon-192.png">
 
     <style>
 
@@ -484,6 +489,77 @@
             font-size: .8rem;
         }
 
+        /* ============================================
+           NUEVO: Botón flotante de notificaciones
+           ============================================ */
+        .notif-fab {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.25);
+            background: linear-gradient(135deg, #d84d83, #a94ed0);
+            color: white;
+            font-size: 26px;
+            cursor: pointer;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 40px rgba(210,70,130,.45);
+            transition: .3s;
+            animation: pulseNotif 2.5s infinite;
+        }
+
+        .notif-fab:hover {
+            transform: scale(1.1) rotate(-8deg);
+            box-shadow: 0 16px 50px rgba(210,70,130,.7);
+        }
+
+        .notif-fab.activo {
+            background: linear-gradient(135deg, #4dc97a, #2e8f5a);
+            animation: none;
+            cursor: default;
+        }
+
+        @keyframes pulseNotif {
+            0%, 100% {
+                box-shadow: 0 12px 40px rgba(210,70,130,.45);
+            }
+            50% {
+                box-shadow: 0 12px 60px rgba(210,70,130,.85);
+            }
+        }
+
+        /* ============================================
+           NUEVO: Toasts bonitos
+           ============================================ */
+        .toast-amor {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-150%);
+            background: linear-gradient(135deg, rgba(216,77,131,.95), rgba(169,78,208,.95));
+            color: white;
+            padding: 15px 24px;
+            border-radius: 18px;
+            font-size: .95rem;
+            font-weight: 600;
+            box-shadow: 0 15px 45px rgba(210,70,130,.5);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,.2);
+            transition: transform .45s cubic-bezier(.2,.8,.2,1);
+            z-index: 10005;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast-amor.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
         @media (max-width: 600px) {
             .menu-button {
                 top: 15px;
@@ -497,6 +573,13 @@
             }
             .page-card {
                 min-height: 290px;
+            }
+            .notif-fab {
+                bottom: 18px;
+                right: 18px;
+                width: 56px;
+                height: 56px;
+                font-size: 22px;
             }
         }
 
@@ -828,7 +911,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-<!-- PÁGINA 20 -->
+<!-- PÁGINA 21 -->
                 <a href="3meses.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 21</div>
@@ -837,7 +920,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-<!-- PÁGINA 20 -->
+<!-- PÁGINA 22 -->
                 <a href="tuuniverso.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 22</div>
@@ -871,6 +954,11 @@
         <br>
         Para que siempre tengas un lugar al que puedas volver.
     </footer>
+
+    <!-- NUEVO: Botón flotante de notificaciones -->
+    <button class="notif-fab" id="btnNotif" aria-label="Activar notificaciones" title="Activar notificaciones bonitas">
+        🔔
+    </button>
 
     <script>
 
@@ -924,6 +1012,112 @@
         }
 
         setInterval(createFloatingHeart, 1000);
+
+        /* ============================================
+           NUEVO: Sistema de notificaciones push
+           ============================================ */
+
+        let swRegistration = null;
+
+        // Registrar Service Worker
+        async function registrarSW() {
+            if (!('serviceWorker' in navigator)) {
+                console.warn('Este navegador no soporta Service Workers');
+                return null;
+            }
+            try {
+                swRegistration = await navigator.serviceWorker.register('service-worker.js');
+                console.log('✅ Service Worker registrado');
+                return swRegistration;
+            } catch (err) {
+                console.error('❌ Error registrando SW:', err);
+                return null;
+            }
+        }
+
+        // Convertir clave VAPID
+        function urlBase64ToUint8Array(base64String) {
+            const padding = '='.repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+            const rawData = window.atob(base64);
+            return Uint8Array.from([...rawData].map(c => c.charCodeAt(0)));
+        }
+
+        // Toast bonito
+        function mostrarToast(texto) {
+            const toast = document.createElement('div');
+            toast.className = 'toast-amor';
+            toast.textContent = texto;
+            document.body.appendChild(toast);
+            requestAnimationFrame(() => toast.classList.add('visible'));
+            setTimeout(() => {
+                toast.classList.remove('visible');
+                setTimeout(() => toast.remove(), 500);
+            }, 4500);
+        }
+
+        // Activar notificaciones
+        async function activarNotificaciones() {
+            const btn = document.getElementById('btnNotif');
+
+            if (!('Notification' in window)) {
+                mostrarToast('😢 Tu navegador no soporta notificaciones');
+                return;
+            }
+
+            const permiso = await Notification.requestPermission();
+            if (permiso !== 'granted') {
+                mostrarToast('😢 No diste permiso, actívalas en ajustes');
+                return;
+            }
+
+            const reg = swRegistration || await registrarSW();
+            if (!reg) {
+                mostrarToast('😢 Error con el service worker');
+                return;
+            }
+
+            try {
+                const resKey = await fetch('/api/vapid-public-key');
+                const { publicKey } = await resKey.json();
+
+                const subscription = await reg.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: urlBase64ToUint8Array(publicKey)
+                });
+
+                await fetch('/api/suscribir', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(subscription)
+                });
+
+                mostrarToast('💕 ¡Listo! Ahora te llegarán notificaciones bonitas');
+
+                btn.textContent = '✅';
+                btn.classList.add('activo');
+                btn.disabled = true;
+            } catch (err) {
+                console.error(err);
+                mostrarToast('😢 No se pudieron activar: ' + err.message);
+            }
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', async () => {
+            await registrarSW();
+
+            const btn = document.getElementById('btnNotif');
+
+            // Si ya hay permiso, mostramos el check
+            if ('Notification' in window && Notification.permission === 'granted') {
+                btn.textContent = '✅';
+                btn.classList.add('activo');
+                btn.disabled = true;
+            } else {
+                btn.addEventListener('click', activarNotificaciones);
+            }
+        });
 
     </script>
 
