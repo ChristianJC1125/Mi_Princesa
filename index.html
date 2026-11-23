@@ -11,7 +11,7 @@
         Todas las páginas de mi princesa ❤️
     </title>
 
-    <!-- NUEVO: manifest para PWA -->
+    <!-- Manifest para PWA -->
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="icons/corazon-192.png">
 
@@ -490,7 +490,7 @@
         }
 
         /* ============================================
-           NUEVO: Botón flotante de notificaciones
+           Botón flotante de notificaciones
            ============================================ */
         .notif-fab {
             position: fixed;
@@ -534,7 +534,7 @@
         }
 
         /* ============================================
-           NUEVO: Toasts bonitos
+           Toasts bonitos
            ============================================ */
         .toast-amor {
             position: fixed;
@@ -830,9 +830,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-
-
-   <!-- PÁGINA 13 -->
+                <!-- PÁGINA 13 -->
                 <a href="PorSiempre.html" class="page-card">
                     <span class="card-icon">🥰</span>
                     <div class="card-number">Página 13</div>
@@ -842,9 +840,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-
-
-  <!-- PÁGINA 14 -->
+                <!-- PÁGINA 14 -->
                 <a href="FloresAmarill.html" class="page-card">
                     <span class="card-icon">🥰</span>
                     <div class="card-number">Página 14</div>
@@ -854,7 +850,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-<!-- PÁGINA 15 -->
+                <!-- PÁGINA 15 -->
                 <a href="castillo.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 15</div>
@@ -863,8 +859,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-
-<!-- PÁGINA 16 -->
+                <!-- PÁGINA 16 -->
                 <a href="MiniñaHermosa.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 16</div>
@@ -873,7 +868,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-<!-- PÁGINA 17 -->
+                <!-- PÁGINA 17 -->
                 <a href="para_mi_ojitos.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 17</div>
@@ -882,8 +877,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-
-<!-- PÁGINA 18 -->
+                <!-- PÁGINA 18 -->
                 <a href="micorazón.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 18</div>
@@ -892,8 +886,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-
-<!-- PÁGINA 19 -->
+                <!-- PÁGINA 19 -->
                 <a href="mibebita.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 19</div>
@@ -902,7 +895,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-<!-- PÁGINA 20 -->
+                <!-- PÁGINA 20 -->
                 <a href="miniñachiquita.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 20</div>
@@ -911,7 +904,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-<!-- PÁGINA 21 -->
+                <!-- PÁGINA 21 -->
                 <a href="3meses.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 21</div>
@@ -920,7 +913,7 @@
                     <span class="card-arrow">→</span>
                 </a>
 
-<!-- PÁGINA 22 -->
+                <!-- PÁGINA 22 -->
                 <a href="tuuniverso.html" class="page-card">
                     <span class="card-icon">❤️</span>
                     <div class="card-number">Página 22</div>
@@ -955,13 +948,16 @@
         Para que siempre tengas un lugar al que puedas volver.
     </footer>
 
-    <!-- NUEVO: Botón flotante de notificaciones -->
+    <!-- Botón flotante de notificaciones -->
     <button class="notif-fab" id="btnNotif" aria-label="Activar notificaciones" title="Activar notificaciones bonitas">
         🔔
     </button>
 
     <script>
 
+        // ============================================
+        // 1. Lógica del Menú y Estrellas
+        // ============================================
         const menuButton = document.getElementById("menuButton");
         const sideMenu = document.getElementById("sideMenu");
         const overlay = document.getElementById("overlay");
@@ -1013,9 +1009,9 @@
 
         setInterval(createFloatingHeart, 1000);
 
-        /* ============================================
-           NUEVO: Sistema de notificaciones push
-           ============================================ */
+        // ============================================
+        // 2. Sistema de Notificaciones Push (Corregido)
+        // ============================================
 
         let swRegistration = null;
 
@@ -1026,7 +1022,7 @@
                 return null;
             }
             try {
-                swRegistration = await navigator.serviceWorker.register('service-worker.js');
+                swRegistration = await navigator.serviceWorker.register('./service-worker.js');
                 console.log('✅ Service Worker registrado');
                 return swRegistration;
             } catch (err) {
@@ -1060,32 +1056,34 @@
         async function activarNotificaciones() {
             const btn = document.getElementById('btnNotif');
 
-            if (!('Notification' in window)) {
+            // 1. Verificar soporte
+            if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) {
                 mostrarToast('😢 Tu navegador no soporta notificaciones');
                 return;
             }
 
+            // 2. Pedir permiso
             const permiso = await Notification.requestPermission();
             if (permiso !== 'granted') {
                 mostrarToast('😢 No diste permiso, actívalas en ajustes');
                 return;
             }
 
-            const reg = swRegistration || await registrarSW();
-            if (!reg) {
-                mostrarToast('😢 Error con el service worker');
-                return;
-            }
-
             try {
+                // 3. Esperar a que el Service Worker esté listo (Clave para que no falle)
+                const reg = await navigator.serviceWorker.ready; 
+
+                // 4. Traer la clave del servidor
                 const resKey = await fetch('/api/vapid-public-key');
                 const { publicKey } = await resKey.json();
 
+                // 5. Suscribirse al Push
                 const subscription = await reg.pushManager.subscribe({
                     userVisibleOnly: true,
                     applicationServerKey: urlBase64ToUint8Array(publicKey)
                 });
 
+                // 6. Mandar la suscripción al backend
                 await fetch('/api/suscribir', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1097,17 +1095,28 @@
                 btn.textContent = '✅';
                 btn.classList.add('activo');
                 btn.disabled = true;
+
             } catch (err) {
                 console.error(err);
-                mostrarToast('😢 No se pudieron activar: ' + err.message);
+                mostrarToast('😢 Error: ' + err.message);
             }
         }
 
-        // Init
+        // Inicialización
         document.addEventListener('DOMContentLoaded', async () => {
             await registrarSW();
 
             const btn = document.getElementById('btnNotif');
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+            // Si es iPhone y NO está instalada como App, le mostramos un aviso
+            if (isIOS && !isStandalone) {
+                btn.addEventListener('click', () => {
+                    mostrarToast('📱 Para que funcionen en iPhone, toca Compartir ⬆️ y luego "Añadir a pantalla de inicio".');
+                });
+                return; // Detenemos aquí
+            }
 
             // Si ya hay permiso, mostramos el check
             if ('Notification' in window && Notification.permission === 'granted') {
